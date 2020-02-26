@@ -23,9 +23,10 @@
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
 		514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
-		514E158B2406EA1B008FE28A /* ArtistValuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */; };
+		514E158B2406EA1B008FE28A /* ArtistCommonValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */; };
 		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
 		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC548B24070BA6005113BD /* CommonValueProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,8 +104,9 @@
 		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
 		514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-id3TE-fullmetaV3.mp3"; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
-		514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistValuePicker.swift; sourceTree = "<group>"; };
+		514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCommonValue.swift; sourceTree = "<group>"; };
 		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
+		51CC548B24070BA6005113BD /* CommonValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValueProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,8 @@
 		514E1525240610C5008FE28A /* AudiobookTagger */ = {
 			isa = PBXGroup;
 			children = (
-				514E158924066D9E008FE28A /* MetadataValues */,
+				514E158924066D9E008FE28A /* CommonMetadataValues */,
+				51CC548B24070BA6005113BD /* CommonValueProtocol.swift */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
 				514E155424061179008FE28A /* MetadataMap.swift */,
@@ -220,12 +223,12 @@
 			path = TestMedia;
 			sourceTree = "<group>";
 		};
-		514E158924066D9E008FE28A /* MetadataValues */ = {
+		514E158924066D9E008FE28A /* CommonMetadataValues */ = {
 			isa = PBXGroup;
 			children = (
-				514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */,
+				514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */,
 			);
-			path = MetadataValues;
+			path = CommonMetadataValues;
 			sourceTree = "<group>";
 		};
 		514E159B2406FBDF008FE28A /* Products */ = {
@@ -414,7 +417,8 @@
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
 				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
-				514E158B2406EA1B008FE28A /* ArtistValuePicker.swift in Sources */,
+				51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */,
+				514E158B2406EA1B008FE28A /* ArtistCommonValue.swift in Sources */,
 				514E155A24061179008FE28A /* MetadataMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

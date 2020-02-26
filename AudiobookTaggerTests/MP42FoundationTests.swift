@@ -16,10 +16,15 @@ class MP42FoundationTests: XCTestCase {
     func testAvailableMetadata() throws {
         print(MP42Metadata.availableMetadata)
         print(MP42Metadata.writableMetadata)
+        
+        
+        
+        
         XCTAssert(1 == 1)
     }
     
     func testMP4TagPresence() throws {
+        // this should be failing but it's not
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bNoMeta))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyName))
