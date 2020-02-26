@@ -13,11 +13,16 @@ import MP42Foundation
 /* Since it doesn't appear possible to write to a file from a test, I built a separate one-button app and put the command to write these tags in the action, then tested the file by reading it here.*/
 class MP42FoundationTests: XCTestCase {
 
-    func testAvailableMetadata() throws {
-        print(MP42Metadata.availableMetadata)
-        print(MP42Metadata.writableMetadata)
-        
-        
+    func testMetadataValues() throws {
+        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
+        print(mp4File.metadata) // <MP42Metadata: 0x60000026a860>
+        print(MP42MetadataKeyArtist) // Artist (should be "Artist ©art"
+
+        print(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtist)) // [<MP42MetadataItem: Artist ©art>] getting closer
+
+        print (mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtist).first!) // <MP42MetadataItem: Artist ©art>
         
         
         XCTAssert(1 == 1)
@@ -92,8 +97,6 @@ class MP42FoundationTests: XCTestCase {
             byIdentifier: MP42MetadataKeyKeywords))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyCategory))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyPurchasedDate))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyArtDirector))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
