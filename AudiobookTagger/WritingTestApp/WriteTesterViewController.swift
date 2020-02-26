@@ -21,10 +21,10 @@ class WriteTesterViewController: NSViewController {
     @IBAction func excuteTestCode(_ sender: Any) {
         let inputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-nometa.m4b"
         let outputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-mp42-fullmeta.m4b"
-        //testID3TagEditorWriting(.version3, inputPath: inputPath, outputPath: outputPath)
-        
         let inputUrl = URL(fileURLWithPath: inputPath)
         let outputUrl = URL(fileURLWithPath: outputPath)
+
+        //testID3TagEditorWriting(.version3, inputPath: inputPath, outputPath: outputPath)
         do {
             try testMP42FoundationWriting(inputUrl: inputUrl, outputUrl: outputUrl)
         } catch { print("ruhroh shaggy!") }
@@ -174,11 +174,13 @@ class WriteTesterViewController: NSViewController {
             value: "Copyright ©cpy" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
-//        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: MP42MetadataKeyReleaseDate,
-//            value: "01/01/2020" as NSDate,
-//            dataType: MP42MetadataItemDataType.date,
-//            extendedLanguageTag: nil))
+        mp42File.metadata.addItem(MP42MetadataItem(
+            identifier: MP42MetadataKeyReleaseDate,
+            value: Date(timeInterval: <#T##TimeInterval#>, since: <#T##Date#>)
+            
+            (from: DateComponents(calendar: nil, timeZone: nil, era: nil, year: 2020, month: 01, day: 01, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)) as NSDate,
+            dataType: MP42MetadataItemDataType.date,
+            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyUserComment,
             value: "This is a comment it can be up to 255 bytes long ©cmt" as NSString,
