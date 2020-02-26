@@ -34,13 +34,13 @@ extension Bundle {
         return locationOfTestM4b
     }()
 
-//    static let testMp3FullMeta: String = {
-//        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-testID3", ofType: "mp3") else {
-//            fatalError("The mp3 file cannot be found")
-//        }
-//        return locationOfTestMp3
-//    }()
-//
+    static let testMp3FullMeta: String = {
+        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-id3TE-fullmetaV3", ofType: "mp3") else {
+            fatalError("The mp3 file cannot be found")
+        }
+        return locationOfTestMp3
+    }()
+
 //    static let testMp3WithMeta: String = {
 //        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-MP3meta", ofType: "mp3") else {
 //            fatalError("The mp3 file cannot be found")

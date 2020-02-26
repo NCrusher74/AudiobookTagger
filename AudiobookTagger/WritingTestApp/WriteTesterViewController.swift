@@ -56,8 +56,7 @@ class WriteTesterViewController: NSViewController {
                     .PodcastCategory : ID3FrameWithStringContent(content: "PodcastCategory TCAT"),
                     .PodcastDescription : ID3FrameWithStringContent(content: "This is a description saved under TDES, and I think it can be up to 255 characters."),
                     .PodcastID : ID3FrameWithStringContent(content: "PodcastID TGID"),
-                    .PodcastKeywords : ID3FrameWithStringContent(content: "PodcastKeywords PKWD"),
-                    // NOTE: Podcast keyword should be TKWD but I typoed when running the test
+                    .PodcastKeywords : ID3FrameWithStringContent(content: "PodcastKeywords TKWD"),
                     .Publisher : ID3FrameWithStringContent(content: "Publisher TPUB"),
                     .RecordingDayMonth : ID3FrameRecordingDayMonth(day: 01, month: 01),
                     .RecordingYear : ID3FrameRecordingYear(year: 2020),

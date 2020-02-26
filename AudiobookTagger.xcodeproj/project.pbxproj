@@ -22,6 +22,7 @@
 		514E157924061661008FE28A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514E157524061661008FE28A /* README.md */; };
 		514E158124061A70008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157F24061A70008FE28A /* Bundle.swift */; };
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
+		514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		514E157524061661008FE28A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		514E157F24061A70008FE28A /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
+		514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-id3TE-fullmetaV3.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		514E156D24061579008FE28A /* TestMedia */ = {
 			isa = PBXGroup;
 			children = (
+				514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */,
 				514E156E240615B1008FE28A /* testfile-nometa.m4b */,
 				514E156F240615B1008FE28A /* testfile-nometa.mp3 */,
 			);
@@ -357,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */,
 				514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */,
 				514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */,
 			);
