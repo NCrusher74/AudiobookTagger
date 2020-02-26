@@ -15,7 +15,6 @@
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
 		514E155A24061179008FE28A /* MetadataMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155424061179008FE28A /* MetadataMap.swift */; };
 		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
-		514E1569240611F6008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E1564240611CE008FE28A /* MP42Foundation.framework */; };
 		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
 		514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 514E156E240615B1008FE28A /* testfile-nometa.m4b */; };
 		514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E156F240615B1008FE28A /* testfile-nometa.mp3 */; };
@@ -25,6 +24,7 @@
 		514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
 		514E158B2406EA1B008FE28A /* ArtistValuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */; };
+		514E15992406F960008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15942406F948008FE28A /* MP42Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,23 +42,23 @@
 			remoteGlobalIDString = 514E1522240610C4008FE28A;
 			remoteInfo = AudiobookTagger;
 		};
-		514E1563240611CE008FE28A /* PBXContainerItemProxy */ = {
+		514E15932406F948008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
 			remoteInfo = MP42Foundation;
 		};
-		514E1565240611CE008FE28A /* PBXContainerItemProxy */ = {
+		514E15952406F948008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C204182391DF00416A4E;
 			remoteInfo = MP42FoundationTests;
 		};
-		514E1567240611CE008FE28A /* PBXContainerItemProxy */ = {
+		514E15972406F948008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A910B5A318394E900064028F;
 			remoteInfo = mp42;
@@ -81,7 +81,6 @@
 		514E155424061179008FE28A /* MetadataMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataMap.swift; sourceTree = "<group>"; };
 		514E155524061179008FE28A /* AudiobookTagger.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AudiobookTagger.entitlements; sourceTree = "<group>"; };
 		514E155624061179008FE28A /* AudiobookFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookFile.swift; sourceTree = "<group>"; };
-		514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		514E156E240615B1008FE28A /* testfile-nometa.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-nometa.m4b"; sourceTree = "<group>"; };
 		514E156F240615B1008FE28A /* testfile-nometa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-nometa.mp3"; sourceTree = "<group>"; };
 		514E157524061661008FE28A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-id3TE-fullmetaV3.mp3"; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
 		514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistValuePicker.swift; sourceTree = "<group>"; };
+		514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = ../mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				514E1569240611F6008FE28A /* MP42Foundation.framework in Frameworks */,
+				514E15992406F960008FE28A /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,19 +190,9 @@
 		514E155C240611CD008FE28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */,
+				514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		514E155E240611CE008FE28A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				514E1564240611CE008FE28A /* MP42Foundation.framework */,
-				514E1566240611CE008FE28A /* MP42FoundationFoundationTests.xctest */,
-				514E1568240611CE008FE28A /* libmp42.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		514E156D24061579008FE28A /* TestMedia */ = {
@@ -221,6 +211,16 @@
 				514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */,
 			);
 			path = MetadataValues;
+			sourceTree = "<group>";
+		};
+		514E158E2406F948008FE28A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				514E15942406F948008FE28A /* MP42Foundation.framework */,
+				514E15962406F948008FE28A /* MP42FoundationFoundationTests.xctest */,
+				514E15982406F948008FE28A /* libmp42.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,8 +322,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 514E155E240611CE008FE28A /* Products */;
-					ProjectRef = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+					ProductGroup = 514E158E2406F948008FE28A /* Products */;
+					ProjectRef = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -336,25 +336,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		514E1564240611CE008FE28A /* MP42Foundation.framework */ = {
+		514E15942406F948008FE28A /* MP42Foundation.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MP42Foundation.framework;
-			remoteRef = 514E1563240611CE008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15932406F948008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E1566240611CE008FE28A /* MP42FoundationFoundationTests.xctest */ = {
+		514E15962406F948008FE28A /* MP42FoundationFoundationTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MP42FoundationFoundationTests.xctest;
-			remoteRef = 514E1565240611CE008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15952406F948008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E1568240611CE008FE28A /* libmp42.a */ = {
+		514E15982406F948008FE28A /* libmp42.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libmp42.a;
-			remoteRef = 514E1567240611CE008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15972406F948008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
