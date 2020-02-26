@@ -24,7 +24,8 @@
 		514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
 		514E158B2406EA1B008FE28A /* ArtistValuePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */; };
-		514E15992406F960008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15942406F948008FE28A /* MP42Foundation.framework */; };
+		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
+		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,28 +43,42 @@
 			remoteGlobalIDString = 514E1522240610C4008FE28A;
 			remoteInfo = AudiobookTagger;
 		};
-		514E15932406F948008FE28A /* PBXContainerItemProxy */ = {
+		514E15A02406FBDF008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
 			remoteInfo = MP42Foundation;
 		};
-		514E15952406F948008FE28A /* PBXContainerItemProxy */ = {
+		514E15A22406FBDF008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C204182391DF00416A4E;
 			remoteInfo = MP42FoundationTests;
 		};
-		514E15972406F948008FE28A /* PBXContainerItemProxy */ = {
+		514E15A42406FBDF008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A910B5A318394E900064028F;
 			remoteInfo = mp42;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		514E15A82406FBF2008FE28A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		514E1523240610C5008FE28A /* AudiobookTagger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudiobookTagger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,7 +104,7 @@
 		514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-id3TE-fullmetaV3.mp3"; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
 		514E158A2406EA1B008FE28A /* ArtistValuePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistValuePicker.swift; sourceTree = "<group>"; };
-		514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = ../mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
+		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				514E15992406F960008FE28A /* MP42Foundation.framework in Frameworks */,
+				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +205,7 @@
 		514E155C240611CD008FE28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */,
+				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,12 +228,12 @@
 			path = MetadataValues;
 			sourceTree = "<group>";
 		};
-		514E158E2406F948008FE28A /* Products */ = {
+		514E159B2406FBDF008FE28A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				514E15942406F948008FE28A /* MP42Foundation.framework */,
-				514E15962406F948008FE28A /* MP42FoundationFoundationTests.xctest */,
-				514E15982406F948008FE28A /* libmp42.a */,
+				514E15A12406FBDF008FE28A /* MP42Foundation.framework */,
+				514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */,
+				514E15A52406FBDF008FE28A /* libmp42.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -233,6 +248,7 @@
 				514E151F240610C4008FE28A /* Sources */,
 				514E1520240610C4008FE28A /* Frameworks */,
 				514E1521240610C4008FE28A /* Resources */,
+				514E15A82406FBF2008FE28A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,8 +338,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 514E158E2406F948008FE28A /* Products */;
-					ProjectRef = 514E158D2406F948008FE28A /* MP42Foundation.xcodeproj */;
+					ProductGroup = 514E159B2406FBDF008FE28A /* Products */;
+					ProjectRef = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -336,25 +352,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		514E15942406F948008FE28A /* MP42Foundation.framework */ = {
+		514E15A12406FBDF008FE28A /* MP42Foundation.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MP42Foundation.framework;
-			remoteRef = 514E15932406F948008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15A02406FBDF008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E15962406F948008FE28A /* MP42FoundationFoundationTests.xctest */ = {
+		514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MP42FoundationFoundationTests.xctest;
-			remoteRef = 514E15952406F948008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15A22406FBDF008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E15982406F948008FE28A /* libmp42.a */ = {
+		514E15A52406FBDF008FE28A /* libmp42.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libmp42.a;
-			remoteRef = 514E15972406F948008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 514E15A42406FBDF008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
