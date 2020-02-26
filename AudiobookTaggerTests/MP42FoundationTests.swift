@@ -21,60 +21,110 @@ class MP42FoundationTests: XCTestCase {
     
     func testMP4TagPresence() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bNoMeta))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Artist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Album"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Album Artist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Artist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Grouping"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Name"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Track Subtitle"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Composer"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Comments"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Genre"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Release Date"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Track #"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Disk #"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Artist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "TV Show"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "TV Episode E"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "TV Network"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "TV Episode ID"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "TV Season"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Sond Description"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Description"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Long Description"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Series Description"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Studio"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Cast"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Director"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Codirector"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Producers"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Executive Producer"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Screenwriters"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Lyrics"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Copyright"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Encoded By"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Keywords"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Category"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Purchase Date"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Art Director"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Arranger"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Lyricist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Acknowledgement"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Conductor"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Record Company"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Original Artist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Song Producer"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Performer"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Publisher"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Sound Engineer"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Soloist"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Credits"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Thanks"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Work Name"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Movement Name"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Movement Number"))
-        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(byIdentifier: "Movement Count"))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyName))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAlbum))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAlbumArtist))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtist))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyGrouping))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTrackSubTitle))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyComposer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyUserComment))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyUserGenre))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyReleaseDate))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTrackNumber))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDiscNumber))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVShow))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVEpisodeNumber))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVNetwork))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVEpisodeID))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVSeason))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySongDescription))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDescription))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyLongDescription))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySeriesDescription))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyStudio))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCast))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDirector))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCodirector))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyProducer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyExecProducer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyScreenwriters))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyLyrics))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCopyright))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyEncodedBy))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyKeywords))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCategory))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyPurchasedDate))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtDirector))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArranger))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAuthor))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAcknowledgement))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyConductor))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyRecordCompany))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyOriginalArtist))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySongProducer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyPerformer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyPublisher))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySoundEngineer))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySoloist))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCredits))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyThanks))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyWorkName))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementName))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementNumber))
+        XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementCount))
     }
 
 }

@@ -120,279 +120,269 @@ class WriteTesterViewController: NSViewController {
     func testMP42FoundationWriting(inputUrl: URL, outputUrl: URL) throws {
         let mp42File = try MP42File(url: inputUrl)
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Work Name",
+            identifier: MP42MetadataKeyWorkName,
             value: "Work Name ©wrk" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Movement Name",
+            identifier: MP42MetadataKeyMovementName,
             value: "Movement Name ©mvn" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
+//        mp42File.metadata.addItem(MP42MetadataItem(
+//            identifier: MP42MetadataKeyMovementNumber,
+//            value: 5,
+//            dataType: MP42MetadataItemDataType.integer,
+//            extendedLanguageTag: nil))
+//        mp42File.metadata.addItem(MP42MetadataItem(
+//            identifier: MP42MetadataKeyMovementCount,
+//            value: 6,
+//            dataType: MP42MetadataItemDataType.integer,
+//            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Movement Index",
-            value: "5" as NSString,
-            dataType: MP42MetadataItemDataType.string,
-            extendedLanguageTag: nil))
-        mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Movement Count",
-            value: "6" as NSString,
-            dataType: MP42MetadataItemDataType.string,
-            extendedLanguageTag: nil))
-        mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Name",
+            identifier: MP42MetadataKeyName,
             value: "Title ©nam" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Artist",
+            identifier: MP42MetadataKeyArtist,
             value: "Artist ©art" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Album",
+            identifier: MP42MetadataKeyAlbum,
             value: "Album ©alb" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Album Artist",
+            identifier: MP42MetadataKeyAlbumArtist,
             value: "AlbumArtist aART" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Grouping",
+            identifier: MP42MetadataKeyGrouping,
             value: "Grouping ©grp" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Composer",
+            identifier: MP42MetadataKeyComposer,
             value: "Composer ©wrt" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Copyright",
+            identifier: MP42MetadataKeyCopyright,
             value: "Copyright ©cpy" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Release Date",
+//            identifier: MP42MetadataKeyReleaseDate,
 //            value: "01/01/2020" as NSDate,
 //            dataType: MP42MetadataItemDataType.date,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Comments",
+            identifier: MP42MetadataKeyUserComment,
             value: "This is a comment it can be up to 255 bytes long ©cmt" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Song Description",
+            identifier: MP42MetadataKeySongDescription,
             value: "This is a description it can also be up to 255 bytes long desc" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Description",
+            identifier: MP42MetadataKeyDescription,
             value: "This is a description it can also be up to 255 bytes long desc" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Series Description",
+            identifier: MP42MetadataKeySeriesDescription,
             value: "This is a description it can also be up to 255 bytes long ©des" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Long Description",
+            identifier: MP42MetadataKeyLongDescription,
             value: "This is a description it can be as long as you like ldes" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Lyrics",
+            identifier: MP42MetadataKeyLyrics,
             value: "This is a lyric field it can be as long as you like ©des" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Purchase Date",
+//            identifier: MP42MetadataKeyPurchasedDate,
 //            value: 02/02/2020 as NSDate,
 //            dataType: MP42MetadataItemDataType.date,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Genre",
+            identifier: MP42MetadataKeyUserGenre,
             value: "Genre ©gen" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Track Sub-Title",
+            identifier: MP42MetadataKeyTrackSubTitle,
             value: "Subtitle ???" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
-         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Release Date",
-            value: "Year rldt" as NSString,
-            dataType: MP42MetadataItemDataType.string,
-            extendedLanguageTag: nil))
+//         mp42File.metadata.addItem(MP42MetadataItem(
+//            identifier: MP42MetadataKeyReleaseDate,
+//            value: "Year rldt" as NSString,
+//            dataType: MP42MetadataItemDataType.string,
+//            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Track #",
+//            identifier: MP42MetadataKeyTrackNumber,
 //            value: [7,8] as NSCopying,
 //            dataType: MP42MetadataItemDataType.integerArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Disk #",
+//            identifier: MP42MetadataKeyDiscNumber,
 //            value: [1,2],
 //            dataType: MP42MetadataItemDataType.integerArray,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "TV Show",
+            identifier: MP42MetadataKeyTVShow,
             value: "TV Show tvsh" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "TV Episode #",
+//            identifier: MP42MetadataKeyTVEpisodeNumber,
 //            value: 3, dataType: MP42MetadataItemDataType.integer,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "TV Network",
+            identifier: MP42MetadataKeyTVNetwork,
             value: "TV Network tvnn" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "TV Episode ID",
+            identifier: MP42MetadataKeyTVEpisodeID,
             value: "TV Episode Name tves" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "TV Season",
+//            identifier: MP42MetadataKeyTVSeason,
 //            value: 4,
 //            dataType: MP42MetadataItemDataType.integer,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Studio",
+            identifier: MP42MetadataKeyStudio,
             value: "Studio" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Cast",
+//            identifier: MP42MetadataKeyCast,
 //            value: ["Cast", "More Cast"] as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Director",
+//            identifier: MP42MetadataKeyDirector,
 //            value: ["Director ©dir"] as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Codirector",
+//            identifier: MP42MetadataKeyCodirector,
 //            value: ["Co-director"] as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Producers",
+//            identifier: MP42MetadataKeyProducer,
 //            value: ["Producers ©prd"] as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: ["Executive Producer"],
+//            identifier: MP42MetadataKeyExecProducer,
 //            value: "Executive Producer" as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Screenwriters",
+//            identifier: MP42MetadataKeyScreenwriters,
 //            value: ["Screenwriters"] as NSString,
 //            dataType: MP42MetadataItemDataType.stringArray,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Encoded By",
+            identifier: MP42MetadataKeyEncodedBy,
             value: "Encoded By" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Keywords",
+            identifier: MP42MetadataKeyKeywords,
             value: "Keywords" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Category",
+            identifier: MP42MetadataKeyCategory,
             value: "Category" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Art Director",
+            identifier: MP42MetadataKeyArtDirector,
             value: "Art Director" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Arranger",
+            identifier: MP42MetadataKeyArranger,
             value: "Arranger ©arg" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Lyricist",
+            identifier: MP42MetadataKeyAuthor,
             value: "Lyricist" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Acknowledgement",
+            identifier: MP42MetadataKeyAcknowledgement,
             value: "Acknowledgment ©thx" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Conductor",
+            identifier: MP42MetadataKeyConductor,
             value: "Conductor" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Record Company",
+            identifier: MP42MetadataKeyRecordCompany,
             value: "Record Company" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Original Artist",
+            identifier: MP42MetadataKeyOriginalArtist,
             value: "Original Artist" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Song Producer",
+            identifier: MP42MetadataKeySongProducer,
             value: "Song Producer" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Performer",
+            identifier: MP42MetadataKeyPerformer,
             value: "Performer ©prf" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Publisher",
+            identifier: MP42MetadataKeyPublisher,
             value: "Publisher ©pub" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Sound Engineer",
+            identifier: MP42MetadataKeySoundEngineer,
             value: "Sound Engineer" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Soloist",
+            identifier: MP42MetadataKeySoloist,
             value: "Soloist" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Credits",
+            identifier: MP42MetadataKeyCredits,
             value: "Credits ©src" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Thanks",
+            identifier: MP42MetadataKeyThanks,
             value: "Thanks ©thx" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
-        mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: "Work Name",
-            value: "Work Name " as NSString,
-            dataType: MP42MetadataItemDataType.string,
-            extendedLanguageTag: nil))
-//        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: "Author",
-//            value: "Author ©aut" as NSString,
-//            dataType: MP42MetadataItemDataType.string,
-//            extendedLanguageTag: nil))
 
         try mp42File.write(to: outputUrl, options: nil)
         

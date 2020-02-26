@@ -10,13 +10,7 @@ import Foundation
 import MP42Foundation
 import ID3TagEditor
 
-struct MetadataMap {
-    
-    var file: AudiobookFile
-    
-    init(file: AudiobookFile) {
-        self.file = file
-    }
-    
+enum MetadataMap {
+
     
 }
