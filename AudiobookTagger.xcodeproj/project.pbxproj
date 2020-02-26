@@ -140,7 +140,6 @@
 		514E1525240610C5008FE28A /* AudiobookTagger */ = {
 			isa = PBXGroup;
 			children = (
-				514E155524061179008FE28A /* AudiobookTagger.entitlements */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
 				514E155424061179008FE28A /* MetadataMap.swift */,
@@ -148,6 +147,7 @@
 				514E1526240610C5008FE28A /* AppDelegate.swift */,
 				514E1528240610C6008FE28A /* Assets.xcassets */,
 				514E152D240610C6008FE28A /* Info.plist */,
+				514E155524061179008FE28A /* AudiobookTagger.entitlements */,
 			);
 			path = AudiobookTagger;
 			sourceTree = "<group>";
