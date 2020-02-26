@@ -27,6 +27,7 @@
 		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
 		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC548B24070BA6005113BD /* CommonValueProtocol.swift */; };
+		51CC548F24072C38005113BD /* testfile-mp42-fullmeta.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCommonValue.swift; sourceTree = "<group>"; };
 		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		51CC548B24070BA6005113BD /* CommonValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValueProtocol.swift; sourceTree = "<group>"; };
+		51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-mp42-fullmeta.m4b"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		514E156D24061579008FE28A /* TestMedia */ = {
 			isa = PBXGroup;
 			children = (
+				51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */,
 				514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */,
 				514E156E240615B1008FE28A /* testfile-nometa.m4b */,
 				514E156F240615B1008FE28A /* testfile-nometa.mp3 */,
@@ -395,6 +398,7 @@
 			files = (
 				514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */,
 				514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */,
+				51CC548F24072C38005113BD /* testfile-mp42-fullmeta.m4b in Resources */,
 				514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

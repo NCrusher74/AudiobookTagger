@@ -118,6 +118,7 @@ class WriteTesterViewController: NSViewController {
     
     
     func testMP42FoundationWriting(inputUrl: URL, outputUrl: URL) throws {
+        
         let mp42File = try MP42File(url: inputUrl)
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyWorkName,
@@ -176,10 +177,8 @@ class WriteTesterViewController: NSViewController {
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyReleaseDate,
-            value: Date(timeInterval: <#T##TimeInterval#>, since: <#T##Date#>)
-            
-            (from: DateComponents(calendar: nil, timeZone: nil, era: nil, year: 2020, month: 01, day: 01, hour: nil, minute: nil, second: nil, nanosecond: nil, weekday: nil, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)) as NSDate,
-            dataType: MP42MetadataItemDataType.date,
+            value: "01/01/2020" as NSString,
+            dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyUserComment,
@@ -213,7 +212,7 @@ class WriteTesterViewController: NSViewController {
             extendedLanguageTag: nil))
 //        mp42File.metadata.addItem(MP42MetadataItem(
 //            identifier: MP42MetadataKeyPurchasedDate,
-//            value: 02/02/2020 as NSDate,
+//            value: date2 as NSDate,
 //            dataType: MP42MetadataItemDataType.date,
 //            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
@@ -224,11 +223,6 @@ class WriteTesterViewController: NSViewController {
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyTrackSubTitle,
             value: "Subtitle ???" as NSString,
-            dataType: MP42MetadataItemDataType.string,
-            extendedLanguageTag: nil))
-         mp42File.metadata.addItem(MP42MetadataItem(
-            identifier: MP42MetadataKeyReleaseDate,
-            value: "Year rldt" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(

@@ -25,7 +25,7 @@ class MP42FoundationTests: XCTestCase {
     
     func testMP4TagPresence() throws {
         // this should be failing but it's not
-        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bNoMeta))
+        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyName))
         XCTAssertNotNil(mp4File.metadata.metadataItemsFiltered(
