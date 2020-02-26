@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ID3TagEditor",
+        "repositoryURL": "https://github.com/NCrusher74/ID3TagEditor.git",
+        "state": {
+          "branch": "master",
+          "revision": "0b32653b06023e89349275854313d439358fa787",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

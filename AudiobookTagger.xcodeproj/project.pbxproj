@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
+		514E1529240610C6008FE28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514E1528240610C6008FE28A /* Assets.xcassets */; };
+		514E1538240610C6008FE28A /* AudiobookTaggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1537240610C6008FE28A /* AudiobookTaggerTests.swift */; };
+		514E1543240610C6008FE28A /* AudiobookTaggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */; };
+		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
+		514E155824061179008FE28A /* WriteTester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514E155224061179008FE28A /* WriteTester.storyboard */; };
+		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
+		514E155A24061179008FE28A /* MetadataMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155424061179008FE28A /* MetadataMap.swift */; };
+		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
+		514E1569240611F6008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E1564240611CE008FE28A /* MP42Foundation.framework */; };
+		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
+		514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 514E156E240615B1008FE28A /* testfile-nometa.m4b */; };
+		514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E156F240615B1008FE28A /* testfile-nometa.mp3 */; };
+		514E157324061606008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157224061606008FE28A /* Bundle.swift */; };
+		514E157924061661008FE28A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514E157524061661008FE28A /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		514E1534240610C6008FE28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 514E151B240610C4008FE28A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 514E1522240610C4008FE28A;
+			remoteInfo = AudiobookTagger;
+		};
+		514E153F240610C6008FE28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 514E151B240610C4008FE28A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 514E1522240610C4008FE28A;
+			remoteInfo = AudiobookTagger;
+		};
+		514E1563240611CE008FE28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
+			remoteInfo = MP42Foundation;
+		};
+		514E1565240611CE008FE28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A9B9C204182391DF00416A4E;
+			remoteInfo = MP42FoundationTests;
+		};
+		514E1567240611CE008FE28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A910B5A318394E900064028F;
+			remoteInfo = mp42;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		514E1523240610C5008FE28A /* AudiobookTagger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudiobookTagger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		514E1526240610C5008FE28A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		514E1528240610C6008FE28A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		514E152D240610C6008FE28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		514E1533240610C6008FE28A /* AudiobookTaggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiobookTaggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		514E1537240610C6008FE28A /* AudiobookTaggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTaggerTests.swift; sourceTree = "<group>"; };
+		514E1539240610C6008FE28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		514E153E240610C6008FE28A /* AudiobookTaggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiobookTaggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTaggerUITests.swift; sourceTree = "<group>"; };
+		514E1544240610C6008FE28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		514E155124061179008FE28A /* WriteTesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTesterViewController.swift; sourceTree = "<group>"; };
+		514E155224061179008FE28A /* WriteTester.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WriteTester.storyboard; sourceTree = "<group>"; };
+		514E155324061179008FE28A /* AudiobookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookType.swift; sourceTree = "<group>"; };
+		514E155424061179008FE28A /* MetadataMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataMap.swift; sourceTree = "<group>"; };
+		514E155524061179008FE28A /* AudiobookTagger.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AudiobookTagger.entitlements; sourceTree = "<group>"; };
+		514E155624061179008FE28A /* AudiobookFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookFile.swift; sourceTree = "<group>"; };
+		514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
+		514E156E240615B1008FE28A /* testfile-nometa.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-nometa.m4b"; sourceTree = "<group>"; };
+		514E156F240615B1008FE28A /* testfile-nometa.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-nometa.mp3"; sourceTree = "<group>"; };
+		514E157224061606008FE28A /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		514E157524061661008FE28A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		514E1520240610C4008FE28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E1569240611F6008FE28A /* MP42Foundation.framework in Frameworks */,
+				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E1530240610C6008FE28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E153B240610C6008FE28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		514E151A240610C4008FE28A = {
+			isa = PBXGroup;
+			children = (
+				514E157524061661008FE28A /* README.md */,
+				514E1525240610C5008FE28A /* AudiobookTagger */,
+				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
+				514E1541240610C6008FE28A /* AudiobookTaggerUITests */,
+				514E1524240610C5008FE28A /* Products */,
+				514E155C240611CD008FE28A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		514E1524240610C5008FE28A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				514E1523240610C5008FE28A /* AudiobookTagger.app */,
+				514E1533240610C6008FE28A /* AudiobookTaggerTests.xctest */,
+				514E153E240610C6008FE28A /* AudiobookTaggerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		514E1525240610C5008FE28A /* AudiobookTagger */ = {
+			isa = PBXGroup;
+			children = (
+				514E155524061179008FE28A /* AudiobookTagger.entitlements */,
+				514E155624061179008FE28A /* AudiobookFile.swift */,
+				514E155324061179008FE28A /* AudiobookType.swift */,
+				514E155424061179008FE28A /* MetadataMap.swift */,
+				514E155024061179008FE28A /* WritingTestApp */,
+				514E1526240610C5008FE28A /* AppDelegate.swift */,
+				514E1528240610C6008FE28A /* Assets.xcassets */,
+				514E152D240610C6008FE28A /* Info.plist */,
+			);
+			path = AudiobookTagger;
+			sourceTree = "<group>";
+		};
+		514E1536240610C6008FE28A /* AudiobookTaggerTests */ = {
+			isa = PBXGroup;
+			children = (
+				514E157224061606008FE28A /* Bundle.swift */,
+				514E156D24061579008FE28A /* TestMedia */,
+				514E1537240610C6008FE28A /* AudiobookTaggerTests.swift */,
+				514E1539240610C6008FE28A /* Info.plist */,
+			);
+			path = AudiobookTaggerTests;
+			sourceTree = "<group>";
+		};
+		514E1541240610C6008FE28A /* AudiobookTaggerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */,
+				514E1544240610C6008FE28A /* Info.plist */,
+			);
+			path = AudiobookTaggerUITests;
+			sourceTree = "<group>";
+		};
+		514E155024061179008FE28A /* WritingTestApp */ = {
+			isa = PBXGroup;
+			children = (
+				514E155124061179008FE28A /* WriteTesterViewController.swift */,
+				514E155224061179008FE28A /* WriteTester.storyboard */,
+			);
+			path = WritingTestApp;
+			sourceTree = "<group>";
+		};
+		514E155C240611CD008FE28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		514E155E240611CE008FE28A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				514E1564240611CE008FE28A /* MP42Foundation.framework */,
+				514E1566240611CE008FE28A /* MP42FoundationFoundationTests.xctest */,
+				514E1568240611CE008FE28A /* libmp42.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		514E156D24061579008FE28A /* TestMedia */ = {
+			isa = PBXGroup;
+			children = (
+				514E156E240615B1008FE28A /* testfile-nometa.m4b */,
+				514E156F240615B1008FE28A /* testfile-nometa.mp3 */,
+			);
+			path = TestMedia;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		514E1522240610C4008FE28A /* AudiobookTagger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 514E1547240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTagger" */;
+			buildPhases = (
+				514E151F240610C4008FE28A /* Sources */,
+				514E1520240610C4008FE28A /* Frameworks */,
+				514E1521240610C4008FE28A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AudiobookTagger;
+			packageProductDependencies = (
+				514E156B24061242008FE28A /* ID3TagEditor */,
+			);
+			productName = AudiobookTagger;
+			productReference = 514E1523240610C5008FE28A /* AudiobookTagger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		514E1532240610C6008FE28A /* AudiobookTaggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 514E154A240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerTests" */;
+			buildPhases = (
+				514E152F240610C6008FE28A /* Sources */,
+				514E1530240610C6008FE28A /* Frameworks */,
+				514E1531240610C6008FE28A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				514E1535240610C6008FE28A /* PBXTargetDependency */,
+			);
+			name = AudiobookTaggerTests;
+			productName = AudiobookTaggerTests;
+			productReference = 514E1533240610C6008FE28A /* AudiobookTaggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		514E153D240610C6008FE28A /* AudiobookTaggerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 514E154D240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerUITests" */;
+			buildPhases = (
+				514E153A240610C6008FE28A /* Sources */,
+				514E153B240610C6008FE28A /* Frameworks */,
+				514E153C240610C6008FE28A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				514E1540240610C6008FE28A /* PBXTargetDependency */,
+			);
+			name = AudiobookTaggerUITests;
+			productName = AudiobookTaggerUITests;
+			productReference = 514E153E240610C6008FE28A /* AudiobookTaggerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		514E151B240610C4008FE28A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Nolaine Crusher";
+				TargetAttributes = {
+					514E1522240610C4008FE28A = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					514E1532240610C6008FE28A = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 514E1522240610C4008FE28A;
+					};
+					514E153D240610C6008FE28A = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 514E1522240610C4008FE28A;
+					};
+				};
+			};
+			buildConfigurationList = 514E151E240610C4008FE28A /* Build configuration list for PBXProject "AudiobookTagger" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 514E151A240610C4008FE28A;
+			packageReferences = (
+				514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
+			);
+			productRefGroup = 514E1524240610C5008FE28A /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 514E155E240611CE008FE28A /* Products */;
+					ProjectRef = 514E155D240611CE008FE28A /* MP42Foundation.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				514E1522240610C4008FE28A /* AudiobookTagger */,
+				514E1532240610C6008FE28A /* AudiobookTaggerTests */,
+				514E153D240610C6008FE28A /* AudiobookTaggerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		514E1564240611CE008FE28A /* MP42Foundation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MP42Foundation.framework;
+			remoteRef = 514E1563240611CE008FE28A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		514E1566240611CE008FE28A /* MP42FoundationFoundationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MP42FoundationFoundationTests.xctest;
+			remoteRef = 514E1565240611CE008FE28A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		514E1568240611CE008FE28A /* libmp42.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libmp42.a;
+			remoteRef = 514E1567240611CE008FE28A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		514E1521240610C4008FE28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E157924061661008FE28A /* README.md in Resources */,
+				514E1529240610C6008FE28A /* Assets.xcassets in Resources */,
+				514E155824061179008FE28A /* WriteTester.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E1531240610C6008FE28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */,
+				514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E153C240610C6008FE28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		514E151F240610C4008FE28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E155B24061179008FE28A /* AudiobookFile.swift in Sources */,
+				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
+				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
+				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
+				514E155A24061179008FE28A /* MetadataMap.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E152F240610C6008FE28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E1538240610C6008FE28A /* AudiobookTaggerTests.swift in Sources */,
+				514E157324061606008FE28A /* Bundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E153A240610C6008FE28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				514E1543240610C6008FE28A /* AudiobookTaggerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		514E1535240610C6008FE28A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 514E1522240610C4008FE28A /* AudiobookTagger */;
+			targetProxy = 514E1534240610C6008FE28A /* PBXContainerItemProxy */;
+		};
+		514E1540240610C6008FE28A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 514E1522240610C4008FE28A /* AudiobookTagger */;
+			targetProxy = 514E153F240610C6008FE28A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		514E1545240610C6008FE28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		514E1546240610C6008FE28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		514E1548240610C6008FE28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTagger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTagger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		514E1549240610C6008FE28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTagger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTagger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		514E154B240610C6008FE28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTaggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTaggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudiobookTagger.app/Contents/MacOS/AudiobookTagger";
+			};
+			name = Debug;
+		};
+		514E154C240610C6008FE28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTaggerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTaggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudiobookTagger.app/Contents/MacOS/AudiobookTagger";
+			};
+			name = Release;
+		};
+		514E154E240610C6008FE28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTaggerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTaggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AudiobookTagger;
+			};
+			name = Debug;
+		};
+		514E154F240610C6008FE28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AudiobookTaggerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.NCrusher.AudiobookTaggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AudiobookTagger;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		514E151E240610C4008FE28A /* Build configuration list for PBXProject "AudiobookTagger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				514E1545240610C6008FE28A /* Debug */,
+				514E1546240610C6008FE28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		514E1547240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTagger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				514E1548240610C6008FE28A /* Debug */,
+				514E1549240610C6008FE28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		514E154A240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				514E154B240610C6008FE28A /* Debug */,
+				514E154C240610C6008FE28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		514E154D240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				514E154E240610C6008FE28A /* Debug */,
+				514E154F240610C6008FE28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NCrusher74/ID3TagEditor.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		514E156B24061242008FE28A /* ID3TagEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
+			productName = ID3TagEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 514E151B240610C4008FE28A /* Project object */;
+}

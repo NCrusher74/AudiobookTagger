@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ahh-we-Fu4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="Lf8-s9-VXI">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="Ahh-we-Fu4" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="HjF-Kb-G9I">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="Ahh-we-Fu4" id="j7C-sH-NJY"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="aWV-qR-YUI" kind="relationship" relationship="window.shadowedContentViewController" id="WYx-qo-KBb"/>
+                    </connections>
+                </windowController>
+                <customObject id="eTs-4b-qJY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63" y="-250"/>
+        </scene>
+        <!--Write Tester View Controller-->
+        <scene sceneID="0QI-LL-y4p">
+            <objects>
+                <viewController id="aWV-qR-YUI" customClass="WriteTesterViewController" customModule="AudiobookTagger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="vfJ-QM-eL6">
+                        <rect key="frame" x="0.0" y="0.0" width="285" height="241"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUB-mF-END">
+                                <rect key="frame" x="92" y="82" width="102" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="EXECUTE" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="chF-4M-f8V">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="excuteTestCode:" target="aWV-qR-YUI" id="cZ0-dT-4bV"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="0fT-QB-im6" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="63" y="290"/>
+        </scene>
+    </scenes>
+</document>
