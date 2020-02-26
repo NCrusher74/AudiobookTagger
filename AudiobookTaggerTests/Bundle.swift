@@ -12,33 +12,46 @@ extension Bundle {
     static let testBundle = Bundle(for: BundleMarker.self)
 
     /// An audio file for testing.
-    static let testAudioFile: AudioFile = {
+    static let testAudiobookFile: AudiobookFile = {
       guard let locationOfTestAudioFile = Bundle.testBundle
-        .url(forResource: "article", withExtension: "aax") else {
+        .path(forResource: "testfile-nometa", ofType: "m4b") else {
           fatalError("No audio file available for testing.")
       }
-      return AudioFile(location: locationOfTestAudioFile)
+        return AudiobookFile(from: locationOfTestAudioFile)
     }()
     
-    static let testAAX: URL = {
-        guard let locationOfTestAAX = Bundle.testBundle.url(forResource: "article", withExtension: "aax") else {
-            fatalError("The aax file cannot be found")
+    static let testMp3NoMeta: String = {
+        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-nometa", ofType: "mp3") else {
+            fatalError("The mp3 file cannot be found")
         }
-        return locationOfTestAAX
+        return locationOfTestMp3
     }()
-    
-    static let testM4B: URL = {
-        guard let locationOfTestM4B = Bundle.testBundle.url(forResource: "article", withExtension: "m4b") else {
+
+    static let testM4bNoMeta: String = {
+        guard let locationOfTestM4b = Bundle.testBundle.path(forResource: "testfile-nometa", ofType: "m4b") else {
             fatalError("The m4b file cannot be found")
         }
-        return locationOfTestM4B
+        return locationOfTestM4b
     }()
 
-    static let testCover: URL = {
-        guard let locationOfTestCover = Bundle.testBundle.url(forResource: "samplecover", withExtension: "jpg") else {
-            fatalError("The jpg file cannot be found")
-        }
-        return locationOfTestCover
-    }()
-
+//    static let testMp3FullMeta: String = {
+//        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-testID3", ofType: "mp3") else {
+//            fatalError("The mp3 file cannot be found")
+//        }
+//        return locationOfTestMp3
+//    }()
+//
+//    static let testMp3WithMeta: String = {
+//        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-MP3meta", ofType: "mp3") else {
+//            fatalError("The mp3 file cannot be found")
+//        }
+//        return locationOfTestMp3
+//    }()
+//    
+//    static let testSubler: String = {
+//        guard let locationOfTestM4B = Bundle.testBundle.path(forResource: "testfile-subler", ofType: "m4b") else {
+//            fatalError("The m4b file cannot be found")
+//        }
+//        return locationOfTestM4B
+//    }()
 }
