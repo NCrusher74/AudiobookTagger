@@ -14,24 +14,9 @@ import MP42Foundation
 class MP42FoundationTests: XCTestCase {
     
     func testMetadataValues() throws {
-        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
-        print(mp4File.metadata) // <MP42Metadata: 0x60000026a860>
-        print(MP42MetadataKeyArtist) // Artist (should be "Artist ©art"
-        
-        print(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyArtist)) // [<MP42MetadataItem: Artist ©art>] getting closer
-        
-        print (mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyArtist).first!) // <MP42MetadataItem: Artist ©art>
-        
-        let artist = mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyArtist).first?.stringValue ?? ""
-        print(artist)
-        XCTAssert(1 == 1)
-        
-        let epArray = mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyExecProducer).first?.arrayValue
-        print(epArray!)
+        print(MP42MetadataKeyName)
+        // Note to self: refer to this post for suggestions on how to dissect a complicated fatal error.
+        // https://github.com/NCrusher74/AudiobookTagger/pull/1#discussion_r384889197
     }
     
     func testMP4TagPresence() throws {
@@ -248,7 +233,7 @@ class MP42FoundationTests: XCTestCase {
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyProducer).first?.arrayValue as! [String], ["Producers ©prd"])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyExecProducer).first?.arrayValue as! [String], ["Executive Producer"])
+            byIdentifier: MP42MetadataKeyExecProducer).first?.stringValue, "Executive Producer")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyScreenwriters).first?.arrayValue as! [String], ["Screenwriters"])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(

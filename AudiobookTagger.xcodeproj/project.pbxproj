@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
 		514E1529240610C6008FE28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514E1528240610C6008FE28A /* Assets.xcassets */; };
-		514E1543240610C6008FE28A /* AudiobookTaggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */; };
 		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
 		514E155824061179008FE28A /* WriteTester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514E155224061179008FE28A /* WriteTester.storyboard */; };
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
@@ -27,7 +26,7 @@
 		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
 		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC548B24070BA6005113BD /* CommonValueProtocol.swift */; };
-		51CC548F24072C38005113BD /* testfile-mp42-fullmeta.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */; };
+		51CC5495240775BA005113BD /* testfile-mp42-fullmeta.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51CC5494240775BA005113BD /* testfile-mp42-fullmeta.m4b */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,8 +89,6 @@
 		514E1533240610C6008FE28A /* AudiobookTaggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiobookTaggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		514E1539240610C6008FE28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		514E153E240610C6008FE28A /* AudiobookTaggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudiobookTaggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTaggerUITests.swift; sourceTree = "<group>"; };
-		514E1544240610C6008FE28A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		514E155124061179008FE28A /* WriteTesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTesterViewController.swift; sourceTree = "<group>"; };
 		514E155224061179008FE28A /* WriteTester.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WriteTester.storyboard; sourceTree = "<group>"; };
 		514E155324061179008FE28A /* AudiobookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookType.swift; sourceTree = "<group>"; };
@@ -108,7 +105,7 @@
 		514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCommonValue.swift; sourceTree = "<group>"; };
 		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		51CC548B24070BA6005113BD /* CommonValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValueProtocol.swift; sourceTree = "<group>"; };
-		51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-mp42-fullmeta.m4b"; sourceTree = "<group>"; };
+		51CC5494240775BA005113BD /* testfile-mp42-fullmeta.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-mp42-fullmeta.m4b"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +141,6 @@
 				514E157524061661008FE28A /* README.md */,
 				514E1525240610C5008FE28A /* AudiobookTagger */,
 				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
-				514E1541240610C6008FE28A /* AudiobookTaggerUITests */,
 				514E1524240610C5008FE28A /* Products */,
 				514E155C240611CD008FE28A /* Frameworks */,
 			);
@@ -189,15 +185,6 @@
 			path = AudiobookTaggerTests;
 			sourceTree = "<group>";
 		};
-		514E1541240610C6008FE28A /* AudiobookTaggerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				514E1542240610C6008FE28A /* AudiobookTaggerUITests.swift */,
-				514E1544240610C6008FE28A /* Info.plist */,
-			);
-			path = AudiobookTaggerUITests;
-			sourceTree = "<group>";
-		};
 		514E155024061179008FE28A /* WritingTestApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +205,7 @@
 		514E156D24061579008FE28A /* TestMedia */ = {
 			isa = PBXGroup;
 			children = (
-				51CC548E24072C38005113BD /* testfile-mp42-fullmeta.m4b */,
+				51CC5494240775BA005113BD /* testfile-mp42-fullmeta.m4b */,
 				514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */,
 				514E156E240615B1008FE28A /* testfile-nometa.m4b */,
 				514E156F240615B1008FE28A /* testfile-nometa.mp3 */,
@@ -398,7 +385,7 @@
 			files = (
 				514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */,
 				514E1571240615B1008FE28A /* testfile-nometa.mp3 in Resources */,
-				51CC548F24072C38005113BD /* testfile-mp42-fullmeta.m4b in Resources */,
+				51CC5495240775BA005113BD /* testfile-mp42-fullmeta.m4b in Resources */,
 				514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,7 +428,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				514E1543240610C6008FE28A /* AudiobookTaggerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

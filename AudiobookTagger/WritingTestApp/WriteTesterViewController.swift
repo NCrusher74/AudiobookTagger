@@ -282,8 +282,8 @@ class WriteTesterViewController: NSViewController {
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyExecProducer,
-            value: (["Executive Producer"] as [NSString]) as NSArray,
-            dataType: MP42MetadataItemDataType.stringArray,
+            value: "Executive Producer" as NSString,
+            dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyScreenwriters,
