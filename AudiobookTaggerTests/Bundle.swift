@@ -41,17 +41,11 @@ extension Bundle {
         return locationOfTestMp3
     }()
 
-//    static let testMp3WithMeta: String = {
-//        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-MP3meta", ofType: "mp3") else {
-//            fatalError("The mp3 file cannot be found")
-//        }
-//        return locationOfTestMp3
-//    }()
-//    
-//    static let testSubler: String = {
-//        guard let locationOfTestM4B = Bundle.testBundle.path(forResource: "testfile-subler", ofType: "m4b") else {
-//            fatalError("The m4b file cannot be found")
-//        }
-//        return locationOfTestM4B
-//    }()
+    static let testM4bFullMeta: String = {
+        guard let locationOfTestM4b = Bundle.testBundle.path(forResource: "testfile-mp42-fullmeta", ofType: "m4b") else {
+            fatalError("The m4b file cannot be found")
+        }
+        return locationOfTestM4b
+    }()
+
 }

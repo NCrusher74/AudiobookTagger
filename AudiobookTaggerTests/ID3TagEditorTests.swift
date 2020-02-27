@@ -11,7 +11,7 @@ import ID3TagEditor
 @testable import AudiobookTagger
 
 /* Since it doesn't appear possible to write to a file from a test, I built a separate one-button app and put the command to write these tags in the action, then tested the file by reading it here.*/
-class AudiobookTaggerTests: XCTestCase {
+class ID3TagEditorTests: XCTestCase {
     
     func testID3StringTagPresence() throws {
         let id3TagEditor = ID3TagEditor()
