@@ -12,15 +12,15 @@ import MP42Foundation
 
 /* Since it doesn't appear possible to write to a file from a test, I built a separate one-button app and put the command to write these tags in the action, then tested the file by reading it here.*/
 class MP42FoundationTests: XCTestCase {
-
+    
     func testMetadataValues() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
         print(mp4File.metadata) // <MP42Metadata: 0x60000026a860>
         print(MP42MetadataKeyArtist) // Artist (should be "Artist ©art"
-
+        
         print(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyArtist)) // [<MP42MetadataItem: Artist ©art>] getting closer
-
+        
         print (mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyArtist).first!) // <MP42MetadataItem: Artist ©art>
         
@@ -28,12 +28,16 @@ class MP42FoundationTests: XCTestCase {
             byIdentifier: MP42MetadataKeyArtist).first?.stringValue ?? ""
         print(artist)
         XCTAssert(1 == 1)
+        
+        let epArray = mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyExecProducer).first?.arrayValue
+        print(epArray!)
     }
     
     func testMP4TagPresence() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
         XCTAssert((mp4File.metadata.metadataItemsFiltered(
-        byIdentifier: MP42MetadataKeyName).count > 0),
+            byIdentifier: MP42MetadataKeyName).count > 0),
                   "The Name array is empty")
         XCTAssert((mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyAlbum).count > 0),
@@ -187,6 +191,109 @@ class MP42FoundationTests: XCTestCase {
                   "The Movement Count array is empty")
     }
     
-    
-
+    func testMP4TagAccuracy() throws {
+        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta))
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyName).first?.stringValue, "Title ©nam")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAlbum).first?.stringValue, "Album ©alb")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAlbumArtist).first?.stringValue, "AlbumArtist aART")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtist).first?.stringValue, "Artist ©art")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyGrouping).first?.stringValue, "Grouping ©grp")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTrackSubTitle).first?.stringValue, "Subtitle ???")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyComposer).first?.stringValue, "Composer ©wrt")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyUserComment).first?.stringValue, "This is a comment it can be up to 255 bytes long ©cmt")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyUserGenre).first?.stringValue, "Genre ©gen")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyReleaseDate).first?.stringValue, "01/01/2020")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTrackNumber).first?.arrayValue as! [Int], [7,8])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDiscNumber).first?.arrayValue as! [Int], [1,2])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVShow).first?.stringValue, "TV Show tvsh")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVEpisodeNumber).first?.numberValue, 3)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVNetwork).first?.stringValue, "TV Network tvnn")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVEpisodeID).first?.stringValue, "TV Episode Name tves")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyTVSeason).first?.numberValue, 4)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySongDescription).first?.stringValue, "This is a description it can also be up to 255 bytes long desc")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDescription).first?.stringValue, "This is a description it can also be up to 255 bytes long desc")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyLongDescription).first?.stringValue, "This is a description it can be as long as you like ldes")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySeriesDescription).first?.stringValue, "This is a description it can also be up to 255 bytes long ©des")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyLyrics).first?.stringValue, "This is a lyric field it can be as long as you like ©des")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyStudio).first?.stringValue, "Studio")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCast).first?.arrayValue as! [String], ["Cast", "More Cast"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyDirector).first?.arrayValue as! [String], ["Director ©dir"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCodirector).first?.arrayValue as! [String], ["Co-director"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyProducer).first?.arrayValue as! [String], ["Producers ©prd"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyExecProducer).first?.arrayValue as! [String], ["Executive Producer"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyScreenwriters).first?.arrayValue as! [String], ["Screenwriters"])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCopyright).first?.stringValue, "Copyright ©cpy")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyEncodedBy).first?.stringValue, "Encoded By")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyKeywords).first?.stringValue, "Keywords")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCategory).first?.stringValue, "Category")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArtDirector).first?.stringValue, "Art Director")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyArranger).first?.stringValue, "Arranger ©arg")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAuthor).first?.stringValue, "Lyricist")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyAcknowledgement).first?.stringValue, "Acknowledgment ©thx")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyConductor).first?.stringValue, "Conductor")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyRecordCompany).first?.stringValue, "Record Company")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyOriginalArtist).first?.stringValue, "Original Artist")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySongProducer).first?.stringValue, "Song Producer")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyPerformer).first?.stringValue, "Performer ©prf")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyPublisher).first?.stringValue, "Publisher ©pub")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySoundEngineer).first?.stringValue, "Sound Engineer")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeySoloist).first?.stringValue, "Soloist")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyCredits).first?.stringValue, "Credits ©src")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyThanks).first?.stringValue, "Thanks ©thx")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyWorkName).first?.stringValue, "Work Name ©wrk")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementName).first?.stringValue, "Movement Name ©mvn")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementNumber).first?.numberValue, 5)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: MP42MetadataKeyMovementCount).first?.numberValue, 6)
+    }
 }

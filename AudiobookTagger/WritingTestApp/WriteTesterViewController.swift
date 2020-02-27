@@ -210,11 +210,6 @@ class WriteTesterViewController: NSViewController {
             value: "This is a lyric field it can be as long as you like ©des" as NSString,
             dataType: MP42MetadataItemDataType.string,
             extendedLanguageTag: nil))
-//        mp42File.metadata.addItem(MP42MetadataItem(
-//            identifier: MP42MetadataKeyPurchasedDate,
-//            value: date2 as NSDate,
-//            dataType: MP42MetadataItemDataType.date,
-//            extendedLanguageTag: nil))
         mp42File.metadata.addItem(MP42MetadataItem(
             identifier: MP42MetadataKeyUserGenre,
             value: "Genre ©gen" as NSString,
