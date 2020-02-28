@@ -10,7 +10,11 @@ import Foundation
 
 struct Author {
     
-    
+//    var read: String {
+//        
+//        
+//        
+//    }
     
     
 }
