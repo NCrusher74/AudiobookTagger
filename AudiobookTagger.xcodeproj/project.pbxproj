@@ -12,7 +12,6 @@
 		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
 		514E155824061179008FE28A /* WriteTester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514E155224061179008FE28A /* WriteTester.storyboard */; };
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
-		514E155A24061179008FE28A /* MetadataMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155424061179008FE28A /* MetadataMap.swift */; };
 		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
 		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
 		514E1570240615B1008FE28A /* testfile-nometa.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 514E156E240615B1008FE28A /* testfile-nometa.m4b */; };
@@ -22,10 +21,11 @@
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
 		514E158424061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
-		514E158B2406EA1B008FE28A /* ArtistCommonValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */; };
 		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
 		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC548B24070BA6005113BD /* CommonValueProtocol.swift */; };
+		517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB41C2408FB6D00D88853 /* AudiobookTag.swift */; };
+		517AB4202409092600D88853 /* ArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB41F2409092600D88853 /* ArrayBuilder.swift */; };
+		517AB42424098DD900D88853 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB42324098DD900D88853 /* Author.swift */; };
 		51CC5495240775BA005113BD /* testfile-mp42-fullmeta.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51CC5494240775BA005113BD /* testfile-mp42-fullmeta.m4b */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +92,6 @@
 		514E155124061179008FE28A /* WriteTesterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTesterViewController.swift; sourceTree = "<group>"; };
 		514E155224061179008FE28A /* WriteTester.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WriteTester.storyboard; sourceTree = "<group>"; };
 		514E155324061179008FE28A /* AudiobookType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookType.swift; sourceTree = "<group>"; };
-		514E155424061179008FE28A /* MetadataMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetadataMap.swift; sourceTree = "<group>"; };
 		514E155524061179008FE28A /* AudiobookTagger.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AudiobookTagger.entitlements; sourceTree = "<group>"; };
 		514E155624061179008FE28A /* AudiobookFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookFile.swift; sourceTree = "<group>"; };
 		514E156E240615B1008FE28A /* testfile-nometa.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-nometa.m4b"; sourceTree = "<group>"; };
@@ -102,9 +101,10 @@
 		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
 		514E158324061E7A008FE28A /* testfile-id3TE-fullmetaV3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-id3TE-fullmetaV3.mp3"; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
-		514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCommonValue.swift; sourceTree = "<group>"; };
 		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
-		51CC548B24070BA6005113BD /* CommonValueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonValueProtocol.swift; sourceTree = "<group>"; };
+		517AB41C2408FB6D00D88853 /* AudiobookTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTag.swift; sourceTree = "<group>"; };
+		517AB41F2409092600D88853 /* ArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayBuilder.swift; sourceTree = "<group>"; };
+		517AB42324098DD900D88853 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		51CC5494240775BA005113BD /* testfile-mp42-fullmeta.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-mp42-fullmeta.m4b"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,11 +159,11 @@
 		514E1525240610C5008FE28A /* AudiobookTagger */ = {
 			isa = PBXGroup;
 			children = (
-				514E158924066D9E008FE28A /* CommonMetadataValues */,
-				51CC548B24070BA6005113BD /* CommonValueProtocol.swift */,
+				517AB42324098DD900D88853 /* Author.swift */,
+				517AB41F2409092600D88853 /* ArrayBuilder.swift */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
+				517AB41C2408FB6D00D88853 /* AudiobookTag.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
-				514E155424061179008FE28A /* MetadataMap.swift */,
 				514E155024061179008FE28A /* WritingTestApp */,
 				514E1526240610C5008FE28A /* AppDelegate.swift */,
 				514E1528240610C6008FE28A /* Assets.xcassets */,
@@ -211,14 +211,6 @@
 				514E156F240615B1008FE28A /* testfile-nometa.mp3 */,
 			);
 			path = TestMedia;
-			sourceTree = "<group>";
-		};
-		514E158924066D9E008FE28A /* CommonMetadataValues */ = {
-			isa = PBXGroup;
-			children = (
-				514E158A2406EA1B008FE28A /* ArtistCommonValue.swift */,
-			);
-			path = CommonMetadataValues;
 			sourceTree = "<group>";
 		};
 		514E159B2406FBDF008FE28A /* Products */ = {
@@ -405,12 +397,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				514E155B24061179008FE28A /* AudiobookFile.swift in Sources */,
+				517AB4202409092600D88853 /* ArrayBuilder.swift in Sources */,
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
 				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
+				517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */,
+				517AB42424098DD900D88853 /* Author.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
-				51CC548C24070BA6005113BD /* CommonValueProtocol.swift in Sources */,
-				514E158B2406EA1B008FE28A /* ArtistCommonValue.swift in Sources */,
-				514E155A24061179008FE28A /* MetadataMap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

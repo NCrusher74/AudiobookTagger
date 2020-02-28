@@ -102,7 +102,46 @@ class ID3TagEditorTests: XCTestCase {
     }
     
     
-    
+    // Test Write Code
+    func testNewFramesV3() {
+        let id3TagEditor = ID3TagEditor()
+        let pathMp3Generated =  "output file"
+        let id3Tag = ID3Tag(
+            version: .version3,
+            frames: [
+                .Composer : ID3FrameWithStringContent(content: "Composer V3"),
+                .Conductor : ID3FrameWithStringContent(content: "Conductor V3"),
+                .ContentGrouping : ID3FrameWithStringContent(content: "ContentGrouping V3"),
+                .Copyright : ID3FrameWithStringContent(content: "Copyright V3"),
+                .DiscPosition : ID3FrameDiscPosition(position: 1, totalDiscs: 3),
+                .EncodedBy : ID3FrameWithStringContent(content: "EncodedBy V3"),
+                .EncoderSettings : ID3FrameWithStringContent(content: "EncoderSettings V3"),
+                .FileType : ID3FrameWithStringContent(content: "FileType V3"),
+                .FileOwner : ID3FrameWithStringContent(content: "FileOwner V3"),
+                .Grouping : ID3FrameWithStringContent(content: "ItunesGrouping V3"),
+                .Lyricist : ID3FrameWithStringContent(content: "Lyricist V3"),
+                .MediaType : ID3FrameWithStringContent(content: "MediaType V3"),
+                .MixArtist : ID3FrameWithStringContent(content: "MixArtist V3"),
+                .MovementName : ID3FrameWithStringContent(content: "MovementName V3"),
+                .MovementIndex : ID3FrameMovementIndex(index: 6, totalMovements: 13),
+                .PodcastCategory : ID3FrameWithStringContent(content: "PodcastCategory V3"),
+                .PodcastDescription : ID3FrameWithStringContent(content: "PodcastDescription V3"),
+                .PodcastID : ID3FrameWithStringContent(content: "PodcastID V3"),
+                .PodcastKeywords : ID3FrameWithStringContent(content: "PodcastKeywords V3"),
+                .Publisher : ID3FrameWithStringContent(content: "Publisher V3"),
+                .SeriesIndex : ID3FrameSeriesIndex(index: 11, totalBooks: 19),
+                .Subtitle : ID3FrameWithStringContent(content: "Subtitle V3"),
+                .UnsyncedLyrics : ID3FrameWithStringContent(content: "UnsyncedLyrics V3"),
+            ]
+        )
+        
+        XCTAssertNoThrow(try id3TagEditor.write(
+            tag: id3Tag,
+            to: "input file",
+            andSaveTo: pathMp3Generated
+            ))
+        
+    }
     
     
     

@@ -19,15 +19,16 @@ class WriteTesterViewController: NSViewController {
     
     
     @IBAction func excuteTestCode(_ sender: Any) {
-        let inputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-nometa.m4b"
-        let outputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-mp42-fullmeta.m4b"
+        let inputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/example-newframes-v2.mp3"
+        let outputPath = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/example-newframes-v2-written.mp3"
         let inputUrl = URL(fileURLWithPath: inputPath)
         let outputUrl = URL(fileURLWithPath: outputPath)
 
-        //testID3TagEditorWriting(.version3, inputPath: inputPath, outputPath: outputPath)
-        do {
-            try testMP42FoundationWriting(inputUrl: inputUrl, outputUrl: outputUrl)
-        } catch { print("ruhroh shaggy!") }
+//        testID3TagEditorWriting(.version3, inputPath: inputPath, outputPath: outputPath)
+//        do {
+//            try testMP42FoundationWriting(inputUrl: inputUrl, outputUrl: outputUrl)
+//        } catch { print("ruhroh shaggy!") }
+        
     }
     
     func testID3TagEditorWriting(_ version: ID3Version, inputPath: String, outputPath: String) {
