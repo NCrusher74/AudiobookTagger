@@ -14,35 +14,35 @@ extension Bundle {
     /// An audio file for testing.
     static let testAudiobookFile: AudiobookFile = {
       guard let locationOfTestAudioFile = Bundle.testBundle
-        .path(forResource: "testfile-nometa", ofType: "m4b") else {
+        .url(forResource: "testfile-blank", withExtension: "m4b") else {
           fatalError("No audio file available for testing.")
       }
         return AudiobookFile(from: locationOfTestAudioFile)
     }()
     
-    static let testMp3NoMeta: String = {
-        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-nometa", ofType: "mp3") else {
+    static let testMp3NoMeta: URL = {
+        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-blank", withExtension: "mp3") else {
             fatalError("The mp3 file cannot be found")
         }
         return locationOfTestMp3
     }()
 
-    static let testM4bNoMeta: String = {
-        guard let locationOfTestM4b = Bundle.testBundle.path(forResource: "testfile-nometa", ofType: "m4b") else {
+    static let testM4bNoMeta: URL = {
+        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "testfile-blank", withExtension: "m4b") else {
             fatalError("The m4b file cannot be found")
         }
         return locationOfTestM4b
     }()
 
-    static let testMp3FullMeta: String = {
-        guard let locationOfTestMp3 = Bundle.testBundle.path(forResource: "testfile-id3TE-fullmetaV3", ofType: "mp3") else {
+    static let testMp3FullMeta: URL = {
+        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-written", withExtension: "mp3") else {
             fatalError("The mp3 file cannot be found")
         }
         return locationOfTestMp3
     }()
 
-    static let testM4bFullMeta: String = {
-        guard let locationOfTestM4b = Bundle.testBundle.path(forResource: "testfile-mp42-fullmeta", ofType: "m4b") else {
+    static let testM4bFullMeta: URL = {
+        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "testfile-written", withExtension: "m4b") else {
             fatalError("The m4b file cannot be found")
         }
         return locationOfTestM4b

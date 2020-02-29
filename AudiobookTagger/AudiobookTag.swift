@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import ID3TagEditor
+import MP42Foundation
 
 enum AudiobookTag {
     
@@ -52,5 +54,104 @@ enum AudiobookTag {
     case Track
     /// ID3 tag TYER / MP4 tag ©day
     case Year
+    
+
+    var id3tag: FrameName {
+        switch self {
+            case .Authors :
+                return .Artist
+            case .BookTitle :
+                return .Album
+            case .BriefDescription :
+                return .Comment
+            case .Category :
+                return .PodcastCategory
+            case .ChapterTitle :
+                return .Title
+            case .Copyright :
+                return .Copyright
+            case .Disc :
+                return .DiscPosition
+            case .FullSummary :
+                return .UnsyncedLyrics
+            case .Genre :
+                return .Genre
+            case .Keywords :
+                return .PodcastKeywords
+            case .MediaType :
+                return .MediaType
+            case .Narrator :
+                return .Composer
+            case .PrimaryAuthor :
+                return .AlbumArtist
+            case .Publisher :
+                return .Publisher
+            case .ReleaseDate :
+                return .RecordingDayMonth
+            case .Series :
+                return .ContentGrouping
+            case .SeriesIndex :
+                return .SeriesIndex
+            case .Track :
+                return .TrackPosition
+            case .Universe :
+                return .MovementName
+            case .UniverseIndex :
+                return .MovementIndex
+            case .Year :
+                return .RecordingYear
+        }
+    }
+    
+    var mp4Tag: String {
+        var identifier: String
+        switch self {
+            case .Authors :
+                identifier = MP42MetadataKeyArtist
+            case .BookTitle :
+                identifier = MP42MetadataKeyAlbum
+            case .BriefDescription :
+                identifier = MP42MetadataKeyUserComment
+            case .Category :
+                identifier = MP42MetadataKeyCategory
+            case .ChapterTitle :
+                identifier = MP42MetadataKeyName
+            case .Copyright :
+                identifier = MP42MetadataKeyCopyright
+            case .Disc :
+                identifier = MP42MetadataKeyDiscNumber
+            case .FullSummary :
+                identifier = MP42MetadataKeyLyrics
+            case .Genre :
+                identifier = MP42MetadataKeyUserGenre
+            case .Keywords :
+                identifier = MP42MetadataKeyKeywords
+            case .MediaType :
+                identifier = MP42MetadataKeyMediaKind
+            case .Narrator :
+                identifier = MP42MetadataKeyComposer
+            case .PrimaryAuthor :
+                identifier = MP42MetadataKeyAlbumArtist
+            case .Publisher :
+                identifier = MP42MetadataKeyPublisher
+            case .ReleaseDate :
+                identifier = MP42MetadataKeyReleaseDate
+            case .Series :
+                identifier = MP42MetadataKeyGrouping
+            case .SeriesIndex :
+                identifier = "\(MP42MetadataKeyTVEpisodeNumber) of \(MP42MetadataKeyTVSeason)"
+            case .Track :
+                identifier = MP42MetadataKeyTrackNumber
+            case .Universe :
+                identifier = MP42MetadataKeyMovementName
+            case .UniverseIndex :
+                identifier = "\(MP42MetadataKeyMovementNumber) of \(MP42MetadataKeyMovementCount)"
+            case .Year :
+                identifier = MP42MetadataKeyReleaseDate
+        }
+        return identifier
+    }
+    
+    
     
 }
