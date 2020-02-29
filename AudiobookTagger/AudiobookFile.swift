@@ -37,7 +37,7 @@ struct AudiobookFile {
     }
     
     
-    func readAuthorMetadata(tag: AudiobookTag) throws -> String {
+    func readMetadata(tag: AudiobookTag) throws -> String {
         switch self.format {
             case .mp3 :
                 let id3TagEditor = ID3TagEditor()
