@@ -35,4 +35,24 @@ struct AudiobookFile {
             return AudiobookType.invalid
         }
     }
+    
+    
+    func readAuthorMetadata(from audiobookUrl: URL) throws -> String {
+        let tag = AudiobookTag()
+        switch self.format {
+            case .mp3 :
+                let id3TagEditor = ID3TagEditor()
+                do {
+                    let id3Reader = try id3TagEditor.read(from: audiobookUrl.path)
+                    let id3Value = (id3Reader?.frames[tag.id3Tag] as? ID3FrameWithStringContent)?.content ?? ""
+                    return id3Value
+            }
+            case .mp4 :
+                let mp4File = try MP42File(url: audiobookUrl)
+                return mp4File.metadata.metadataItemsFiltered(
+                    byIdentifier: tag.mp4Tag).first?.stringValue ?? ""
+            case .invalid :
+                return ""
+        }
+    }
 }
