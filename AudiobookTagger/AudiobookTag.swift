@@ -21,7 +21,7 @@ enum AudiobookTag {
     /// ID3 tag COMM / MP4 tag ©cmt
     case BriefDescription
     /// ID3 tag TCOM / MP4 tag ©wrt
-    case Narrator
+    case Narrators
     /// ID3 tag TPE3 / MP4 tag ©con
     case Series
     /// ID3 tag TCOP / MP4 tag cprt
@@ -38,6 +38,8 @@ enum AudiobookTag {
     case Universe
     /// ID3 tag MVIN / MP4 tag ©mvi (and ©mvc)
     case UniverseIndex
+    /// Total volumes in Universe
+    case UniverseTotal
     /// ID3 tag TCAT / MP4 tag catg
     case Category
     /// ID3 tag TKWD / MP4 tag keyw
@@ -46,8 +48,10 @@ enum AudiobookTag {
     case Publisher
     /// ID3 tag TDRL / MP4 tag rldt
     case ReleaseDate
-    /// (Audiobook Use Only) ID3 tag TXXX / MP4 tag tves (and tvsn)
+    /// ID3 tag TXXX / MP4 tag tves (and tvsn)
     case SeriesIndex
+    /// Total Books in Series
+    case SeriesTotal
     /// ID3 tag TIT2 / MP4 tag ©nam
     case ChapterTitle
     /// ID3 tag TRCK / MP4 tag trkn
@@ -80,7 +84,7 @@ enum AudiobookTag {
                 return .PodcastKeywords
             case .MediaType :
                 return .MediaType
-            case .Narrator :
+            case .Narrators :
                 return .Composer
             case .PrimaryAuthor :
                 return .AlbumArtist
@@ -100,6 +104,10 @@ enum AudiobookTag {
                 return .MovementIndex
             case .Year :
                 return .RecordingYear
+            case .SeriesTotal :
+                return .SeriesIndex
+            case .UniverseTotal :
+                return .MovementIndex
         }
     }
     
@@ -128,7 +136,7 @@ enum AudiobookTag {
                 identifier = MP42MetadataKeyKeywords
             case .MediaType :
                 identifier = MP42MetadataKeyMediaKind
-            case .Narrator :
+            case .Narrators :
                 identifier = MP42MetadataKeyComposer
             case .PrimaryAuthor :
                 identifier = MP42MetadataKeyAlbumArtist
@@ -139,13 +147,17 @@ enum AudiobookTag {
             case .Series :
                 identifier = MP42MetadataKeyGrouping
             case .SeriesIndex :
-                identifier = "\(MP42MetadataKeyTVEpisodeNumber) of \(MP42MetadataKeyTVSeason)"
+                identifier = MP42MetadataKeyTVEpisodeNumber
+            case .SeriesTotal :
+                identifier = MP42MetadataKeyTVSeason
             case .Track :
                 identifier = MP42MetadataKeyTrackNumber
             case .Universe :
                 identifier = MP42MetadataKeyMovementName
             case .UniverseIndex :
-                identifier = "\(MP42MetadataKeyMovementNumber) of \(MP42MetadataKeyMovementCount)"
+                identifier = MP42MetadataKeyMovementNumber
+            case .UniverseTotal :
+                identifier = MP42MetadataKeyMovementCount
             case .Year :
                 identifier = MP42MetadataKeyReleaseDate
         }

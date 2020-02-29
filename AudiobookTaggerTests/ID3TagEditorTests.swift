@@ -10,7 +10,6 @@ import XCTest
 import ID3TagEditor
 @testable import AudiobookTagger
 
-/* Since it doesn't appear possible to write to a file from a test, I built a separate one-button app and put the command to write these tags in the action, then tested the file by reading it here.*/
 class ID3TagEditorTests: XCTestCase {
     
     func testID3StringTagPresence() throws {
@@ -96,8 +95,6 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.day, 01)
             XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.month, 01)
             XCTAssertEqual((id3Tag.frames[.RecordingYear] as? ID3FrameRecordingYear)?.year, 2020)
-            
-            
         }
     }
     

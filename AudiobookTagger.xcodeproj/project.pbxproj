@@ -25,6 +25,7 @@
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
 		517AB432240A4A7800D88853 /* testfile-written.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB431240A4A7800D88853 /* testfile-written.mp3 */; };
 		517AB434240A4DF700D88853 /* testfile-written.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 517AB433240A4DF700D88853 /* testfile-written.m4b */; };
+		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
 		517AB431240A4A7800D88853 /* testfile-written.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-written.mp3"; sourceTree = "<group>"; };
 		517AB433240A4DF700D88853 /* testfile-written.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-written.m4b"; sourceTree = "<group>"; };
+		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				514E157F24061A70008FE28A /* Bundle.swift */,
+				517AB435240A53B600D88853 /* ImplementationTests.swift */,
 				514E158024061A70008FE28A /* ID3TagEditorTests.swift */,
 				514E158624062653008FE28A /* MP42FoundationTests.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */,
+				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
 				514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */,
 				514E158124061A70008FE28A /* Bundle.swift in Sources */,
 			);
