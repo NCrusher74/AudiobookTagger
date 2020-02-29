@@ -8,6 +8,7 @@
 
 import Foundation
 import MP42Foundation
+import ID3TagEditor
 
 /// An audiobook file represents an audiobook file somewhere on disk.
 ///
@@ -15,15 +16,14 @@ import MP42Foundation
 struct AudiobookFile {
     
     /// the filepath of the audiobook file
-    let path: String
+    let audiobookUrl: URL
     
-    init(from path: String) {
-        self.path = path
+    init(from audiobookUrl: URL) {
+        self.audiobookUrl = audiobookUrl
     }
    
     /// the format of the audiobook file
     var format: AudiobookType {
-        let audiobookUrl = URL(fileURLWithPath: self.path)
         let audiobookExtension = audiobookUrl.pathExtension
         let mp4types: [String] = ["aac", "mp4", "m4b", "m4a"]
         
@@ -35,4 +35,5 @@ struct AudiobookFile {
             return AudiobookType.invalid
         }
     }
+        
 }
