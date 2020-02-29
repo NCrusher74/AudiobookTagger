@@ -21,7 +21,7 @@ struct AudiobookFile {
     init(from audiobookUrl: URL) {
         self.audiobookUrl = audiobookUrl
     }
-   
+    
     /// the format of the audiobook file
     var format: AudiobookType {
         let audiobookExtension = audiobookUrl.pathExtension
@@ -35,5 +35,4 @@ struct AudiobookFile {
             return AudiobookType.invalid
         }
     }
-        
 }

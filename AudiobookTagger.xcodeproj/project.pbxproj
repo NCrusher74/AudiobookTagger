@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		511E7407240A7F4D00882087 /* ID3PositionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511E7406240A7F4D00882087 /* ID3PositionConverter.swift */; };
 		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
 		514E1529240610C6008FE28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514E1528240610C6008FE28A /* Assets.xcassets */; };
 		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		511E7406240A7F4D00882087 /* ID3PositionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID3PositionConverter.swift; sourceTree = "<group>"; };
 		514E1523240610C5008FE28A /* AudiobookTagger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudiobookTagger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		514E1526240610C5008FE28A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		514E1528240610C6008FE28A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		514E1525240610C5008FE28A /* AudiobookTagger */ = {
 			isa = PBXGroup;
 			children = (
+				511E7406240A7F4D00882087 /* ID3PositionConverter.swift */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				517AB41C2408FB6D00D88853 /* AudiobookTag.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
@@ -351,6 +354,7 @@
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
 				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
 				517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */,
+				511E7407240A7F4D00882087 /* ID3PositionConverter.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
