@@ -24,7 +24,7 @@ struct AudiobookFile {
     
     /// the format of the audiobook file
     var format: AudiobookType {
-        let audiobookExtension = audiobookUrl.pathExtension
+        let audiobookExtension = self.audiobookUrl.pathExtension
         let mp4types: [String] = ["aac", "mp4", "m4b", "m4a"]
         
         if mp4types.contains(audiobookExtension.lowercased()) {
@@ -33,25 +33,6 @@ struct AudiobookFile {
             return AudiobookType.mp3
         } else {
             return AudiobookType.invalid
-        }
-    }
-    
-    
-    func readMetadata(tag: AudiobookTag) throws -> String {
-        switch self.format {
-            case .mp3 :
-                let id3TagEditor = ID3TagEditor()
-                do {
-                    let id3Reader = try id3TagEditor.read(from: self.audiobookUrl.path)
-                    let id3Value = (id3Reader?.frames[tag.id3Tag] as? ID3FrameWithStringContent)?.content ?? ""
-                    return id3Value
-            }
-            case .mp4 :
-                let mp4File = try MP42File(url: self.audiobookUrl)
-                return mp4File.metadata.metadataItemsFiltered(
-                    byIdentifier: tag.mp4Tag).first?.stringValue ?? ""
-            case .invalid :
-                return ""
         }
     }
 }

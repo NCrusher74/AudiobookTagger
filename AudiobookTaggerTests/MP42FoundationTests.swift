@@ -543,7 +543,7 @@ class MP42FoundationTests: XCTestCase {
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
             
-            let outputUrl = URL(fileURLWithPath: "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-written.m4b")
+            let outputUrl = URL(fileURLWithPath: "")
             XCTAssertNoThrow(try mp42File.write(to: outputUrl, options: nil))
         } catch {print("oops")}
         
