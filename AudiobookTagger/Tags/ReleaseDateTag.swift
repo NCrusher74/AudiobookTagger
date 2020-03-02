@@ -20,29 +20,38 @@ struct ReleaseDateTag {
     }
     
     func returnReleaseDateMetadata() throws -> Date {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
         if audiobookFile.format == .mp3 {
             let id3TagEditor = ID3TagEditor()
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
-                if let day = (id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
-                    ID3FrameRecordingDayMonth)?.day {
-                    // add day
+                var day: Int?
+                var month: Int?
+                var year: Int?
+                if (id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
+                    ID3FrameRecordingDayMonth)?.day != 0 {
+                    day = ((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
+                        ID3FrameRecordingDayMonth)?.day ?? 00)
                 }
-                if let month = (id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
-                    ID3FrameRecordingDayMonth)?.month {
-                    // add month
+                if (id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
+                    ID3FrameRecordingDayMonth)?.month != 0 {
+                    month = ((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as?
+                        ID3FrameRecordingDayMonth)?.month ?? 00)
                 }
-                if let year = (id3Tag.frames[AudiobookTag.year.id3Tag] as?
-                    ID3FrameRecordingYear)?.year {
-                    // add month
+                if (id3Tag.frames[AudiobookTag.year.id3Tag] as?
+                    ID3FrameRecordingYear)?.year != 0 {
+                    year = ((id3Tag.frames[AudiobookTag.year.id3Tag] as?
+                        ID3FrameRecordingYear)?.year ?? 0000)
                 }
-                // return day/month/year as formatted date
+                let dateString = "\(month ?? 00)/\(day ?? 00)/\(year ?? 0000)"
+                return formatter.date(from: dateString) ?? Date()
             }
         } else if audiobookFile.format == .mp4 {
             let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-            let dateString = mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyReleaseDate).first?.stringValue
-            // ... and then?
-        }
+            guard let mp4Date = mp4File.metadata.metadataItemsFiltered(
+                byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue else { return Date() }
+            return mp4Date
+        }; return Date()
     }
     
     

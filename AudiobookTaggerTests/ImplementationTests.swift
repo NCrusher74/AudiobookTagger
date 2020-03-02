@@ -14,8 +14,55 @@ import MP42Foundation
 
 class ImplementationTests: XCTestCase {
    
-    func testReadID3Function() throws {
-
+    func testReadFunctions() throws {
+        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        // Test MP3 Reading
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.authors) as! String, "Artist")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.bookTitle) as! String, "Album")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.category) as! String, "PodcastCategory")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.description) as! String, "Comment")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.disc) as! [Int], [1,3])
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.genre) as! String, "Genre")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.keywords) as! String, "PodcastKeywords")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.mediaType) as! String, "MediaType")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.narrators) as! String, "Composer")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.primaryAuthor) as! String, "AlbumArtist")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.publisher) as! String, "Publisher")
+        //I don't know how to do this comparison
+        //XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as! Date, 01/01/2020)
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.series) as! String, "ContentGrouping")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.seriesIndex) as! [Int], [11,19])
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.summary) as! String, "UnsyncedLyrics")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.title) as! String, "Title")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.track) as! [Int], [7,8])
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.universe) as! String, "MovementName")
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.universeIndex) as! [Int], [6,13])
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.year) as! Int, 2020)
+        
+        // Test MP4 Reading
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.authors) as! String, "Artist")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.bookTitle) as! String, "Album")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.category) as! String, "Category")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.copyright) as! String, "Copyright")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.description) as! String, "Comment")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.disc) as! [Int], [1,2])
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.genre) as! String, "Genre")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.keywords) as! String, "Keywords")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.mediaType) as! String, "")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.narrators) as! String, "Composer")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.primaryAuthor) as! String, "AlbumArtist")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.publisher) as! String, "Publisher")
+        //XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as! Date, "Artist")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.series) as! String, "Grouping")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.seriesIndex) as! [Int], [3,4])
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.summary) as! String, "Lyrics")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.title) as! String, "Title")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.track) as! [Int], [7,8])
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universe) as! String, "MovementName")
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universeIndex) as! [Int], [5,6])
+        // failed
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
     }
     
     func testMP3AudiobookTag() throws {
@@ -90,12 +137,7 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.universeIndex.mp4Tag).first?.numberValue, 5)
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.universeTotal.mp4Tag).first?.numberValue, 6)
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.seriesIndex.mp4Tag).first?.numberValue, 3)
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.seriesTotal.mp4Tag).first?.numberValue, 4)
-
     }
     
     

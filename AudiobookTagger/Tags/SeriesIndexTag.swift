@@ -28,7 +28,7 @@ struct SeriesIndexTag {
                     ID3FrameSeriesIndex)?.index {
                     seriesArray.append(index)
                 }
-                if let seriesTotal = (id3Tag.frames[AudiobookTag.universeIndex.id3Tag] as?
+                if let seriesTotal = (id3Tag.frames[AudiobookTag.seriesIndex.id3Tag] as?
                     ID3FrameSeriesIndex)?.totalBooks {
                     seriesArray.append(seriesTotal)
                 }
