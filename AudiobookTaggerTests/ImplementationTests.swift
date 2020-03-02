@@ -61,7 +61,7 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.track) as! [Int], [7,8])
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universe) as! String, "MovementName")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universeIndex) as! [Int], [5,6])
-        // failed
+        // fails
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
     }
     

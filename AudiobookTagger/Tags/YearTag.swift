@@ -27,14 +27,10 @@ struct YearTag {
                     ID3FrameRecordingYear)?.year ?? 0000
             } else if audiobookFile.format == .mp4 {
                 let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-                let mp4Date = (mp4File.metadata.metadataItemsFiltered(
-                    byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue)
-
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy"
-                let yearString = dateFormatter.string(from: mp4Date ?? Date())
-                if let yearNumber = NumberFormatter().number(from: yearString) {
-                  return yearNumber.intValue
+                if let mp4Date = (mp4File.metadata.metadataItemsFiltered(
+                    byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue) {
+                    let calendar = Calendar.current
+                    return calendar.component(.year, from: mp4Date)
                 }
             }
         }; return 0000
