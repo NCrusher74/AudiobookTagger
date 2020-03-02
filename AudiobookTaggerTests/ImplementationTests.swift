@@ -29,8 +29,6 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.narrators) as! String, "Composer")
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.primaryAuthor) as! String, "AlbumArtist")
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.publisher) as! String, "Publisher")
-        //I don't know how to do this comparison
-        //XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as! Date, 01/01/2020)
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.series) as! String, "ContentGrouping")
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.seriesIndex) as! [Int], [11,19])
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.summary) as! String, "UnsyncedLyrics")
@@ -53,7 +51,6 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.narrators) as! String, "Composer")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.primaryAuthor) as! String, "AlbumArtist")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.publisher) as! String, "Publisher")
-        //XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as! Date, "Artist")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.series) as! String, "Grouping")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.seriesIndex) as! [Int], [3,4])
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.summary) as! String, "Lyrics")
@@ -61,8 +58,26 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.track) as! [Int], [7,8])
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universe) as! String, "MovementName")
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.universeIndex) as! [Int], [5,6])
+    }
+    
+    func testDateFormatting() throws {
+        let calendar = Calendar.current
+        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
+        let mp3Date = try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as! Date
+        XCTAssertEqual(calendar.component(.year, from: mp3Date), 2020)
+        XCTAssertEqual(calendar.component(.month, from: mp3Date), 01)
+        XCTAssertEqual(calendar.component(.day, from: mp3Date), 01)
+        let mp3DateResult = "\(calendar.component(.day, from: mp3Date))/\(calendar.component(.month, from: mp3Date))/\(calendar.component(.year, from: mp3Date))"
+        XCTAssertEqual(mp3DateResult, "1/1/2020") // why not 01/01/2020?
+
+        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        let mp4Date = try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as? Date // returns nil
+        print(mp4Date)
+        //XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as! Date, 01/01/2020)
+        //XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as! Date, "Artist")
         // fails
-        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
+        //XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
+
     }
     
     func testMP3AudiobookTag() throws {

@@ -19,7 +19,7 @@ struct ReleaseDateTag {
         self.audiobookFile = audiobookFile
     }
     
-    func returnReleaseDateMetadata() throws -> Date {
+    func returnReleaseDateMetadata() throws -> Date? {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         if audiobookFile.format == .mp3 {
@@ -48,9 +48,9 @@ struct ReleaseDateTag {
             }
         } else if audiobookFile.format == .mp4 {
             let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-            guard let mp4Date = mp4File.metadata.metadataItemsFiltered(
-                byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue else { return Date() }
-            return mp4Date
+            let mp4DateUnformatted = (mp4File.metadata.metadataItemsFiltered(
+                byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue)
+            return mp4DateUnformatted
         }; return Date()
     }
     

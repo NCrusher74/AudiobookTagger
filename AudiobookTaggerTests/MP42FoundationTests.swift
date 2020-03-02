@@ -345,7 +345,7 @@ class MP42FoundationTests: XCTestCase {
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
                 value: "01/01/2020" as NSString,
-                dataType: MP42MetadataItemDataType.string,
+                dataType: MP42MetadataItemDataType.date,
                 extendedLanguageTag: nil))
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyUserComment,
@@ -543,7 +543,7 @@ class MP42FoundationTests: XCTestCase {
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
             
-            let outputUrl = URL(fileURLWithPath: "")
+            let outputUrl = URL(fileURLWithPath: "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-dates.m4b")
             XCTAssertNoThrow(try mp42File.write(to: outputUrl, options: nil))
         } catch {print("oops")}
         
