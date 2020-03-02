@@ -351,7 +351,7 @@ class MP42FoundationTests: XCTestCase {
             formatter.dateStyle = .short
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
-                value: formatter.date(from: "01/01/2020") as! NSDate,
+                value: formatter.date(from: "01/01/2020")! as NSDate,
                 dataType: MP42MetadataItemDataType.date,
                 extendedLanguageTag: nil))
 

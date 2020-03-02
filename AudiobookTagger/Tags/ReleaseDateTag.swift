@@ -43,7 +43,7 @@ struct ReleaseDateTag {
                     year = ((id3Tag.frames[AudiobookTag.year.id3Tag] as?
                         ID3FrameRecordingYear)?.year ?? 0000)
                 }
-                let dateString = "\(year ?? 0000)-\(month ?? 00)-\(day ?? 00)"
+                let dateString = "\(month ?? 00)-\(day ?? 00)-\(year ?? 0000)"
                 return formatter.date(from: dateString)
             }
         } else if audiobookFile.format == .mp4 {

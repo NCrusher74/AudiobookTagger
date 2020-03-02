@@ -65,7 +65,35 @@ class ImplementationTests: XCTestCase {
     }
     
     func testDateFormatting() throws {
+        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let calendar = Calendar.current
+        
+        let mp3Date = try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as? Date
+        XCTAssertEqual(mp3Date, formatter.date(from: "01-01-2020"))
 
+        let mp3Day = calendar.component(.day, from: mp3Date ?? Date())
+        let mp3Month = calendar.component(.month, from: mp3Date ?? Date())
+        let mp3Year = calendar.component(.year, from: mp3Date ?? Date())
+        XCTAssertEqual(mp3Day, 01)
+        XCTAssertEqual(mp3Month, 01)
+        XCTAssertEqual(mp3Year, 2020)
+        
+        let mp4Date = try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as? Date
+        XCTAssertEqual(mp4Date, formatter.date(from: "01/01/2020"))
+
+        let mp4Day = calendar.component(.day, from: mp4Date ?? Date())
+        let mp4Month = calendar.component(.month, from: mp4Date ?? Date())
+        let mp4Year = calendar.component(.year, from: mp4Date ?? Date())
+        XCTAssertEqual(mp4Day, 01)
+        XCTAssertEqual(mp4Month, 01)
+        XCTAssertEqual(mp4Year, 2020)
+        
+        XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.year) as! Int, 2020)
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
+        // this last test is failing "XCTAssertEqual failed: ("0") is not equal to ("2020")"
     }
     
     func testMP3AudiobookTag() throws {
