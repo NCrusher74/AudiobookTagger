@@ -1,8 +1,8 @@
 //
-//  SeriesIndexTag.swift
+//  SeriesTotalTag.swift
 //  AudiobookTagger
 //
-//  Created by Nolaine Crusher on 3/1/20.
+//  Created by Nolaine Crusher on 3/2/20.
 //  Copyright © 2020 Nolaine Crusher. All rights reserved.
 //
 
@@ -10,8 +10,8 @@ import Foundation
 import MP42Foundation
 import ID3TagEditor
 
-/// returns current series index and total books in series as an integer array
-struct SeriesIndexTag {
+/// returns ctotal books in series as an integer
+struct SeriesTotalTag {
     
     var audiobookFile: AudiobookFile
     
@@ -19,20 +19,20 @@ struct SeriesIndexTag {
         self.audiobookFile = audiobookFile
     }
     
-    func returnSeriesIndexMetadata() throws -> Int? {
+    func returnSeriesTotalMetadata() throws -> Int? {
         if self.audiobookFile.format == .mp3 {
             let id3TagEditor = ID3TagEditor()
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
-                if let index = (id3Tag.frames[AudiobookTag.seriesIndex.id3Tag] as?
+                if let total = (id3Tag.frames[AudiobookTag.seriesTotal.id3Tag] as?
                     ID3FrameWithIntegerContent)?.value {
-                    return index
+                    return total
                 }
             }
         } else if self.audiobookFile.format == .mp4 {
             let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-            let index = mp4File.metadata.metadataItemsFiltered(
-                byIdentifier: AudiobookTag.seriesIndex.mp4Tag).first?.numberValue as! Int
-            return index
+            let total = mp4File.metadata.metadataItemsFiltered(
+                byIdentifier: AudiobookTag.seriesTotal.mp4Tag).first?.numberValue as! Int
+            return total
         }; return nil
     }
 }

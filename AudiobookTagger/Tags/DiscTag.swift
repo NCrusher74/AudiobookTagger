@@ -25,11 +25,11 @@ struct DiscTag {
             var discArray: [Int] = []
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
                 if let disc = (id3Tag.frames[AudiobookTag.disc.id3Tag] as?
-                    ID3FrameDiscPosition)?.position {
+                    ID3FramePartOfTotal)?.part {
                     discArray.append(disc)
                 }
                 if let discTotal = (id3Tag.frames[AudiobookTag.disc.id3Tag] as?
-                    ID3FrameDiscPosition)?.totalDiscs {
+                    ID3FramePartOfTotal)?.total {
                     discArray.append(discTotal)
                 }
                 return discArray

@@ -56,10 +56,12 @@ enum AudiobookTag {
     /// ID3 tag TPE3 / MP4 tag ©con
     /// string output
     case series
-    /// ID3 tag TXXX / MP4 tag tves (and tvsn)
-    /// ID3 Output: "## of ##"
-    /// MP4 output: Int
+    /// ID3 tag SRSI / MP4 tag tves
+    /// Int output
     case seriesIndex
+    /// ID3 tag SRSC / MP4 tag tvsn
+    /// Int output
+    case seriesTotal
     /// ID3 tag USLT / MP4 tag ©lyr
     /// string output
     case summary
@@ -73,10 +75,12 @@ enum AudiobookTag {
     /// ID3 tag MVNM / MP4 tag ©mvn
     /// string output
     case universe
-    /// ID3 tag MVIN / MP4 tag ©mvi (and ©mvc)
-    /// ID3 Output: "## of ##"
-    /// MP4 output: Int
+    /// ID3 tag MVIN / MP4 tag ©mvi
+    /// Int Output
     case universeIndex
+    /// ID3 tag MVCN / MP4 tag ©mvc
+    /// Int Output
+    case universeTotal
     /// ID3 tag TYER / MP4 tag ©day
     /// ID3 Output: Int (Doesn't Exist for MP4)
     case year
@@ -90,7 +94,7 @@ enum AudiobookTag {
             case .bookTitle :
                 return .Album                                   // String
             case .description :
-                return .Comment                                 // String
+                return .PodcastDescription                      // String
             case .category :
                 return .PodcastCategory                         // String
             case .title :
@@ -118,13 +122,17 @@ enum AudiobookTag {
             case .series :
                 return .ContentGrouping                         // String
             case .seriesIndex :
-                return .SeriesIndex                             // String ("Int of Int?")
+                return .SeriesIndex                             // Int
+            case .seriesTotal :
+                return .SeriesCount                             // Int
             case .track :
                 return .TrackPosition                           // String ("Int of Int?")
             case .universe :
                 return .MovementName                            //String
             case .universeIndex :
-                return .MovementIndex                           // String ("Int of Int?")
+                return .MovementIndex                           // Int
+            case .universeTotal :
+                return .MovementCount                           // Int
             case .year :
                 return .RecordingYear                           // Int (Year)
         }
@@ -168,12 +176,16 @@ enum AudiobookTag {
                 identifier = MP42MetadataKeyGrouping            // String
             case .seriesIndex :
                 identifier = MP42MetadataKeyTVEpisodeNumber     // Int
+            case .seriesTotal :
+                identifier = MP42MetadataKeyTVSeason            // Int
             case .track :
                 identifier = MP42MetadataKeyTrackNumber         // [Int]
             case .universe :
                 identifier = MP42MetadataKeyMovementName        // String
             case .universeIndex :
                 identifier = MP42MetadataKeyMovementNumber      // Int
+            case .universeTotal :
+                identifier = MP42MetadataKeyMovementCount       // Int
             case .year :
                 identifier = ""                                 // Doesn't exist for MP4
         }

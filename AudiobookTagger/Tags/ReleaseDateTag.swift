@@ -43,14 +43,14 @@ struct ReleaseDateTag {
                     year = ((id3Tag.frames[AudiobookTag.year.id3Tag] as?
                         ID3FrameRecordingYear)?.year ?? 0000)
                 }
-                let dateString = "\(month ?? 00)/\(day ?? 00)/\(year ?? 0000)"
-                return formatter.date(from: dateString) ?? Date()
+                let dateString = "\(year ?? 0000)-\(month ?? 00)-\(day ?? 00)"
+                return formatter.date(from: dateString)
             }
         } else if audiobookFile.format == .mp4 {
             let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-            let mp4DateUnformatted = (mp4File.metadata.metadataItemsFiltered(
+            let mp4Date = (mp4File.metadata.metadataItemsFiltered(
                 byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue)
-            return mp4DateUnformatted
+            return mp4Date
         }; return Date()
     }
     

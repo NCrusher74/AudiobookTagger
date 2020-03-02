@@ -25,11 +25,11 @@ struct TrackTag {
             var trackArray: [Int] = []
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
                 if let track = (id3Tag.frames[AudiobookTag.track.id3Tag] as?
-                    ID3FrameTrackPosition)?.position {
+                    ID3FramePartOfTotal)?.part {
                     trackArray.append(track)
                 }
                 if let trackTotal = (id3Tag.frames[AudiobookTag.track.id3Tag] as?
-                    ID3FrameTrackPosition)?.totalTracks {
+                    ID3FramePartOfTotal)?.total {
                     trackArray.append(trackTotal)
                 }
                 return trackArray

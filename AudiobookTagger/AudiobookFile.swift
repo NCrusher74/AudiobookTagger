@@ -76,7 +76,7 @@ struct AudiobookFile {
                 return try tag.returnUniverseTitleMetadata()
             case .universeIndex:
                 let tag = UniverseIndexTag(audiobookFile: self)
-                return try tag.returnUniverseIndexMetadata()
+                return try tag.returnUniverseIndexMetadata() as Any
             case .category:
                 let tag = CategoryTag(audiobookFile: self)
                 return try tag.returnCategoryMetadata()
@@ -91,7 +91,7 @@ struct AudiobookFile {
                 return try tag.returnReleaseDateMetadata() as Any
             case .seriesIndex:
                 let tag = SeriesIndexTag(audiobookFile: self)
-                return try tag.returnSeriesIndexMetadata()
+                return try tag.returnSeriesIndexMetadata() as Any
             case .title:
                 let tag = TitleTag(audiobookFile: self)
                 return try tag.returnTitleMetadata()
@@ -101,6 +101,12 @@ struct AudiobookFile {
             case .year:
                 let tag = YearTag(audiobookFile: self)
                 return try tag.returnReleaseYearMetadata() as Any
+            case .seriesTotal:
+                let tag = SeriesTotalTag(audiobookFile: self)
+                return try tag.returnSeriesTotalMetadata() as Any
+            case .universeTotal:
+                let tag = UniverseTotalTag(audiobookFile: self)
+                return try tag.returnUniverseTotalMetadata() as Any
         }
     }
     

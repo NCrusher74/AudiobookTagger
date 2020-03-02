@@ -195,8 +195,12 @@ class MP42FoundationTests: XCTestCase {
             byIdentifier: MP42MetadataKeyUserComment).first?.stringValue, "Comment")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyUserGenre).first?.stringValue, "Genre")
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyReleaseDate).first?.stringValue, "01/01/2020")
+        byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue, formatter.date(from: "01/01/2020"))
+        
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyTrackNumber).first?.arrayValue as! [Int], [7,8])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
@@ -342,11 +346,15 @@ class MP42FoundationTests: XCTestCase {
                 value: "Copyright" as NSString,
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
+
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
-                value: "01/01/2020" as NSString,
+                value: formatter.date(from: "01/01/2020") as! NSDate,
                 dataType: MP42MetadataItemDataType.date,
                 extendedLanguageTag: nil))
+
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyUserComment,
                 value: "Comment" as NSString,
