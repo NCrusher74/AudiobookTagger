@@ -233,7 +233,6 @@
 		514E1536240610C6008FE28A /* AudiobookTaggerTests */ = {
 			isa = PBXGroup;
 			children = (
-				514E157F24061A70008FE28A /* Bundle.swift */,
 				517AB435240A53B600D88853 /* ImplementationTests.swift */,
 				514E158024061A70008FE28A /* ID3TagEditorTests.swift */,
 				514E158624062653008FE28A /* MP42FoundationTests.swift */,
@@ -263,6 +262,7 @@
 		514E156D24061579008FE28A /* TestMedia */ = {
 			isa = PBXGroup;
 			children = (
+				514E157F24061A70008FE28A /* Bundle.swift */,
 				517AB42D240A471000D88853 /* testfile-blank.mp3 */,
 				517AB429240A451400D88853 /* testfile-blank.m4b */,
 				5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */,

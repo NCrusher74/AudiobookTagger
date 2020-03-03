@@ -93,7 +93,7 @@ class ImplementationTests: XCTestCase {
         
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.year) as! Int, 2020)
         XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
-        // this last test is failing "XCTAssertEqual failed: ("0") is not equal to ("2020")"
+        // this last test is failing ""
     }
     
     func testMP3AudiobookTag() throws {

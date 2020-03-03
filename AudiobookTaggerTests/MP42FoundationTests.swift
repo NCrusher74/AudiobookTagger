@@ -198,6 +198,7 @@ class MP42FoundationTests: XCTestCase {
 
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        print(formatter.dateFormat!)
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
         byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue, formatter.date(from: "01/01/2020"))
         
@@ -349,6 +350,7 @@ class MP42FoundationTests: XCTestCase {
 
             let formatter = DateFormatter()
             formatter.dateStyle = .short
+            print(formatter.dateFormat!)
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
                 value: formatter.date(from: "01/01/2020")! as NSDate,
@@ -551,7 +553,7 @@ class MP42FoundationTests: XCTestCase {
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
             
-            let outputUrl = URL(fileURLWithPath: "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/_testfile.m4b")
+            let outputUrl = URL(fileURLWithPath: (NSHomeDirectory() + "/audiobookTagger-mp4-testfile.m4b"))
             XCTAssertNoThrow(try mp42File.write(to: outputUrl, options: nil))
         } catch {print("oops")}
         

@@ -99,7 +99,6 @@ class ID3TagEditorTests: XCTestCase {
     // Test Write Code
     func testID3Writing() {
         let id3TagEditor = ID3TagEditor()
-        let pathMp3Generated = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/_testfile.mp3"
         let id3Tag = ID3Tag(
             version: .version3,
             frames: [
@@ -139,10 +138,11 @@ class ID3TagEditorTests: XCTestCase {
             ]
         )
         
+        let outputPath = NSHomeDirectory() + "/audiobookTagger-mp4-testfile.mp3"
         XCTAssertNoThrow(try id3TagEditor.write(
             tag: id3Tag,
             to: Bundle.testMp3NoMeta.path,
-            andSaveTo: pathMp3Generated
+            andSaveTo: outputPath
             ))
     }
     
