@@ -45,6 +45,7 @@
 		5151CB0E240DB75D002A7C05 /* SeriesTotalTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5151CB0D240DB75D002A7C05 /* SeriesTotalTag.swift */; };
 		5151CB14240DC7D2002A7C05 /* testfile-written.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */; };
 		5151CB1A240DFAAC002A7C05 /* testfile-written.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 5151CB19240DFAAC002A7C05 /* testfile-written.m4b */; };
+		515A4B62240EE0B600FBB71A /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A4B61240EE0B600FBB71A /* TagType.swift */; };
 		517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB41C2408FB6D00D88853 /* AudiobookTag.swift */; };
 		517AB42B240A451500D88853 /* testfile-blank.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 517AB429240A451400D88853 /* testfile-blank.m4b */; };
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
@@ -138,6 +139,7 @@
 		5151CB0D240DB75D002A7C05 /* SeriesTotalTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTotalTag.swift; sourceTree = "<group>"; };
 		5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-written.mp3"; sourceTree = "<group>"; };
 		5151CB19240DFAAC002A7C05 /* testfile-written.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-written.m4b"; sourceTree = "<group>"; };
+		515A4B61240EE0B600FBB71A /* TagType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TagType.swift; path = Tags/TagType.swift; sourceTree = "<group>"; };
 		517AB41C2408FB6D00D88853 /* AudiobookTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTag.swift; sourceTree = "<group>"; };
 		517AB429240A451400D88853 /* testfile-blank.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-blank.m4b"; sourceTree = "<group>"; };
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				511E749E240B91D600882087 /* Tags */,
+				515A4B61240EE0B600FBB71A /* TagType.swift */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				517AB41C2408FB6D00D88853 /* AudiobookTag.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
@@ -448,6 +451,7 @@
 				5151CAC3240C7A41002A7C05 /* YearTag.swift in Sources */,
 				5151CAAD240C59E5002A7C05 /* GenreTag.swift in Sources */,
 				5151CAAF240C5A34002A7C05 /* MediaTypeTag.swift in Sources */,
+				515A4B62240EE0B600FBB71A /* TagType.swift in Sources */,
 				517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
 				5151CA9F240C568D002A7C05 /* TitleTag.swift in Sources */,
