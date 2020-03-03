@@ -100,7 +100,7 @@ struct AudiobookFile {
                 return try tag.returnTrackMetadata()
             case .year:
                 let tag = YearTag(audiobookFile: self)
-                return try tag.returnReleaseYearMetadata() as Any
+                return try tag.returnReleaseYearMetadata()
             case .seriesTotal:
                 let tag = SeriesTotalTag(audiobookFile: self)
                 return try tag.returnSeriesTotalMetadata() as Any

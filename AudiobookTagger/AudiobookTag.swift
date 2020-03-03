@@ -187,7 +187,7 @@ enum AudiobookTag {
             case .universeTotal :
                 identifier = MP42MetadataKeyMovementCount       // Int
             case .year :
-                identifier = ""                                 // Doesn't exist for MP4
+                identifier = MP42MetadataKeyReleaseDate         // Doesn't exist for MP4
         }
         return identifier
     }
