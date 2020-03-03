@@ -25,13 +25,13 @@ struct YearTag {
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
                 return (id3Tag.frames[AudiobookTag.year.id3Tag] as?
                     ID3FrameRecordingYear)?.year ?? 0000
-            } else if audiobookFile.format == .mp4 {
-                let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
-                if let mp4Date = (mp4File.metadata.metadataItemsFiltered(
-                    byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue) {
-                    let calendar = Calendar.current
-                    return calendar.component(.year, from: mp4Date)
-                }
+            }
+        } else if audiobookFile.format == .mp4 {
+            let mp4File = try MP42File(url: self.audiobookFile.audiobookUrl)
+            if let mp4Date = (mp4File.metadata.metadataItemsFiltered(
+                byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue) {
+                let calendar = Calendar.current
+                return calendar.component(.year, from: mp4Date)
             }
         }; return 0000
     }

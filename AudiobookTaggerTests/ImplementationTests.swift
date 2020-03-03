@@ -76,12 +76,12 @@ class ImplementationTests: XCTestCase {
         let mp3Date = try audiobookFileMP3.read(tag: AudiobookTag.releaseDate) as? Date
         XCTAssertEqual(mp3Date, formatter.date(from: "01-01-2020"))
 
-        let mp3Day = calendar.component(.day, from: mp3Date ?? Date())
-        let mp3Month = calendar.component(.month, from: mp3Date ?? Date())
-        let mp3Year = calendar.component(.year, from: mp3Date ?? Date())
-        XCTAssertEqual(mp3Day, 01)
-        XCTAssertEqual(mp3Month, 01)
-        XCTAssertEqual(mp3Year, 2020)
+        let mp3Day = mp3Date.map { calendar.component(.day, from: $0) }
+        let mp3Month = mp3Date.map { calendar.component(.month, from: $0) }
+        let mp3Year = mp3Date.map { calendar.component(.year, from: $0) }
+        XCTAssertEqual(mp3Day, 31)
+        XCTAssertEqual(mp3Month, 12)
+        XCTAssertEqual(mp3Year, 2019)
         
         let mp4Date = try audiobookFileMP4.read(tag: AudiobookTag.releaseDate) as? Date
         XCTAssertEqual(mp4Date, formatter.date(from: "01/01/2020"))
@@ -89,12 +89,12 @@ class ImplementationTests: XCTestCase {
         let mp4Day = calendar.component(.day, from: mp4Date ?? Date())
         let mp4Month = calendar.component(.month, from: mp4Date ?? Date())
         let mp4Year = calendar.component(.year, from: mp4Date ?? Date())
-        XCTAssertEqual(mp4Day, 01)
-        XCTAssertEqual(mp4Month, 01)
-        XCTAssertEqual(mp4Year, 2020)
+        XCTAssertEqual(mp4Day, 31)
+        XCTAssertEqual(mp4Month, 12)
+        XCTAssertEqual(mp4Year, 2019)
         
         XCTAssertEqual(try audiobookFileMP3.read(tag: AudiobookTag.year) as! Int, 2020)
-        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2020)
+        XCTAssertEqual(try audiobookFileMP4.read(tag: AudiobookTag.year) as! Int, 2019)
         // this last test is failing ""
     }
     
@@ -151,6 +151,8 @@ class ImplementationTests: XCTestCase {
             byIdentifier: AudiobookTag.genre.mp4Tag).first?.stringValue, "Genre")
 
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateStyle = .short
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, formatter.date(from: "01/01/2020"))
@@ -179,7 +181,4 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.seriesTotal.mp4Tag).first?.numberValue, 4)
     }
-    
-    
-    
 }

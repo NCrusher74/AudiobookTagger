@@ -22,6 +22,8 @@ struct ReleaseDateTag {
     func returnReleaseDateMetadata() throws -> Date? {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         if audiobookFile.format == .mp3 {
             let id3TagEditor = ID3TagEditor()
             if let id3Tag = try id3TagEditor.read(from: self.audiobookFile.audiobookUrl.path) {
@@ -53,7 +55,4 @@ struct ReleaseDateTag {
             return mp4Date
         }; return Date()
     }
-    
-    
-    
 }
