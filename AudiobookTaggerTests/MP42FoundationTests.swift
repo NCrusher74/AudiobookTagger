@@ -6,18 +6,15 @@
 //  Copyright © 2020 Nolaine Crusher. All rights reserved.
 //
 //
+// Note to self: refer to this post for suggestions on how to dissect a complicated fatal error.
+// https://github.com/NCrusher74/AudiobookTagger/pull/1#discussion_r384889197
+
 import XCTest
 import MP42Foundation
 @testable import AudiobookTagger
 
 class MP42FoundationTests: XCTestCase {
-    
-    func testMetadataValues() throws {
-        print(MP42MetadataKeyName)
-        // Note to self: refer to this post for suggestions on how to dissect a complicated fatal error.
-        // https://github.com/NCrusher74/AudiobookTagger/pull/1#discussion_r384889197
-    }
-    
+        
     func testMP4TagPresence() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta.path))
         XCTAssert((mp4File.metadata.metadataItemsFiltered(
@@ -195,8 +192,15 @@ class MP42FoundationTests: XCTestCase {
             byIdentifier: MP42MetadataKeyUserComment).first?.stringValue, "Comment")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyUserGenre).first?.stringValue, "Genre")
+
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        print(formatter.dateFormat!)
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: MP42MetadataKeyReleaseDate).first?.stringValue, "01/01/2020")
+        byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue, formatter.date(from: "01/01/2020"))
+        
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyTrackNumber).first?.arrayValue as! [Int], [7,8])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
@@ -342,11 +346,18 @@ class MP42FoundationTests: XCTestCase {
                 value: "Copyright" as NSString,
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
+
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "UTC")
+            print(formatter.dateFormat!)
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
-                value: "01/01/2020" as NSString,
-                dataType: MP42MetadataItemDataType.string,
+                value: formatter.date(from: "01/01/2020")! as NSDate,
+                dataType: MP42MetadataItemDataType.date,
                 extendedLanguageTag: nil))
+
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyUserComment,
                 value: "Comment" as NSString,
@@ -543,7 +554,7 @@ class MP42FoundationTests: XCTestCase {
                 dataType: MP42MetadataItemDataType.string,
                 extendedLanguageTag: nil))
             
-            let outputUrl = URL(fileURLWithPath: "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/testfile-written.m4b")
+            let outputUrl = URL(fileURLWithPath: (NSHomeDirectory() + "/audiobookTagger-mp4-testfile.m4b"))
             XCTAssertNoThrow(try mp42File.write(to: outputUrl, options: nil))
         } catch {print("oops")}
         

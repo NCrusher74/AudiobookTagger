@@ -21,10 +21,10 @@ struct AudiobookFile {
     init(from audiobookUrl: URL) {
         self.audiobookUrl = audiobookUrl
     }
-   
+    
     /// the format of the audiobook file
     var format: AudiobookType {
-        let audiobookExtension = audiobookUrl.pathExtension
+        let audiobookExtension = self.audiobookUrl.pathExtension
         let mp4types: [String] = ["aac", "mp4", "m4b", "m4a"]
         
         if mp4types.contains(audiobookExtension.lowercased()) {
@@ -35,5 +35,6 @@ struct AudiobookFile {
             return AudiobookType.invalid
         }
     }
-        
+    
+    
 }

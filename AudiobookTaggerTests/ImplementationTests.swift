@@ -13,87 +13,215 @@ import MP42Foundation
 @testable import AudiobookTagger
 
 class ImplementationTests: XCTestCase {
+   
+    func testReadFunctions() throws {
+        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        // Test MP3 Reading
+        XCTAssertEqual(try AudiobookTag.authors.read(
+            audiobookFile: audiobookFileMP3) as! String, "Artist")
+        XCTAssertEqual(try AudiobookTag.bookTitle.read(
+            audiobookFile: audiobookFileMP3) as! String, "Album")
+        XCTAssertEqual(try AudiobookTag.category.read(
+            audiobookFile: audiobookFileMP3) as! String, "PodcastCategory")
+        XCTAssertEqual(try AudiobookTag.description.read(
+            audiobookFile: audiobookFileMP3) as! String, "PodcastDescription")
+        XCTAssertEqual(try AudiobookTag.disc.read(
+            audiobookFile: audiobookFileMP3) as! [Int], [1,3])
+        XCTAssertEqual(try AudiobookTag.genre.read(
+            audiobookFile: audiobookFileMP3) as! String, "Genre")
+        XCTAssertEqual(try AudiobookTag.keywords.read(
+            audiobookFile: audiobookFileMP3) as! String, "PodcastKeywords")
+        XCTAssertEqual(try AudiobookTag.mediaType.read(
+            audiobookFile: audiobookFileMP3) as! String, "MediaType")
+        XCTAssertEqual(try AudiobookTag.narrators.read(
+            audiobookFile: audiobookFileMP3) as! String, "Composer")
+        XCTAssertEqual(try AudiobookTag.primaryAuthor.read(
+            audiobookFile: audiobookFileMP3) as! String, "AlbumArtist")
+        XCTAssertEqual(try AudiobookTag.publisher.read(
+            audiobookFile: audiobookFileMP3) as! String, "Publisher")
+        XCTAssertEqual(try AudiobookTag.series.read(
+            audiobookFile: audiobookFileMP3) as! String, "ContentGrouping")
+        XCTAssertEqual(try AudiobookTag.seriesIndex.read(
+            audiobookFile: audiobookFileMP3) as! Int, 11)
+        XCTAssertEqual(try AudiobookTag.seriesTotal.read(
+            audiobookFile: audiobookFileMP3) as! Int, 19)
+        XCTAssertEqual(try AudiobookTag.summary.read(
+            audiobookFile: audiobookFileMP3) as! String, "UnsyncedLyrics")
+        XCTAssertEqual(try AudiobookTag.title.read(
+            audiobookFile: audiobookFileMP3) as! String, "Title")
+        XCTAssertEqual(try AudiobookTag.track.read(
+            audiobookFile: audiobookFileMP3) as! [Int], [7,8])
+        XCTAssertEqual(try AudiobookTag.universe.read(
+            audiobookFile: audiobookFileMP3) as! String, "MovementName")
+        XCTAssertEqual(try AudiobookTag.universeIndex.read(
+            audiobookFile: audiobookFileMP3) as! Int, 6)
+        XCTAssertEqual(try AudiobookTag.universeTotal.read(
+            audiobookFile: audiobookFileMP3) as! Int, 13)
+        
+        // Test MP4 Reading
+        XCTAssertEqual(try AudiobookTag.authors.read(
+            audiobookFile: audiobookFileMP4) as! String, "Artist")
+        XCTAssertEqual(try AudiobookTag.bookTitle.read(
+            audiobookFile: audiobookFileMP4) as! String, "Album")
+        XCTAssertEqual(try AudiobookTag.category.read(
+            audiobookFile: audiobookFileMP4) as! String, "Category")
+        XCTAssertEqual(try AudiobookTag.copyright.read(
+            audiobookFile: audiobookFileMP4) as! String, "Copyright")
+        XCTAssertEqual(try AudiobookTag.description.read(
+            audiobookFile: audiobookFileMP4) as! String, "Comment")
+        XCTAssertEqual(try AudiobookTag.disc.read(
+            audiobookFile: audiobookFileMP4) as! [Int], [1,2])
+        XCTAssertEqual(try AudiobookTag.genre.read(
+            audiobookFile: audiobookFileMP4) as! String, "Genre")
+        XCTAssertEqual(try AudiobookTag.keywords.read(
+            audiobookFile: audiobookFileMP4) as! String, "Keywords")
+        XCTAssertEqual(try AudiobookTag.mediaType.read(
+            audiobookFile: audiobookFileMP4) as! String, "")
+        XCTAssertEqual(try AudiobookTag.narrators.read(
+            audiobookFile: audiobookFileMP4) as! String, "Composer")
+        XCTAssertEqual(try AudiobookTag.primaryAuthor.read(
+            audiobookFile: audiobookFileMP4) as! String, "AlbumArtist")
+        XCTAssertEqual(try AudiobookTag.publisher.read(
+            audiobookFile: audiobookFileMP4) as! String, "Publisher")
+        XCTAssertEqual(try AudiobookTag.series.read(
+            audiobookFile: audiobookFileMP4) as! String, "Grouping")
+        XCTAssertEqual(try AudiobookTag.seriesIndex.read(
+            audiobookFile: audiobookFileMP4) as! Int, 3)
+        XCTAssertEqual(try AudiobookTag.seriesTotal.read(
+            audiobookFile: audiobookFileMP4) as! Int, 4)
+        XCTAssertEqual(try AudiobookTag.summary.read(
+            audiobookFile: audiobookFileMP4) as! String, "Lyrics")
+        XCTAssertEqual(try AudiobookTag.title.read(
+            audiobookFile: audiobookFileMP4) as! String, "Title")
+        XCTAssertEqual(try AudiobookTag.track.read(
+            audiobookFile: audiobookFileMP4) as! [Int], [7,8])
+        XCTAssertEqual(try AudiobookTag.universe.read(
+            audiobookFile: audiobookFileMP4) as! String, "MovementName")
+        XCTAssertEqual(try AudiobookTag.universeIndex.read(
+            audiobookFile: audiobookFileMP4) as! Int, 5)
+        XCTAssertEqual(try AudiobookTag.universeTotal.read(
+            audiobookFile: audiobookFileMP4) as! Int, 6)
+    }
+    
+    func testDateFormatting() throws {
+        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateStyle = .short
+        let calendar = Calendar.current
+        
+        let mp3Date = try AudiobookTag.releaseDate.read(
+            audiobookFile: audiobookFileMP3) as? Date
+        XCTAssertEqual(mp3Date, formatter.date(from: "01-01-2020"))
+
+        let mp3Day = mp3Date.map { calendar.component(.day, from: $0) }
+        let mp3Month = mp3Date.map { calendar.component(.month, from: $0) }
+        let mp3Year = mp3Date.map { calendar.component(.year, from: $0) }
+        XCTAssertEqual(mp3Day, 31)
+        XCTAssertEqual(mp3Month, 12)
+        XCTAssertEqual(mp3Year, 2019)
+        
+        let mp4Date = try AudiobookTag.releaseDate.read(
+            audiobookFile: audiobookFileMP4) as? Date
+        XCTAssertEqual(mp4Date, formatter.date(from: "01/01/2020"))
+
+        let mp4Day = calendar.component(.day, from: mp4Date ?? Date())
+        let mp4Month = calendar.component(.month, from: mp4Date ?? Date())
+        let mp4Year = calendar.component(.year, from: mp4Date ?? Date())
+        XCTAssertEqual(mp4Day, 31)
+        XCTAssertEqual(mp4Month, 12)
+        XCTAssertEqual(mp4Year, 2019)
+        
+        XCTAssertEqual(try AudiobookTag.year.read(
+            audiobookFile: audiobookFileMP3) as! Int, 2020)
+        XCTAssertEqual(try AudiobookTag.year.read(
+            audiobookFile: audiobookFileMP4) as! Int, 2019)
+    }
     
     func testMP3AudiobookTag() throws {
         let id3TagEditor = ID3TagEditor()
         if let id3Tag = try id3TagEditor.read(from: Bundle.testMp3FullMeta.path) {
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.ChapterTitle.id3tag] as? ID3FrameWithStringContent)?.content, "Title")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.BookTitle.id3tag] as? ID3FrameWithStringContent)?.content, "Album")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Authors.id3tag] as? ID3FrameWithStringContent)?.content, "Artist")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.PrimaryAuthor.id3tag] as? ID3FrameWithStringContent)?.content, "AlbumArtist")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.BriefDescription.id3tag] as? ID3FrameWithStringContent)?.content, "Comment")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Narrators.id3tag] as? ID3FrameWithStringContent)?.content, "Composer")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Series.id3tag] as? ID3FrameWithStringContent)?.content, "ContentGrouping")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Copyright.id3tag] as? ID3FrameWithStringContent)?.content, "Copyright")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.MediaType.id3tag] as? ID3FrameWithStringContent)?.content, "MediaType")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Universe.id3tag] as? ID3FrameWithStringContent)?.content, "MovementName")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Category.id3tag] as? ID3FrameWithStringContent)?.content, "PodcastCategory")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Keywords.id3tag] as? ID3FrameWithStringContent)?.content, "PodcastKeywords")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Publisher.id3tag] as? ID3FrameWithStringContent)?.content, "Publisher")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.FullSummary.id3tag] as? ID3FrameWithStringContent)?.content, "UnsyncedLyrics")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Disc.id3tag] as? ID3FrameDiscPosition)?.position, 1)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Disc.id3tag] as? ID3FrameDiscPosition)?.totalDiscs, 3)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Track.id3tag] as? ID3FrameTrackPosition)?.position, 7)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Track.id3tag] as? ID3FrameTrackPosition)?.totalTracks, 8)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.UniverseIndex.id3tag] as? ID3FrameMovementIndex)?.index, 6)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.UniverseIndex.id3tag] as? ID3FrameMovementIndex)?.totalMovements, 13)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.SeriesIndex.id3tag] as? ID3FrameSeriesIndex)?.index, 11)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.SeriesIndex.id3tag] as? ID3FrameSeriesIndex)?.totalBooks, 19)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Genre.id3tag] as? ID3FrameGenre)?.identifier, nil)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Genre.id3tag] as? ID3FrameGenre)?.description, "Genre")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.ReleaseDate.id3tag] as? ID3FrameRecordingDayMonth)?.day, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.ReleaseDate.id3tag] as? ID3FrameRecordingDayMonth)?.month, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.Year.id3tag] as? ID3FrameRecordingYear)?.year, 2020)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.title.id3Tag] as? ID3FrameWithStringContent)?.content, "Title")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.bookTitle.id3Tag] as? ID3FrameWithStringContent)?.content, "Album")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.authors.id3Tag] as? ID3FrameWithStringContent)?.content, "Artist")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.primaryAuthor.id3Tag] as? ID3FrameWithStringContent)?.content, "AlbumArtist")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.description.id3Tag] as? ID3FrameWithStringContent)?.content, "PodcastDescription")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.narrators.id3Tag] as? ID3FrameWithStringContent)?.content, "Composer")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.series.id3Tag] as? ID3FrameWithStringContent)?.content, "ContentGrouping")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.copyright.id3Tag] as? ID3FrameWithStringContent)?.content, "Copyright")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.mediaType.id3Tag] as? ID3FrameWithStringContent)?.content, "MediaType")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.universe.id3Tag] as? ID3FrameWithStringContent)?.content, "MovementName")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.category.id3Tag] as? ID3FrameWithStringContent)?.content, "PodcastCategory")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.keywords.id3Tag] as? ID3FrameWithStringContent)?.content, "PodcastKeywords")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.publisher.id3Tag] as? ID3FrameWithStringContent)?.content, "Publisher")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.summary.id3Tag] as? ID3FrameWithStringContent)?.content, "UnsyncedLyrics")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.disc.id3Tag] as? ID3FramePartOfTotal)?.part, 1)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.disc.id3Tag] as? ID3FramePartOfTotal)?.total, 3)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.track.id3Tag] as? ID3FramePartOfTotal)?.part, 7)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.track.id3Tag] as? ID3FramePartOfTotal)?.total, 8)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.universeIndex.id3Tag] as? ID3FrameWithIntegerContent)?.value, 6)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.universeTotal.id3Tag] as? ID3FrameWithIntegerContent)?.value, 13)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.seriesIndex.id3Tag] as? ID3FrameWithIntegerContent)?.value, 11)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.seriesTotal.id3Tag] as? ID3FrameWithIntegerContent)?.value, 19)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.identifier, nil)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.description, "Genre")
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.day, 01)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.month, 01)
+            XCTAssertEqual((id3Tag.frames[AudiobookTag.year.id3Tag] as? ID3FrameRecordingYear)?.year, 2020)
        }
     }
     
     func testMP4AudiobookTag() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta.path))
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.ChapterTitle.mp4Tag).first?.stringValue, "Title")
+            byIdentifier: AudiobookTag.title.mp4Tag).first?.stringValue, "Title")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.BookTitle.mp4Tag).first?.stringValue, "Album")
+            byIdentifier: AudiobookTag.bookTitle.mp4Tag).first?.stringValue, "Album")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.PrimaryAuthor.mp4Tag).first?.stringValue, "AlbumArtist")
+            byIdentifier: AudiobookTag.primaryAuthor.mp4Tag).first?.stringValue, "AlbumArtist")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Authors.mp4Tag).first?.stringValue, "Artist")
+            byIdentifier: AudiobookTag.authors.mp4Tag).first?.stringValue, "Artist")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Series.mp4Tag).first?.stringValue, "Grouping")
+            byIdentifier: AudiobookTag.series.mp4Tag).first?.stringValue, "Grouping")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Narrators.mp4Tag).first?.stringValue, "Composer")
+            byIdentifier: AudiobookTag.narrators.mp4Tag).first?.stringValue, "Composer")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.BriefDescription.mp4Tag).first?.stringValue, "Comment")
+            byIdentifier: AudiobookTag.description.mp4Tag).first?.stringValue, "Comment")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Genre.mp4Tag).first?.stringValue, "Genre")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.ReleaseDate.mp4Tag).first?.stringValue, "01/01/2020")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Track.mp4Tag).first?.arrayValue as! [Int], [7,8])
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Disc.mp4Tag).first?.arrayValue as! [Int], [1,2])
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.FullSummary.mp4Tag).first?.stringValue, "Lyrics")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Copyright.mp4Tag).first?.stringValue, "Copyright")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Keywords.mp4Tag).first?.stringValue, "Keywords")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Category.mp4Tag).first?.stringValue, "Category")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Publisher.mp4Tag).first?.stringValue, "Publisher")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.Universe.mp4Tag).first?.stringValue, "MovementName")
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.UniverseIndex.mp4Tag).first?.numberValue, 5)
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.UniverseTotal.mp4Tag).first?.numberValue, 6)
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.SeriesIndex.mp4Tag).first?.numberValue, 3)
-        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.SeriesTotal.mp4Tag).first?.numberValue, 4)
+            byIdentifier: AudiobookTag.genre.mp4Tag).first?.stringValue, "Genre")
 
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.dateStyle = .short
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, formatter.date(from: "01/01/2020"))
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.track.mp4Tag).first?.arrayValue as! [Int], [7,8])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.disc.mp4Tag).first?.arrayValue as! [Int], [1,2])
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.summary.mp4Tag).first?.stringValue, "Lyrics")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.copyright.mp4Tag).first?.stringValue, "Copyright")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.keywords.mp4Tag).first?.stringValue, "Keywords")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.category.mp4Tag).first?.stringValue, "Category")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.publisher.mp4Tag).first?.stringValue, "Publisher")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.universe.mp4Tag).first?.stringValue, "MovementName")
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.universeIndex.mp4Tag).first?.numberValue, 5)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.seriesIndex.mp4Tag).first?.numberValue, 3)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.universeTotal.mp4Tag).first?.numberValue, 6)
+        XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
+            byIdentifier: AudiobookTag.seriesTotal.mp4Tag).first?.numberValue, 4)
     }
-    
-    
-    
 }

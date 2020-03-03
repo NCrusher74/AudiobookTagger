@@ -10,160 +10,263 @@ import Foundation
 import ID3TagEditor
 import MP42Foundation
 
+/// An audiobook tag represents a structure (ID3 Frame or MP4 atom) containing metadata in the file.
+///
+/// This enum handles queries and methods pertaining to the tags
+
 enum AudiobookTag {
     
-    /// ID3 tag TALB / MP4 tag ©alb
-    case BookTitle
-    /// ID3 tag TPE2 / MP4 tag aART
-    case PrimaryAuthor
     /// ID3 tag TPE1 / MP4 tag ©art
-    case Authors
-    /// ID3 tag COMM / MP4 tag ©cmt
-    case BriefDescription
-    /// ID3 tag TCOM / MP4 tag ©wrt
-    case Narrators
-    /// ID3 tag TPE3 / MP4 tag ©con
-    case Series
-    /// ID3 tag TCOP / MP4 tag cprt
-    case Copyright
-    /// ID3 tag TPOS / MP4 tag disk
-    case Disc
-    /// ID3 tag TCON / MP4 tag ©gen
-    case Genre
-    /// ID3 tag USLT / MP4 tag ©lyr
-    case FullSummary
-    /// ID3 tag TMED / MP4 tag stik
-    case MediaType
-    /// ID3 tag MVNM / MP4 tag ©mvn
-    case Universe
-    /// ID3 tag MVIN / MP4 tag ©mvi (and ©mvc)
-    case UniverseIndex
-    /// Total volumes in Universe
-    case UniverseTotal
+    /// string output
+    case authors
+    /// ID3 tag TALB / MP4 tag ©alb
+    /// string output
+    case bookTitle
     /// ID3 tag TCAT / MP4 tag catg
-    case Category
+    /// string output
+    case category
+    /// ID3 tag TCOP / MP4 tag cprt
+    /// string output
+    case copyright
+    /// ID3 tag COMM / MP4 tag ©cmt
+    /// string output
+    case description
+    /// ID3 tag TPOS / MP4 tag disk
+    /// ID3 output: "## of ##"
+    /// MP4 output: [Int]
+    case disc
+    /// ID3 tag TCON / MP4 tag ©gen
+    /// string output
+    case genre
     /// ID3 tag TKWD / MP4 tag keyw
-    case Keywords
+    /// string output
+    case keywords
+    /// ID3 tag TMED / MP4 tag stik
+    /// string output
+    case mediaType
+    /// ID3 tag TCOM / MP4 tag ©wrt
+    /// string output
+    case narrators
+    /// ID3 tag TPE2 / MP4 tag aART
+    /// string output
+    case primaryAuthor
     /// ID3 tag TPUB / MP4 tag ©pub
-    case Publisher
+    /// string output
+    case publisher
     /// ID3 tag TDRL / MP4 tag rldt
-    case ReleaseDate
-    /// ID3 tag TXXX / MP4 tag tves (and tvsn)
-    case SeriesIndex
-    /// Total Books in Series
-    case SeriesTotal
+    /// ID3 output: Int, Int (Day, Month)
+    /// MP4 output: String
+    case releaseDate
+    /// ID3 tag TPE3 / MP4 tag ©con
+    /// string output
+    case series
+    /// ID3 tag SRSI / MP4 tag tves
+    /// Int output
+    case seriesIndex
+    /// ID3 tag SRSC / MP4 tag tvsn
+    /// Int output
+    case seriesTotal
+    /// ID3 tag USLT / MP4 tag ©lyr
+    /// string output
+    case summary
     /// ID3 tag TIT2 / MP4 tag ©nam
-    case ChapterTitle
+    /// string output
+    case title
     /// ID3 tag TRCK / MP4 tag trkn
-    case Track
+    /// ID3 output: "## of ##"
+    /// MP4 output: [Int]
+    case track
+    /// ID3 tag MVNM / MP4 tag ©mvn
+    /// string output
+    case universe
+    /// ID3 tag MVIN / MP4 tag ©mvi
+    /// Int Output
+    case universeIndex
+    /// ID3 tag MVCN / MP4 tag ©mvc
+    /// Int Output
+    case universeTotal
     /// ID3 tag TYER / MP4 tag ©day
-    case Year
+    /// ID3 Output: Int (Doesn't Exist for MP4)
+    case year
     
-
-    var id3tag: FrameName {
+    
+    /// the ID3TagEditor FrameName for the audiobook tag
+    var id3Tag: FrameName {
         switch self {
-            case .Authors :
-                return .Artist
-            case .BookTitle :
-                return .Album
-            case .BriefDescription :
-                return .Comment
-            case .Category :
-                return .PodcastCategory
-            case .ChapterTitle :
-                return .Title
-            case .Copyright :
-                return .Copyright
-            case .Disc :
-                return .DiscPosition
-            case .FullSummary :
-                return .UnsyncedLyrics
-            case .Genre :
-                return .Genre
-            case .Keywords :
-                return .PodcastKeywords
-            case .MediaType :
-                return .MediaType
-            case .Narrators :
-                return .Composer
-            case .PrimaryAuthor :
-                return .AlbumArtist
-            case .Publisher :
-                return .Publisher
-            case .ReleaseDate :
-                return .RecordingDayMonth
-            case .Series :
-                return .ContentGrouping
-            case .SeriesIndex :
-                return .SeriesIndex
-            case .Track :
-                return .TrackPosition
-            case .Universe :
-                return .MovementName
-            case .UniverseIndex :
-                return .MovementIndex
-            case .Year :
-                return .RecordingYear
-            case .SeriesTotal :
-                return .SeriesIndex
-            case .UniverseTotal :
-                return .MovementIndex
+            case .authors :
+                return .Artist                                  // String
+            case .bookTitle :
+                return .Album                                   // String
+            case .description :
+                return .PodcastDescription                      // String
+            case .category :
+                return .PodcastCategory                         // String
+            case .title :
+                return .Title                                   // String
+            case .copyright :
+                return .Copyright                               // String
+            case .disc :
+                return .DiscPosition                            // String ("Int of Int?")
+            case .summary :
+                return .UnsyncedLyrics                          // String
+            case .genre :
+                return .Genre                                   // String
+            case .keywords :
+                return .PodcastKeywords                         // String
+            case .mediaType :
+                return .MediaType                               // String
+            case .narrators :
+                return .Composer                                // String
+            case .primaryAuthor :
+                return .AlbumArtist                             // String
+            case .publisher :
+                return .Publisher                               // String
+            case .releaseDate :
+                return .RecordingDayMonth                       // Int, Int (Day, Month)
+            case .series :
+                return .ContentGrouping                         // String
+            case .seriesIndex :
+                return .SeriesIndex                             // Int
+            case .seriesTotal :
+                return .SeriesCount                             // Int
+            case .track :
+                return .TrackPosition                           // String ("Int of Int?")
+            case .universe :
+                return .MovementName                            //String
+            case .universeIndex :
+                return .MovementIndex                           // Int
+            case .universeTotal :
+                return .MovementCount                           // Int
+            case .year :
+                return .RecordingYear                           // Int (Year)
         }
     }
     
+    /// the MP4 Foundation identifier string for the audiobook tag
     var mp4Tag: String {
         var identifier: String
         switch self {
-            case .Authors :
-                identifier = MP42MetadataKeyArtist
-            case .BookTitle :
-                identifier = MP42MetadataKeyAlbum
-            case .BriefDescription :
-                identifier = MP42MetadataKeyUserComment
-            case .Category :
-                identifier = MP42MetadataKeyCategory
-            case .ChapterTitle :
-                identifier = MP42MetadataKeyName
-            case .Copyright :
-                identifier = MP42MetadataKeyCopyright
-            case .Disc :
-                identifier = MP42MetadataKeyDiscNumber
-            case .FullSummary :
-                identifier = MP42MetadataKeyLyrics
-            case .Genre :
-                identifier = MP42MetadataKeyUserGenre
-            case .Keywords :
-                identifier = MP42MetadataKeyKeywords
-            case .MediaType :
-                identifier = MP42MetadataKeyMediaKind
-            case .Narrators :
-                identifier = MP42MetadataKeyComposer
-            case .PrimaryAuthor :
-                identifier = MP42MetadataKeyAlbumArtist
-            case .Publisher :
-                identifier = MP42MetadataKeyPublisher
-            case .ReleaseDate :
-                identifier = MP42MetadataKeyReleaseDate
-            case .Series :
-                identifier = MP42MetadataKeyGrouping
-            case .SeriesIndex :
-                identifier = MP42MetadataKeyTVEpisodeNumber
-            case .SeriesTotal :
-                identifier = MP42MetadataKeyTVSeason
-            case .Track :
-                identifier = MP42MetadataKeyTrackNumber
-            case .Universe :
-                identifier = MP42MetadataKeyMovementName
-            case .UniverseIndex :
-                identifier = MP42MetadataKeyMovementNumber
-            case .UniverseTotal :
-                identifier = MP42MetadataKeyMovementCount
-            case .Year :
-                identifier = MP42MetadataKeyReleaseDate
+            case .authors :
+                identifier = MP42MetadataKeyArtist              // String
+            case .bookTitle :
+                identifier = MP42MetadataKeyAlbum               // String
+            case .description :
+                identifier = MP42MetadataKeyUserComment         // String
+            case .category :
+                identifier = MP42MetadataKeyCategory            // String
+            case .title :
+                identifier = MP42MetadataKeyName                // String
+            case .copyright :
+                identifier = MP42MetadataKeyCopyright           // String
+            case .disc :
+                identifier = MP42MetadataKeyDiscNumber          // [Int]
+            case .summary :
+                identifier = MP42MetadataKeyLyrics              // String
+            case .genre :
+                identifier = MP42MetadataKeyUserGenre           // String
+            case .keywords :
+                identifier = MP42MetadataKeyKeywords            // String
+            case .mediaType :
+                identifier = MP42MetadataKeyMediaKind           // Int
+            case .narrators :
+                identifier = MP42MetadataKeyComposer            // String
+            case .primaryAuthor :
+                identifier = MP42MetadataKeyAlbumArtist         // String
+            case .publisher :
+                identifier = MP42MetadataKeyPublisher           // String
+            case .releaseDate :
+                identifier = MP42MetadataKeyReleaseDate         // String
+            case .series :
+                identifier = MP42MetadataKeyGrouping            // String
+            case .seriesIndex :
+                identifier = MP42MetadataKeyTVEpisodeNumber     // Int
+            case .seriesTotal :
+                identifier = MP42MetadataKeyTVSeason            // Int
+            case .track :
+                identifier = MP42MetadataKeyTrackNumber         // [Int]
+            case .universe :
+                identifier = MP42MetadataKeyMovementName        // String
+            case .universeIndex :
+                identifier = MP42MetadataKeyMovementNumber      // Int
+            case .universeTotal :
+                identifier = MP42MetadataKeyMovementCount       // Int
+            case .year :
+                identifier = ""                                 // Doesn't exist for MP4
         }
         return identifier
     }
     
-    
-    
+    func read(audiobookFile: AudiobookFile) throws -> Any {
+        switch self {
+            case .authors :
+                let tag = AuthorTag(audiobookFile: audiobookFile)
+                return try tag.returnAuthorMetadata()
+            case .bookTitle :
+                let tag = BookTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnBookTitleMetadata()
+            case .primaryAuthor:
+                let tag = PrimaryAuthorTag(audiobookFile: audiobookFile)
+                return try tag.returnPrimaryAuthorMetadata()
+            case .description:
+                let tag = DescriptionTag(audiobookFile: audiobookFile)
+                return try tag.returnDescriptionMetadata()
+            case .narrators:
+                let tag = NarratorTag(audiobookFile: audiobookFile)
+                return try tag.returnNarratorMetadata()
+            case .series:
+                let tag = SeriesTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesTitleMetadata()
+            case .copyright:
+                let tag = CopyrightTag(audiobookFile: audiobookFile)
+                return try tag.returnCopyrightMetadata()
+            case .disc:
+                let tag = DiscTag(audiobookFile: audiobookFile)
+                return try tag.returnDiscMetadata()
+            case .genre:
+                let tag = GenreTag(audiobookFile: audiobookFile)
+                return try tag.returnGenreMetadata()
+            case .summary:
+                let tag = SummaryTag(audiobookFile: audiobookFile)
+                return try tag.returnSummaryMetadata()
+            case .mediaType:
+                let tag = MediaTypeTag(audiobookFile: audiobookFile)
+                return try tag.returnMediaTypeMetadata()
+            case .universe:
+                let tag = UniverseTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseTitleMetadata()
+            case .universeIndex:
+                let tag = UniverseIndexTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseIndexMetadata() as Any
+            case .category:
+                let tag = CategoryTag(audiobookFile: audiobookFile)
+                return try tag.returnCategoryMetadata()
+            case .keywords:
+                let tag = KeywordsTag(audiobookFile: audiobookFile)
+                return try tag.returnKeywordsMetadata()
+            case .publisher:
+                let tag = PublisherTag(audiobookFile: audiobookFile)
+                return try tag.returnPublisherMetadata()
+            case .releaseDate:
+                let tag = ReleaseDateTag(audiobookFile: audiobookFile)
+                return try tag.returnReleaseDateMetadata() as Any
+            case .seriesIndex:
+                let tag = SeriesIndexTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesIndexMetadata() as Any
+            case .title:
+                let tag = TitleTag(audiobookFile: audiobookFile)
+                return try tag.returnTitleMetadata()
+            case .track:
+                let tag = TrackTag(audiobookFile: audiobookFile)
+                return try tag.returnTrackMetadata()
+            case .year:
+                let tag = YearTag(audiobookFile: audiobookFile)
+                return try tag.returnReleaseYearMetadata()
+            case .seriesTotal:
+                let tag = SeriesTotalTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesTotalMetadata() as Any
+            case .universeTotal:
+                let tag = UniverseTotalTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseTotalMetadata() as Any
+        }
+    }
 }
