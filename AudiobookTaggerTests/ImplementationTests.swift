@@ -68,6 +68,8 @@ class ImplementationTests: XCTestCase {
         let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
         let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         formatter.dateStyle = .short
         let calendar = Calendar.current
         

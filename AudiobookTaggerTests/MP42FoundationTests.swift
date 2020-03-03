@@ -6,18 +6,15 @@
 //  Copyright © 2020 Nolaine Crusher. All rights reserved.
 //
 //
+// Note to self: refer to this post for suggestions on how to dissect a complicated fatal error.
+// https://github.com/NCrusher74/AudiobookTagger/pull/1#discussion_r384889197
+
 import XCTest
 import MP42Foundation
 @testable import AudiobookTagger
 
 class MP42FoundationTests: XCTestCase {
-    
-    func testMetadataValues() throws {
-        print(MP42MetadataKeyName)
-        // Note to self: refer to this post for suggestions on how to dissect a complicated fatal error.
-        // https://github.com/NCrusher74/AudiobookTagger/pull/1#discussion_r384889197
-    }
-    
+        
     func testMP4TagPresence() throws {
         let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta.path))
         XCTAssert((mp4File.metadata.metadataItemsFiltered(
@@ -198,6 +195,8 @@ class MP42FoundationTests: XCTestCase {
 
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
         print(formatter.dateFormat!)
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
         byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue, formatter.date(from: "01/01/2020"))
@@ -350,6 +349,8 @@ class MP42FoundationTests: XCTestCase {
 
             let formatter = DateFormatter()
             formatter.dateStyle = .short
+            formatter.locale = Locale(identifier: "en_US_POSIX")
+            formatter.timeZone = TimeZone(identifier: "UTC")
             print(formatter.dateFormat!)
             mp42File.metadata.addItem(MP42MetadataItem(
                 identifier: MP42MetadataKeyReleaseDate,
