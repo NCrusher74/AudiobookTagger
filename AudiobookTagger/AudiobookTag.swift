@@ -10,6 +10,10 @@ import Foundation
 import ID3TagEditor
 import MP42Foundation
 
+/// An audiobook tag represents a structure (ID3 Frame or MP4 atom) containing metadata in the file.
+///
+/// This enum handles queries and methods pertaining to the tags
+
 enum AudiobookTag {
     
     /// ID3 tag TPE1 / MP4 tag ©art
@@ -187,8 +191,82 @@ enum AudiobookTag {
             case .universeTotal :
                 identifier = MP42MetadataKeyMovementCount       // Int
             case .year :
-                identifier = MP42MetadataKeyReleaseDate         // Doesn't exist for MP4
+                identifier = ""                                 // Doesn't exist for MP4
         }
         return identifier
+    }
+    
+    func read(audiobookFile: AudiobookFile) throws -> Any {
+        switch self {
+            case .authors :
+                let tag = AuthorTag(audiobookFile: audiobookFile)
+                return try tag.returnAuthorMetadata()
+            case .bookTitle :
+                let tag = BookTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnBookTitleMetadata()
+            case .primaryAuthor:
+                let tag = PrimaryAuthorTag(audiobookFile: audiobookFile)
+                return try tag.returnPrimaryAuthorMetadata()
+            case .description:
+                let tag = DescriptionTag(audiobookFile: audiobookFile)
+                return try tag.returnDescriptionMetadata()
+            case .narrators:
+                let tag = NarratorTag(audiobookFile: audiobookFile)
+                return try tag.returnNarratorMetadata()
+            case .series:
+                let tag = SeriesTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesTitleMetadata()
+            case .copyright:
+                let tag = CopyrightTag(audiobookFile: audiobookFile)
+                return try tag.returnCopyrightMetadata()
+            case .disc:
+                let tag = DiscTag(audiobookFile: audiobookFile)
+                return try tag.returnDiscMetadata()
+            case .genre:
+                let tag = GenreTag(audiobookFile: audiobookFile)
+                return try tag.returnGenreMetadata()
+            case .summary:
+                let tag = SummaryTag(audiobookFile: audiobookFile)
+                return try tag.returnSummaryMetadata()
+            case .mediaType:
+                let tag = MediaTypeTag(audiobookFile: audiobookFile)
+                return try tag.returnMediaTypeMetadata()
+            case .universe:
+                let tag = UniverseTitleTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseTitleMetadata()
+            case .universeIndex:
+                let tag = UniverseIndexTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseIndexMetadata() as Any
+            case .category:
+                let tag = CategoryTag(audiobookFile: audiobookFile)
+                return try tag.returnCategoryMetadata()
+            case .keywords:
+                let tag = KeywordsTag(audiobookFile: audiobookFile)
+                return try tag.returnKeywordsMetadata()
+            case .publisher:
+                let tag = PublisherTag(audiobookFile: audiobookFile)
+                return try tag.returnPublisherMetadata()
+            case .releaseDate:
+                let tag = ReleaseDateTag(audiobookFile: audiobookFile)
+                return try tag.returnReleaseDateMetadata() as Any
+            case .seriesIndex:
+                let tag = SeriesIndexTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesIndexMetadata() as Any
+            case .title:
+                let tag = TitleTag(audiobookFile: audiobookFile)
+                return try tag.returnTitleMetadata()
+            case .track:
+                let tag = TrackTag(audiobookFile: audiobookFile)
+                return try tag.returnTrackMetadata()
+            case .year:
+                let tag = YearTag(audiobookFile: audiobookFile)
+                return try tag.returnReleaseYearMetadata()
+            case .seriesTotal:
+                let tag = SeriesTotalTag(audiobookFile: audiobookFile)
+                return try tag.returnSeriesTotalMetadata() as Any
+            case .universeTotal:
+                let tag = UniverseTotalTag(audiobookFile: audiobookFile)
+                return try tag.returnUniverseTotalMetadata() as Any
+        }
     }
 }
