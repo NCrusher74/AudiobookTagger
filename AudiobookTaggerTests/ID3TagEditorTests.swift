@@ -99,7 +99,7 @@ class ID3TagEditorTests: XCTestCase {
     // Test Write Code
     func testID3Writing() {
         let id3TagEditor = ID3TagEditor()
-        let pathMp3Generated = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/_testfile-written.mp3"
+        let pathMp3Generated = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/_testfile.mp3"
         let id3Tag = ID3Tag(
             version: .version3,
             frames: [
