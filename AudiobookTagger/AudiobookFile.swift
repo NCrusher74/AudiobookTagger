@@ -43,10 +43,10 @@ struct AudiobookFile {
         return string(for: .authors)
     }
     public func bookTitle() throws -> String {
-        return string(for: .title)
+        return string(for: .bookTitle)
     }
     public func releaseDate() throws -> Date {
-        return date(for: .releaseDate)!
+        return date(for: .releaseDate)
     }
     public func category() throws -> String {
         return string(for: .category)
@@ -107,14 +107,7 @@ struct AudiobookFile {
     }
     public func track() throws -> [Int] {
         return intArray(for: .track)
-    }
-
-
-    
-    
-    
-    
-    
+    }    
     
     // MARK: Private functions
     private func string(for tag: AudiobookTag) -> String {
@@ -154,7 +147,7 @@ struct AudiobookFile {
                         let mp4File = try MP42File(url: self.audiobookUrl)
                         if tag == .mediaType {
                             let returnInt = mp4File.metadata.metadataItemsFiltered(
-                                byIdentifier: AudiobookTag.mediaType.mp4Tag).first?.numberValue
+                                byIdentifier: tag.mp4Tag).first?.numberValue
                             if returnInt == 2 {
                                 return "Audiobook"
                             } else if returnInt == 21 {
@@ -241,7 +234,7 @@ struct AudiobookFile {
                                 ID3FramePartOfTotal)?.part {
                                 partTotalArray.append(part)
                             }
-                            if let total = (id3Tag.frames[AudiobookTag.track.id3Tag] as?
+                            if let total = (id3Tag.frames[tag.id3Tag] as?
                                 ID3FramePartOfTotal)?.total {
                                 partTotalArray.append(total)
                             }
@@ -259,9 +252,9 @@ struct AudiobookFile {
         }; return []
     }
 
-    private func date(for tag: AudiobookTag) -> Date? {
+    private func date(for tag: AudiobookTag) -> Date {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .short
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(identifier: "UTC")
         if tag == .releaseDate {
@@ -275,28 +268,27 @@ struct AudiobookFile {
                             var year: Int?
                             if (id3Tag.frames[tag.id3Tag] as?
                                 ID3FrameRecordingDayMonth)?.day != 0 {
-                                day = ((id3Tag.frames[tag.id3Tag] as?
-                                    ID3FrameRecordingDayMonth)?.day ?? 00)
+                                day = (id3Tag.frames[tag.id3Tag] as?
+                                    ID3FrameRecordingDayMonth)?.day
                             }
                             if (id3Tag.frames[tag.id3Tag] as?
                                 ID3FrameRecordingDayMonth)?.month != 0 {
-                                month = ((id3Tag.frames[tag.id3Tag] as?
-                                    ID3FrameRecordingDayMonth)?.month ?? 00)
+                                month = (id3Tag.frames[tag.id3Tag] as?
+                                    ID3FrameRecordingDayMonth)?.month
                             }
                             if (id3Tag.frames[AudiobookTag.year.id3Tag] as?
                                 ID3FrameRecordingYear)?.year != 0 {
-                                year = ((id3Tag.frames[AudiobookTag.year.id3Tag] as?
-                                    ID3FrameRecordingYear)?.year ?? 0000)
+                                year = (id3Tag.frames[AudiobookTag.year.id3Tag] as?
+                                    ID3FrameRecordingYear)?.year
                             }
                             let dateString = "\(month ?? 00)-\(day ?? 00)-\(year ?? 0000)"
-                            let dateFormatted = formatter.date(from: dateString)
-                            return (dateFormatted)
+                            return formatter.date(from: dateString)!
                     }
                     case .mp4:
                         let mp4File = try MP42File(url: self.audiobookUrl)
                         let mp4Date = (mp4File.metadata.metadataItemsFiltered(
                             byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue)
-                        return mp4Date
+                        return mp4Date!
                     case .invalid :
                         print("invalid audiobook file format")
                 }
