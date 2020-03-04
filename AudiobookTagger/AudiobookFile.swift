@@ -142,7 +142,7 @@ struct AudiobookFile {
     public func universeTotal() throws -> Int {
         return integer(for: .universeTotal)
     }
-    /// returns an intenger tag for the year of the audiobook's release
+    /// returns an integer tag for the year of the audiobook's release
     public func year() throws -> Int {
         return integer(for: .year)
     }
@@ -341,5 +341,8 @@ struct AudiobookFile {
             } catch { print("error reading date tag") }
         }; return Date()
     }
+    
+    
+    
     
 }
