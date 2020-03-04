@@ -18,11 +18,7 @@ class ImplementationTests: XCTestCase {
         var audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3NoMeta)
         var audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bNoMeta)
 
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        formatter.dateStyle = .short
-        let dateString = "02/02/1999"
+        let dateString = "05/08/1999"
 
         try audiobookFileMP3.setAuthors(authors: "Author Write Test")
         try audiobookFileMP3.setBookTitle(bookTitle: "BookTitle Write Test")
@@ -42,7 +38,7 @@ class ImplementationTests: XCTestCase {
         try audiobookFileMP3.setDisc(disc: [11,22])
         try audiobookFileMP3.setYear(year: 1999)
         try audiobookFileMP3.setTrack(track: [33,44])
-        try audiobookFileMP3.setReleaseDate(date: formatter.date(from: dateString)!)
+        try audiobookFileMP3.setReleaseDate(date: Constants.dateFormat.date(from: dateString)!)
         try audiobookFileMP3.setSeriesIndex(index: 55)
         try audiobookFileMP3.setSeriesTotal(total: 66)
         try audiobookFileMP3.setUniverseIndex(index: 77)
@@ -66,7 +62,7 @@ class ImplementationTests: XCTestCase {
         try audiobookFileMP4.setDisc(disc: [11,22])
         try audiobookFileMP4.setYear(year: 1999)
         try audiobookFileMP4.setTrack(track: [33,44])
-        try audiobookFileMP4.setReleaseDate(date: formatter.date(from: dateString)!)
+        try audiobookFileMP4.setReleaseDate(date: Constants.dateFormat.date(from: dateString)!)
         try audiobookFileMP4.setSeriesIndex(index: 55)
         try audiobookFileMP4.setSeriesTotal(total: 66)
         try audiobookFileMP4.setUniverseIndex(index: 77)
@@ -113,15 +109,15 @@ class ImplementationTests: XCTestCase {
 
         let calendar = Calendar.current
         let mp3Date = try testMP3.releaseDate()
-        XCTAssertEqual(mp3Date, formatter.date(from: "02-01-1999"))
-        XCTAssertEqual(calendar.component(.day, from: mp3Date), 01)
-        XCTAssertEqual(calendar.component(.month, from: mp3Date), 02)
+        XCTAssertEqual(mp3Date, Constants.dateFormat.date(from: "05/07/1999"))
+        XCTAssertEqual(calendar.component(.day, from: mp3Date), 06)
+        XCTAssertEqual(calendar.component(.month, from: mp3Date), 05)
         XCTAssertEqual(calendar.component(.year, from: mp3Date), 1999)
         XCTAssertEqual(try testMP3.year(), 1999)
         let mp4Date = try testMP4.releaseDate()
-        XCTAssertEqual(mp4Date, formatter.date(from: "02/02/1999"))
-        XCTAssertEqual(calendar.component(.day, from: mp4Date), 01)
-        XCTAssertEqual(calendar.component(.month, from: mp4Date), 02)
+        XCTAssertEqual(mp4Date, Constants.dateFormat.date(from: "05/08/1999"))
+        XCTAssertEqual(calendar.component(.day, from: mp4Date), 07)
+        XCTAssertEqual(calendar.component(.month, from: mp4Date), 05)
         XCTAssertEqual(calendar.component(.year, from: mp4Date), 1999)
         XCTAssertEqual(try testMP4.year(), 1999)
 
