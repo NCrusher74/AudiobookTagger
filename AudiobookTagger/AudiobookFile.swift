@@ -39,72 +39,118 @@ struct AudiobookFile {
     
     // MARK: Public functions
     
+    /// returns the author(s) of the audiobook as a string
+    /// uses the Artist tag for both MP3 and MP4
     public func authors() throws -> String {
         return string(for: .authors)
     }
+    /// returns the title of the audiobook as a string
+    /// uses the Album tag for both MP3 and MP4
     public func bookTitle() throws -> String {
         return string(for: .bookTitle)
     }
+    /// returns the release date of the audiobook as a date
+    /// uses the release date tag for MP4 and recording date tag for MP3
     public func releaseDate() throws -> Date {
         return date(for: .releaseDate)
     }
+    /// returns a category tag as a string, which can be implemented as desired
+    /// uses the Podcast Category tag for MP3 and Category for MP4
     public func category() throws -> String {
         return string(for: .category)
     }
+    /// returns the copyright of the audiobook as a string
+    /// uses the Copyright tag for both MP3 and MP4
     public func copyright() throws -> String {
         return string(for: .copyright)
     }
+    /// returns a brief description of the audiobook as a string
+    /// uses the Comment tag for MP4 and Podcast Description tag for MP3
     public func description() throws -> String {
         return string(for: .description)
     }
+    /// returns a genre tag as a string, which can be implemented as desired
+    /// uses the freeform version of the Genre tag for both MP3 and MP4
     public func genre() throws -> String {
         return string(for: .genre)
     }
+    /// returns a keywords tag as a string, which can be implemented as desired
+    /// uses the Podcast Keywords tag for MP3 and Keywords tag for MP4
     public func keywords() throws -> String {
         return string(for: .keywords)
     }
+    /// returns a mediaType tag as a string, which can be implemented as desired
+    /// uses the Media Type tag for both MP3 and MP4.
+    /// Since Media Type (stik) is actually an integer for MP4, valid options are only Audiobook (2), Podcast (21), or Booklet (11) unless your implementation customizes the return further.
     public func mediaType() throws -> String {
         return string(for: .mediaType)
     }
+    /// returns the narrator(s) of the audiobook as a string
+    /// uses the Composer tag for both MP3 and MP4
     public func narrators() throws -> String {
         return string(for: .narrators)
     }
+    /// returns the primary author for a multi-author work as a string (for sorting)
+    /// uses the AlbumArtist tag for both MP3 and MP4
     public func primaryAuthor() throws -> String {
         return string(for: .primaryAuthor)
     }
+    /// returns the Publisher tag as a string
     public func publisher() throws -> String {
         return string(for: .publisher)
     }
+    /// returns a string tag intended for grouping of book series
+    /// uses the ContentGrouping tag for MP3 and the Grouping tag for MP4
     public func series() throws -> String {
         return string(for: .series)
     }
+    /// returns a string tag for labeling the current volume of a multi file/disc works
+    /// uses the Title tag for both MP3 and MP4
     public func title() throws -> String {
         return string(for: .title)
     }
+    /// returns a freeform string tag for longer descriptions
+    /// uses the UnsyncedLyrics tag for MP3 and the Lyrics tag for MP4
     public func summary() throws -> String {
         return string(for: .summary)
     }
+    /// returns a string tag intended for grouping multi-series chronologies by the same author(s)
+    /// e.g. The Lord of the Rings would be a series in a Middle Earth universe that also includes The Simarillion
+    /// uses the Movement Name tag for both MP3 and MP4
     public func universe() throws -> String {
         return string(for: .universe)
     }
+    /// returns an integer tag for the current book in a series
+    /// uses the TVEpisodeNumber tag for MP4 and a custom tag for MP3
+    /// (the custom tag may not be recognized by all players)
     public func seriesIndex() throws -> Int {
         return integer(for: .seriesIndex)
     }
+    /// returns an integer tag for the total books in a series
+    /// uses the TVSeason tag for MP4 and a custom tag for MP3
+    /// (the custom tag may not be recognized by all players)
     public func seriesTotal() throws -> Int {
         return integer(for: .seriesTotal)
     }
+    /// returns an integer tag for the current book in a multi-series chronology
+    /// uses the Movement Number tag for MP4 and MP3
     public func universeIndex() throws -> Int {
         return integer(for: .universeIndex)
     }
+    /// returns an integer tag for the total books in a multi-series chronology
+    /// uses the Movement Count tag for MP4 and MP3
     public func universeTotal() throws -> Int {
         return integer(for: .universeTotal)
     }
+    /// returns an intenger tag for the year of the audiobook's release
     public func year() throws -> Int {
         return integer(for: .year)
     }
+    /// returns an integer array for the current disc/file and number of discs/files
     public func disc() throws -> [Int] {
         return intArray(for: .disc)
     }
+    /// returns an integer array for the current track and number of tracks
     public func track() throws -> [Int] {
         return intArray(for: .track)
     }    
