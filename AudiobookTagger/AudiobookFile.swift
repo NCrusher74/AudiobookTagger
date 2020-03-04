@@ -419,8 +419,8 @@ struct AudiobookFile {
                     }
                     case .mp4:
                         let mp4File = try MP42File(url: self.audiobookUrl)
-                        return (mp4File.metadata.metadataItemsFiltered(
-                            byIdentifier: tag.mp4Tag).first?.arrayValue) as! [Int]
+                        return mp4File.metadata.metadataItemsFiltered(
+                            byIdentifier: tag.mp4Tag).first?.arrayValue as! [Int]
                     
                     case .invalid :
                         print("output file is not format handled by Audiobook Tagger")
@@ -588,7 +588,7 @@ struct AudiobookFile {
                 case .mp4 :
                     mp42MetadataItemArray.append(
                         MP42MetadataItem(
-                            identifier: MP42MetadataKeyTrackNumber,
+                            identifier: tag.mp4Tag,
                             value: (array as [NSNumber]) as NSArray,
                             dataType: MP42MetadataItemDataType.integerArray,
                             extendedLanguageTag: nil))
