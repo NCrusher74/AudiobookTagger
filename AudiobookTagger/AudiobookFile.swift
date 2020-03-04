@@ -155,7 +155,25 @@ struct AudiobookFile {
         return intArray(for: .track)
     }    
     
-    // MARK: Private functions
+    public func write(outputUrl: URL) throws {
+        switch self.format {
+            case .mp3 :
+                let id3TagEditor = ID3TagEditor()
+                try id3TagEditor.write(
+                    tag: id3Tag,
+                    to: self.audiobookUrl.path,
+                    andSaveTo: outputUrl.path)
+            case .mp4 :
+                let mp42File = try MP42File(url: self.audiobookUrl)
+                mp42File.metadata.addItems(mp42MetadataItemArray)
+                try mp42File.write(to: outputUrl, options: nil)
+            case .invalid :
+                print("output file is not format handled by Audiobook Tagger")
+            
+        }
+    }
+    
+    // MARK: Reading functions
     private func string(for tag: AudiobookTag) -> String {
         let stringTags: [AudiobookTag] = [
             .authors,
@@ -172,8 +190,7 @@ struct AudiobookFile {
             .summary,
             .title,
             .universe,
-            .genre,
-            .mediaType
+            .genre
         ]
         if stringTags.contains(tag) {
             do {
@@ -207,7 +224,7 @@ struct AudiobookFile {
                             return mp4File.metadata.metadataItemsFiltered(byIdentifier: tag.mp4Tag).first?.stringValue ?? ""
                     }
                     case .invalid :
-                        print("invalid audiobook file format")
+                        print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading string-formatted tag") }
         }; return ""
@@ -234,7 +251,7 @@ struct AudiobookFile {
                             byIdentifier: tag.mp4Tag).first?.numberValue) as! Int
                     
                     case .invalid :
-                        print("invalid audiobook file format")
+                        print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading integer-formatted tag") }
         } else if tag == .year {
@@ -258,7 +275,7 @@ struct AudiobookFile {
                             return calendar.component(.year, from: mp4Date)
                     }
                     case .invalid :
-                        print("invalid audiobook file format")
+                        print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading date tag") }
         }; return 0
@@ -292,7 +309,7 @@ struct AudiobookFile {
                             byIdentifier: tag.mp4Tag).first?.arrayValue) as! [Int]
                         
                     case .invalid :
-                        print("invalid audiobook file format")
+                        print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading array tag") }
         }; return []
@@ -336,13 +353,162 @@ struct AudiobookFile {
                             byIdentifier: MP42MetadataKeyReleaseDate).first?.dateValue)
                         return mp4Date!
                     case .invalid :
-                        print("invalid audiobook file format")
+                        print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading date tag") }
         }; return Date()
     }
     
     
+    // MARK: Writing functions
+    private var id3Tag: ID3Tag {
+            return ID3Tag(
+            version: .version3,
+            frames: id3FrameDictionary)
+    }
+    private var id3FrameDictionary: [FrameName : ID3Frame] = [:]
+
+    private var mp42MetadataItemArray: [MP42MetadataItem] = []
+    
+    private mutating func writeString(_ content: String, for tag: AudiobookTag) {
+        let stringTags: [AudiobookTag] = [
+            .authors,
+            .bookTitle,
+            .category,
+            .copyright,
+            .description,
+            .keywords,
+            .mediaType,
+            .narrators,
+            .primaryAuthor,
+            .publisher,
+            .series,
+            .summary,
+            .title,
+            .universe,
+            .genre,
+        ]
+        if stringTags.contains(tag) {
+            switch self.format {
+                case .mp3 :
+                    if tag == .genre {
+                        id3FrameDictionary[tag.id3Tag] = ID3FrameGenre(genre: nil, description: content)
+                    } else {
+                        id3FrameDictionary[tag.id3Tag] = ID3FrameWithStringContent(content: content)
+                }
+                case .mp4 :
+                    if tag == .mediaType {
+                        if content == "Podcast" {
+                            mp42MetadataItemArray.append(
+                                MP42MetadataItem(
+                                    identifier: tag.mp4Tag,
+                                    value: 21 as NSNumber,
+                                    dataType: MP42MetadataItemDataType.integer,
+                                    extendedLanguageTag: nil))
+                        } else if content == "Periodical" {
+                            mp42MetadataItemArray.append(
+                                MP42MetadataItem(
+                                    identifier: tag.mp4Tag,
+                                    value: 11 as NSNumber,
+                                    dataType: MP42MetadataItemDataType.integer,
+                                    extendedLanguageTag: nil))
+                        } else {
+                            mp42MetadataItemArray.append(
+                                MP42MetadataItem(
+                                    identifier: tag.mp4Tag,
+                                    value: 02 as NSNumber,
+                                    dataType: MP42MetadataItemDataType.integer,
+                                    extendedLanguageTag: nil))
+                        }
+                    } else {
+                        mp42MetadataItemArray.append(
+                            MP42MetadataItem(
+                                identifier: tag.mp4Tag,
+                                value: content as NSString,
+                                dataType: MP42MetadataItemDataType.string,
+                                extendedLanguageTag: nil))
+                }
+                case .invalid :
+                    print("output file is not format handled by Audiobook Tagger")
+            }
+        }
+    }
+    
+    private mutating func writeInteger(_ value: Int, for tag: AudiobookTag) {
+        let intTags: [AudiobookTag] = [
+            .seriesIndex,
+            .seriesTotal,
+            .universeIndex,
+            .universeTotal,
+        ]
+        if intTags.contains(tag) {
+            switch self.format {
+                case .mp3 :
+                    id3FrameDictionary[tag.id3Tag] = ID3FrameWithIntegerContent(value: value)
+                case .mp4 :
+                    mp42MetadataItemArray.append(
+                        MP42MetadataItem(
+                            identifier: tag.mp4Tag,
+                            value: value as NSNumber,
+                            dataType: MP42MetadataItemDataType.integer,
+                            extendedLanguageTag: nil))
+                case .invalid :
+                    print("output file is not format handled by Audiobook Tagger")
+            }
+        } else if tag == .year {
+            id3FrameDictionary[tag.id3Tag] = ID3FrameRecordingYear(year: value)
+        }
+    }
+    
+    
+    private mutating func writeIntArray(_ value: [Int], for tag: AudiobookTag) {
+        let intArrayTags: [AudiobookTag] = [
+            .disc,
+            .track,
+        ]
+        if intArrayTags.contains(tag) {
+            switch self.format {
+                case .mp3 :
+                    let part = value.first
+                    let total = value.last
+                    id3FrameDictionary[tag.id3Tag] = ID3FramePartOfTotal(part: part ?? 0, total: total)
+                case .mp4 :
+                    mp42MetadataItemArray.append(
+                        MP42MetadataItem(
+                            identifier: MP42MetadataKeyTrackNumber,
+                            value: (value as [NSNumber]) as NSArray,
+                            dataType: MP42MetadataItemDataType.integerArray,
+                            extendedLanguageTag: nil))
+                case .invalid :
+                    print("output file is not format handled by Audiobook Tagger")
+            }
+        }
+    }
+    
+    private mutating func writeDate(_ date: Date, for tag: AudiobookTag) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        let calendar = Calendar.current
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        if tag == .releaseDate {
+            switch self.format {
+                case .mp3 :
+                    let day = calendar.component(.day, from: date)
+                    let month = calendar.component(.month, from: date)
+                    id3FrameDictionary[tag.id3Tag] = ID3FrameRecordingDayMonth(day: day, month: month)
+                case .mp4 :
+                    mp42MetadataItemArray.append(
+                        MP42MetadataItem(
+                            identifier: MP42MetadataKeyReleaseDate,
+                            value: date as NSDate,
+                            dataType: MP42MetadataItemDataType.date,
+                            extendedLanguageTag: nil))
+                case .invalid :
+                    print("output file is not format handled by Audiobook Tagger")
+            }
+        }
+    }
     
     
 }
