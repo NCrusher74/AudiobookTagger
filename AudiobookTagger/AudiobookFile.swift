@@ -44,40 +44,80 @@ struct AudiobookFile {
     public func authors() throws -> String {
         return string(for: .authors)
     }
+    /// adds the author(s) to the tag output as a string
+    /// uses the Artist tag for both MP3 and MP4
+    public mutating func setAuthors(authors: String) throws {
+        set(.authors, to: authors)
+    }
     /// returns the title of the audiobook as a string
     /// uses the Album tag for both MP3 and MP4
     public func bookTitle() throws -> String {
         return string(for: .bookTitle)
+    }
+    /// adds the bookTitle to the tag output as a string
+    /// uses the Album tag for both MP3 and MP4
+    public mutating func setBookTitle(bookTitle: String) throws {
+        set(.bookTitle, to: bookTitle)
     }
     /// returns the release date of the audiobook as a date
     /// uses the release date tag for MP4 and recording date tag for MP3
     public func releaseDate() throws -> Date {
         return date(for: .releaseDate)
     }
+    /// adds the release date to the tag output as a date
+    /// uses the release date tag for MP4 and recording date tag for MP3
+    public mutating func setReleaseDate(date: Date) throws {
+        set(.releaseDate, to: date)
+    }
     /// returns a category tag as a string, which can be implemented as desired
     /// uses the Podcast Category tag for MP3 and Category for MP4
     public func category() throws -> String {
         return string(for: .category)
+    }
+    /// adds a category tag to the tag output as a string
+    /// uses the Podcast Category tag for MP3 and Category for MP4
+    public mutating func setCategory(category: String) throws {
+        set(.category, to: category)
     }
     /// returns the copyright of the audiobook as a string
     /// uses the Copyright tag for both MP3 and MP4
     public func copyright() throws -> String {
         return string(for: .copyright)
     }
+    /// adds a copyright tag to the tag output as a string
+    /// uses the Copyright tag for both MP3 and MP4
+    public mutating func setCopyright(copyright: String) throws {
+        set(.copyright, to: copyright)
+    }
     /// returns a brief description of the audiobook as a string
     /// uses the Comment tag for MP4 and Podcast Description tag for MP3
     public func description() throws -> String {
         return string(for: .description)
+    }
+    /// adds a description tag to the tag output as a string
+    /// uses the Comment tag for MP4 and Podcast Description tag for MP3
+    public mutating func setDescription(description: String) throws {
+        set(.description, to: description)
     }
     /// returns a genre tag as a string, which can be implemented as desired
     /// uses the freeform version of the Genre tag for both MP3 and MP4
     public func genre() throws -> String {
         return string(for: .genre)
     }
+    /// adds a genre tag to the tag output as a string
+    /// uses the freeform version of the Genre tag for both MP3 and MP4
+    public mutating func setGenre(genre: String) throws {
+        set(.genre, to: genre)
+    }
     /// returns a keywords tag as a string, which can be implemented as desired
     /// uses the Podcast Keywords tag for MP3 and Keywords tag for MP4
     public func keywords() throws -> String {
         return string(for: .keywords)
+    }
+    /// adds a keywords tag to the tag output as a string
+    /// uses the Podcast Keywords tag for MP3 and Keywords tag for MP4
+    public mutating func setKeywords(keywords: String) throws {
+        set(.keywords, to: keywords)
     }
     /// returns a mediaType tag as a string, which can be implemented as desired
     /// uses the Media Type tag for both MP3 and MP4.
@@ -85,34 +125,69 @@ struct AudiobookFile {
     public func mediaType() throws -> String {
         return string(for: .mediaType)
     }
+    /// adds a mediaType tag to the tag output
+    /// uses the Media Type tag for both MP3 and MP4.
+    /// Since Media Type (stik) is actually an integer for MP4, valid options are only Audiobook (2), Podcast (21), or Booklet (11) unless your implementation customizes the return further.
+    public mutating func setMediaType(mediaType: String) throws {
+        set(.mediaType, to: mediaType)
+    }
     /// returns the narrator(s) of the audiobook as a string
     /// uses the Composer tag for both MP3 and MP4
     public func narrators() throws -> String {
         return string(for: .narrators)
+    }
+    /// adds a narrators tag to the tag output as a string
+    /// uses the Composer tag for both MP3 and MP4
+    public mutating func setNarrators(narrators: String) throws {
+        set(.narrators, to: narrators)
     }
     /// returns the primary author for a multi-author work as a string (for sorting)
     /// uses the AlbumArtist tag for both MP3 and MP4
     public func primaryAuthor() throws -> String {
         return string(for: .primaryAuthor)
     }
+    /// adds a primaryAuthor tag to the tag output as a string
+    /// uses the AlbumArtist tag for both MP3 and MP4
+    public mutating func setPrimaryAuthor(primaryAuthor: String) throws {
+        set(.primaryAuthor, to: primaryAuthor)
+    }
     /// returns the Publisher tag as a string
     public func publisher() throws -> String {
         return string(for: .publisher)
+    }
+    /// adds a publisher tag to the tag output as a string
+    public mutating func setPublisher(publisher: String) throws {
+        set(.publisher, to: publisher)
     }
     /// returns a string tag intended for grouping of book series
     /// uses the ContentGrouping tag for MP3 and the Grouping tag for MP4
     public func series() throws -> String {
         return string(for: .series)
     }
-    /// returns a string tag for labeling the current volume of a multi file/disc works
+    /// adds a series title tag to the tag output as a string
+    /// uses the ContentGrouping tag for MP3 and the Grouping tag for MP4
+    public mutating func setSeries(series: String) throws {
+        set(.series, to: series)
+    }
+    /// returns a string tag for labeling the current volume of a multi-file/disc work
     /// uses the Title tag for both MP3 and MP4
     public func title() throws -> String {
         return string(for: .title)
+    }
+    /// adds a string tag for labeling the current volume of multi-file/disc work
+    /// uses the Title tag for both MP3 and MP4
+    public mutating func setTitle(title: String) throws {
+        set(.title, to: title)
     }
     /// returns a freeform string tag for longer descriptions
     /// uses the UnsyncedLyrics tag for MP3 and the Lyrics tag for MP4
     public func summary() throws -> String {
         return string(for: .summary)
+    }
+    /// adds a freeform string tag for longer descriptions to the tag output
+    /// uses the UnsyncedLyrics tag for MP3 and the Lyrics tag for MP4
+    public mutating func setSummary(summary: String) throws {
+        set(.summary, to: summary)
     }
     /// returns a string tag intended for grouping multi-series chronologies by the same author(s)
     /// e.g. The Lord of the Rings would be a series in a Middle Earth universe that also includes The Simarillion
@@ -120,11 +195,23 @@ struct AudiobookFile {
     public func universe() throws -> String {
         return string(for: .universe)
     }
+    /// adds a string tag to the tag output, intended for grouping multi-series chronologies by the same author(s)
+    /// e.g. The Lord of the Rings would be a `series` in a Middle Earth `universe` that also includes The Simarillion
+    /// uses the Movement Name tag for both MP3 and MP4
+    public mutating func setUniverse(universe: String) throws {
+        set(.universe, to: universe)
+    }
     /// returns an integer tag for the current book in a series
     /// uses the TVEpisodeNumber tag for MP4 and a custom tag for MP3
     /// (the custom tag may not be recognized by all players)
     public func seriesIndex() throws -> Int {
         return integer(for: .seriesIndex)
+    }
+    /// adds an integer tag to the tag output for the position of the current book in a series
+    /// uses the TVEpisodeNumber tag for MP4 and a custom tag for MP3
+    /// (the custom tag may not be recognized by all players)
+    public mutating func setSeriesIndex(index: Int) throws {
+        set(.seriesIndex, to: index)
     }
     /// returns an integer tag for the total books in a series
     /// uses the TVSeason tag for MP4 and a custom tag for MP3
@@ -132,29 +219,57 @@ struct AudiobookFile {
     public func seriesTotal() throws -> Int {
         return integer(for: .seriesTotal)
     }
+    /// adds an integer tag to the tag output for the total books in a series
+    /// uses the TVSeason tag for MP4 and a custom tag for MP3
+    /// (the custom tag may not be recognized by all players)
+    public mutating func setSeriesTotal(total: Int) throws {
+        set(.seriesTotal, to: total)
+    }
     /// returns an integer tag for the current book in a multi-series chronology
     /// uses the Movement Number tag for MP4 and MP3
     public func universeIndex() throws -> Int {
         return integer(for: .universeIndex)
+    }
+    /// adds an integer tag to the tag output for the position of the current book in a multi-series work
+    /// uses the Movement Number tag for MP4 and MP3
+    public mutating func setUniverseIndex(index: Int) throws {
+        set(.universeIndex, to: index)
     }
     /// returns an integer tag for the total books in a multi-series chronology
     /// uses the Movement Count tag for MP4 and MP3
     public func universeTotal() throws -> Int {
         return integer(for: .universeTotal)
     }
+    /// adds an integer tag to the tag output for the total books in a multi-series work
+    /// uses the Movement Count tag for MP4 and MP3
+    public mutating func setUniverseTotal(total: Int) throws {
+        set(.universeTotal, to: total)
+    }
     /// returns an integer tag for the year of the audiobook's release
     public func year() throws -> Int {
         return integer(for: .year)
     }
-    /// returns an integer array for the current disc/file and number of discs/files
+    /// adds an integer tag to the tag output for the position of the total books in a multi-series work
+    public mutating func setYear(year: Int) throws {
+        set(.year, to: year)
+    }
+    /// returns an integer array for the current and total discs/files in a set
     public func disc() throws -> [Int] {
         return intArray(for: .disc)
     }
-    /// returns an integer array for the current track and number of tracks
+    /// adds an integer array tag to the tag output for the current and total discs/files in a set
+    public mutating func setDisc(disc: [Int]) throws {
+        set(.disc, to: disc)
+    }
+    /// returns an integer array for the current and total tracks in the file
     public func track() throws -> [Int] {
         return intArray(for: .track)
     }    
-    
+    /// adds an integer array tag to the tag output for current and total tracks in the file
+    public mutating func setTrack(track: [Int]) throws {
+        set(.track, to: track)
+    }
+
     public func write(outputUrl: URL) throws {
         switch self.format {
             case .mp3 :
@@ -169,7 +284,6 @@ struct AudiobookFile {
                 try mp42File.write(to: outputUrl, options: nil)
             case .invalid :
                 print("output file is not format handled by Audiobook Tagger")
-            
         }
     }
     
@@ -280,7 +394,7 @@ struct AudiobookFile {
             } catch { print("error reading date tag") }
         }; return 0
     }
-
+    
     private func intArray(for tag: AudiobookTag) -> [Int] {
         let intArrayTags: [AudiobookTag] = [
             .disc,
@@ -307,14 +421,14 @@ struct AudiobookFile {
                         let mp4File = try MP42File(url: self.audiobookUrl)
                         return (mp4File.metadata.metadataItemsFiltered(
                             byIdentifier: tag.mp4Tag).first?.arrayValue) as! [Int]
-                        
+                    
                     case .invalid :
                         print("output file is not format handled by Audiobook Tagger")
                 }
             } catch { print("error reading array tag") }
         }; return []
     }
-
+    
     private func date(for tag: AudiobookTag) -> Date {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
@@ -362,15 +476,14 @@ struct AudiobookFile {
     
     // MARK: Writing functions
     private var id3Tag: ID3Tag {
-            return ID3Tag(
+        return ID3Tag(
             version: .version3,
             frames: id3FrameDictionary)
     }
     private var id3FrameDictionary: [FrameName : ID3Frame] = [:]
-
-    private var mp42MetadataItemArray: [MP42MetadataItem] = []
+    internal var mp42MetadataItemArray: [MP42MetadataItem] = []
     
-    private mutating func writeString(_ content: String, for tag: AudiobookTag) {
+    private mutating func set(_ tag: AudiobookTag, to string: String) {
         let stringTags: [AudiobookTag] = [
             .authors,
             .bookTitle,
@@ -392,20 +505,20 @@ struct AudiobookFile {
             switch self.format {
                 case .mp3 :
                     if tag == .genre {
-                        id3FrameDictionary[tag.id3Tag] = ID3FrameGenre(genre: nil, description: content)
+                        id3FrameDictionary[tag.id3Tag] = ID3FrameGenre(genre: nil, description: string)
                     } else {
-                        id3FrameDictionary[tag.id3Tag] = ID3FrameWithStringContent(content: content)
+                        id3FrameDictionary[tag.id3Tag] = ID3FrameWithStringContent(content: string)
                 }
                 case .mp4 :
                     if tag == .mediaType {
-                        if content == "Podcast" {
+                        if string == "Podcast" {
                             mp42MetadataItemArray.append(
                                 MP42MetadataItem(
                                     identifier: tag.mp4Tag,
                                     value: 21 as NSNumber,
                                     dataType: MP42MetadataItemDataType.integer,
                                     extendedLanguageTag: nil))
-                        } else if content == "Periodical" {
+                        } else if string == "Periodical" {
                             mp42MetadataItemArray.append(
                                 MP42MetadataItem(
                                     identifier: tag.mp4Tag,
@@ -424,7 +537,7 @@ struct AudiobookFile {
                         mp42MetadataItemArray.append(
                             MP42MetadataItem(
                                 identifier: tag.mp4Tag,
-                                value: content as NSString,
+                                value: string as NSString,
                                 dataType: MP42MetadataItemDataType.string,
                                 extendedLanguageTag: nil))
                 }
@@ -434,7 +547,7 @@ struct AudiobookFile {
         }
     }
     
-    private mutating func writeInteger(_ value: Int, for tag: AudiobookTag) {
+    private mutating func set(_ tag: AudiobookTag, to integer: Int) {
         let intTags: [AudiobookTag] = [
             .seriesIndex,
             .seriesTotal,
@@ -444,24 +557,24 @@ struct AudiobookFile {
         if intTags.contains(tag) {
             switch self.format {
                 case .mp3 :
-                    id3FrameDictionary[tag.id3Tag] = ID3FrameWithIntegerContent(value: value)
+                    id3FrameDictionary[tag.id3Tag] = ID3FrameWithIntegerContent(value: integer)
                 case .mp4 :
                     mp42MetadataItemArray.append(
                         MP42MetadataItem(
                             identifier: tag.mp4Tag,
-                            value: value as NSNumber,
+                            value: integer as NSNumber,
                             dataType: MP42MetadataItemDataType.integer,
                             extendedLanguageTag: nil))
                 case .invalid :
                     print("output file is not format handled by Audiobook Tagger")
             }
         } else if tag == .year {
-            id3FrameDictionary[tag.id3Tag] = ID3FrameRecordingYear(year: value)
+            id3FrameDictionary[tag.id3Tag] = ID3FrameRecordingYear(year: integer)
         }
     }
     
     
-    private mutating func writeIntArray(_ value: [Int], for tag: AudiobookTag) {
+    private mutating func set(_ tag: AudiobookTag, to array: [Int]) {
         let intArrayTags: [AudiobookTag] = [
             .disc,
             .track,
@@ -469,14 +582,14 @@ struct AudiobookFile {
         if intArrayTags.contains(tag) {
             switch self.format {
                 case .mp3 :
-                    let part = value.first
-                    let total = value.last
+                    let part = array.first
+                    let total = array.last
                     id3FrameDictionary[tag.id3Tag] = ID3FramePartOfTotal(part: part ?? 0, total: total)
                 case .mp4 :
                     mp42MetadataItemArray.append(
                         MP42MetadataItem(
                             identifier: MP42MetadataKeyTrackNumber,
-                            value: (value as [NSNumber]) as NSArray,
+                            value: (array as [NSNumber]) as NSArray,
                             dataType: MP42MetadataItemDataType.integerArray,
                             extendedLanguageTag: nil))
                 case .invalid :
@@ -485,7 +598,7 @@ struct AudiobookFile {
         }
     }
     
-    private mutating func writeDate(_ date: Date, for tag: AudiobookTag) {
+    private mutating func set(_ tag: AudiobookTag, to date: Date) {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         let calendar = Calendar.current
@@ -509,6 +622,5 @@ struct AudiobookFile {
             }
         }
     }
-    
     
 }

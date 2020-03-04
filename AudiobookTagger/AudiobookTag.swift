@@ -89,7 +89,6 @@ enum AudiobookTag {
     /// ID3 Output: Int (Doesn't Exist for MP4)
     case year
     
-    
     /// the ID3TagEditor FrameName for the audiobook tag
     var id3Tag: FrameName {
         switch self {
@@ -195,6 +194,4 @@ enum AudiobookTag {
         }
         return identifier
     }
-    
-
 }
