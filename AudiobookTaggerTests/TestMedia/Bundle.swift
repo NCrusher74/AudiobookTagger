@@ -17,7 +17,7 @@ extension Bundle {
         .url(forResource: "testfile-blank", withExtension: "m4b") else {
           fatalError("No audio file available for testing.")
       }
-        return AudiobookFile(from: locationOfTestAudioFile)
+        return try! AudiobookFile(from: locationOfTestAudioFile)
     }()
     
     static let testMp3NoMeta: URL = {

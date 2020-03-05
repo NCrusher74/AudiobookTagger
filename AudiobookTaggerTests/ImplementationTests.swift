@@ -13,13 +13,16 @@ import MP42Foundation
 @testable import AudiobookTagger
 
 class ImplementationTests: XCTestCase {
-   
-    func testWriteFunctions() throws {
-        var audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3NoMeta)
-        var audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bNoMeta)
 
-        let dateString = "05/08/1999"
-        let formatter = DateFormatter.formatter
+    func testDate() throws {
+        XCTAssertEqual(Date(us: "01/01/1970"), Date(timeIntervalSince1970: 0))
+    }
+
+    func testWriteFunctions() throws {
+        var audiobookFileMP3 = try AudiobookFile(from: Bundle.testMp3NoMeta)
+        var audiobookFileMP4 = try AudiobookFile(from: Bundle.testM4bNoMeta)
+
+        let date = Date(us: "05/08/1999")
         
         try audiobookFileMP3.setAuthors(authors: "Author Write Test")
         try audiobookFileMP3.setBookTitle(bookTitle: "BookTitle Write Test")
@@ -37,9 +40,8 @@ class ImplementationTests: XCTestCase {
         try audiobookFileMP3.setDescription(description: "Description Write Test")
         try audiobookFileMP3.setPrimaryAuthor(primaryAuthor: "Primary Author Write Test")
         try audiobookFileMP3.setDisc(disc: [11,22])
-        try audiobookFileMP3.setYear(year: 1999)
         try audiobookFileMP3.setTrack(track: [33,44])
-        try audiobookFileMP3.setReleaseDate(date: formatter.dateFromMultipleFormats(dateString)!)
+        try audiobookFileMP3.set(releaseDate: date)
         try audiobookFileMP3.setSeriesIndex(index: 55)
         try audiobookFileMP3.setSeriesTotal(total: 66)
         try audiobookFileMP3.setUniverseIndex(index: 77)
@@ -61,9 +63,8 @@ class ImplementationTests: XCTestCase {
         try audiobookFileMP4.setDescription(description: "Description Write Test")
         try audiobookFileMP4.setPrimaryAuthor(primaryAuthor: "Primary Author Write Test")
         try audiobookFileMP4.setDisc(disc: [11,22])
-        try audiobookFileMP4.setYear(year: 1999)
         try audiobookFileMP4.setTrack(track: [33,44])
-        try audiobookFileMP4.setReleaseDate(date: formatter.dateFromMultipleFormats(dateString)!)
+        try audiobookFileMP4.set(releaseDate: date)
         try audiobookFileMP4.setSeriesIndex(index: 55)
         try audiobookFileMP4.setSeriesTotal(total: 66)
         try audiobookFileMP4.setUniverseIndex(index: 77)
@@ -80,8 +81,9 @@ class ImplementationTests: XCTestCase {
         let mp3TestUrl = URL(fileURLWithPath: mp3OutputPath)
         let mp4TestUrl = URL(fileURLWithPath: mp4OutputPath)
         
-        let testMP3 = AudiobookFile(from: mp3TestUrl)
-        let testMP4 = AudiobookFile(from: mp4TestUrl)
+        let testMP3 = try AudiobookFile(from: mp3TestUrl)
+
+        let testMP4 = try AudiobookFile(from: mp4TestUrl)
         
         XCTAssertEqual(try testMP3.authors(), "Author Write Test")
         XCTAssertEqual(try testMP4.authors(), "Author Write Test")
@@ -108,19 +110,10 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try testMP3.publisher(), "Publisher Write Test")
         XCTAssertEqual(try testMP4.publisher(), "Publisher Write Test")
 
-        let calendar = Calendar.current
-        let mp3Date = try testMP3.releaseDate()
-        XCTAssertEqual(mp3Date, formatter.dateFromMultipleFormats(dateString))
-        XCTAssertEqual(calendar.component(.day, from: mp3Date), 08)
-        XCTAssertEqual(calendar.component(.month, from: mp3Date), 05)
-        XCTAssertEqual(calendar.component(.year, from: mp3Date), 1999)
-        XCTAssertEqual(try testMP3.year(), 1999)
-        let mp4Date = try testMP4.releaseDate()
-        XCTAssertEqual(mp4Date, formatter.dateFromMultipleFormats(dateString))
-        XCTAssertEqual(calendar.component(.day, from: mp4Date), 08)
-        XCTAssertEqual(calendar.component(.month, from: mp4Date), 05)
-        XCTAssertEqual(calendar.component(.year, from: mp4Date), 1999)
-        XCTAssertEqual(try testMP4.year(), 1999)
+        let mp3Date = try XCTUnwrap(testMP3.releaseDate())
+        XCTAssertEqual(mp3Date, date)
+        let mp4Date = try XCTUnwrap(testMP4.releaseDate())
+        XCTAssertEqual(mp4Date, date)
 
         XCTAssertEqual(try testMP3.series(), "Series Write Test")
         XCTAssertEqual(try testMP4.series(), "Series Write Test")
@@ -145,8 +138,8 @@ class ImplementationTests: XCTestCase {
     }
     
     func testReadFunctions() throws {
-        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
-        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        let audiobookFileMP3 = try AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = try AudiobookFile(from: Bundle.testM4bFullMeta)
         // Test MP3 Reading
         XCTAssertEqual(try audiobookFileMP3.authors(), "Artist")
         XCTAssertEqual(try audiobookFileMP3.bookTitle(), "Album")
@@ -192,29 +185,12 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP4.universe(), "MovementName")
         XCTAssertEqual(try audiobookFileMP4.universeIndex(), 5)
         XCTAssertEqual(try audiobookFileMP4.universeTotal(), 6)
+        
+        let mp3Date = try XCTUnwrap(audiobookFileMP3.releaseDate())
+        XCTAssertEqual(mp3Date, Date(us: "01/01/2020"))
 
-        let formatter = DateFormatter.formatter
-        let calendar = Calendar.current
-        
-        let mp3Date = try audiobookFileMP3.releaseDate()
-        XCTAssertEqual(mp3Date, formatter.dateFromMultipleFormats("01-01-2020"))
-        XCTAssertEqual(calendar.component(.day, from: mp3Date), 1)
-        XCTAssertEqual(calendar.component(.month, from: mp3Date), 1)
-        XCTAssertEqual(calendar.component(.year, from: mp3Date), 2020)
-
-        let mp4Date = try audiobookFileMP4.releaseDate()
-        XCTAssertEqual(mp4Date, formatter.dateFromMultipleFormats("01/01/2020"))
-        
-        let mp4Day = calendar.component(.day, from: mp4Date)
-        let mp4Month = calendar.component(.month, from: mp4Date)
-        let mp4Year = calendar.component(.year, from: mp4Date)
-        XCTAssertEqual(mp4Day, 31)
-        XCTAssertEqual(mp4Month, 12)
-        XCTAssertEqual(mp4Year, 2019)
-        
-        XCTAssertEqual(try audiobookFileMP3.year(), 2020)
-        XCTAssertEqual(try audiobookFileMP4.year(), 2019)
-        
+        let mp4Date = try XCTUnwrap(audiobookFileMP4.releaseDate())
+        XCTAssertEqual(mp4Date, Date(us: "01/01/2020"))
     }
     
     func testMP3AudiobookTag() throws {
@@ -244,9 +220,8 @@ class ImplementationTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[AudiobookTag.seriesTotal.id3Tag] as? ID3FrameWithIntegerContent)?.value, 19)
             XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.identifier, nil)
             XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.description, "Genre")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.day, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.month, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.year.id3Tag] as? ID3FrameRecordingYear)?.year, 2020)
+            XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.day, 01)
+            XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.month, 01)
        }
     }
     
@@ -268,9 +243,8 @@ class ImplementationTests: XCTestCase {
             byIdentifier: AudiobookTag.description.mp4Tag).first?.stringValue, "Comment")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.genre.mp4Tag).first?.stringValue, "Genre")
-        let formatter = DateFormatter.formatter
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, formatter.dateFromMultipleFormats("01/01/2020"))
+          byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, Date(us: "01/01/2020"))
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.track.mp4Tag).first?.arrayValue as! [Int], [7,8])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
