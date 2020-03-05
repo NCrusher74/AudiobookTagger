@@ -138,7 +138,7 @@ class ID3TagEditorTests: XCTestCase {
             ]
         )
         
-        let outputPath = NSHomeDirectory() + "/audiobookTagger-mp4-testfile.mp3"
+        let outputPath = NSHomeDirectory() + "/ID3TagEditor-testfile.mp3"
         XCTAssertNoThrow(try id3TagEditor.write(
             tag: id3Tag,
             to: Bundle.testMp3NoMeta.path,
