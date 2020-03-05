@@ -9,7 +9,8 @@
 import Foundation
 extension DateFormatter {
     
-    func dateFromMultipleFormats(_ fromString: String) -> Date? {
+    // This would be clever if the formats were mutually exclusive. Unfortunately they aren’t. What does 01-02-03 mean? You want that to do what the user has the system configured to do, not just take the first one that happens to be a possibility.
+    /*func dateFromMultipleFormats(_ fromString: String) -> Date? {
         let formats: [String] = [
             "MM-dd-yyyy",
             "MMM-dd-yyyy",
@@ -37,13 +38,12 @@ extension DateFormatter {
             }
         }
         return nil
+    }*/
+
+    internal static func deterministicFormatter() -> DateFormatter {
+      let formatter = DateFormatter()
+      formatter.locale = Locale(identifier: "en_US_POSIX")
+      formatter.timeZone = TimeZone(secondsFromGMT: 0)
+      return formatter
     }
-    
-    public static let formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        return formatter
-    }()
-    
 }

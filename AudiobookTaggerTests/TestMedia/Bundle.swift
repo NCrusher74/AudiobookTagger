@@ -10,6 +10,16 @@ extension Bundle {
 
     /// The bundle which houses the tests.
     static let testBundle = Bundle(for: BundleMarker.self)
+
+    /// An audio file for testing.
+    static let testAudiobookFile: AudiobookFile = {
+      guard let locationOfTestAudioFile = Bundle.testBundle
+        .url(forResource: "testfile-blank", withExtension: "m4b") else {
+          fatalError("No audio file available for testing.")
+      }
+        return try! AudiobookFile(from: locationOfTestAudioFile)
+    }()
+
     
     static let testMp3NoMeta: URL = {
         guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-blank", withExtension: "mp3") else {
