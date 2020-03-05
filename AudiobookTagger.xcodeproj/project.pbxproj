@@ -16,6 +16,7 @@
 		51332FEB2410B30900F7E0D2 /* OutcastID3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51332FEA2410B30900F7E0D2 /* OutcastID3Tests.swift */; };
 		51332FF12410B7C500F7E0D2 /* testfile-chaptered.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */; };
 		51332FF22410B7C500F7E0D2 /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51332FF02410B7C500F7E0D2 /* testfile-chaptered.m4b */; };
+		5139F3BB2410C7B000469929 /* MP4ChapteringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */; };
 		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
 		514E1529240610C6008FE28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514E1528240610C6008FE28A /* Assets.xcassets */; };
 		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
@@ -91,6 +92,7 @@
 		51332FEA2410B30900F7E0D2 /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
 		51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-chaptered.mp3"; sourceTree = "<group>"; };
 		51332FF02410B7C500F7E0D2 /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
+		5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4ChapteringTests.swift; sourceTree = "<group>"; };
 		514E1523240610C5008FE28A /* AudiobookTagger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudiobookTagger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		514E1526240610C5008FE28A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		514E1528240610C6008FE28A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,6 +201,8 @@
 				514E158624062653008FE28A /* MP42FoundationTests.swift */,
 				3FFE5BC62410A2E400829F45 /* Date.swift */,
 
+				51332FEA2410B30900F7E0D2 /* OutcastID3Tests.swift */,
+				5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
 				514E1539240610C6008FE28A /* Info.plist */,
 			);
@@ -475,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5139F3BB2410C7B000469929 /* MP4ChapteringTests.swift in Sources */,
 				514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */,
 				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
 				514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */,

@@ -16,7 +16,7 @@ import MP42Foundation
 class MP42FoundationTests: XCTestCase {
         
     func testMP4TagPresence() throws {
-        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta.path))
+        let mp4File = try MP42File(url: Bundle.testM4bFullMeta)
         XCTAssert((mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyName).count > 0),
                   "The Name array is empty")
@@ -173,7 +173,7 @@ class MP42FoundationTests: XCTestCase {
     }
     
     func testMP4TagAccuracy() throws {
-        let mp4File = try MP42File(url: URL(fileURLWithPath: Bundle.testM4bFullMeta.path))
+        let mp4File = try MP42File(url: Bundle.testM4bFullMeta)
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: MP42MetadataKeyName).first?.stringValue, "Title")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
