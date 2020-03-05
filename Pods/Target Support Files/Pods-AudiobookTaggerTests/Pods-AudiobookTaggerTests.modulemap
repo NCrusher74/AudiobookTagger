@@ -1,0 +1,6 @@
+framework module Pods_AudiobookTaggerTests {
+  umbrella header "Pods-AudiobookTaggerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
