@@ -48,7 +48,7 @@ class OutcastID3Tests: XCTestCase {
         }
         
         for frame in outcastFrames {
-            if frame.contains("elementID=TOC") {
+            if frame.contains("elementID=TOC") { //"Value of type 'OutcastID3TagFrame' has no member 'contains'"
                 print("TOC: \(frame)")
             }
         }
