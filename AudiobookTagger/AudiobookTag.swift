@@ -85,10 +85,6 @@ enum AudiobookTag {
     /// ID3 tag MVCN / MP4 tag ©mvc
     /// Int Output
     case universeTotal
-    /// ID3 tag TYER / MP4 tag ©day
-    /// ID3 Output: Int (Doesn't Exist for MP4)
-    case year
-    
     
     /// the ID3TagEditor FrameName for the audiobook tag
     var id3Tag: FrameName {
@@ -122,7 +118,7 @@ enum AudiobookTag {
             case .publisher :
                 return .Publisher                               // String
             case .releaseDate :
-                return .RecordingDayMonth                       // Int, Int (Day, Month)
+                return .RecordingDateTime                       // Int, Int (Day, Month)
             case .series :
                 return .ContentGrouping                         // String
             case .seriesIndex :
@@ -137,8 +133,6 @@ enum AudiobookTag {
                 return .MovementIndex                           // Int
             case .universeTotal :
                 return .MovementCount                           // Int
-            case .year :
-                return .RecordingYear                           // Int (Year)
         }
     }
     
@@ -190,11 +184,7 @@ enum AudiobookTag {
                 identifier = MP42MetadataKeyMovementNumber      // Int
             case .universeTotal :
                 identifier = MP42MetadataKeyMovementCount       // Int
-            case .year :
-                identifier = ""                                 // Doesn't exist for MP4
         }
         return identifier
     }
-    
-
 }

@@ -13,10 +13,133 @@ import MP42Foundation
 @testable import AudiobookTagger
 
 class ImplementationTests: XCTestCase {
-   
+
+    func testDate() throws {
+        XCTAssertEqual(Date(us: "01/01/1970"), Date(timeIntervalSince1970: 0))
+    }
+
+    func testWriteFunctions() throws {
+        var audiobookFileMP3 = try AudiobookFile(from: Bundle.testMp3NoMeta)
+        var audiobookFileMP4 = try AudiobookFile(from: Bundle.testM4bNoMeta)
+
+        let date = Date(us: "05/08/1999")
+        
+        try audiobookFileMP3.setAuthors(authors: "Author Write Test")
+        try audiobookFileMP3.setBookTitle(bookTitle: "BookTitle Write Test")
+        try audiobookFileMP3.setNarrators(narrators: "Narrators Write Test")
+        try audiobookFileMP3.setGenre(genre: "Genre Write Test")
+        try audiobookFileMP3.setTitle(title: "Title Write Test")
+        try audiobookFileMP3.setSeries(series: "Series Write Test")
+        try audiobookFileMP3.setSummary(summary: "Summary Write Test")
+        try audiobookFileMP3.setCategory(category: "Category Write Test")
+        try audiobookFileMP3.setKeywords(keywords: "Keywords Write Test")
+        try audiobookFileMP3.setUniverse(universe: "Universe Write Test")
+        try audiobookFileMP3.setCopyright(copyright: "Copyright Write Test")
+        try audiobookFileMP3.setMediaType(mediaType: "Audiobook")
+        try audiobookFileMP3.setPublisher(publisher: "Publisher Write Test")
+        try audiobookFileMP3.setDescription(description: "Description Write Test")
+        try audiobookFileMP3.setPrimaryAuthor(primaryAuthor: "Primary Author Write Test")
+        try audiobookFileMP3.setDisc(disc: [11,22])
+        try audiobookFileMP3.setTrack(track: [33,44])
+        try audiobookFileMP3.set(releaseDate: date)
+        try audiobookFileMP3.setSeriesIndex(index: 55)
+        try audiobookFileMP3.setSeriesTotal(total: 66)
+        try audiobookFileMP3.setUniverseIndex(index: 77)
+        try audiobookFileMP3.setUniverseTotal(total: 88)
+
+        try audiobookFileMP4.setAuthors(authors: "Author Write Test")
+        try audiobookFileMP4.setBookTitle(bookTitle: "BookTitle Write Test")
+        try audiobookFileMP4.setNarrators(narrators: "Narrators Write Test")
+        try audiobookFileMP4.setGenre(genre: "Genre Write Test")
+        try audiobookFileMP4.setTitle(title: "Title Write Test")
+        try audiobookFileMP4.setSeries(series: "Series Write Test")
+        try audiobookFileMP4.setSummary(summary: "Summary Write Test")
+        try audiobookFileMP4.setCategory(category: "Category Write Test")
+        try audiobookFileMP4.setKeywords(keywords: "Keywords Write Test")
+        try audiobookFileMP4.setUniverse(universe: "Universe Write Test")
+        try audiobookFileMP4.setCopyright(copyright: "Copyright Write Test")
+        try audiobookFileMP4.setMediaType(mediaType: "Audiobook")
+        try audiobookFileMP4.setPublisher(publisher: "Publisher Write Test")
+        try audiobookFileMP4.setDescription(description: "Description Write Test")
+        try audiobookFileMP4.setPrimaryAuthor(primaryAuthor: "Primary Author Write Test")
+        try audiobookFileMP4.setDisc(disc: [11,22])
+        try audiobookFileMP4.setTrack(track: [33,44])
+        try audiobookFileMP4.set(releaseDate: date)
+        try audiobookFileMP4.setSeriesIndex(index: 55)
+        try audiobookFileMP4.setSeriesTotal(total: 66)
+        try audiobookFileMP4.setUniverseIndex(index: 77)
+        try audiobookFileMP4.setUniverseTotal(total: 88)
+        
+        let mp3OutputPath = NSHomeDirectory() + "/audiobookTagger-mp3-testfile.mp3"
+        let mp4OutputPath = NSHomeDirectory() + "/audiobookTagger-mp4-testfile.m4b"
+        try audiobookFileMP3.write(outputUrl: URL(fileURLWithPath: mp3OutputPath))
+        try audiobookFileMP4.write(outputUrl: URL(fileURLWithPath: mp4OutputPath))
+        
+        XCTAssert(FileManager.default.fileExists(atPath: mp3OutputPath), "MP3 output file could not be found")
+        XCTAssert(FileManager.default.fileExists(atPath: mp4OutputPath), "MP4 output file could not be found")
+        
+        let mp3TestUrl = URL(fileURLWithPath: mp3OutputPath)
+        let mp4TestUrl = URL(fileURLWithPath: mp4OutputPath)
+        
+        let testMP3 = try AudiobookFile(from: mp3TestUrl)
+
+        let testMP4 = try AudiobookFile(from: mp4TestUrl)
+        
+        XCTAssertEqual(try testMP3.authors(), "Author Write Test")
+        XCTAssertEqual(try testMP4.authors(), "Author Write Test")
+        XCTAssertEqual(try testMP3.bookTitle(), "BookTitle Write Test")
+        XCTAssertEqual(try testMP4.bookTitle(), "BookTitle Write Test")
+        XCTAssertEqual(try testMP3.category(), "Category Write Test")
+        XCTAssertEqual(try testMP4.category(), "Category Write Test")
+        XCTAssertEqual(try testMP3.copyright(), "Copyright Write Test")
+        XCTAssertEqual(try testMP4.copyright(), "Copyright Write Test")
+        XCTAssertEqual(try testMP3.description(), "Description Write Test")
+        XCTAssertEqual(try testMP4.description(), "Description Write Test")
+        XCTAssertEqual(try testMP3.disc(), [11,22])
+        XCTAssertEqual(try testMP4.disc(), [11,22])
+        XCTAssertEqual(try testMP3.genre(), "Genre Write Test")
+        XCTAssertEqual(try testMP4.genre(), "Genre Write Test")
+        XCTAssertEqual(try testMP3.keywords(), "Keywords Write Test")
+        XCTAssertEqual(try testMP4.keywords(), "Keywords Write Test")
+        XCTAssertEqual(try testMP3.mediaType(), "Audiobook")
+        XCTAssertEqual(try testMP4.mediaType(), "Audiobook")
+        XCTAssertEqual(try testMP3.narrators(), "Narrators Write Test")
+        XCTAssertEqual(try testMP4.narrators(), "Narrators Write Test")
+        XCTAssertEqual(try testMP3.primaryAuthor(), "Primary Author Write Test")
+        XCTAssertEqual(try testMP4.primaryAuthor(), "Primary Author Write Test")
+        XCTAssertEqual(try testMP3.publisher(), "Publisher Write Test")
+        XCTAssertEqual(try testMP4.publisher(), "Publisher Write Test")
+
+        let mp3Date = try XCTUnwrap(testMP3.releaseDate())
+        XCTAssertEqual(mp3Date, date)
+        let mp4Date = try XCTUnwrap(testMP4.releaseDate())
+        XCTAssertEqual(mp4Date, date)
+
+        XCTAssertEqual(try testMP3.series(), "Series Write Test")
+        XCTAssertEqual(try testMP4.series(), "Series Write Test")
+        XCTAssertEqual(try testMP3.seriesIndex(), 55)
+        XCTAssertEqual(try testMP4.seriesIndex(), 55)
+        XCTAssertEqual(try testMP3.seriesTotal(), 66)
+        XCTAssertEqual(try testMP4.seriesTotal(), 66)
+        XCTAssertEqual(try testMP3.universe(), "Universe Write Test")
+        XCTAssertEqual(try testMP4.universe(), "Universe Write Test")
+        XCTAssertEqual(try testMP3.universeIndex(), 77)
+        XCTAssertEqual(try testMP4.universeIndex(), 77)
+        XCTAssertEqual(try testMP3.universeTotal(), 88)
+        XCTAssertEqual(try testMP4.universeTotal(), 88)
+
+        XCTAssertEqual(try testMP3.summary(), "Summary Write Test")
+        XCTAssertEqual(try testMP4.summary(), "Summary Write Test")
+        XCTAssertEqual(try testMP3.title(), "Title Write Test")
+        XCTAssertEqual(try testMP4.title(), "Title Write Test")
+        XCTAssertEqual(try testMP3.track(), [33,44])
+        XCTAssertEqual(try testMP4.track(), [33,44])
+
+    }
+    
     func testReadFunctions() throws {
-        let audiobookFileMP3 = AudiobookFile(from: Bundle.testMp3FullMeta)
-        let audiobookFileMP4 = AudiobookFile(from: Bundle.testM4bFullMeta)
+        let audiobookFileMP3 = try AudiobookFile(from: Bundle.testMp3FullMeta)
+        let audiobookFileMP4 = try AudiobookFile(from: Bundle.testM4bFullMeta)
         // Test MP3 Reading
         XCTAssertEqual(try audiobookFileMP3.authors(), "Artist")
         XCTAssertEqual(try audiobookFileMP3.bookTitle(), "Album")
@@ -62,32 +185,12 @@ class ImplementationTests: XCTestCase {
         XCTAssertEqual(try audiobookFileMP4.universe(), "MovementName")
         XCTAssertEqual(try audiobookFileMP4.universeIndex(), 5)
         XCTAssertEqual(try audiobookFileMP4.universeTotal(), 6)
+        
+        let mp3Date = try XCTUnwrap(audiobookFileMP3.releaseDate())
+        XCTAssertEqual(mp3Date, Date(us: "01/01/2020"))
 
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        formatter.dateStyle = .short
-        let calendar = Calendar.current
-        
-        let mp3Date = try audiobookFileMP3.releaseDate()
-        XCTAssertEqual(mp3Date, formatter.date(from: "01-01-2020"))
-        XCTAssertEqual(calendar.component(.day, from: mp3Date), 31)
-        XCTAssertEqual(calendar.component(.month, from: mp3Date), 12)
-        XCTAssertEqual(calendar.component(.year, from: mp3Date), 2019)
-
-        let mp4Date = try audiobookFileMP4.releaseDate()
-        XCTAssertEqual(mp4Date, formatter.date(from: "01/01/2020"))
-        
-        let mp4Day = calendar.component(.day, from: mp4Date)
-        let mp4Month = calendar.component(.month, from: mp4Date)
-        let mp4Year = calendar.component(.year, from: mp4Date)
-        XCTAssertEqual(mp4Day, 31)
-        XCTAssertEqual(mp4Month, 12)
-        XCTAssertEqual(mp4Year, 2019)
-        
-        XCTAssertEqual(try audiobookFileMP3.year(), 2020)
-        XCTAssertEqual(try audiobookFileMP4.year(), 2019)
-        
+        let mp4Date = try XCTUnwrap(audiobookFileMP4.releaseDate())
+        XCTAssertEqual(mp4Date, Date(us: "01/01/2020"))
     }
     
     func testMP3AudiobookTag() throws {
@@ -117,9 +220,8 @@ class ImplementationTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[AudiobookTag.seriesTotal.id3Tag] as? ID3FrameWithIntegerContent)?.value, 19)
             XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.identifier, nil)
             XCTAssertEqual((id3Tag.frames[AudiobookTag.genre.id3Tag] as? ID3FrameGenre)?.description, "Genre")
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.day, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.releaseDate.id3Tag] as? ID3FrameRecordingDayMonth)?.month, 01)
-            XCTAssertEqual((id3Tag.frames[AudiobookTag.year.id3Tag] as? ID3FrameRecordingYear)?.year, 2020)
+            XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.day, 01)
+            XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.month, 01)
        }
     }
     
@@ -141,13 +243,8 @@ class ImplementationTests: XCTestCase {
             byIdentifier: AudiobookTag.description.mp4Tag).first?.stringValue, "Comment")
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.genre.mp4Tag).first?.stringValue, "Genre")
-
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        formatter.dateStyle = .short
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
-            byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, formatter.date(from: "01/01/2020"))
+          byIdentifier: AudiobookTag.releaseDate.mp4Tag).first?.dateValue, Date(us: "01/01/2020"))
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
             byIdentifier: AudiobookTag.track.mp4Tag).first?.arrayValue as! [Int], [7,8])
         XCTAssertEqual(mp4File.metadata.metadataItemsFiltered(
