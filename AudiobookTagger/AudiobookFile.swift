@@ -384,10 +384,6 @@ struct AudiobookFile {
                 }
             } catch { print("error reading integer-formatted tag") }
         } else if tag == .year {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.timeZone = TimeZone(identifier: "UTC")
             do {
                 switch self.format {
                     case .mp3 :
@@ -470,7 +466,8 @@ struct AudiobookFile {
                                     ID3FrameRecordingYear)?.year
                             }
                             let dateString = "\(month ?? 00)-\(day ?? 00)-\(year ?? 0000)"
-                            return Constants.dateFormat.date(from: dateString)!
+                            let formatter = DateFormatter.formatter
+                            return formatter.dateFromMultipleFormats(dateString)!
                     }
                     case .mp4:
                         let mp4File = try MP42File(url: self.audiobookUrl)
