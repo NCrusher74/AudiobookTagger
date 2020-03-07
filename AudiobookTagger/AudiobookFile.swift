@@ -303,11 +303,7 @@ struct AudiobookFile {
                     andSaveTo: tempFile)
                 
                 // add outcastID3 tags to temp file and output final result
-                if let frames = outcastFrame {
-                    let tag = OutcastID3.ID3Tag(
-                        version: .v2_4,
-                        frames: [frames]
-                    )
+                if let tag = outcastTag {
                     let mp3File = try OutcastID3.MP3File(localUrl: URL(fileURLWithPath: tempFile))
                     try mp3File.writeID3Tag(tag: tag, outputUrl: outputUrl)
             }
@@ -528,7 +524,7 @@ struct AudiobookFile {
     
     private var id3Tag: ID3Tag?
     private var mp42File: MP42File?
-    private var outcastFrame: OutcastID3TagFrame?
+    private var outcastTag: OutcastID3.ID3Tag?
     
     private mutating func set(_ tag: AudiobookTag, to string: String) {
         let stringTags: [AudiobookTag] = [
@@ -553,11 +549,12 @@ struct AudiobookFile {
                 case .mp3 :
                     let locale = NSLocale.autoupdatingCurrent
                     let codes = locale.languageCode ?? "eng"
-                    
                     if tag == .description {
-                        outcastFrame = OutcastID3.Frame.CommentFrame(encoding: .utf8, language: codes, commentDescription: "", comment: string)
+                        let frame: OutcastID3TagFrame = OutcastID3.Frame.CommentFrame(encoding: .utf8, language: codes, commentDescription: "", comment: string)
+                        outcastTag = OutcastID3.ID3Tag(version: .v2_4, frames: [frame])
                     } else if tag == .summary {
-                        outcastFrame = OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: codes, lyricsDescription: "", lyrics: string)
+                        let frame = OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: codes, lyricsDescription: "", lyrics: string)
+                        outcastTag = OutcastID3.ID3Tag(version: .v2_4, frames: [frame])
                     } else if tag == .genre {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameGenre(genre: nil, description: string)
                     } else {
