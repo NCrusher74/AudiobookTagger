@@ -241,7 +241,7 @@ struct AudiobookFile {
     public mutating func setSummary(summary: String) throws {
         let locale = NSLocale.autoupdatingCurrent
         let codes = locale.languageCode ?? "eng"
-        set(.description, language: codes, tagDescription: "", tagContent: summary)
+        set(.summary, language: codes, tagDescription: "", tagContent: summary)
     }
     // MARK: Universe
     /// returns a string tag intended for grouping multi-series chronologies by the same author(s)
