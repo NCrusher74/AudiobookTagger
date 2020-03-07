@@ -82,7 +82,6 @@ class ImplementationTests: XCTestCase {
         let mp4TestUrl = URL(fileURLWithPath: mp4OutputPath)
         
         let testMP3 = try AudiobookFile(from: mp3TestUrl)
-
         let testMP4 = try AudiobookFile(from: mp4TestUrl)
         
         XCTAssertEqual(try testMP3.authors(), "Author Write Test")

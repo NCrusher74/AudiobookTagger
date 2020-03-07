@@ -114,7 +114,9 @@ struct AudiobookFile {
     /// adds a description tag to the tag output as a string
     /// uses the Comment tag for MP4 and Podcast Description tag for MP3
     public mutating func setDescription(description: String) throws {
-        set(.description, to: description)
+        let locale = NSLocale.autoupdatingCurrent
+        let codes = locale.languageCode ?? "eng"
+        set(.description, language: codes, tagDescription: "", tagContent: description)
     }
     // MARK: Genre
     /// returns a genre tag as a string, which can be implemented as desired
@@ -237,7 +239,9 @@ struct AudiobookFile {
     /// adds a freeform string tag for longer descriptions to the tag output
     /// uses the UnsyncedLyrics tag for MP3 and the Lyrics tag for MP4
     public mutating func setSummary(summary: String) throws {
-        set(.summary, to: summary)
+        let locale = NSLocale.autoupdatingCurrent
+        let codes = locale.languageCode ?? "eng"
+        set(.description, language: codes, tagDescription: "", tagContent: summary)
     }
     // MARK: Universe
     /// returns a string tag intended for grouping multi-series chronologies by the same author(s)
@@ -293,11 +297,25 @@ struct AudiobookFile {
     public func write(outputUrl: URL) throws {
         switch self.format {
             case .mp3 :
+                // write ID3TagEditor output to temporary file
+                let tempDirectory = FileManager.default.temporaryDirectory
+                let tempFile = tempDirectory.path + "/AudiobookTaggerTempMP3.mp3"
                 let id3TagEditor = ID3TagEditor()
                 try id3TagEditor.write(
                     tag: id3Tag!,
                     to: self.audiobookUrl.path,
-                    andSaveTo: outputUrl.path)
+                    andSaveTo: tempFile)
+ 
+                // add outcastID3 tags to temp file and output final result
+                if let frames = outcastFrame {
+                    let tag = OutcastID3.ID3Tag(
+                        version: .v2_4,
+                        frames: [frames]
+                    )
+                    let mp3File = try OutcastID3.MP3File(localUrl: URL(fileURLWithPath: tempFile))
+                    try mp3File.writeID3Tag(tag: tag, outputUrl: outputUrl)
+            }
+            
             case .mp4 :
                 try mp42File!.write(to: outputUrl, options: nil)
             case .invalid :
@@ -514,6 +532,33 @@ struct AudiobookFile {
     
     private var id3Tag: ID3Tag?
     private var mp42File: MP42File?
+    private var outcastFrame: OutcastID3TagFrame?
+
+    private mutating func set(_ tag: AudiobookTag, language: String, tagDescription: String, tagContent: String) {
+        let stringTags: [AudiobookTag] = [
+        .description,
+        .summary
+        ]
+        if stringTags.contains(tag) {
+            switch self.format {
+                case .mp3 :
+                    if tag == .description {
+                        outcastFrame = OutcastID3.Frame.CommentFrame(encoding: .utf8, language: language, commentDescription: tagDescription, comment: tagContent)
+                    } else {
+                        outcastFrame = OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: language, lyricsDescription: tagDescription, lyrics: tagContent)
+                }
+                case .mp4 :
+                mp42File!.metadata.addItem(
+                    MP42MetadataItem(
+                        identifier: tag.mp4Tag,
+                        value: tagContent as NSString,
+                        dataType: MP42MetadataItemDataType.string,
+                        extendedLanguageTag: nil))
+                case .invalid :
+                    print("output file is not format handled by Audiobook Tagger")
+            }
+        }
+    }
 
     private mutating func set(_ tag: AudiobookTag, to string: String) {
         let stringTags: [AudiobookTag] = [
@@ -530,24 +575,11 @@ struct AudiobookFile {
             .title,
             .universe,
             .genre,
-            .description,
-            .summary,
         ]
         if stringTags.contains(tag) {
             switch self.format {
                 case .mp3 :
-                    if tag == .description {
-                        let frame: [OutcastID3TagFrame] = [
-                            OutcastID3.Frame.CommentFrame(encoding: .utf8, language: "eng", commentDescription: "description", comment: string)
-                        ]
-                        OutcastID3.ID3Tag(version: .v2_4, frames: frame)
-                    } else if tag == .summary {
-                        let frame: [OutcastID3TagFrame] = [
-                            OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: "eng", lyricsDescription: "description", lyrics: string)
-                        ]
-                        OutcastID3.ID3Tag(version: .v2_4, frames: frame)
-
-                    } else if tag == .genre {
+                    if tag == .genre {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameGenre(genre: nil, description: string)
                     } else {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameWithStringContent(content: string)
