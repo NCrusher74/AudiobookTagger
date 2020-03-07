@@ -9,6 +9,7 @@
 import Foundation
 import ID3TagEditor
 import MP42Foundation
+import OutcastID3
 
 /// An audiobook tag represents a structure (ID3 Frame or MP4 atom) containing metadata in the file.
 ///

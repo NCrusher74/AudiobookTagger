@@ -33,7 +33,6 @@
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
 		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
 		51DBA76A2410F81700359F1F /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51DBA7692410F81600359F1F /* testfile-chaptered.m4b */; };
-		51DBA76C24116BF800359F1F /* Chapters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DBA76B24116BF800359F1F /* Chapters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +110,6 @@
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
 		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
-		51DBA76B24116BF800359F1F /* Chapters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapters.swift; sourceTree = "<group>"; };
 		6757F1F87962287E21E676B1 /* Pods-AudiobookTaggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67BFD86FBA1B3B01AB6F24CD /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
 		C2A4356E775A26133E72A7A9 /* Pods-AudiobookTaggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		514E1525240610C5008FE28A /* AudiobookTagger */ = {
 			isa = PBXGroup;
 			children = (
-				51DBA76B24116BF800359F1F /* Chapters.swift */,
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */,
 				517AB41C2408FB6D00D88853 /* AudiobookTag.swift */,
@@ -457,7 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				514E155B24061179008FE28A /* AudiobookFile.swift in Sources */,
-				51DBA76C24116BF800359F1F /* Chapters.swift in Sources */,
 				3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */,
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
 				3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */,

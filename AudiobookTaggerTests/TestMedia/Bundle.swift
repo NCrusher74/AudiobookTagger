@@ -14,7 +14,7 @@ extension Bundle {
     /// An audio file for testing.
     static let testAudiobookFile: AudiobookFile = {
       guard let locationOfTestAudioFile = Bundle.testBundle
-        .url(forResource: "testfile-blank", withExtension: "m4b") else {
+        .url(forResource: "testfile-chaptered", withExtension: "mp3") else {
           fatalError("No audio file available for testing.")
       }
         return try! AudiobookFile(from: locationOfTestAudioFile)

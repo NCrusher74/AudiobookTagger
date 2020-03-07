@@ -9,6 +9,7 @@
 import Foundation
 import MP42Foundation
 import ID3TagEditor
+import OutcastID3
 
 /// An audiobook file represents an audiobook file somewhere on disk.
 ///
@@ -21,16 +22,16 @@ struct AudiobookFile {
     init(from audiobookUrl: URL) throws {
         self.audiobookUrl = audiobookUrl
         switch format {
-        case .mp3:
-          let editor = ID3TagEditor()
-          id3Tag = try editor.read(from: audiobookUrl.path) ?? ID3Tag(version: .version4, frames: [:])
-          // Update deprecated representations.
-          id3Tag?.properties.version = .version4
-          try set(releaseDate: releaseDate())
-        case .mp4:
-          mp42File = try MP42File(url: self.audiobookUrl)
-        case .invalid:
-          throw AudiobookFile.Error.unknownFileFormat
+            case .mp3:
+                let editor = ID3TagEditor()
+                id3Tag = try editor.read(from: audiobookUrl.path) ?? ID3Tag(version: .version4, frames: [:])
+                // Update deprecated representations.
+                id3Tag?.properties.version = .version4
+                try set(releaseDate: releaseDate())
+            case .mp4:
+                mp42File = try MP42File(url: self.audiobookUrl)
+            case .invalid:
+                throw AudiobookFile.Error.unknownFileFormat
         }
     }
     
@@ -304,7 +305,41 @@ struct AudiobookFile {
         }
     }
     
+    // MARK: OutcastID3 Frame Retrieval
+    private func getOutcastTocFrame() -> OutcastID3.Frame.TableOfContentsFrame? {
+        if self.format == .mp3 {
+            do {
+                let mp3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
+                let frames = try mp3File.readID3Tag().tag.frames
+                for frame in frames {
+                    if let tocFrame = frame as? OutcastID3.Frame.TableOfContentsFrame {
+                        return tocFrame
+                    }
+                }
+            } catch { print("error reading MP3 File")}
+        }
+        return nil
+    }
+
+    private func getOutcastChapterFrames() -> [OutcastID3.Frame.ChapterFrame]? {
+        if self.format == .mp3 {
+            do {
+                var chapterFrames: [OutcastID3.Frame.ChapterFrame] = []
+                let mp3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
+                let frames = try mp3File.readID3Tag().tag.frames
+                for frame in frames {
+                    if let chapterFrame = frame as? OutcastID3.Frame.ChapterFrame {
+                        chapterFrames.append(chapterFrame)
+                    }
+                }
+                return chapterFrames
+            } catch { print("error reading MP3 File")}
+        }
+        return nil
+    }
+
     // MARK: Reading Helper Functions
+    
     private func string(for tag: AudiobookTag) -> String {
         let stringTags: [AudiobookTag] = [
             .authors,
@@ -328,7 +363,21 @@ struct AudiobookFile {
                 switch self.format {
                     case .mp3:
                         let id3TagEditor = ID3TagEditor()
-                        if tag == .genre {
+                        let outcastMP3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
+                        let frames = try outcastMP3File.readID3Tag().tag.frames
+                        if tag == .description {
+                            for frame in frames {
+                                if let commentFrame = frame as? OutcastID3.Frame.CommentFrame {
+                                    return commentFrame.comment
+                                }
+                            }
+                        } else if tag == .summary {
+                            for frame in frames {
+                                if let lyricsFrame = frame as? OutcastID3.Frame.TranscriptionFrame {
+                                    return lyricsFrame.lyrics
+                                }
+                            }
+                        } else if tag == .genre {
                             if let id3Tag = try id3TagEditor.read(from: self.audiobookUrl.path) {
                                 return (id3Tag.frames[AudiobookTag.genre.id3Tag] as?
                                     ID3FrameGenre)?.description ?? ""
@@ -423,72 +472,82 @@ struct AudiobookFile {
     }
     
     private func date(for tag: AudiobookTag) throws -> Date? {
-                switch self.format {
-                    case .mp3:
-                      if tag == .releaseDate {
-                        let year: Int?
-                        let month: Int?
-                        let day: Int?
-                        if let frame = id3Tag?.frames[.RecordingDateTime] as? ID3FrameRecordingDateTime {
-                          // ≥ 2.4
-                          let date = frame.recordingDateTime.date
-                          year = date?.year
-                          month = date?.month
-                          day = date?.day
-                        } else {
-                          // < 2.4
-                          let yearFrame = id3Tag?.frames[.RecordingYear] as? ID3FrameRecordingYear
-                          year = yearFrame?.year
-                          let dayMonth = id3Tag?.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth
-                          month = dayMonth?.month
-                          day = dayMonth?.day
-                        }
-                        return Date(id3: (year: year, month: month, day: day))
-                      } else {
-                        // ID3 does not put the entire date under a single tag, so it requires special handling.
-                        fatalError("Unsupported tag: \(tag)")
-                      }
-                    case .mp4:
-                        let mp4Date = mp42File?.metadata.metadataItemsFiltered(
-                            byIdentifier: MP42MetadataKeyReleaseDate
-                        ).first?.dateValue
-                        return mp4Date
-                    case .invalid :
-                        #if DEBUG
-                          print("output file is not format handled by Audiobook Tagger")
-                        #endif
-                        return nil
-                }
+        switch self.format {
+            case .mp3:
+                if tag == .releaseDate {
+                    let year: Int?
+                    let month: Int?
+                    let day: Int?
+                    if let frame = id3Tag?.frames[.RecordingDateTime] as? ID3FrameRecordingDateTime {
+                        // ≥ 2.4
+                        let date = frame.recordingDateTime.date
+                        year = date?.year
+                        month = date?.month
+                        day = date?.day
+                    } else {
+                        // < 2.4
+                        let yearFrame = id3Tag?.frames[.RecordingYear] as? ID3FrameRecordingYear
+                        year = yearFrame?.year
+                        let dayMonth = id3Tag?.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth
+                        month = dayMonth?.month
+                        day = dayMonth?.day
+                    }
+                    return Date(id3: (year: year, month: month, day: day))
+                } else {
+                    // ID3 does not put the entire date under a single tag, so it requires special handling.
+                    fatalError("Unsupported tag: \(tag)")
+            }
+            case .mp4:
+                let mp4Date = mp42File?.metadata.metadataItemsFiltered(
+                    byIdentifier: MP42MetadataKeyReleaseDate
+                ).first?.dateValue
+                return mp4Date
+            case .invalid :
+                #if DEBUG
+                print("output file is not format handled by Audiobook Tagger")
+                #endif
+                return nil
+        }
     }
     
-    
     // MARK: Writing Helper Functions
-
+    
     private var id3Tag: ID3Tag?
     private var mp42File: MP42File?
-    
+
     private mutating func set(_ tag: AudiobookTag, to string: String) {
         let stringTags: [AudiobookTag] = [
             .authors,
             .bookTitle,
             .category,
             .copyright,
-            .description,
             .keywords,
             .mediaType,
             .narrators,
             .primaryAuthor,
             .publisher,
             .series,
-            .summary,
             .title,
             .universe,
             .genre,
+            .description,
+            .summary,
         ]
         if stringTags.contains(tag) {
             switch self.format {
                 case .mp3 :
-                    if tag == .genre {
+                    if tag == .description {
+                        let frame: [OutcastID3TagFrame] = [
+                            OutcastID3.Frame.CommentFrame(encoding: .utf8, language: "eng", commentDescription: "description", comment: string)
+                        ]
+                        OutcastID3.ID3Tag(version: .v2_4, frames: frame)
+                    } else if tag == .summary {
+                        let frame: [OutcastID3TagFrame] = [
+                            OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: "eng", lyricsDescription: "description", lyrics: string)
+                        ]
+                        OutcastID3.ID3Tag(version: .v2_4, frames: frame)
+
+                    } else if tag == .genre {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameGenre(genre: nil, description: string)
                     } else {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameWithStringContent(content: string)
@@ -581,41 +640,41 @@ struct AudiobookFile {
     }
     
     private mutating func set(_ tag: AudiobookTag, to date: Date?) throws {
-            switch self.format {
-                case .mp3 :
-                    if tag == .releaseDate {
-                      // Remove deprecated formats.
-                      id3Tag?.frames[.RecordingYear] = nil
-                      id3Tag?.frames[.RecordingDayMonth] = nil
-                      id3Tag?.frames[.RecordingHourMinute] = nil
-                    }
-                    guard let date = date else {
-                      id3Tag?.frames[tag.id3Tag] = nil
-                      return
-                    }
-                    let components = date.id3
-                    id3Tag?.frames[tag.id3Tag] = ID3FrameRecordingDateTime(
-                      recordingDateTime: RecordingDateTime(
+        switch self.format {
+            case .mp3 :
+                if tag == .releaseDate {
+                    // Remove deprecated formats.
+                    id3Tag?.frames[.RecordingYear] = nil
+                    id3Tag?.frames[.RecordingDayMonth] = nil
+                    id3Tag?.frames[.RecordingHourMinute] = nil
+                }
+                guard let date = date else {
+                    id3Tag?.frames[tag.id3Tag] = nil
+                    return
+                }
+                let components = date.id3
+                id3Tag?.frames[tag.id3Tag] = ID3FrameRecordingDateTime(
+                    recordingDateTime: RecordingDateTime(
                         date: RecordingDate(day: components.day, month: components.month, year: components.year),
                         // If nil is passed for the time, ID3TagEditor refuses to include the month and day.
                         // I would call this a bug, but according to the source code, it is intentional:
                         // https://github.com/chicio/ID3TagEditor/blob/89e4e4d21a2770fa7e7c7e515df9451281fc6932/Source/Creation/Frame/Content/ID3RecordingDateTimeFrameCreator.swift#L24-L30
                         time: RecordingTime(hour: 0, minute: 0))
-                    )
-                case .mp4 :
-                    guard let date = date else {
-                      for existing in mp42File?.metadata.metadataItemsFiltered(byIdentifier: tag.mp4Tag) ?? [] {
+            )
+            case .mp4 :
+                guard let date = date else {
+                    for existing in mp42File?.metadata.metadataItemsFiltered(byIdentifier: tag.mp4Tag) ?? [] {
                         mp42File?.metadata.removeItem(existing)
-                      }
-                      return
                     }
-                    mp42File?.metadata.addItem(MP42MetadataItem(
+                    return
+                }
+                mp42File?.metadata.addItem(MP42MetadataItem(
                     identifier: MP42MetadataKeyReleaseDate,
                     value: date as NSDate,
                     dataType: MP42MetadataItemDataType.date,
                     extendedLanguageTag: nil))
-                case .invalid :
-                    throw AudiobookFile.Error.unknownFileFormat
-            }
-    }    
+            case .invalid :
+                throw AudiobookFile.Error.unknownFileFormat
+        }
+    }
 }

@@ -27,74 +27,28 @@ class MP4ChapteringTests: XCTestCase {
         mp4File.chapters?.setTitle("BobsUrUncle", forChapter: chapterZed!)
         let outputUrl = URL(fileURLWithPath: (NSHomeDirectory() + "/MP42Foundation-testchapters.m4b"))
         XCTAssertNoThrow(try mp4File.write(to: outputUrl, options: nil))
+        
+
+
+
+        //        chapterTrack?.removeChapters(at: [0,1,2,3])
+        //        chapterTrack?.addChapter("ch95", duration: 0)
+        //        chapterTrack?.addChapter("ch96", duration: 7)
+        //        chapterTrack?.addChapter("ch97", duration: 14)
+        //        chapterTrack?.addChapter("ch98", duration: 21)
+        //        chapterTrack?.addChapter("ch99", duration: 28)
+        //
+
+
     }
 }
-        
-        
 
-        
 
-        
-//        chapterTrack?.removeChapters(at: [0,1,2,3])
-//        chapterTrack?.addChapter("ch95", duration: 0)
-//        chapterTrack?.addChapter("ch96", duration: 7)
-//        chapterTrack?.addChapter("ch97", duration: 14)
-//        chapterTrack?.addChapter("ch98", duration: 21)
-//        chapterTrack?.addChapter("ch99", duration: 28)
-//
 
 
 
 class OutcastID3Tests: XCTestCase {
-    
-    func testID3ChaptersListing() throws {
-        var chapterElementsDictionary: [String:Any] = [:]
-        let outcastFile = try OutcastID3.MP3File(
-            localUrl: Bundle.testMp3ChapteredBlank)
-        let outcastFrames = try outcastFile.readID3Tag().tag.frames
-        var index = 0
-        for frame in outcastFrames {
-            if let chapterFrame = frame as? OutcastID3.Frame.ChapterFrame {
-                let chapterIndex = index
-                chapterElementsDictionary["chapterIndex (for frame at \(index))"] = chapterIndex
-                chapterElementsDictionary["elementID (for frame at \(index))"] = chapterFrame.elementId
-                chapterElementsDictionary["chapterStartTime (for frame at \(index))"] = chapterFrame.startTime
-                chapterElementsDictionary["chapterEndTime for frame at \(index)"] = chapterFrame.endTime
-                chapterElementsDictionary["chapterStartByteOffset for frame at \(index)"] = chapterFrame.startByteOffset
-                chapterElementsDictionary["chapterEndByteOffset for frame at \(index)"] = chapterFrame.endByteOffset
-                let subFrames = chapterFrame.subFrames
-                for frame in subFrames {
-                    if let chapterTitle = frame as? OutcastID3.Frame.StringFrame {
-                        chapterElementsDictionary["chapterTitle"] = chapterTitle.str
-                    }
-                }
-                index += 1
-            }; print(chapterElementsDictionary)
-        }
-
         
-    }
-    
-    func testGetFrameIndex() throws {
-        let url = Bundle.testMp3ChapteredBlank
-        let outcastFile = try OutcastID3.MP3File(localUrl: url)
-        var outcastTag = try outcastFile.readID3Tag()
-        var outcastFrames = outcastTag.tag.frames
-        var index = 0
-        for frame in outcastFrames {
-            index += 1
-            if let chapterFrame = frame as? OutcastID3.Frame.ChapterFrame {
-                print("Chapter \(index) Index = \(index)")
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 }
