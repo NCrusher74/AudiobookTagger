@@ -300,13 +300,13 @@ struct AudiobookFile {
                 try id3TagEditor.write(
                     tag: id3Tag!,
                     to: self.audiobookUrl.path,
-                    andSaveTo: tempFile)
+                    andSaveTo: outputUrl.path)
                 
-                // add outcastID3 tags to temp file and output final result
-                if let tag = outcastTag {
-                    let mp3File = try OutcastID3.MP3File(localUrl: URL(fileURLWithPath: tempFile))
-                    try mp3File.writeID3Tag(tag: tag, outputUrl: outputUrl)
-            }
+//                // add outcastID3 tags to temp file and output final result
+//                if let tag = outcastTag {
+//                    let mp3File = try OutcastID3.MP3File(localUrl: URL(fileURLWithPath: tempFile))
+//                    try mp3File.writeID3Tag(tag: tag, outputUrl: outputUrl)
+//            }
             
             case .mp4 :
                 try mp42File!.write(to: outputUrl, options: nil)
