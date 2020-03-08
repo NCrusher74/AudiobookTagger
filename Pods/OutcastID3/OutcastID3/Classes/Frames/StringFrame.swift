@@ -48,14 +48,6 @@ extension OutcastID3.Frame {
             case internationalStandardRecordingCode = "TSRC"
             case encodingSettings                   = "TSSE"
             case year                               = "TYER"
-            case category                           = "TCAT"
-            case keywords                           = "TKWD"
-            case movementName                       = "MVNM"
-            case movementIndex                      = "MVIN"
-            case movementCount                      = "MVCN"
-            case podcastDescription                 = "TDES"
-            case seriesIndex                        = "SRSI"
-            case seriesCount                        = "SRSC"
             
             public var description: String {
                 switch self {
@@ -134,22 +126,6 @@ extension OutcastID3.Frame {
                         return "International Standard Recording Code (ISRC)"
                     case .encodingSettings:
                         return "Encoding Settings"
-                    case .category:
-                        return "Podcast Category"
-                    case .keywords:
-                        return "Podcast Keywords"
-                    case .movementName:
-                        return "Movement Name"
-                    case .movementIndex:
-                        return "Movement Index"
-                    case .movementCount:
-                        return "Movement Count"
-                    case .podcastDescription:
-                        return "Podcast Description"
-                    case .seriesIndex:
-                        return "Series Index"
-                    case .seriesCount:
-                        return "Series Count"
                 }
             }
         }

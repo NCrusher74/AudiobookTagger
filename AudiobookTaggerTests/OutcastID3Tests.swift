@@ -16,27 +16,31 @@ class OutcastID3Tests: XCTestCase {
     func testMP3AudiobookTag() throws {
         XCTAssertEqual(AudiobookTag.authors.outcastType, OutcastID3.Frame.StringFrame.StringType.leadArtist)
         XCTAssertEqual(AudiobookTag.bookTitle.outcastType, OutcastID3.Frame.StringFrame.StringType.albumTitle)
-        XCTAssertEqual(AudiobookTag.category.outcastType, OutcastID3.Frame.StringFrame.StringType.category)
         XCTAssertEqual(AudiobookTag.copyright.outcastType, OutcastID3.Frame.StringFrame.StringType.copyright)
         XCTAssertEqual(AudiobookTag.disc.outcastType, OutcastID3.Frame.StringFrame.StringType.partOfASet)
         XCTAssertEqual(AudiobookTag.genre.outcastType, OutcastID3.Frame.StringFrame.StringType.contentType)
-        XCTAssertEqual(AudiobookTag.keywords.outcastType, OutcastID3.Frame.StringFrame.StringType.keywords)
         XCTAssertEqual(AudiobookTag.mediaType.outcastType, OutcastID3.Frame.StringFrame.StringType.mediaType)
         XCTAssertEqual(AudiobookTag.narrators.outcastType, OutcastID3.Frame.StringFrame.StringType.composer)
         XCTAssertEqual(AudiobookTag.primaryAuthor.outcastType, OutcastID3.Frame.StringFrame.StringType.band)
         XCTAssertEqual(AudiobookTag.publisher.outcastType, OutcastID3.Frame.StringFrame.StringType.publisher)
         XCTAssertEqual(AudiobookTag.releaseDate.outcastType, OutcastID3.Frame.StringFrame.StringType.recordingDate)
         XCTAssertEqual(AudiobookTag.series.outcastType, OutcastID3.Frame.StringFrame.StringType.contentGroupDescription)
-        XCTAssertEqual(AudiobookTag.seriesIndex.outcastType, OutcastID3.Frame.StringFrame.StringType.seriesIndex)
-        XCTAssertEqual(AudiobookTag.seriesTotal.outcastType, OutcastID3.Frame.StringFrame.StringType.seriesCount)
         XCTAssertEqual(AudiobookTag.title.outcastType, OutcastID3.Frame.StringFrame.StringType.title)
         XCTAssertEqual(AudiobookTag.track.outcastType, OutcastID3.Frame.StringFrame.StringType.track)
-        XCTAssertEqual(AudiobookTag.universe.outcastType, OutcastID3.Frame.StringFrame.StringType.movementName)
-        XCTAssertEqual(AudiobookTag.universeIndex.outcastType, OutcastID3.Frame.StringFrame.StringType.movementIndex)
-        XCTAssertEqual(AudiobookTag.universeTotal.outcastType, OutcastID3.Frame.StringFrame.StringType.movementCount)
         
         let outcastFile = try OutcastID3.MP3File(localUrl: Bundle.testMp3NoMeta)
-        _ = try outcastFile.readID3Tag().tag
+        let outcastFrames = try outcastFile.readID3Tag().tag.frames
+        
+        for frame in outcastFrames {
+            if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
+                if isolatedFrame.type == AudiobookTag.authors.outcastType {
+                    print("Author Frame String: \(isolatedFrame.str)")
+                    XCTAssertEqual(isolatedFrame.str, "Artist")
+                    XCTAssertEqual(isolatedFrame.debugDescription, "Artist", "\(isolatedFrame.str) is not equal to Artist")
+                }
+            }
+        }
+        
         //print(outcastTag.version)
         
         let frames: [OutcastID3TagFrame] = [
@@ -44,16 +48,12 @@ class OutcastID3Tests: XCTestCase {
                                          encoding: .utf8, str: "Author Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.bookTitle.outcastType!,
                                          encoding: .utf8, str: "BookTitle Test"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.category.outcastType!,
-                                         encoding: .utf8, str: "Category Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.copyright.outcastType!,
                                          encoding: .utf8, str: "Copyright Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.disc.outcastType!,
                                          encoding: .utf8, str: "1/2"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.genre.outcastType!,
                                          encoding: .utf8, str: "Genre Test"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.keywords.outcastType!,
-                                         encoding: .utf8, str: "Keywords Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.mediaType.outcastType!,
                                          encoding: .utf8, str: "MediaType Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.narrators.outcastType!,
@@ -66,20 +66,10 @@ class OutcastID3Tests: XCTestCase {
                                          encoding: .utf8, str: "05/08/1999"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.series.outcastType!,
                                          encoding: .utf8, str: "Series Test"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.seriesIndex.outcastType!,
-                                         encoding: .utf8, str: "3"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.seriesTotal.outcastType!,
-                                         encoding: .utf8, str: "4"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.title.outcastType!,
                                          encoding: .utf8, str: "Title Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.track.outcastType!,
                                          encoding: .utf8, str: "5/6"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.universe.outcastType!,
-                                         encoding: .utf8, str: "Universe Test"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.universeIndex.outcastType!,
-                                         encoding: .utf8, str: "7"),
-            OutcastID3.Frame.StringFrame(type: AudiobookTag.universeTotal.outcastType!,
-                                         encoding: .utf8, str: "8"),
             OutcastID3.Frame.CommentFrame(encoding: .utf8, language: "eng", commentDescription: "description", comment: "Comment Test"),
             OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: "eng", lyricsDescription: "description", lyrics: "Summary Test")
         ]
