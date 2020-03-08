@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EF418350AAAD12E7219AFE1 /* Pods_AudiobookTagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */; };
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
 		3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
@@ -19,7 +20,7 @@
 		514E155824061179008FE28A /* WriteTester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514E155224061179008FE28A /* WriteTester.storyboard */; };
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
 		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
-		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
+		514E156C24061242008FE28A /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* SwiftPackageProductDependency */; };
 		514E157924061661008FE28A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514E157524061661008FE28A /* README.md */; };
 		514E158124061A70008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157F24061A70008FE28A /* Bundle.swift */; };
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTagger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
@@ -114,6 +116,8 @@
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
 		51FA163724146A58009100FA /* ID3Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID3Operation.swift; sourceTree = "<group>"; };
 		51FA163C2414C688009100FA /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
+		6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.debug.xcconfig"; sourceTree = "<group>"; };
+		7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +126,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
-				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
+				514E156C24061242008FE28A /* BuildFile in Frameworks */,
+				0EF418350AAAD12E7219AFE1 /* Pods_AudiobookTagger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +149,7 @@
 				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
 				514E1524240610C5008FE28A /* Products */,
 				514E155C240611CD008FE28A /* Frameworks */,
+				63384FA6D3D2EC3842433477 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
+				1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -231,6 +238,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		63384FA6D3D2EC3842433477 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */,
+				7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -238,10 +255,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 514E1547240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTagger" */;
 			buildPhases = (
+				B1212CBCC3B6CBF0BAEF0D0C /* [CP] Check Pods Manifest.lock */,
 				514E151F240610C4008FE28A /* Sources */,
 				514E1520240610C4008FE28A /* Frameworks */,
 				514E1521240610C4008FE28A /* Resources */,
 				514E15A82406FBF2008FE28A /* Embed Frameworks */,
+				90D4ABAB98E613EBE1B5080E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -249,7 +268,7 @@
 			);
 			name = AudiobookTagger;
 			packageProductDependencies = (
-				514E156B24061242008FE28A /* ID3TagEditor */,
+				514E156B24061242008FE28A /* SwiftPackageProductDependency */,
 			);
 			productName = AudiobookTagger;
 			productReference = 514E1523240610C5008FE28A /* AudiobookTagger.app */;
@@ -303,7 +322,7 @@
 			);
 			mainGroup = 514E151A240610C4008FE28A;
 			packageReferences = (
-				514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
+				514E156A24061242008FE28A /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 514E1524240610C5008FE28A /* Products */;
 			projectDirPath = "";
@@ -370,6 +389,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		90D4ABAB98E613EBE1B5080E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1212CBCC3B6CBF0BAEF0D0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudiobookTagger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		514E151F240610C4008FE28A /* Sources */ = {
@@ -528,6 +589,7 @@
 		};
 		514E1548240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -546,6 +608,7 @@
 		};
 		514E1549240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -640,7 +703,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
+		514E156A24061242008FE28A /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NCrusher74/ID3TagEditor.git";
 			requirement = {
@@ -651,9 +714,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		514E156B24061242008FE28A /* ID3TagEditor */ = {
+		514E156B24061242008FE28A /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
+			package = 514E156A24061242008FE28A /* RemoteSwiftPackageReference */;
 			productName = ID3TagEditor;
 		};
 /* End XCSwiftPackageProductDependency section */
