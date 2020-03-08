@@ -8,7 +8,6 @@
 
 import XCTest
 import OutcastID3
-
 @testable import AudiobookTagger
 
 class OutcastID3Tests: XCTestCase {

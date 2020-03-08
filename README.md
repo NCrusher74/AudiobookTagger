@@ -20,7 +20,7 @@ Composer seems to have become the unofficial default for narrator, but Audible u
 
 
 **SERIES/UNIVERSE OPTIONS**:
-Comprehensive series/univers management is a feature that is sorely lacking in virtually all library management apps, especially for audiobooks. Audiobook Librarian's primary aim will be to fix that, and AudiobookTagger gives me the option to start putting the metadata in place for that.
+Comprehensive series/universe management is a feature that is sorely lacking in virtually all library management apps, especially for audiobooks. Audiobook Librarian's primary aim will be to fix that, and AudiobookTagger gives me the option to start putting the metadata in place for that.
 
 _Primary Author_: (writes to Album Artist tag)
 This field will serve for the primary author(s) of a series or universe that may involve multiple authors, for sorting purposes. For instance, the Dragonriders of Pern series may have Anne McCaffrey as the Primary Author, even though Todd McCaffrey and Gigi McCaffrey have also written books in the series. The Honor Harrington universe may have David Weber as the Primary Author, even though a dozen or more other authors have contributed to the side novels and anthologies.

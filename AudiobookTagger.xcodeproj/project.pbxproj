@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EF418350AAAD12E7219AFE1 /* Pods_AudiobookTagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */; };
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
 		3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
@@ -36,6 +35,8 @@
 		51DBA76A2410F81700359F1F /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51DBA7692410F81600359F1F /* testfile-chaptered.m4b */; };
 		51FA163824146A58009100FA /* ID3Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA163724146A58009100FA /* ID3Operation.swift */; };
 		51FA163D2414C688009100FA /* OutcastID3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA163C2414C688009100FA /* OutcastID3Tests.swift */; };
+		60D653F0D6AA719D07E4EC24 /* Pods_AudiobookTagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */; };
+		7F25756C7BC8230C94C6B994 /* Pods_AudiobookTaggerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTagger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
@@ -116,8 +118,10 @@
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
 		51FA163724146A58009100FA /* ID3Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID3Operation.swift; sourceTree = "<group>"; };
 		51FA163C2414C688009100FA /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
-		6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.debug.xcconfig"; sourceTree = "<group>"; };
-		7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
+		8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTagger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
+		B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTaggerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +131,7 @@
 			files = (
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* BuildFile in Frameworks */,
-				0EF418350AAAD12E7219AFE1 /* Pods_AudiobookTagger.framework in Frameworks */,
+				60D653F0D6AA719D07E4EC24 /* Pods_AudiobookTagger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F25756C7BC8230C94C6B994 /* Pods_AudiobookTaggerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +154,7 @@
 				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
 				514E1524240610C5008FE28A /* Products */,
 				514E155C240611CD008FE28A /* Frameworks */,
-				63384FA6D3D2EC3842433477 /* Pods */,
+				554110F51EC3DBB2A451CBBE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
-				1EB22171EDE4181A81580E0F /* Pods_AudiobookTagger.framework */,
+				8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */,
+				B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,11 +244,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		63384FA6D3D2EC3842433477 /* Pods */ = {
+		554110F51EC3DBB2A451CBBE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */,
-				7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */,
+				DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */,
+				86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */,
+				2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */,
+				091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -255,12 +263,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 514E1547240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTagger" */;
 			buildPhases = (
-				B1212CBCC3B6CBF0BAEF0D0C /* [CP] Check Pods Manifest.lock */,
+				921C486DBC13E47C94A82502 /* [CP] Check Pods Manifest.lock */,
 				514E151F240610C4008FE28A /* Sources */,
 				514E1520240610C4008FE28A /* Frameworks */,
 				514E1521240610C4008FE28A /* Resources */,
 				514E15A82406FBF2008FE28A /* Embed Frameworks */,
-				90D4ABAB98E613EBE1B5080E /* [CP] Embed Pods Frameworks */,
+				D9C6A266E24B8773E8F5B226 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,6 +286,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 514E154A240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerTests" */;
 			buildPhases = (
+				F262E8F43F72E4CF00CCC851 /* [CP] Check Pods Manifest.lock */,
 				514E152F240610C6008FE28A /* Sources */,
 				514E1530240610C6008FE28A /* Frameworks */,
 				514E1531240610C6008FE28A /* Resources */,
@@ -391,7 +400,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		90D4ABAB98E613EBE1B5080E /* [CP] Embed Pods Frameworks */ = {
+		921C486DBC13E47C94A82502 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudiobookTagger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9C6A266E24B8773E8F5B226 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,7 +439,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1212CBCC3B6CBF0BAEF0D0C /* [CP] Check Pods Manifest.lock */ = {
+		F262E8F43F72E4CF00CCC851 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -423,7 +454,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AudiobookTagger-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AudiobookTaggerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -589,7 +620,7 @@
 		};
 		514E1548240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BC1769184F542D0CB3E6F62 /* Pods-AudiobookTagger.debug.xcconfig */;
+			baseConfigurationReference = DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -608,7 +639,7 @@
 		};
 		514E1549240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BEB0588ECDBD3D520C60A12 /* Pods-AudiobookTagger.release.xcconfig */;
+			baseConfigurationReference = 86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -627,6 +658,7 @@
 		};
 		514E154B240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -650,6 +682,7 @@
 		};
 		514E154C240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

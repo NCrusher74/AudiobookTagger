@@ -6,5 +6,10 @@ target 'AudiobookTagger' do
   use_frameworks!
 
   pod 'OutcastID3'
-  
+
+  target 'AudiobookTaggerTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
 end
