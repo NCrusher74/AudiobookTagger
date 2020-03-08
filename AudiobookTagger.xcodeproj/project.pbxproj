@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
-		3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* Date.swift */; };
+		3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
 		5131F2A92410679300EC7DF4 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */; };
 		51332FF12410B7C500F7E0D2 /* testfile-chaptered.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */; };
@@ -34,6 +34,7 @@
 		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
 		51DBA76A2410F81700359F1F /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51DBA7692410F81600359F1F /* testfile-chaptered.m4b */; };
 		51FA163824146A58009100FA /* ID3Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA163724146A58009100FA /* ID3Operation.swift */; };
+		51FA163D2414C688009100FA /* OutcastID3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA163C2414C688009100FA /* OutcastID3Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,7 @@
 
 /* Begin PBXFileReference section */
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		3FFE5BCB2410ACDA00829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
 		5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-chaptered.mp3"; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
 		51FA163724146A58009100FA /* ID3Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID3Operation.swift; sourceTree = "<group>"; };
+		51FA163C2414C688009100FA /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
 		6757F1F87962287E21E676B1 /* Pods-AudiobookTaggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67BFD86FBA1B3B01AB6F24CD /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
 		C2A4356E775A26133E72A7A9 /* Pods-AudiobookTaggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 				514E155524061179008FE28A /* AudiobookTagger.entitlements */,
 				514E155024061179008FE28A /* WritingTestApp */,
 				5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */,
-				3FFE5BCB2410ACDA00829F45 /* Date.swift */,
+				3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */,
 				51FA163724146A58009100FA /* ID3Operation.swift */,
 			);
 			path = AudiobookTagger;
@@ -195,6 +197,7 @@
 				517AB435240A53B600D88853 /* ImplementationTests.swift */,
 				514E158024061A70008FE28A /* ID3TagEditorTests.swift */,
 				514E158624062653008FE28A /* MP42FoundationTests.swift */,
+				51FA163C2414C688009100FA /* OutcastID3Tests.swift */,
 				3FFE5BC62410A2E400829F45 /* Date.swift */,
 				5139F3BA2410C7B000469929 /* ChapteringTests.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
@@ -460,7 +463,7 @@
 				514E155B24061179008FE28A /* AudiobookFile.swift in Sources */,
 				3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */,
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
-				3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */,
+				3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */,
 				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
 				517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
@@ -476,6 +479,7 @@
 				514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */,
 				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
 				514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */,
+				51FA163D2414C688009100FA /* OutcastID3Tests.swift in Sources */,
 				514E158124061A70008FE28A /* Bundle.swift in Sources */,
 				3FFE5BC72410A2E400829F45 /* Date.swift in Sources */,
 			);

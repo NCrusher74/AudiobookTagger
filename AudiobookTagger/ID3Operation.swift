@@ -12,5 +12,8 @@ enum ID3Operation {
     case read
     case write
 
-    init() {}
+    init() {
+        self = .read
+        self = .write
+    }
 }

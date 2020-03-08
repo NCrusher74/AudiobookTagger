@@ -43,12 +43,3 @@ class MP4ChapteringTests: XCTestCase {
     }
 }
 
-
-
-
-
-class OutcastID3Tests: XCTestCase {
-        
-
-    
-}

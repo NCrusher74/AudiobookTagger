@@ -86,7 +86,32 @@ enum AudiobookTag {
     /// ID3 tag MVCN / MP4 tag ©mvc
     /// Int Output
     case universeTotal
-    
+        
+    init() {
+        self = .authors
+        self = .bookTitle
+        self = .category
+        self = .copyright
+        self = .description
+        self = .disc
+        self = .genre
+        self = .keywords
+        self = .mediaType
+        self = .narrators
+        self = .primaryAuthor
+        self = .publisher
+        self = .releaseDate
+        self = .series
+        self = .seriesIndex
+        self = .seriesTotal
+        self = .summary
+        self = .title
+        self = .track
+        self = .universe
+        self = .universeIndex
+        self = .universeTotal
+    }
+
     /// the ID3TagEditor FrameName for the audiobook tag
     var id3Tag: FrameName {
         switch self {
@@ -189,226 +214,8 @@ enum AudiobookTag {
         return identifier
     }
     
-    func outcastFrame(audiobookFile: AudiobookFile, language: String?, frameDescription: String?, frameContent: String) throws -> OutcastID3TagFrame? {
-        let audiobookMP3 = try OutcastID3.MP3File(localUrl: audiobookFile.audiobookUrl)
-        let outcastTag = try audiobookMP3.readID3Tag().tag
-        for frame in outcastTag.frames {
-            if let rawFrame = frame as? OutcastID3.Frame.RawFrame {
-                let frameID = rawFrame.frameIdentifier
-                let frameVersion = rawFrame.version
-                let frameData = try rawFrame.frameData(version: frameVersion)
-                let dataString = String(decoding: frameData, as: UTF8.self)
-                switch self {
-                    
-                    case .authors:
-                        if frameID == "TPE1" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .leadArtist, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .leadArtist, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .bookTitle:
-                        if frameID == "TALB" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .albumTitle, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .albumTitle, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .category:
-                        if frameID == "TCAT" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Category"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .copyright:
-                        if frameID == "TCOP" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .copyright, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .copyright, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .description:
-                        if frameID == "COMM" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.CommentFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    return OutcastID3.Frame.CommentFrame(encoding: .utf8, language: language ?? "", commentDescription: frameDescription ?? "", comment: frameContent)
-                            }
-                    }
-                    case .disc:
-                        if frameID == "TPOS" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .partOfASet, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .partOfASet, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .genre:
-                        if frameID == "TCON" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .contentType, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .contentType, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .keywords:
-                        if frameID == "TKWD" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Keywords"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .mediaType:
-                        if frameID == "TMED" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .mediaType, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .mediaType, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .narrators:
-                        if frameID == "TCOM" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .composer, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .composer, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .primaryAuthor:
-                        if frameID == "TPE2" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .band, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .band, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .publisher:
-                        if frameID == "TPUB" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .publisher, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .publisher, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .releaseDate:
-                        if frameID == "TRDA" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .recordingDate, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .recordingDate, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .series:
-                        if frameID == "TIT1" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .contentGroupDescription, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .contentGroupDescription, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .seriesIndex:
-                        if frameID == "SRSI" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Series Index"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .seriesTotal:
-                        if frameID == "SRSC" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Series Count"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .summary:
-                        if frameID == "USLT" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.TranscriptionFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    return OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: language ?? "", lyricsDescription: frameDescription ?? "", lyrics: frameContent)
-                            }
-                    }
-                    case .title:
-                        if frameID == "TIT2" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .title, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .title, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .track:
-                        if frameID == "TRCK" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(type: .track, version: frameVersion, data: frameData)!
-                                case .write :
-                                    return OutcastID3.Frame.StringFrame(type: .track, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .universe:
-                        if frameID == "MVNM" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Movement Name"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .universeIndex:
-                        if frameID == "MVIN" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Movement Index"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                    case .universeTotal:
-                        if frameID == "MVCN" {
-                            switch ID3Operation() {
-                                case .read :
-                                    return OutcastID3.Frame.StringFrame.parse(version: frameVersion, data: frameData, useSynchSafeFrameSize: true)!
-                                case .write :
-                                    let frameType: OutcastID3.Frame.StringFrame.StringType.RawValue = "Movement Count"
-                                    return OutcastID3.Frame.StringFrame(type: OutcastID3.Frame.StringFrame.StringType(rawValue: frameType)!, encoding: .utf8, str: frameContent)
-                            }
-                    }
-                }
-            }
-        }; return nil
-    }
+    
+    
     
     
     

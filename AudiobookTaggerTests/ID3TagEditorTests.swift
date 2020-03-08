@@ -52,7 +52,7 @@ class ID3TagEditorTests: XCTestCase {
     }
     
     
-    func testID3TagWriting() throws {
+    func testID3TagReading() throws {
         let id3TagEditor = ID3TagEditor()
         if let id3Tag = try id3TagEditor.read(from: Bundle.testMp3FullMeta.path) {
             
