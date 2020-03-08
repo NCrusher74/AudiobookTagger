@@ -114,10 +114,6 @@
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
 		51FA163724146A58009100FA /* ID3Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ID3Operation.swift; sourceTree = "<group>"; };
 		51FA163C2414C688009100FA /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
-		6757F1F87962287E21E676B1 /* Pods-AudiobookTaggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		67BFD86FBA1B3B01AB6F24CD /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
-		C2A4356E775A26133E72A7A9 /* Pods-AudiobookTaggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.release.xcconfig"; sourceTree = "<group>"; };
-		E2E3858C03B173F29AC2BB5F /* Pods-AudiobookTagger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,17 +136,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		30D7882D82799A92E5834AD8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E2E3858C03B173F29AC2BB5F /* Pods-AudiobookTagger.debug.xcconfig */,
-				67BFD86FBA1B3B01AB6F24CD /* Pods-AudiobookTagger.release.xcconfig */,
-				6757F1F87962287E21E676B1 /* Pods-AudiobookTaggerTests.debug.xcconfig */,
-				C2A4356E775A26133E72A7A9 /* Pods-AudiobookTaggerTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		514E151A240610C4008FE28A = {
 			isa = PBXGroup;
 			children = (
@@ -159,7 +144,6 @@
 				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
 				514E1524240610C5008FE28A /* Products */,
 				514E155C240611CD008FE28A /* Frameworks */,
-				30D7882D82799A92E5834AD8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,12 +238,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 514E1547240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTagger" */;
 			buildPhases = (
-				5B789A10CE4137EBC6CE806E /* [CP] Check Pods Manifest.lock */,
 				514E151F240610C4008FE28A /* Sources */,
 				514E1520240610C4008FE28A /* Frameworks */,
 				514E1521240610C4008FE28A /* Resources */,
 				514E15A82406FBF2008FE28A /* Embed Frameworks */,
-				51277823251406B6FB7F0B79 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -277,7 +259,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 514E154A240610C6008FE28A /* Build configuration list for PBXNativeTarget "AudiobookTaggerTests" */;
 			buildPhases = (
-				637D2843BEAB43DD700E2EC9 /* [CP] Check Pods Manifest.lock */,
 				514E152F240610C6008FE28A /* Sources */,
 				514E1530240610C6008FE28A /* Frameworks */,
 				514E1531240610C6008FE28A /* Resources */,
@@ -389,70 +370,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		51277823251406B6FB7F0B79 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5B789A10CE4137EBC6CE806E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AudiobookTagger-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		637D2843BEAB43DD700E2EC9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AudiobookTaggerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		514E151F240610C4008FE28A /* Sources */ = {
@@ -611,7 +528,6 @@
 		};
 		514E1548240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2E3858C03B173F29AC2BB5F /* Pods-AudiobookTagger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -630,7 +546,6 @@
 		};
 		514E1549240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67BFD86FBA1B3B01AB6F24CD /* Pods-AudiobookTagger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -649,7 +564,6 @@
 		};
 		514E154B240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6757F1F87962287E21E676B1 /* Pods-AudiobookTaggerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -673,7 +587,6 @@
 		};
 		514E154C240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2A4356E775A26133E72A7A9 /* Pods-AudiobookTaggerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
