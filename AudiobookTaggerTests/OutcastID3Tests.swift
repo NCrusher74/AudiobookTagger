@@ -33,12 +33,16 @@ class OutcastID3Tests: XCTestCase {
                                          encoding: .utf8, str: "Artist Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.bookTitle.outcastType!,
                                          encoding: .utf8, str: "Album Test"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.category.outcastType!,
+                                         encoding: .utf8, str: "Category Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.copyright.outcastType!,
                                          encoding: .utf8, str: "Copyright Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.disc.outcastType!,
                                          encoding: .utf8, str: "1/2"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.genre.outcastType!,
                                          encoding: .utf8, str: "Genre Test"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.keywords.outcastType!,
+                                         encoding: .utf8, str: "Keywords Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.mediaType.outcastType!,
                                          encoding: .utf8, str: "MediaType Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.narrators.outcastType!,
@@ -51,10 +55,20 @@ class OutcastID3Tests: XCTestCase {
                                          encoding: .utf8, str: "05/08/1999"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.series.outcastType!,
                                          encoding: .utf8, str: "ContentGroupDescription Test"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.seriesIndex.outcastType!,
+                                         encoding: .utf8, str: "3"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.seriesTotal.outcastType!,
+                                         encoding: .utf8, str: "4"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.title.outcastType!,
                                          encoding: .utf8, str: "Title Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.track.outcastType!,
                                          encoding: .utf8, str: "5/6"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.universe.outcastType!,
+                                         encoding: .utf8, str: "MovementName Test"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.universeIndex.outcastType!,
+                                         encoding: .utf8, str: "7"),
+            OutcastID3.Frame.StringFrame(type: AudiobookTag.universeTotal.outcastType!,
+                                         encoding: .utf8, str: "8"),
             OutcastID3.Frame.CommentFrame(encoding: .utf8, language: "eng", commentDescription: "description", comment: "Comment Test"),
             OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: "eng", lyricsDescription: "description", lyrics: "Lyrics Test")
         ]
@@ -80,6 +94,9 @@ class OutcastID3Tests: XCTestCase {
                 if isolatedFrame.type == AudiobookTag.bookTitle.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "Album Test")
                 }
+                if isolatedFrame.type == AudiobookTag.category.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "Category Test")
+                }
                 if isolatedFrame.type == AudiobookTag.copyright.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "Copyright Test")
                 }
@@ -88,6 +105,9 @@ class OutcastID3Tests: XCTestCase {
                 }
                 if isolatedFrame.type == AudiobookTag.genre.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "Genre Test")
+                }
+                if isolatedFrame.type == AudiobookTag.keywords.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "Keywords Test")
                 }
                 if isolatedFrame.type == AudiobookTag.mediaType.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "MediaType Test")
@@ -107,11 +127,26 @@ class OutcastID3Tests: XCTestCase {
                 if isolatedFrame.type == AudiobookTag.series.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "ContentGroupDescription Test")
                 }
+                if isolatedFrame.type == AudiobookTag.seriesIndex.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "3")
+                }
+                if isolatedFrame.type == AudiobookTag.seriesTotal.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "4")
+                }
                 if isolatedFrame.type == AudiobookTag.title.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "Title Test")
                 }
                 if isolatedFrame.type == AudiobookTag.track.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "5/6")
+                }
+                if isolatedFrame.type == AudiobookTag.universe.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "MovementName Test")
+                }
+                if isolatedFrame.type == AudiobookTag.universeIndex.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "7")
+                }
+                if isolatedFrame.type == AudiobookTag.universeTotal.outcastType {
+                    XCTAssertEqual(isolatedFrame.str, "8")
                 }
             } else if let isolatedFrame = frame as? OutcastID3.Frame.CommentFrame {
                 XCTAssertEqual(isolatedFrame.language, "eng")

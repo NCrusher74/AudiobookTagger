@@ -221,7 +221,7 @@ enum AudiobookTag {
             case .bookTitle:
                 return OutcastID3.Frame.StringFrame.StringType.albumTitle
             case .category:
-                return OutcastID3.Frame.StringFrame.StringType.description
+                return OutcastID3.Frame.StringFrame.StringType.category
             case .copyright:
                 return OutcastID3.Frame.StringFrame.StringType.copyright
             case .description:
@@ -231,7 +231,7 @@ enum AudiobookTag {
             case .genre:
                 return OutcastID3.Frame.StringFrame.StringType.contentType
             case .keywords:
-                return OutcastID3.Frame.StringFrame.StringType.textWriter
+                return OutcastID3.Frame.StringFrame.StringType.keywords
             case .mediaType:
                 return OutcastID3.Frame.StringFrame.StringType.mediaType
             case .narrators:
@@ -245,9 +245,9 @@ enum AudiobookTag {
             case .series:
                 return OutcastID3.Frame.StringFrame.StringType.contentGroupDescription
             case .seriesIndex:
-                return OutcastID3.Frame.StringFrame.StringType.conductor
+                return OutcastID3.Frame.StringFrame.StringType.seriesIndex
             case .seriesTotal:
-                return OutcastID3.Frame.StringFrame.StringType.encodedBy
+                return OutcastID3.Frame.StringFrame.StringType.seriesCount
             case .summary:
                 return nil
             case .title:
@@ -255,11 +255,11 @@ enum AudiobookTag {
             case .track:
                 return OutcastID3.Frame.StringFrame.StringType.track
             case .universe:
-                return OutcastID3.Frame.StringFrame.StringType.originalFilename
+                return OutcastID3.Frame.StringFrame.StringType.movementName
             case .universeIndex:
-                return OutcastID3.Frame.StringFrame.StringType.originalTextWriter
+                return OutcastID3.Frame.StringFrame.StringType.movementIndex
             case .universeTotal:
-                return OutcastID3.Frame.StringFrame.StringType.year
+                return OutcastID3.Frame.StringFrame.StringType.movementCount
         }
     }
     
