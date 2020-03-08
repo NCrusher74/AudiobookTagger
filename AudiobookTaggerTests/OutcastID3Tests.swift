@@ -14,15 +14,47 @@ import OutcastID3
 class OutcastID3Tests: XCTestCase {
     
     func testMP3AudiobookTag() throws {
-        
         let outcastFile = try OutcastID3.MP3File(localUrl: Bundle.testMp3FullMeta)
+        let outcastTag = try outcastFile.readID3Tag().tag
+        let outcastFrames = outcastTag.frames
+        //print(outcastTag.version)
+        
+        for frame in outcastFrames {
+            if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
+                if isolatedFrame.type == AudiobookTag.authors.outcastType {
+                    print("Author Frame String: \(isolatedFrame.str)")
+                    XCTAssertEqual(isolatedFrame.str, "Artist")
+                    XCTAssertEqual(isolatedFrame.debugDescription, "Artist", "\(isolatedFrame.str) is not equal to Artist")
+                }
+            }
+        }
+
+        
+            XCTAssertEqual(AudiobookTag.authors.outcastType, OutcastID3.Frame.StringFrame.StringType.leadArtist)
+            XCTAssertEqual(AudiobookTag.bookTitle.outcastType, OutcastID3.Frame.StringFrame.StringType.albumTitle)
+            XCTAssertEqual(AudiobookTag.category.outcastType, OutcastID3.Frame.StringFrame.StringType.category)
+            XCTAssertEqual(AudiobookTag.copyright.outcastType, OutcastID3.Frame.StringFrame.StringType.copyright)
+            XCTAssertEqual(AudiobookTag.disc.outcastType, OutcastID3.Frame.StringFrame.StringType.partOfASet)
+            XCTAssertEqual(AudiobookTag.genre.outcastType, OutcastID3.Frame.StringFrame.StringType.contentType)
+            XCTAssertEqual(AudiobookTag.keywords.outcastType, OutcastID3.Frame.StringFrame.StringType.keywords)
+            XCTAssertEqual(AudiobookTag.mediaType.outcastType, OutcastID3.Frame.StringFrame.StringType.mediaType)
+            XCTAssertEqual(AudiobookTag.narrators.outcastType, OutcastID3.Frame.StringFrame.StringType.composer)
+            XCTAssertEqual(AudiobookTag.primaryAuthor.outcastType, OutcastID3.Frame.StringFrame.StringType.band)
+            XCTAssertEqual(AudiobookTag.publisher.outcastType, OutcastID3.Frame.StringFrame.StringType.publisher)
+            XCTAssertEqual(AudiobookTag.releaseDate.outcastType, OutcastID3.Frame.StringFrame.StringType.recordingDate)
+            XCTAssertEqual(AudiobookTag.series.outcastType, OutcastID3.Frame.StringFrame.StringType.contentGroupDescription)
+            XCTAssertEqual(AudiobookTag.seriesIndex.outcastType, OutcastID3.Frame.StringFrame.StringType.seriesIndex)
+            XCTAssertEqual(AudiobookTag.seriesTotal.outcastType, OutcastID3.Frame.StringFrame.StringType.seriesCount)
+            XCTAssertEqual(AudiobookTag.title.outcastType, OutcastID3.Frame.StringFrame.StringType.title)
+            XCTAssertEqual(AudiobookTag.track.outcastType, OutcastID3.Frame.StringFrame.StringType.track)
+            XCTAssertEqual(AudiobookTag.universe.outcastType, OutcastID3.Frame.StringFrame.StringType.movementName)
+            XCTAssertEqual(AudiobookTag.universeIndex.outcastType, OutcastID3.Frame.StringFrame.StringType.movementIndex)
+            XCTAssertEqual(AudiobookTag.universeTotal.outcastType, OutcastID3.Frame.StringFrame.StringType.movementCount)
 
     }
-    
 }
 /*
  XCTAssertEqual((id3Tag.frames[AudiobookTag.title.id3Tag] as? ID3FrameWithStringContent)?.content, "Title")
- XCTAssertEqual((id3Tag.frames[AudiobookTag.bookTitle.id3Tag] as? ID3FrameWithStringContent)?.content, "Album")
  XCTAssertEqual((id3Tag.frames[AudiobookTag.authors.id3Tag] as? ID3FrameWithStringContent)?.content, "Artist")
  XCTAssertEqual((id3Tag.frames[AudiobookTag.primaryAuthor.id3Tag] as? ID3FrameWithStringContent)?.content, "AlbumArtist")
  XCTAssertEqual((id3Tag.frames[AudiobookTag.description.id3Tag] as? ID3FrameWithStringContent)?.content, "PodcastDescription")

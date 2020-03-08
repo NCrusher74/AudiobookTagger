@@ -214,7 +214,54 @@ enum AudiobookTag {
         return identifier
     }
     
-    
+    var outcastType: OutcastID3.Frame.StringFrame.StringType? {
+        switch self {
+            case .authors:
+                return OutcastID3.Frame.StringFrame.StringType.leadArtist
+            case .bookTitle:
+                return OutcastID3.Frame.StringFrame.StringType.albumTitle
+            case .category:
+                return OutcastID3.Frame.StringFrame.StringType.category
+            case .copyright:
+                return OutcastID3.Frame.StringFrame.StringType.copyright
+            case .description:
+                return nil
+            case .disc:
+                return OutcastID3.Frame.StringFrame.StringType.partOfASet
+            case .genre:
+                return OutcastID3.Frame.StringFrame.StringType.contentType
+            case .keywords:
+                return OutcastID3.Frame.StringFrame.StringType.keywords
+            case .mediaType:
+                return OutcastID3.Frame.StringFrame.StringType.mediaType
+            case .narrators:
+                return OutcastID3.Frame.StringFrame.StringType.composer
+            case .primaryAuthor:
+                return OutcastID3.Frame.StringFrame.StringType.band
+            case .publisher:
+                return OutcastID3.Frame.StringFrame.StringType.publisher
+            case .releaseDate:
+                return OutcastID3.Frame.StringFrame.StringType.recordingDate
+            case .series:
+                return OutcastID3.Frame.StringFrame.StringType.contentGroupDescription
+            case .seriesIndex:
+                return OutcastID3.Frame.StringFrame.StringType.seriesIndex
+            case .seriesTotal:
+                return OutcastID3.Frame.StringFrame.StringType.seriesCount
+            case .summary:
+                return nil
+            case .title:
+                return OutcastID3.Frame.StringFrame.StringType.title
+            case .track:
+                return OutcastID3.Frame.StringFrame.StringType.track
+            case .universe:
+                return OutcastID3.Frame.StringFrame.StringType.movementName
+            case .universeIndex:
+                return OutcastID3.Frame.StringFrame.StringType.movementIndex
+            case .universeTotal:
+                return OutcastID3.Frame.StringFrame.StringType.movementCount
+        }
+    }
     
     
     
