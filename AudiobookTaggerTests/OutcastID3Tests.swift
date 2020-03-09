@@ -27,8 +27,8 @@ class OutcastID3Tests: XCTestCase {
         XCTAssertEqual(AudiobookTag.series.outcastType, OutcastID3.Frame.StringFrame.StringType.contentGroupDescription)
         XCTAssertEqual(AudiobookTag.title.outcastType, OutcastID3.Frame.StringFrame.StringType.title)
         XCTAssertEqual(AudiobookTag.track.outcastType, OutcastID3.Frame.StringFrame.StringType.track)
-                        
-       let frames: [OutcastID3TagFrame] = [
+        
+        let frames: [OutcastID3TagFrame] = [
             OutcastID3.Frame.StringFrame(type: AudiobookTag.authors.outcastType!,
                                          encoding: .utf8, str: "Artist Test"),
             OutcastID3.Frame.StringFrame(type: AudiobookTag.bookTitle.outcastType!,
@@ -72,7 +72,7 @@ class OutcastID3Tests: XCTestCase {
             OutcastID3.Frame.CommentFrame(encoding: .utf8, language: "eng", commentDescription: "description", comment: "Comment Test"),
             OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: "eng", lyricsDescription: "description", lyrics: "Lyrics Test")
         ]
-
+        
         let tag = OutcastID3.ID3Tag(
             version: .v2_4,
             frames: frames
@@ -84,7 +84,7 @@ class OutcastID3Tests: XCTestCase {
         
         let outputFile = try OutcastID3.MP3File(localUrl: outputUrl)
         let outcastFrames = try outputFile.readID3Tag().tag.frames
-
+        
         for frame in outcastFrames {
             // test StringFrame types
             if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
@@ -151,12 +151,70 @@ class OutcastID3Tests: XCTestCase {
             } else if let isolatedFrame = frame as? OutcastID3.Frame.CommentFrame {
                 XCTAssertEqual(isolatedFrame.language, "eng")
                 XCTAssertEqual(isolatedFrame.commentDescription, "description")
-                XCTAssertEqual(isolatedFrame.comment, "Comment Test")
+                var stringToTrim = isolatedFrame.comment.unicodeScalars.map({ $0.value })
+                let bytesToRemove: [UInt32] = [0,3]
+                
+                for byte in bytesToRemove {
+                    for (index, value) in stringToTrim.enumerated() {
+                        if value == byte && stringToTrim.contains(byte) {
+                            stringToTrim.remove(at: index)
+                        }
+                    }
+                }
+                let trimmedString = String(codeUnits: stringToTrim, codec : UTF32())!
+                XCTAssertEqual(trimmedString, "Comment Test")
             } else if let isolatedFrame = frame as? OutcastID3.Frame.TranscriptionFrame {
                 XCTAssertEqual(isolatedFrame.language, "eng")
                 XCTAssertEqual(isolatedFrame.lyricsDescription, "description")
-                XCTAssertEqual(isolatedFrame.lyrics, "Lyrics Test")
+                var stringToTrim = isolatedFrame.lyrics.unicodeScalars.map({ $0.value })
+                let bytesToRemove: [UInt32] = [0,3]
+                
+                for byte in bytesToRemove {
+                    for (index, value) in stringToTrim.enumerated() {
+                        if value == byte && stringToTrim.contains(byte) {
+                            stringToTrim.remove(at: index)
+                        }
+                    }
+                }
+                let trimmedString = String(codeUnits: stringToTrim, codec : UTF32())!
+                XCTAssertEqual(trimmedString, "Lyrics Test")
             }
         }
     }
+    
+    
+    func testCharacterRemoval() throws {
+        // print("Artist".unicodeScalars.map({ $0.value }))
+        let outputFile = try OutcastID3.MP3File(localUrl: Bundle.testMp3FullMeta)
+        let outcastFrames = try outputFile.readID3Tag().tag.frames
+        
+        for frame in outcastFrames {
+            if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
+                if isolatedFrame.type == AudiobookTag.authors.outcastType {
+                    //XCTAssertEqual(isolatedFrame.str, "Artist")
+                    let stringToTrim = (isolatedFrame.str).unicodeScalars.map({ $0.value })
+                    let trimmedString = String(codeUnits: stringToTrim, codec : UTF32())!
+                    print(trimmedString)
+                    XCTAssertEqual(trimmedString, "Artist")
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    
 }
+
+/*
+ 
+ \0 (null character)
+ \\ (backslash)
+ \t (horizontal tab)
+ \n (line feed)
+ \r (carriage return)
+ \" (double quote)
+ \' (single quote)
+ 
+ */
