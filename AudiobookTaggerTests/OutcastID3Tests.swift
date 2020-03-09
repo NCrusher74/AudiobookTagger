@@ -88,7 +88,7 @@ class OutcastID3Tests: XCTestCase {
         let outcastFile = try OutcastID3.MP3File(
             localUrl: URL(fileURLWithPath: NSHomeDirectory() + "/audiobookTagger-mp3-testfile.mp3"))
         
-        var fixedFrames: [OutcastID3TagFrame]?
+        var fixedFrames: [OutcastID3TagFrame] = []
         let outcastFrames = try outcastFile.readID3Tag().tag.frames
         for frame in outcastFrames {
             if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
@@ -97,162 +97,162 @@ class OutcastID3Tests: XCTestCase {
                 if isolatedFrame.type == AudiobookTag.authors.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Author Write Test")
                     // add corrected frames to Outcast frames array
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.authors.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.bookTitle.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "BookTitle Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.bookTitle.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.category.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Category Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.category.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.copyright.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Copyright Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.copyright.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.disc.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "11/22")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.disc.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.genre.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Genre Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.genre.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.keywords.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Keywords Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.keywords.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.mediaType.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Audiobook")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.mediaType.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.narrators.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Narrator Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.narrators.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.primaryAuthor.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Primary Author Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.primaryAuthor.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.publisher.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Publisher Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.publisher.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.releaseDate.outcastType {
                     XCTAssertEqual(isolatedFrame.str, "05/08/1999")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.releaseDate.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.series.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Series Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.series.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.seriesIndex.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "55")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.seriesIndex.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.seriesTotal.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "66")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.seriesTotal.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.title.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Title Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.title.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.track.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "33/44")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.track.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.universe.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "Universe Write Test")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.universe.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.universeIndex.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "77")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.universeIndex.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
                 if isolatedFrame.type == AudiobookTag.universeTotal.outcastType {
                     XCTAssertEqual(fixString(string: isolatedFrame.str), "88")
-                    fixedFrames?.append(OutcastID3.Frame.StringFrame(
+                    fixedFrames.append(OutcastID3.Frame.StringFrame(
                         type: AudiobookTag.universeTotal.outcastType!,
                         encoding: .utf8,
                         str: fixString(string: isolatedFrame.str)))
                 }
             }
-            fixedFrames?.append(OutcastID3.Frame.CommentFrame(
-                encoding: .utf8, language: "eng",
-                commentDescription: "commentDescTest",
-                comment: "Comment Content Test"))
-            fixedFrames?.append(OutcastID3.Frame.TranscriptionFrame(
-                encoding: .utf8, language: "eng",
-                lyricsDescription: "lyricsDescTest",
-                lyrics: "Lyrics Content Test"))
-            
-            // write to final output file with OutcastID3
-            let outcastTag = OutcastID3.ID3Tag(
-                version: .v2_4,
-                frames: fixedFrames ?? []
-            )
-            let outputUrl = URL(fileURLWithPath: NSHomeDirectory() + "/outcast-PassThru-testfile.mp3")
-            try outcastFile.writeID3Tag(tag: outcastTag, outputUrl: outputUrl)
         }
+        fixedFrames.append(OutcastID3.Frame.CommentFrame(
+            encoding: .utf8, language: "eng",
+            commentDescription: "commentDescTest",
+            comment: "Comment Content Test"))
+        fixedFrames.append(OutcastID3.Frame.TranscriptionFrame(
+            encoding: .utf8, language: "eng",
+            lyricsDescription: "lyricsDescTest",
+            lyrics: "Lyrics Content Test"))
+        
+        // write to final output file with OutcastID3
+        let outcastTag = OutcastID3.ID3Tag(
+            version: .v2_4,
+            frames: fixedFrames
+        )
+        let outputUrl = URL(fileURLWithPath: NSHomeDirectory() + "/outcast-PassThru-testfile.mp3")
+        try outcastFile.writeID3Tag(tag: outcastTag, outputUrl: outputUrl)
     }
     
     func testOutcastOutput() throws {
@@ -260,6 +260,7 @@ class OutcastID3Tests: XCTestCase {
         let outcast2File = try OutcastID3.MP3File(
             localUrl: URL(fileURLWithPath: NSHomeDirectory() + "/outcast-PassThru-testfile.mp3"))
         let outcast2Frames = try outcast2File.readID3Tag().tag.frames
+        XCTAssertFalse(outcast2Frames.isEmpty, "No frames.")
         for frame in outcast2Frames {
             if let isolatedFrame = frame as? OutcastID3.Frame.StringFrame {
                 if isolatedFrame.type == AudiobookTag.authors.outcastType {
@@ -323,9 +324,9 @@ class OutcastID3Tests: XCTestCase {
                     XCTAssertEqual(isolatedFrame.str, "88")
                 }
             } else if let isolatedFrame = frame as? OutcastID3.Frame.CommentFrame {
-                XCTAssertEqual(isolatedFrame.comment, "Comment Content Test")
+                XCTAssertEqual(fixString(string: isolatedFrame.comment), "Comment Content Test")
             } else if let isolatedFrame = frame as? OutcastID3.Frame.TranscriptionFrame {
-                XCTAssertEqual(isolatedFrame.lyrics, "Lyrics Content Test")
+                XCTAssertEqual(fixString(string: isolatedFrame.lyrics), "Lyrics Content Test")
             }
         }
     }
