@@ -130,7 +130,7 @@ enum AudiobookTag {
             case .disc :
                 return .DiscPosition                            // String ("Int of Int?")
             case .summary :
-                return .UnsyncedLyrics                          // String
+                return .Subtitle                                // String
             case .genre :
                 return .Genre                                   // String
             case .keywords :
