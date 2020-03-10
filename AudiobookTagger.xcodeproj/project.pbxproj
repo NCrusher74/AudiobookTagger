@@ -24,10 +24,9 @@
 		514E158124061A70008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157F24061A70008FE28A /* Bundle.swift */; };
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
-		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
-		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5151CB14240DC7D2002A7C05 /* testfile-written.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */; };
 		5151CB1A240DFAAC002A7C05 /* testfile-written.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 5151CB19240DFAAC002A7C05 /* testfile-written.m4b */; };
+		516847A324176DC6007E896E /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5168479E24176DB9007E896E /* MP42Foundation.framework */; };
 		517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB41C2408FB6D00D88853 /* AudiobookTag.swift */; };
 		517AB42B240A451500D88853 /* testfile-blank.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 517AB429240A451400D88853 /* testfile-blank.m4b */; };
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
@@ -35,8 +34,6 @@
 		51DBA76A2410F81700359F1F /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51DBA7692410F81600359F1F /* testfile-chaptered.m4b */; };
 		51F1348C24162EAE0005FA56 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F1348B24162EAE0005FA56 /* StringExtension.swift */; };
 		51FA163D2414C688009100FA /* OutcastID3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA163C2414C688009100FA /* OutcastID3Tests.swift */; };
-		60D653F0D6AA719D07E4EC24 /* Pods_AudiobookTagger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */; };
-		7F25756C7BC8230C94C6B994 /* Pods_AudiobookTaggerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,23 +44,23 @@
 			remoteGlobalIDString = 514E1522240610C4008FE28A;
 			remoteInfo = AudiobookTagger;
 		};
-		514E15A02406FBDF008FE28A /* PBXContainerItemProxy */ = {
+		5168479D24176DB9007E896E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 5168479724176DB9007E896E /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
 			remoteInfo = MP42Foundation;
 		};
-		514E15A22406FBDF008FE28A /* PBXContainerItemProxy */ = {
+		5168479F24176DB9007E896E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 5168479724176DB9007E896E /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A9B9C204182391DF00416A4E;
 			remoteInfo = MP42FoundationTests;
 		};
-		514E15A42406FBDF008FE28A /* PBXContainerItemProxy */ = {
+		516847A124176DB9007E896E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
+			containerPortal = 5168479724176DB9007E896E /* MP42Foundation.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A910B5A318394E900064028F;
 			remoteInfo = mp42;
@@ -77,7 +74,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,8 +81,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.release.xcconfig"; sourceTree = "<group>"; };
-		2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTaggerTests.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTaggerTests/Pods-AudiobookTaggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
@@ -108,9 +102,9 @@
 		514E157F24061A70008FE28A /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
-		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-written.mp3"; sourceTree = "<group>"; };
 		5151CB19240DFAAC002A7C05 /* testfile-written.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-written.m4b"; sourceTree = "<group>"; };
+		5168479724176DB9007E896E /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		517AB41C2408FB6D00D88853 /* AudiobookTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTag.swift; sourceTree = "<group>"; };
 		517AB429240A451400D88853 /* testfile-blank.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-blank.m4b"; sourceTree = "<group>"; };
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
@@ -118,10 +112,6 @@
 		51DBA7692410F81600359F1F /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
 		51F1348B24162EAE0005FA56 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		51FA163C2414C688009100FA /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
-		8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTagger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.release.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.release.xcconfig"; sourceTree = "<group>"; };
-		B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudiobookTaggerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudiobookTagger.debug.xcconfig"; path = "Target Support Files/Pods-AudiobookTagger/Pods-AudiobookTagger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +119,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
+				516847A324176DC6007E896E /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
-				60D653F0D6AA719D07E4EC24 /* Pods_AudiobookTagger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F25756C7BC8230C94C6B994 /* Pods_AudiobookTaggerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +142,6 @@
 				514E1536240610C6008FE28A /* AudiobookTaggerTests */,
 				514E1524240610C5008FE28A /* Products */,
 				514E155C240611CD008FE28A /* Frameworks */,
-				554110F51EC3DBB2A451CBBE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,9 +200,7 @@
 		514E155C240611CD008FE28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
-				8537707CB5B10AB15ADBF96F /* Pods_AudiobookTagger.framework */,
-				B1AC3AC19D347540ED4D5D41 /* Pods_AudiobookTaggerTests.framework */,
+				5168479724176DB9007E896E /* MP42Foundation.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,25 +219,14 @@
 			path = TestMedia;
 			sourceTree = "<group>";
 		};
-		514E159B2406FBDF008FE28A /* Products */ = {
+		5168479824176DB9007E896E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				514E15A12406FBDF008FE28A /* MP42Foundation.framework */,
-				514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */,
-				514E15A52406FBDF008FE28A /* libmp42.a */,
+				5168479E24176DB9007E896E /* MP42Foundation.framework */,
+				516847A024176DB9007E896E /* MP42FoundationFoundationTests.xctest */,
+				516847A224176DB9007E896E /* libmp42.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		554110F51EC3DBB2A451CBBE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */,
-				86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */,
-				2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */,
-				091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,8 +310,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 514E159B2406FBDF008FE28A /* Products */;
-					ProjectRef = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
+					ProductGroup = 5168479824176DB9007E896E /* Products */;
+					ProjectRef = 5168479724176DB9007E896E /* MP42Foundation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -349,25 +323,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		514E15A12406FBDF008FE28A /* MP42Foundation.framework */ = {
+		5168479E24176DB9007E896E /* MP42Foundation.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MP42Foundation.framework;
-			remoteRef = 514E15A02406FBDF008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 5168479D24176DB9007E896E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */ = {
+		516847A024176DB9007E896E /* MP42FoundationFoundationTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = MP42FoundationFoundationTests.xctest;
-			remoteRef = 514E15A22406FBDF008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 5168479F24176DB9007E896E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		514E15A52406FBDF008FE28A /* libmp42.a */ = {
+		516847A224176DB9007E896E /* libmp42.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libmp42.a;
-			remoteRef = 514E15A42406FBDF008FE28A /* PBXContainerItemProxy */;
+			remoteRef = 516847A124176DB9007E896E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -619,7 +593,6 @@
 		};
 		514E1548240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD06D7D9BCE9C5758F9C8899 /* Pods-AudiobookTagger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -638,7 +611,6 @@
 		};
 		514E1549240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86208828FEE402C1095D4893 /* Pods-AudiobookTagger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
@@ -657,7 +629,6 @@
 		};
 		514E154B240610C6008FE28A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B1779E1D154F30B6FDB7A89 /* Pods-AudiobookTaggerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -681,7 +652,6 @@
 		};
 		514E154C240610C6008FE28A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 091E0165EA64A3FCFC2E5FA5 /* Pods-AudiobookTaggerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
