@@ -5,8 +5,8 @@
         "package": "ID3TagEditor",
         "repositoryURL": "https://github.com/NCrusher74/ID3TagEditor.git",
         "state": {
-          "branch": "AudiobookTagger-Edition",
-          "revision": "60e50df17d9f023d290258336b2fe362f1a59ba5",
+          "branch": "lyrics-comments-language",
+          "revision": "483735aa1762017ff9a78a62317878c21842e7d9",
           "version": null
         }
       }

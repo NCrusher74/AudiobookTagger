@@ -9,7 +9,6 @@
 import Foundation
 import MP42Foundation
 import ID3TagEditor
-import OutcastID3
 
 /// An audiobook file represents an audiobook file somewhere on disk.
 ///
@@ -59,7 +58,7 @@ struct AudiobookFile {
     /// adds the author(s) to the tag output as a string
     /// uses the Artist tag for both MP3 and MP4
     public mutating func setAuthors(authors: String) throws {
-        set(.authors, to: authors)
+        set(.authors, string: authors)
     }
     // MARK: Book Title
     /// returns the title of the audiobook as a string
@@ -70,7 +69,7 @@ struct AudiobookFile {
     /// adds the bookTitle to the tag output as a string
     /// uses the Album tag for both MP3 and MP4
     public mutating func setBookTitle(bookTitle: String) throws {
-        set(.bookTitle, to: bookTitle)
+        set(.bookTitle, string: bookTitle)
     }
     // MARK: ReleaseDate
     /// returns the release date of the audiobook as a date
@@ -92,7 +91,7 @@ struct AudiobookFile {
     /// adds a category tag to the tag output as a string
     /// uses the Podcast Category tag for MP3 and Category for MP4
     public mutating func setCategory(category: String) throws {
-        set(.category, to: category)
+        set(.category, string: category)
     }
     // MARK: Copyright
     /// returns the copyright of the audiobook as a string
@@ -103,7 +102,7 @@ struct AudiobookFile {
     /// adds a copyright tag to the tag output as a string
     /// uses the Copyright tag for both MP3 and MP4
     public mutating func setCopyright(copyright: String) throws {
-        set(.copyright, to: copyright)
+        set(.copyright, string: copyright)
     }
     // MARK: Description
     /// returns a brief description of the audiobook as a string
@@ -114,7 +113,7 @@ struct AudiobookFile {
     /// adds a description tag to the tag output as a string
     /// uses the Comment tag for MP4 and Podcast Description tag for MP3
     public mutating func setDescription(description: String) throws {
-        set(.description, to: description)
+        set(.description, string: description)
     }
     // MARK: Genre
     /// returns a genre tag as a string, which can be implemented as desired
@@ -125,7 +124,7 @@ struct AudiobookFile {
     /// adds a genre tag to the tag output as a string
     /// uses the freeform version of the Genre tag for both MP3 and MP4
     public mutating func setGenre(genre: String) throws {
-        set(.genre, to: genre)
+        set(.genre, string: genre)
     }
     // MARK: Keywords
     /// returns a keywords tag as a string, which can be implemented as desired
@@ -136,7 +135,7 @@ struct AudiobookFile {
     /// adds a keywords tag to the tag output as a string
     /// uses the Podcast Keywords tag for MP3 and Keywords tag for MP4
     public mutating func setKeywords(keywords: String) throws {
-        set(.keywords, to: keywords)
+        set(.keywords, string: keywords)
     }
     // MARK: Media Type
     /// returns a mediaType tag as a string, which can be implemented as desired
@@ -149,7 +148,7 @@ struct AudiobookFile {
     /// uses the Media Type tag for both MP3 and MP4.
     /// Since Media Type (stik) is actually an integer for MP4, valid options are only Audiobook (2), Podcast (21), or Booklet (11) unless your implementation customizes the return further.
     public mutating func setMediaType(mediaType: String) throws {
-        set(.mediaType, to: mediaType)
+        set(.mediaType, string: mediaType)
     }
     // MARK: Narrators
     /// returns the narrator(s) of the audiobook as a string
@@ -160,7 +159,7 @@ struct AudiobookFile {
     /// adds a narrators tag to the tag output as a string
     /// uses the Composer tag for both MP3 and MP4
     public mutating func setNarrators(narrators: String) throws {
-        set(.narrators, to: narrators)
+        set(.narrators, string: narrators)
     }
     // MARK: Primary Author
     /// returns the primary author for a multi-author work as a string (for sorting)
@@ -171,7 +170,7 @@ struct AudiobookFile {
     /// adds a primaryAuthor tag to the tag output as a string
     /// uses the AlbumArtist tag for both MP3 and MP4
     public mutating func setPrimaryAuthor(primaryAuthor: String) throws {
-        set(.primaryAuthor, to: primaryAuthor)
+        set(.primaryAuthor, string: primaryAuthor)
     }
     // MARK: Publisher
     /// returns the Publisher tag as a string
@@ -180,7 +179,7 @@ struct AudiobookFile {
     }
     /// adds a publisher tag to the tag output as a string
     public mutating func setPublisher(publisher: String) throws {
-        set(.publisher, to: publisher)
+        set(.publisher, string: publisher)
     }
     // MARK: Series
     /// returns a string tag intended for grouping of book series
@@ -191,7 +190,7 @@ struct AudiobookFile {
     /// adds a series title tag to the tag output as a string
     /// uses the ContentGrouping tag for MP3 and the Grouping tag for MP4
     public mutating func setSeries(series: String) throws {
-        set(.series, to: series)
+        set(.series, string: series)
     }
     /// returns an integer tag for the current book in a series
     /// uses the TVEpisodeNumber tag for MP4 and a custom tag for MP3
@@ -226,7 +225,7 @@ struct AudiobookFile {
     /// adds a string tag for labeling the current volume of multi-file/disc work
     /// uses the Title tag for both MP3 and MP4
     public mutating func setTitle(title: String) throws {
-        set(.title, to: title)
+        set(.title, string: title)
     }
     // MARK: Summary
     /// returns a freeform string tag for longer descriptions
@@ -237,7 +236,7 @@ struct AudiobookFile {
     /// adds a freeform string tag for longer descriptions to the tag output
     /// uses the UnsyncedLyrics tag for MP3 and the Lyrics tag for MP4
     public mutating func setSummary(summary: String) throws {
-        set(.summary, to: summary)
+        set(.summary, string: summary)
     }
     // MARK: Universe
     /// returns a string tag intended for grouping multi-series chronologies by the same author(s)
@@ -250,7 +249,7 @@ struct AudiobookFile {
     /// e.g. The Lord of the Rings would be a `series` in a Middle Earth `universe` that also includes The Simarillion
     /// uses the Movement Name tag for both MP3 and MP4
     public mutating func setUniverse(universe: String) throws {
-        set(.universe, to: universe)
+        set(.universe, string: universe)
     }
     /// returns an integer tag for the current book in a multi-series chronology
     /// uses the Movement Number tag for MP4 and MP3
@@ -294,60 +293,19 @@ struct AudiobookFile {
         switch self.format {
             case .mp3 :
                 // write ID3TagEditor output to temporary file
-                let tempDirectory = FileManager.default.temporaryDirectory
-                let tempFile = tempDirectory.path + "/AudiobookTaggerTempMP3.mp3"
                 let id3TagEditor = ID3TagEditor()
                 try id3TagEditor.write(
                     tag: id3Tag!,
                     to: self.audiobookUrl.path,
                     andSaveTo: outputUrl.path)
                 
-//                // add outcastID3 tags to temp file and output final result
-//                if let tag = outcastTag {
-//                    let mp3File = try OutcastID3.MP3File(localUrl: URL(fileURLWithPath: tempFile))
-//                    try mp3File.writeID3Tag(tag: tag, outputUrl: outputUrl)
-//            }
-            
             case .mp4 :
                 try mp42File!.write(to: outputUrl, options: nil)
             case .invalid :
                 throw AudiobookFile.Error.unknownFileFormat
         }
     }
-    
-    // MARK: OutcastID3 Frame Retrieval
-    private func getOutcastTocFrame() -> OutcastID3.Frame.TableOfContentsFrame? {
-        if self.format == .mp3 {
-            do {
-                let mp3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
-                let frames = try mp3File.readID3Tag().tag.frames
-                for frame in frames {
-                    if let tocFrame = frame as? OutcastID3.Frame.TableOfContentsFrame {
-                        return tocFrame
-                    }
-                }
-            } catch { print("error reading MP3 File")}
-        }
-        return nil
-    }
-    
-    private func getOutcastChapterFrames() -> [OutcastID3.Frame.ChapterFrame]? {
-        if self.format == .mp3 {
-            do {
-                var chapterFrames: [OutcastID3.Frame.ChapterFrame] = []
-                let mp3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
-                let frames = try mp3File.readID3Tag().tag.frames
-                for frame in frames {
-                    if let chapterFrame = frame as? OutcastID3.Frame.ChapterFrame {
-                        chapterFrames.append(chapterFrame)
-                    }
-                }
-                return chapterFrames
-            } catch { print("error reading MP3 File")}
-        }
-        return nil
-    }
-    
+        
     // MARK: Reading Helper Functions
     
     private func string(for tag: AudiobookTag) -> String {
@@ -373,19 +331,15 @@ struct AudiobookFile {
                 switch self.format {
                     case .mp3:
                         let id3TagEditor = ID3TagEditor()
-                        let outcastMP3File = try OutcastID3.MP3File(localUrl: self.audiobookUrl)
-                        let frames = try outcastMP3File.readID3Tag().tag.frames
                         if tag == .description {
-                            for frame in frames {
-                                if let commentFrame = frame as? OutcastID3.Frame.CommentFrame {
-                                    return commentFrame.comment
-                                }
+                            if let id3Tag = try id3TagEditor.read(from: self.audiobookUrl.path) {
+                                return (id3Tag.frames[AudiobookTag.description.id3Tag] as?
+                                    ID3FrameCommentTypes)?.content ?? ""
                             }
                         } else if tag == .summary {
-                            for frame in frames {
-                                if let lyricsFrame = frame as? OutcastID3.Frame.TranscriptionFrame {
-                                    return lyricsFrame.lyrics
-                                }
+                            if let id3Tag = try id3TagEditor.read(from: self.audiobookUrl.path) {
+                                return (id3Tag.frames[AudiobookTag.summary.id3Tag] as?
+                                    ID3FrameCommentTypes)?.content ?? ""
                             }
                         } else if tag == .genre {
                             if let id3Tag = try id3TagEditor.read(from: self.audiobookUrl.path) {
@@ -524,9 +478,8 @@ struct AudiobookFile {
     
     private var id3Tag: ID3Tag?
     private var mp42File: MP42File?
-    private var outcastTag: OutcastID3.ID3Tag?
     
-    private mutating func set(_ tag: AudiobookTag, to string: String) {
+    private mutating func set(_ tag: AudiobookTag, string: String) {
         let stringTags: [AudiobookTag] = [
             .authors,
             .bookTitle,
@@ -547,15 +500,7 @@ struct AudiobookFile {
         if stringTags.contains(tag) {
             switch self.format {
                 case .mp3 :
-                    let locale = NSLocale.autoupdatingCurrent
-                    let codes = locale.languageCode ?? "eng"
-                    if tag == .description {
-                        let frame: OutcastID3TagFrame = OutcastID3.Frame.CommentFrame(encoding: .utf8, language: codes, commentDescription: "", comment: string)
-                        outcastTag = OutcastID3.ID3Tag(version: .v2_4, frames: [frame])
-                    } else if tag == .summary {
-                        let frame = OutcastID3.Frame.TranscriptionFrame(encoding: .utf8, language: codes, lyricsDescription: "", lyrics: string)
-                        outcastTag = OutcastID3.ID3Tag(version: .v2_4, frames: [frame])
-                    } else if tag == .genre {
+                    if tag == .genre {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameGenre(genre: nil, description: string)
                     } else {
                         id3Tag?.frames[tag.id3Tag] = ID3FrameWithStringContent(content: string)
