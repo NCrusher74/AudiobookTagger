@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ID3TagEditor
 import MP42Foundation
 
 /// An audiobook tag represents a structure (ID3 Frame or MP4 atom) containing metadata in the file.
@@ -85,57 +84,7 @@ enum AudiobookTag {
     /// ID3 tag MVCN / MP4 tag ©mvc
     /// Int Output
     case universeTotal
-    
-    /// the ID3TagEditor FrameName for the audiobook tag
-    var id3Tag: FrameName {
-        switch self {
-            case .authors :
-                return .Artist                                  // String
-            case .bookTitle :
-                return .Album                                   // String
-            case .description :
-                return .PodcastDescription                      // String
-            case .category :
-                return .PodcastCategory                         // String
-            case .title :
-                return .Title                                   // String
-            case .copyright :
-                return .Copyright                               // String
-            case .disc :
-                return .DiscPosition                            // String ("Int of Int?")
-            case .summary :
-                return .UnsyncedLyrics                          // String
-            case .genre :
-                return .Genre                                   // String
-            case .keywords :
-                return .PodcastKeywords                         // String
-            case .mediaType :
-                return .MediaType                               // String
-            case .narrators :
-                return .Composer                                // String
-            case .primaryAuthor :
-                return .AlbumArtist                             // String
-            case .publisher :
-                return .Publisher                               // String
-            case .releaseDate :
-                return .RecordingDateTime                       // Int, Int (Day, Month)
-            case .series :
-                return .ContentGrouping                         // String
-            case .seriesIndex :
-                return .SeriesIndex                             // Int
-            case .seriesTotal :
-                return .SeriesCount                             // Int
-            case .track :
-                return .TrackPosition                           // String ("Int of Int?")
-            case .universe :
-                return .MovementName                            //String
-            case .universeIndex :
-                return .MovementIndex                           // Int
-            case .universeTotal :
-                return .MovementCount                           // Int
-        }
-    }
-    
+        
     /// the MP4 Foundation identifier string for the audiobook tag
     var mp4Tag: String {
         var identifier: String

@@ -3,28 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
-		3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* Date.swift */; };
+		3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
 		5131F2A92410679300EC7DF4 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */; };
 		51332FF12410B7C500F7E0D2 /* testfile-chaptered.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */; };
 		51332FF22410B7C500F7E0D2 /* testfile-chaptered.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 51332FF02410B7C500F7E0D2 /* testfile-chaptered.m4b */; };
-		5139F3BB2410C7B000469929 /* MP4ChapteringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */; };
 		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
 		514E1529240610C6008FE28A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514E1528240610C6008FE28A /* Assets.xcassets */; };
 		514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155124061179008FE28A /* WriteTesterViewController.swift */; };
 		514E155824061179008FE28A /* WriteTester.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514E155224061179008FE28A /* WriteTester.storyboard */; };
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
 		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
-		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
 		514E157924061661008FE28A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514E157524061661008FE28A /* README.md */; };
 		514E158124061A70008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157F24061A70008FE28A /* Bundle.swift */; };
-		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
-		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
 		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
 		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5151CB14240DC7D2002A7C05 /* testfile-written.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */; };
@@ -90,13 +86,11 @@
 
 /* Begin PBXFileReference section */
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		3FFE5BCB2410ACDA00829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
 		5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
-		51332FEA2410B30900F7E0D2 /* OutcastID3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcastID3Tests.swift; sourceTree = "<group>"; };
 		51332FEF2410B7C500F7E0D2 /* testfile-chaptered.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-chaptered.mp3"; sourceTree = "<group>"; };
 		51332FF02410B7C500F7E0D2 /* testfile-chaptered.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-chaptered.m4b"; sourceTree = "<group>"; };
-		5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP4ChapteringTests.swift; sourceTree = "<group>"; };
 		514E1523240610C5008FE28A /* AudiobookTagger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudiobookTagger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		514E1526240610C5008FE28A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		514E1528240610C6008FE28A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,8 +104,6 @@
 		514E155624061179008FE28A /* AudiobookFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudiobookFile.swift; sourceTree = "<group>"; };
 		514E157524061661008FE28A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		514E157F24061A70008FE28A /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
-		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
 		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		5151CB13240DC7D2002A7C05 /* testfile-written.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-written.mp3"; sourceTree = "<group>"; };
 		5151CB19240DFAAC002A7C05 /* testfile-written.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-written.m4b"; sourceTree = "<group>"; };
@@ -129,7 +121,6 @@
 			files = (
 				51BFCA5F241F32EE00308EEF /* TagLib.framework in Frameworks */,
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
-				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +159,6 @@
 			children = (
 				514E155624061179008FE28A /* AudiobookFile.swift */,
 				3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */,
-				3FFE5BCB2410ACDA00829F45 /* Date.swift */,
 				517AB41C2408FB6D00D88853 /* AudiobookTag.swift */,
 				514E155324061179008FE28A /* AudiobookType.swift */,
 				514E1526240610C5008FE28A /* AppDelegate.swift */,
@@ -177,6 +167,7 @@
 				514E155524061179008FE28A /* AudiobookTagger.entitlements */,
 				514E155024061179008FE28A /* WritingTestApp */,
 				5131F2A82410679300EC7DF4 /* DateFormatterExtension.swift */,
+				3FFE5BCB2410ACDA00829F45 /* DateExtension.swift */,
 			);
 			path = AudiobookTagger;
 			sourceTree = "<group>";
@@ -185,11 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				517AB435240A53B600D88853 /* ImplementationTests.swift */,
-				514E158024061A70008FE28A /* ID3TagEditorTests.swift */,
-				514E158624062653008FE28A /* MP42FoundationTests.swift */,
 				3FFE5BC62410A2E400829F45 /* Date.swift */,
-				51332FEA2410B30900F7E0D2 /* OutcastID3Tests.swift */,
-				5139F3BA2410C7B000469929 /* MP4ChapteringTests.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
 				514E1539240610C6008FE28A /* Info.plist */,
 			);
@@ -264,7 +251,6 @@
 			);
 			name = AudiobookTagger;
 			packageProductDependencies = (
-				514E156B24061242008FE28A /* ID3TagEditor */,
 			);
 			productName = AudiobookTagger;
 			productReference = 514E1523240610C5008FE28A /* AudiobookTagger.app */;
@@ -318,7 +304,6 @@
 			);
 			mainGroup = 514E151A240610C4008FE28A;
 			packageReferences = (
-				514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
 			);
 			productRefGroup = 514E1524240610C5008FE28A /* Products */;
 			projectDirPath = "";
@@ -405,7 +390,7 @@
 				514E155B24061179008FE28A /* AudiobookFile.swift in Sources */,
 				3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */,
 				514E1527240610C5008FE28A /* AppDelegate.swift in Sources */,
-				3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */,
+				3FFE5BCC2410ACDA00829F45 /* DateExtension.swift in Sources */,
 				514E155924061179008FE28A /* AudiobookType.swift in Sources */,
 				517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */,
 				514E155724061179008FE28A /* WriteTesterViewController.swift in Sources */,
@@ -417,10 +402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5139F3BB2410C7B000469929 /* MP4ChapteringTests.swift in Sources */,
-				514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */,
 				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
-				514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */,
 				514E158124061A70008FE28A /* Bundle.swift in Sources */,
 				3FFE5BC72410A2E400829F45 /* Date.swift in Sources */,
 			);
@@ -555,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudiobookTagger/Info.plist;
@@ -573,6 +556,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudiobookTagger/Info.plist;
@@ -662,25 +646,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/NCrusher74/ID3TagEditor.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		514E156B24061242008FE28A /* ID3TagEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
-			productName = ID3TagEditor;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 514E151B240610C4008FE28A /* Project object */;
 }
