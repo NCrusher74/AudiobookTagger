@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import ID3TagEditor
 import MP42Foundation
 
 class WriteTesterViewController: NSViewController {

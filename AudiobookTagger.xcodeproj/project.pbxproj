@@ -29,7 +29,9 @@
 		517AB42B240A451500D88853 /* testfile-blank.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 517AB429240A451400D88853 /* testfile-blank.m4b */; };
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
 		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
-		51BFCA5F241F32EE00308EEF /* TagLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BFCA5E241F32C900308EEF /* TagLib.framework */; };
+		51BFCA67241F360F00308EEF /* TagLibPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BFCA66241F360F00308EEF /* TagLibPlayground.swift */; };
+		51BFCA68241F363B00308EEF /* TagLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BFCA5E241F32C900308EEF /* TagLib.framework */; };
+		51BFCA69241F363B00308EEF /* TagLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51BFCA5E241F32C900308EEF /* TagLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */,
+				51BFCA69241F363B00308EEF /* TagLib.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +115,7 @@
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
 		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
 		51BFCA56241F32C900308EEF /* TagLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TagLib.xcodeproj; path = TagLib/TagLib.xcodeproj; sourceTree = "<group>"; };
+		51BFCA66241F360F00308EEF /* TagLibPlayground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLibPlayground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51BFCA5F241F32EE00308EEF /* TagLib.framework in Frameworks */,
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
+				51BFCA68241F363B00308EEF /* TagLib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +183,7 @@
 				3FFE5BC62410A2E400829F45 /* Date.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
 				514E1539240610C6008FE28A /* Info.plist */,
+				51BFCA66241F360F00308EEF /* TagLibPlayground.swift */,
 			);
 			path = AudiobookTaggerTests;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
+				51BFCA67241F360F00308EEF /* TagLibPlayground.swift in Sources */,
 				514E158124061A70008FE28A /* Bundle.swift in Sources */,
 				3FFE5BC72410A2E400829F45 /* Date.swift in Sources */,
 			);

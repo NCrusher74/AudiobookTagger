@@ -1,8 +1,6 @@
 
 import Foundation
 
-import ID3TagEditor
-
 extension Date {
 
   internal init?(id3: (year: Int?, month: Int?, day: Int?)) {
