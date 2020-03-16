@@ -33,6 +33,7 @@
 		517AB42B240A451500D88853 /* testfile-blank.m4b in Resources */ = {isa = PBXBuildFile; fileRef = 517AB429240A451400D88853 /* testfile-blank.m4b */; };
 		517AB42E240A471000D88853 /* testfile-blank.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 517AB42D240A471000D88853 /* testfile-blank.mp3 */; };
 		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
+		51BFCA5F241F32EE00308EEF /* TagLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BFCA5E241F32C900308EEF /* TagLib.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = A910B5A318394E900064028F;
 			remoteInfo = mp42;
+		};
+		51BFCA5D241F32C900308EEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51BFCA56241F32C900308EEF /* TagLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = TagLib;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -111,6 +119,7 @@
 		517AB429240A451400D88853 /* testfile-blank.m4b */ = {isa = PBXFileReference; lastKnownFileType = file; path = "testfile-blank.m4b"; sourceTree = "<group>"; };
 		517AB42D240A471000D88853 /* testfile-blank.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "testfile-blank.mp3"; sourceTree = "<group>"; };
 		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
+		51BFCA56241F32C900308EEF /* TagLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TagLib.xcodeproj; path = TagLib/TagLib.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51BFCA5F241F32EE00308EEF /* TagLib.framework in Frameworks */,
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
@@ -198,6 +208,7 @@
 		514E155C240611CD008FE28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51BFCA56241F32C900308EEF /* TagLib.xcodeproj */,
 				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
 			);
 			name = Frameworks;
@@ -223,6 +234,14 @@
 				514E15A12406FBDF008FE28A /* MP42Foundation.framework */,
 				514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */,
 				514E15A52406FBDF008FE28A /* libmp42.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51BFCA57241F32C900308EEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51BFCA5E241F32C900308EEF /* TagLib.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -308,6 +327,10 @@
 					ProductGroup = 514E159B2406FBDF008FE28A /* Products */;
 					ProjectRef = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
 				},
+				{
+					ProductGroup = 51BFCA57241F32C900308EEF /* Products */;
+					ProjectRef = 51BFCA56241F32C900308EEF /* TagLib.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -337,6 +360,13 @@
 			fileType = archive.ar;
 			path = libmp42.a;
 			remoteRef = 514E15A42406FBDF008FE28A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		51BFCA5E241F32C900308EEF /* TagLib.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TagLib.framework;
+			remoteRef = 51BFCA5D241F32C900308EEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
