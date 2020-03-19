@@ -122,17 +122,17 @@ enum AudiobookTag {
             case .series :
                 return .ContentGrouping                         // String
             case .seriesIndex :
-                return .SeriesIndex                             // Int
+                return .UserDefinedTextInformation                             // Int
             case .seriesTotal :
-                return .SeriesCount                             // Int
+                return .UserDefinedTextInformation                            // Int
             case .track :
                 return .TrackPosition                           // String ("Int of Int?")
             case .universe :
-                return .MovementName                            //String
+                return .ITunesMovementName                            //String
             case .universeIndex :
-                return .MovementIndex                           // Int
+                return .ITunesMovementIndex                           // Int
             case .universeTotal :
-                return .MovementCount                           // Int
+                return .ITunesMovementCount                           // Int
         }
     }
     

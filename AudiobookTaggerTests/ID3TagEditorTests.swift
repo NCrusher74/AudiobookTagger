@@ -31,7 +31,7 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertNotNil(id3Tag.frames[.Lyricist])
             XCTAssertNotNil(id3Tag.frames[.MediaType])
             XCTAssertNotNil(id3Tag.frames[.MixArtist])
-            XCTAssertNotNil(id3Tag.frames[.MovementName])
+            XCTAssertNotNil(id3Tag.frames[.ITunesMovementName])
             XCTAssertNotNil(id3Tag.frames[.PodcastCategory])
             XCTAssertNotNil(id3Tag.frames[.PodcastDescription])
             XCTAssertNotNil(id3Tag.frames[.PodcastID])
@@ -41,10 +41,10 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertNotNil(id3Tag.frames[.UnsyncedLyrics])
             XCTAssertNotNil(id3Tag.frames[.TrackPosition])
             XCTAssertNotNil(id3Tag.frames[.DiscPosition])
-            XCTAssertNotNil(id3Tag.frames[.SeriesIndex])
-            XCTAssertNotNil(id3Tag.frames[.MovementIndex])
-            XCTAssertNotNil(id3Tag.frames[.SeriesCount])
-            XCTAssertNotNil(id3Tag.frames[.MovementCount])
+            XCTAssertNotNil(id3Tag.frames[.UserDefinedTextInformation])
+            XCTAssertNotNil(id3Tag.frames[.ITunesMovementIndex])
+            XCTAssertNotNil(id3Tag.frames[.UserDefinedTextInformation])
+            XCTAssertNotNil(id3Tag.frames[.ITunesMovementCount])
             XCTAssertNotNil(id3Tag.frames[.Genre])
             XCTAssertNotNil(id3Tag.frames[.RecordingDayMonth])
             XCTAssertNotNil(id3Tag.frames[.RecordingYear])
@@ -72,7 +72,7 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[.Lyricist] as? ID3FrameWithStringContent)?.content, "Lyricist")
             XCTAssertEqual((id3Tag.frames[.MediaType] as? ID3FrameWithStringContent)?.content, "MediaType")
             XCTAssertEqual((id3Tag.frames[.MixArtist] as? ID3FrameWithStringContent)?.content, "MixArtist")
-            XCTAssertEqual((id3Tag.frames[.MovementName] as? ID3FrameWithStringContent)?.content, "MovementName")
+            XCTAssertEqual((id3Tag.frames[.ITunesMovementName] as? ID3FrameWithStringContent)?.content, "MovementName")
             XCTAssertEqual((id3Tag.frames[.PodcastCategory] as? ID3FrameWithStringContent)?.content, "PodcastCategory")
             XCTAssertEqual((id3Tag.frames[.PodcastDescription] as? ID3FrameWithStringContent)?.content, "PodcastDescription")
             XCTAssertEqual((id3Tag.frames[.PodcastID] as? ID3FrameWithStringContent)?.content, "PodcastID")
@@ -84,10 +84,10 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[.DiscPosition] as? ID3FramePartOfTotal)?.total, 3)
             XCTAssertEqual((id3Tag.frames[.TrackPosition] as? ID3FramePartOfTotal)?.part, 7)
             XCTAssertEqual((id3Tag.frames[.TrackPosition] as? ID3FramePartOfTotal)?.total, 8)
-            XCTAssertEqual((id3Tag.frames[.MovementIndex] as? ID3FrameWithIntegerContent)?.value, 6)
-            XCTAssertEqual((id3Tag.frames[.MovementCount] as? ID3FrameWithIntegerContent)?.value, 13)
-            XCTAssertEqual((id3Tag.frames[.SeriesIndex] as? ID3FrameWithIntegerContent)?.value, 11)
-            XCTAssertEqual((id3Tag.frames[.SeriesCount] as? ID3FrameWithIntegerContent)?.value, 19)
+            XCTAssertEqual((id3Tag.frames[.ITunesMovementIndex] as? ID3FrameWithIntegerContent)?.value, 6)
+            XCTAssertEqual((id3Tag.frames[.ITunesMovementCount] as? ID3FrameWithIntegerContent)?.value, 13)
+            XCTAssertEqual((id3Tag.frames[.UserDefinedTextInformation] as? ID3FrameWithIntegerContent)?.value, 11)
+            XCTAssertEqual((id3Tag.frames[.UserDefinedTextInformation] as? ID3FrameWithIntegerContent)?.value, 19)
             XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.identifier, nil)
             XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.description, "Genre")
             XCTAssertEqual((id3Tag.frames[.RecordingDayMonth] as? ID3FrameRecordingDayMonth)?.day, 01)
@@ -120,11 +120,11 @@ class ID3TagEditorTests: XCTestCase {
                 .Lyricist : ID3FrameWithStringContent(content: "Lyricist"),
                 .MediaType : ID3FrameWithStringContent(content: "MediaType"),
                 .MixArtist : ID3FrameWithStringContent(content: "MixArtist"),
-                .MovementName : ID3FrameWithStringContent(content: "MovementName"),
-                .MovementIndex : ID3FrameWithIntegerContent(value: 6),
-                .MovementCount : ID3FrameWithIntegerContent(value: 13),
-                .SeriesIndex : ID3FrameWithIntegerContent(value: 11),
-                .SeriesCount : ID3FrameWithIntegerContent(value: 19),
+                .ITunesMovementName : ID3FrameWithStringContent(content: "MovementName"),
+                .ITunesMovementIndex : ID3FrameWithIntegerContent(value: 6),
+                .ITunesMovementCount : ID3FrameWithIntegerContent(value: 13),
+                .UserDefinedTextInformation : ID3FrameWithStringContent(content: "11"),
+                .UserDefinedTextInformation : ID3FrameWithStringContent(content: "19"),
                 .PodcastCategory : ID3FrameWithStringContent(content: "PodcastCategory"),
                 .PodcastDescription : ID3FrameWithStringContent(content: "PodcastDescription"),
                 .PodcastID : ID3FrameWithStringContent(content: "PodcastID"),
