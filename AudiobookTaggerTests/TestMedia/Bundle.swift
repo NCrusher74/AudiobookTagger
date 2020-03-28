@@ -14,7 +14,7 @@ extension Bundle {
     /// An audio file for testing.
     static let testAudiobookFile: AudiobookFile = {
       guard let locationOfTestAudioFile = Bundle.testBundle
-        .url(forResource: "testfile-blank", withExtension: "m4b") else {
+        .url(forResource: "mp4-no-meta", withExtension: "m4a") else {
           fatalError("No audio file available for testing.")
       }
         return try! AudiobookFile(from: locationOfTestAudioFile)
@@ -22,45 +22,30 @@ extension Bundle {
 
     
     static let testMp3NoMeta: URL = {
-        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-blank", withExtension: "mp3") else {
+        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "mp3-no-meta", withExtension: "mp3") else {
             fatalError("The mp3 file cannot be found")
         }
         return locationOfTestMp3
     }()
 
     static let testM4bNoMeta: URL = {
-        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "testfile-blank", withExtension: "m4b") else {
-            fatalError("The m4b file cannot be found")
+        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "mp4-no-meta", withExtension: "m4a") else {
+            fatalError("The m4a file cannot be found")
         }
         return locationOfTestM4b
     }()
 
     static let testMp3FullMeta: URL = {
-        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-written", withExtension: "mp3") else {
+        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "mp3-full-meta", withExtension: "mp3") else {
             fatalError("The mp3 file cannot be found")
         }
         return locationOfTestMp3
     }()
 
     static let testM4bFullMeta: URL = {
-        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "testfile-written", withExtension: "m4b") else {
-            fatalError("The m4b file cannot be found")
+        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "mp4-full-meta", withExtension: "m4a") else {
+            fatalError("The m4a file cannot be found")
         }
         return locationOfTestM4b
     }()
-    
-    static let testMp3ChapteredBlank: URL = {
-        guard let locationOfTestMp3 = Bundle.testBundle.url(forResource: "testfile-chaptered", withExtension: "mp3") else {
-            fatalError("The mp3 file cannot be found")
-        }
-        return locationOfTestMp3
-    }()
-
-    static let testM4bChapteredBlank: URL = {
-        guard let locationOfTestM4b = Bundle.testBundle.url(forResource: "testfile-chaptered", withExtension: "m4b") else {
-            fatalError("The m4b file cannot be found")
-        }
-        return locationOfTestM4b
-    }()
-
 }
