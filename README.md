@@ -3,10 +3,7 @@
 
 AudiobookTagger is a package dependency for tagging non-DRMed .m4b, ,m4a, and .mp3 audiobooks with metadata, sometimes repurposing normally-unused metadata tags in order to facilitate library management. However, since the tags can be used for any other form of audio, there's no reason it can't be put to music-tagging purposes as well.
 
-Audiobook Liberator is basically just an audio(book)-centric swift wrapper around **MP42Foundation** for reading and writing .m4a/.m4b metadata, and **ID3Tagger** for reading and writing .mp3 metadata. You can find those projects here:
-https://bitbucket.org/galad87/mp42foundation/src/master/
-and
-https://github.com/chicio/ID3TagEditor
+Audiobook Liberator is basically just an audio(book)-centric swift wrapper around **[MP42Foundation](https://bitbucket.org/galad87/mp42foundation/src/master/)** for reading and writing .m4a/.m4b metadata, and **[ID3Tagger](https://github.com/chicio/ID3TagEditor)** for reading and writing .mp3 metadata. 
 
 My most grateful thanks to the creators of these tools.
 
