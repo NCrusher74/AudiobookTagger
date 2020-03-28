@@ -50,13 +50,6 @@
 			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
 			remoteInfo = MP42Foundation;
 		};
-		514E15A22406FBDF008FE28A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A9B9C204182391DF00416A4E;
-			remoteInfo = MP42FoundationTests;
-		};
 		514E15A42406FBDF008FE28A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
@@ -221,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				514E15A12406FBDF008FE28A /* MP42Foundation.framework */,
-				514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */,
 				514E15A52406FBDF008FE28A /* libmp42.a */,
 			);
 			name = Products;
@@ -276,7 +268,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Nolaine Crusher";
 				TargetAttributes = {
 					514E1522240610C4008FE28A = {
@@ -323,13 +315,6 @@
 			fileType = wrapper.framework;
 			path = MP42Foundation.framework;
 			remoteRef = 514E15A02406FBDF008FE28A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		514E15A32406FBDF008FE28A /* MP42FoundationFoundationTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = MP42FoundationFoundationTests.xctest;
-			remoteRef = 514E15A22406FBDF008FE28A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		514E15A52406FBDF008FE28A /* libmp42.a */ = {
@@ -525,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudiobookTagger/Info.plist;
@@ -543,6 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AudiobookTagger/AudiobookTagger.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AudiobookTagger/Info.plist;
