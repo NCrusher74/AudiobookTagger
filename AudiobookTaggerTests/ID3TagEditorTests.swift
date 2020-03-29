@@ -22,16 +22,12 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[.AlbumArtist] as? ID3FrameWithStringContent)?.content, "AlbumArtist")
             XCTAssertEqual((id3Tag.frames[.Composer] as? ID3FrameWithStringContent)?.content, "Composer")
             XCTAssertEqual((id3Tag.frames[.Conductor] as? ID3FrameWithStringContent)?.content, "Conductor")
-            XCTAssertEqual((id3Tag.frames[.ContentGrouping] as? ID3FrameWithStringContent)?.content, "WorkName")
+            XCTAssertEqual((id3Tag.frames[.ContentGrouping] as? ID3FrameWithStringContent)?.content, "Grouping")
             XCTAssertEqual((id3Tag.frames[.Copyright] as? ID3FrameWithStringContent)?.content, "2020 Copyright")
-            XCTAssertEqual((id3Tag.frames[.EncodedBy] as? ID3FrameWithStringContent)?.content, "EncodedBy")
-            XCTAssertEqual((id3Tag.frames[.EncoderSettings] as? ID3FrameWithStringContent)?.content, "EncoderSettings")
             XCTAssertEqual((id3Tag.frames[.Lyricist] as? ID3FrameWithStringContent)?.content, "Lyricist")
             XCTAssertEqual((id3Tag.frames[.MediaType] as? ID3FrameWithStringContent)?.content, "Audiobook")
-            XCTAssertEqual((id3Tag.frames[.MixArtist] as? ID3FrameWithStringContent)?.content, "Remixer")
             XCTAssertEqual((id3Tag.frames[.ITunesMovementName] as? ID3FrameWithStringContent)?.content, "MovementName")
-            XCTAssertEqual((id3Tag.frames[.PodcastDescription] as? ID3FrameWithStringContent)?.content, "PodcastDescription")
-            XCTAssertEqual((id3Tag.frames[.Publisher] as? ID3FrameWithStringContent)?.content, "Publisher")
+            XCTAssertEqual((id3Tag.frames[.Publisher] as? ID3FrameWithStringContent)?.content, "Label")
             XCTAssertEqual((id3Tag.frames[.Subtitle] as? ID3FrameWithStringContent)?.content, "Description")
             XCTAssertEqual((id3Tag.frames[.DiscPosition] as? ID3FramePartOfTotal)?.part, 3)
             XCTAssertEqual((id3Tag.frames[.DiscPosition] as? ID3FramePartOfTotal)?.total, 4)
@@ -39,6 +35,8 @@ class ID3TagEditorTests: XCTestCase {
             XCTAssertEqual((id3Tag.frames[.TrackPosition] as? ID3FramePartOfTotal)?.total, 2)
             XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.identifier, nil)
             XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.description, "Genre")
+            let txxxFrameDesc = [(id3Tag.frames[.UserDefinedTextInformation] as? ID3FrameUserDefinedText)?.description]
+            XCTAssertTrue(txxxFrameDesc.contains("Sort Series"))
         }
     }
         
