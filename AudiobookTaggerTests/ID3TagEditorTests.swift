@@ -16,29 +16,60 @@ class ID3TagEditorTests: XCTestCase {
         let id3TagEditor = ID3TagEditor()
         if let id3Tag = try id3TagEditor.read(from: Bundle.testMp3FullMeta.path) {
             
-            XCTAssertEqual((id3Tag.frames[.Title] as? ID3FrameWithStringContent)?.content, "Title")
-            XCTAssertEqual((id3Tag.frames[.Album] as? ID3FrameWithStringContent)?.content, "Album")
-            XCTAssertEqual((id3Tag.frames[.Artist] as? ID3FrameWithStringContent)?.content, "Artist")
-            XCTAssertEqual((id3Tag.frames[.AlbumArtist] as? ID3FrameWithStringContent)?.content, "AlbumArtist")
-            XCTAssertEqual((id3Tag.frames[.Composer] as? ID3FrameWithStringContent)?.content, "Composer")
-            XCTAssertEqual((id3Tag.frames[.Conductor] as? ID3FrameWithStringContent)?.content, "Conductor")
-            XCTAssertEqual((id3Tag.frames[.ContentGrouping] as? ID3FrameWithStringContent)?.content, "WorkName")
-            XCTAssertEqual((id3Tag.frames[.Copyright] as? ID3FrameWithStringContent)?.content, "2020 Copyright")
-            XCTAssertEqual((id3Tag.frames[.Lyricist] as? ID3FrameWithStringContent)?.content, "Lyricist")
-            XCTAssertEqual((id3Tag.frames[.MediaType] as? ID3FrameWithStringContent)?.content, "Audiobook")
-            XCTAssertEqual((id3Tag.frames[.ITunesMovementName] as? ID3FrameWithStringContent)?.content, "MovementName")
-            XCTAssertEqual((id3Tag.frames[.Publisher] as? ID3FrameWithStringContent)?.content, "Publisher")
-            XCTAssertEqual((id3Tag.frames[.Subtitle] as? ID3FrameWithStringContent)?.content, "Description")
-            XCTAssertEqual((id3Tag.frames[.DiscPosition] as? ID3FramePartOfTotal)?.part, 3)
-            XCTAssertEqual((id3Tag.frames[.DiscPosition] as? ID3FramePartOfTotal)?.total, 4)
-            XCTAssertEqual((id3Tag.frames[.TrackPosition] as? ID3FramePartOfTotal)?.part, 1)
-            XCTAssertEqual((id3Tag.frames[.TrackPosition] as? ID3FramePartOfTotal)?.total, 2)
-            XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.identifier, nil)
-            XCTAssertEqual((id3Tag.frames[.Genre] as? ID3FrameGenre)?.description, "Genre")
-            let txxxFrame = id3Tag.frames[.UserDefinedTextInformation] as?ID3FrameUserDefinedText
-            //print(txxxFrame?.description) // Sort Series
-            print([txxxFrame?.description].count)
         }
     }
+      
+    func testID3Writing() throws {
+        let id3TagEditor = ID3TagEditor()
+        let mp3Input = Bundle.testMp3NoMeta.path
+        let mp3Output = "/Users/nolainecrusher/Downloads/audiobook_tools/sampleaax/test/id3TagEditor-test-output.mp3"
+
+        let id3Tag = ID3Tag(
+            version: .version4,
+            frames: [
+                .Composer : ID3FrameWithStringContent(content: "Composer"),
+                .Album : ID3FrameWithStringContent(content: "Album"),
+                .AlbumArtist : ID3FrameWithStringContent(content: "AlbumArtist"),
+                .Artist : ID3FrameWithStringContent(content: "Artist"),
+                .ITunesGrouping : ID3FrameWithStringContent(content: "Grouping"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Part", content: "Part"),
+                .ITunesMovementName : ID3FrameWithStringContent(content: "MovementName"),
+                .ITunesMovementCount : ID3FrameWithIntegerContent(value: 8),
+                .ITunesMovementIndex : ID3FrameWithIntegerContent(value: 7),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Series Title", content: "SeriesTitle"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Episode Number", content: "9"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Episode Count", content: "10"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Series Description", content: "SeriesDescription"),
+                .Title : ID3FrameWithStringContent(content: "Title"),
+                .Subtitle : ID3FrameWithStringContent(content: "Subtitle"),
+                .PodcastDescription : ID3FrameWithStringContent(content: "PodcastDescription"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Long Description", content: "LongDescription"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Content Rating", content: "ContentRating"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "ContentAdvisory", content: "Content Advisory"),
+                .PodcastCategory : ID3FrameWithStringContent(content: "PodcastCategory"),
+                .PodcastKeywords : ID3FrameWithStringContent(content: "PodcastKeywords"),
+                .Genre : ID3FrameGenre(genre: nil, description: "Genre"),
+                .MediaType : ID3FrameWithStringContent(content: "Audiobook"),
+                .TrackPosition : ID3FramePartOfTotal(part: 1, total: 2),
+                .DiscPosition : ID3FramePartOfTotal(part: 3, total: 4),
+                .Copyright : ID3FrameWithStringContent(content: "2020 Copyright"),
+                .Publisher : ID3FrameWithStringContent(content: "Publisher"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Acknowledgment", content: "Acknowledgment"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Thanks", content: "Thanks"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Liner Notes", content: "LinerNotes"),
+                .Comment : ID3FrameCommentTypes(language: .und, description: "Credit", content: "Credits"),
+                .UserDefinedTextInformation : ID3FrameUserDefinedText(description: "Series Sort", content: "SortSeries"),
+                .Conductor : ID3FrameWithStringContent(content: "Conductor"),
+                .Lyricist : ID3FrameWithStringContent(content: "Lyricist"),
+                .UnsyncedLyrics : ID3FrameCommentTypes(language: .und, description: "Lyrics", content: "Lyrics"),
+        ])
+
+        try id3TagEditor.write(tag: id3Tag,
+                               to: mp3Input,
+                               andSaveTo: mp3Output)
+
         
+    }
+    
+    
 }
