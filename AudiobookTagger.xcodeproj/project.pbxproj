@@ -10,6 +10,8 @@
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
 		3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* Date.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
+		51148D9C2430B35A002BA9AF /* TagLibKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51148D9B2430B35A002BA9AF /* TagLibKit */; };
+		51148DA02430B3B2002BA9AF /* TagLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51148D9F2430B3B2002BA9AF /* TagLibTests.swift */; };
 		5123476024300CF200F8C135 /* mp3-full-meta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5123475C24300CF100F8C135 /* mp3-full-meta.mp3 */; };
 		5123476124300CF200F8C135 /* mp3-no-meta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5123475D24300CF100F8C135 /* mp3-no-meta.mp3 */; };
 		5123476224300CF200F8C135 /* mp4-no-meta.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 5123475E24300CF200F8C135 /* mp4-no-meta.m4a */; };
@@ -74,6 +76,7 @@
 		3FFE5BC62410A2E400829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3FFE5BCB2410ACDA00829F45 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookFileError.swift; sourceTree = "<group>"; };
+		51148D9F2430B3B2002BA9AF /* TagLibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLibTests.swift; sourceTree = "<group>"; };
 		5123475C24300CF100F8C135 /* mp3-full-meta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mp3-full-meta.mp3"; sourceTree = "<group>"; };
 		5123475D24300CF100F8C135 /* mp3-no-meta.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "mp3-no-meta.mp3"; sourceTree = "<group>"; };
 		5123475E24300CF200F8C135 /* mp4-no-meta.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mp4-no-meta.m4a"; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51148D9C2430B35A002BA9AF /* TagLibKit in Frameworks */,
 				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
 				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
@@ -166,6 +170,7 @@
 				3FFE5BC62410A2E400829F45 /* Date.swift */,
 				514E156D24061579008FE28A /* TestMedia */,
 				514E1539240610C6008FE28A /* Info.plist */,
+				51148D9F2430B3B2002BA9AF /* TagLibTests.swift */,
 			);
 			path = AudiobookTaggerTests;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			name = AudiobookTagger;
 			packageProductDependencies = (
 				514E156B24061242008FE28A /* ID3TagEditor */,
+				51148D9B2430B35A002BA9AF /* TagLibKit */,
 			);
 			productName = AudiobookTagger;
 			productReference = 514E1523240610C5008FE28A /* AudiobookTagger.app */;
@@ -281,6 +287,7 @@
 			mainGroup = 514E151A240610C4008FE28A;
 			packageReferences = (
 				514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
+				51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */,
 			);
 			productRefGroup = 514E1524240610C5008FE28A /* Products */;
 			projectDirPath = "";
@@ -363,6 +370,7 @@
 				517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */,
 				514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */,
 				514E158124061A70008FE28A /* Bundle.swift in Sources */,
+				51148DA02430B3B2002BA9AF /* TagLibTests.swift in Sources */,
 				3FFE5BC72410A2E400829F45 /* Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,6 +615,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NCrusher74/TagLibKit.git";
+			requirement = {
+				branch = "swift-tagger-custom";
+				kind = branch;
+			};
+		};
 		514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NCrusher74/ID3TagEditor.git";
@@ -618,6 +634,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		51148D9B2430B35A002BA9AF /* TagLibKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */;
+			productName = TagLibKit;
+		};
 		514E156B24061242008FE28A /* ID3TagEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */;

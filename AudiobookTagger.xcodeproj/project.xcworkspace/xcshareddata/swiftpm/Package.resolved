@@ -9,6 +9,24 @@
           "revision": "82bb7d4f50393e9593099c49402535a156f0a95a",
           "version": null
         }
+      },
+      {
+        "package": "TagLib",
+        "repositoryURL": "https://github.com/NCrusher74/TagLib-SPM",
+        "state": {
+          "branch": "minor-changes-to-frames",
+          "revision": "b3373530d8b699a919e24171d147fb9999e64947",
+          "version": null
+        }
+      },
+      {
+        "package": "TagLibKit",
+        "repositoryURL": "https://github.com/NCrusher74/TagLibKit.git",
+        "state": {
+          "branch": "swift-tagger-custom",
+          "revision": "83a59ef704cd68cb55bc6347617d89df26b3bcc2",
+          "version": null
+        }
       }
     ]
   },
