@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3FFE5BC72410A2E400829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BC62410A2E400829F45 /* Date.swift */; };
 		3FFE5BCC2410ACDA00829F45 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCB2410ACDA00829F45 /* Date.swift */; };
 		3FFE5BCE2410B12100829F45 /* AudiobookFileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFE5BCD2410B12100829F45 /* AudiobookFileError.swift */; };
-		51148D9C2430B35A002BA9AF /* TagLibKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51148D9B2430B35A002BA9AF /* TagLibKit */; };
 		51148DA02430B3B2002BA9AF /* TagLibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51148D9F2430B3B2002BA9AF /* TagLibTests.swift */; };
 		5123476024300CF200F8C135 /* mp3-full-meta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5123475C24300CF100F8C135 /* mp3-full-meta.mp3 */; };
 		5123476124300CF200F8C135 /* mp3-no-meta.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5123475D24300CF100F8C135 /* mp3-no-meta.mp3 */; };
@@ -20,13 +19,10 @@
 		514E1527240610C5008FE28A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E1526240610C5008FE28A /* AppDelegate.swift */; };
 		514E155924061179008FE28A /* AudiobookType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155324061179008FE28A /* AudiobookType.swift */; };
 		514E155B24061179008FE28A /* AudiobookFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E155624061179008FE28A /* AudiobookFile.swift */; };
-		514E156C24061242008FE28A /* ID3TagEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 514E156B24061242008FE28A /* ID3TagEditor */; };
 		514E157924061661008FE28A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 514E157524061661008FE28A /* README.md */; };
 		514E158124061A70008FE28A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E157F24061A70008FE28A /* Bundle.swift */; };
 		514E158224061A70008FE28A /* ID3TagEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158024061A70008FE28A /* ID3TagEditorTests.swift */; };
 		514E158724062653008FE28A /* MP42FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514E158624062653008FE28A /* MP42FoundationTests.swift */; };
-		514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; };
-		514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514E15A12406FBDF008FE28A /* MP42Foundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		517AB41D2408FB6D00D88853 /* AudiobookTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB41C2408FB6D00D88853 /* AudiobookTag.swift */; };
 		517AB436240A53B600D88853 /* ImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517AB435240A53B600D88853 /* ImplementationTests.swift */; };
 /* End PBXBuildFile section */
@@ -39,20 +35,6 @@
 			remoteGlobalIDString = 514E1522240610C4008FE28A;
 			remoteInfo = AudiobookTagger;
 		};
-		514E15A02406FBDF008FE28A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A9B9C1ED182391DF00416A4E;
-			remoteInfo = MP42Foundation;
-		};
-		514E15A42406FBDF008FE28A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A910B5A318394E900064028F;
-			remoteInfo = mp42;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,7 +44,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				514E15A72406FBF2008FE28A /* MP42Foundation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,7 +72,6 @@
 		514E157F24061A70008FE28A /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		514E158024061A70008FE28A /* ID3TagEditorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ID3TagEditorTests.swift; sourceTree = "<group>"; };
 		514E158624062653008FE28A /* MP42FoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP42FoundationTests.swift; sourceTree = "<group>"; };
-		514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MP42Foundation.xcodeproj; path = mp42foundation/MP42Foundation.xcodeproj; sourceTree = "<group>"; };
 		517AB41C2408FB6D00D88853 /* AudiobookTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudiobookTag.swift; sourceTree = "<group>"; };
 		517AB435240A53B600D88853 /* ImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplementationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,9 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51148D9C2430B35A002BA9AF /* TagLibKit in Frameworks */,
-				514E15A62406FBF2008FE28A /* MP42Foundation.framework in Frameworks */,
-				514E156C24061242008FE28A /* ID3TagEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +147,6 @@
 		514E155C240611CD008FE28A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -185,15 +161,6 @@
 				514E157F24061A70008FE28A /* Bundle.swift */,
 			);
 			path = TestMedia;
-			sourceTree = "<group>";
-		};
-		514E159B2406FBDF008FE28A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				514E15A12406FBDF008FE28A /* MP42Foundation.framework */,
-				514E15A52406FBDF008FE28A /* libmp42.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,8 +181,6 @@
 			);
 			name = AudiobookTagger;
 			packageProductDependencies = (
-				514E156B24061242008FE28A /* ID3TagEditor */,
-				51148D9B2430B35A002BA9AF /* TagLibKit */,
 			);
 			productName = AudiobookTagger;
 			productReference = 514E1523240610C5008FE28A /* AudiobookTagger.app */;
@@ -269,17 +234,9 @@
 			);
 			mainGroup = 514E151A240610C4008FE28A;
 			packageReferences = (
-				514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */,
-				51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */,
 			);
 			productRefGroup = 514E1524240610C5008FE28A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 514E159B2406FBDF008FE28A /* Products */;
-					ProjectRef = 514E159A2406FBDF008FE28A /* MP42Foundation.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				514E1522240610C4008FE28A /* AudiobookTagger */,
@@ -287,23 +244,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		514E15A12406FBDF008FE28A /* MP42Foundation.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MP42Foundation.framework;
-			remoteRef = 514E15A02406FBDF008FE28A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		514E15A52406FBDF008FE28A /* libmp42.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmp42.a;
-			remoteRef = 514E15A42406FBDF008FE28A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		514E1521240610C4008FE28A /* Resources */ = {
@@ -591,38 +531,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/NCrusher74/TagLibKit.git";
-			requirement = {
-				branch = "swift-tagger-custom";
-				kind = branch;
-			};
-		};
-		514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/NCrusher74/ID3TagEditor.git";
-			requirement = {
-				branch = "lyrics-comments-language";
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		51148D9B2430B35A002BA9AF /* TagLibKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 51148D9A2430B35A002BA9AF /* XCRemoteSwiftPackageReference "TagLibKit" */;
-			productName = TagLibKit;
-		};
-		514E156B24061242008FE28A /* ID3TagEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 514E156A24061242008FE28A /* XCRemoteSwiftPackageReference "ID3TagEditor" */;
-			productName = ID3TagEditor;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 514E151B240610C4008FE28A /* Project object */;
 }
