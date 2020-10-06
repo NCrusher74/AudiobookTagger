@@ -2,20 +2,20 @@ import Foundation
 
 let testDirectory = URL(fileURLWithPath: #file)
 
-let mp3Audiobook = testDirectory
-    .deletingLastPathComponent()
-    .appendingPathComponent("TinyStoryBook_librivox")
-    .appendingPathExtension("mp3")
-
-let m4bAudiobook = testDirectory
-    .deletingLastPathComponent()
-    .appendingPathComponent("TinyStoryBook_librivox")
-    .appendingPathExtension("m4b")
-
-let audiobookCover = testDirectory
-    .deletingLastPathComponent()
-    .appendingPathComponent("Tiny_Story_Book_Cover")
-    .appendingPathExtension("jpg")
+//let mp3Audiobook = testDirectory
+//    .deletingLastPathComponent()
+//    .appendingPathComponent("TinyStoryBook_librivox")
+//    .appendingPathExtension("mp3")
+//
+//let m4bAudiobook = testDirectory
+//    .deletingLastPathComponent()
+//    .appendingPathComponent("TinyStoryBook_librivox")
+//    .appendingPathExtension("m4b")
+//
+//let audiobookCover = testDirectory
+//    .deletingLastPathComponent()
+//    .appendingPathComponent("Tiny_Story_Book_Cover")
+//    .appendingPathExtension("jpg")
 
 @available(OSX 10.12, *)
 func localDirectory(fileName: String, fileExtension: String) throws -> URL {
