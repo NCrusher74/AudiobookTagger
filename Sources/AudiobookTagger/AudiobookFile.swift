@@ -15,13 +15,21 @@ import Cocoa
 struct AudiobookFile {
     
     private var audioFile: SwiftTagger.AudioFile
+    public var useComposerForNarrator: Bool
+    private var _useITunesGenres: Bool?
     
     init(from location: URL) throws {
         self.audioFile = try AudioFile(location: location)
+        if audioFile.composer == nil {
+            self.useComposerForNarrator = false
+        } else {
+            self.useComposerForNarrator = true
+        }
     }
     
+    
     //MARK: Write
-    public mutating func write(outputLocation: URL) throws {
+    public func write(outputLocation: URL) throws {
         try audioFile.write(outputLocation: outputLocation)
     }
     
@@ -43,8 +51,8 @@ struct AudiobookFile {
         }
     }
     
-    public mutating func setCoverArt(fileLocation: URL) throws {
-        try audioFile.setCoverArt(imageLocation: fileLocation)
+    public mutating func setCoverArt(imageLocation: URL) throws {
+        try audioFile.setCoverArt(imageLocation: imageLocation)
     }
     
     // MARK: Book Title

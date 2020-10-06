@@ -36,13 +36,44 @@ enum GenreAudible {
     case kids(Kids)
     case teens(Teens)
 
+    var rawValue: String {
+        switch self {
+            case .artsAndEntertainment(let subgenre): return subgenre.rawValue
+            case .biosAndMemoirs(let subgenre): return subgenre.rawValue
+            case .business(let subgenre): return subgenre.rawValue
+            case .classics(let subgenre): return subgenre.rawValue
+            case .eroticaAndSexuality(let subgenre): return subgenre.rawValue
+            case .fiction(let subgenre): return subgenre.rawValue
+            case .history(let subgenre): return subgenre.rawValue
+            case .mysteryAndThrillers(let subgenre): return subgenre.rawValue
+            case .romance(let subgenre): return subgenre.rawValue
+            case .scienceAndTechnology(let subgenre): return subgenre.rawValue
+            case .scifiAndFantasy(let subgenre): return subgenre.rawValue
+            case .selfDevelopment(let subgenre): return subgenre.rawValue
+            case .comdey(let subgenre): return subgenre.rawValue
+            case .newspapersAndMagazines(let subgenre): return subgenre.rawValue
+            case .nostalgiaRadio(let subgenre): return subgenre.rawValue
+            case .radioAndTV(let subgenre): return subgenre.rawValue
+            case .sports(let subgenre): return subgenre.rawValue
+            case .travelAndAdventure(let subgenre): return subgenre.rawValue
+            case .religionAndSpirituality(let subgenre): return subgenre.rawValue
+            case .nonfiction(let subgenre): return subgenre.rawValue
+            case .liveEvents(let subgenre): return subgenre.rawValue
+            case .languageInstruction(let subgenre): return subgenre.rawValue
+            case .dramaAndPoetry(let subgenre): return subgenre.rawValue
+            case .healthAndFitness(let subgenre): return subgenre.rawValue
+            case .kids(let subgenre): return subgenre.rawValue
+            case .teens(let subgenre): return subgenre.rawValue
+        }
+    }
+    
     enum ArtsAndEntertainment: String {
         case celebrityBios = "Arts & Entertainment|Celebrity Bios"
         case interviewsAndPanels = "Arts & Entertainment|Interviews & Panels"
         case music = "Arts & Entertainment|Music"
         case tvAndFilm = "Arts & Entertainment|TV & Film"
         case visualArts = "Arts & Entertainment|Visual Arts"
-        case other = "Other"
+        case artsAndEntertainment = "Arts & Entertainment"
     }
     
     enum BiosAndMemoirs: String {
@@ -54,7 +85,7 @@ enum GenreAudible {
         case politicalFigures = "Bios & Memoirs|Political Figures"
         case religiousFigures = "Bios & Memoirs|Religious Figures"
         case scienceAndTechnologyLeaders = "Bios & Memoirs|Science & Technology Leaders"
-        case other = "Other"
+        case biosAndMemoirs = "Bios & Memoirs"
     }
     
     enum Business: String {
@@ -65,7 +96,7 @@ enum GenreAudible {
         case marketing = "Business|Marketing"
         case financeAndInvesting = "Business|Personal Finance & Investing"
         case sales = "Business|Sales"
-        case other = "Other"
+        case business = "Business"
     }
     
     enum Classics: String {
@@ -79,14 +110,14 @@ enum GenreAudible {
         case poetry = "Classics|Poetry"
         case shakespeare = "Classics|Shakespeare"
         case worldLit = "Classics|World Literature"
-        case other = "Other"
+        case classics = "Classics"
     }
     
     enum EroticaAndSexuality: String {
         case advice = "Erotica & Sexuality|Advice"
         case fiction = "Erotica & Sexuality|Fiction"
         case susieBright = "Erotica & Sexuality|Susie Bright"
-        case other = "Other"
+        case eroticaAndSexuality = "Erotica & Sexuality"
     }
     
     enum Fiction: String {
@@ -101,7 +132,7 @@ enum GenreAudible {
         case religiousInspirational = "Fiction|Religious & Inspirational"
         case shortStoriesAndAnthologies = "Fiction|Short Stories & Anthologies"
         case westerns = "Fiction|Westerns"
-        case other = "Other"
+        case fiction = "Fiction"
     }
     
     enum History: String {
@@ -114,7 +145,7 @@ enum GenreAudible {
         case military = "History|Military"
         case political = "History|Political"
         case world = "History|World"
-        case other = "Other"
+        case history = "History"
     }
     
     enum MysteryAndThrillers: String {
@@ -138,7 +169,7 @@ enum GenreAudible {
         case technothrillers = "Mysteries & Thrillers|Technothrillers"
         case terrorism = "Mysteries & Thrillers|Terrorism"
         case trueCrime = "Mysteries & Thrillers|True Crime"
-        case other = "Other"
+        case mysteryAndThrillers = "MysteryAndThrillers"
     }
     
     enum Romance: String {
@@ -163,7 +194,7 @@ enum GenreAudible {
         case suspense = "Romance|Suspense"
         case transgender = "Romance|Transgender"
         case westerns = "Romance|Westerns"
-        case other = "Other"
+        case romance = "Romance"
     }
     
     enum ScienceAndTechnology: String {
@@ -175,7 +206,7 @@ enum GenreAudible {
         case physics = "Science & Technology|Physics"
         case psychologyAndTheMind = "Science & Technology|Psychology & The Mind"
         case technology = "Science & Technology|Technology"
-        case other = "Other"
+        case scienceAndTechnology = "Science & Technology"
     }
     
     enum SciFiAndFantasy: String {
@@ -198,7 +229,7 @@ enum GenreAudible {
         case superheroes = "Sci-Fi & Fantasy|Superheroes"
         case swordAndSorcery = "Sci-Fi & Fantasy|Sword & Sorcery"
         case timeTravel = "Sci-Fi & Fantasy|Time Travel"
-        case other = "Other"
+        case sciFiAndFantasy = "Sci-Fi & Fantasy"
     }
     
     enum SelfDevelopment: String {
@@ -211,7 +242,7 @@ enum GenreAudible {
         case personalFinance = "Self-Development|Personal Finance"
         case relationships = "Self-Development|Relationships"
         case sexuality = "Self-Development|Sexuality"
-        case other = "Other"
+        case selfDevelopment = "Self-Development"
     }
     
     enum Comedy: String {
@@ -221,7 +252,7 @@ enum GenreAudible {
         case satire = "Comedy|Satire"
         case standUpAndJokes = "Comedy|Stand-Up & Jokes"
         case storytelling = "Comedy|Storytelling"
-        case other = "Other"
+        case comedy = "Comedy"
     }
     
     enum NewspapersAndMagazines: String {
@@ -229,7 +260,7 @@ enum GenreAudible {
         case health = "Newspapers & Magazines|Health"
         case newsAndCulture = "Newspapers & Magazines|News & Culture"
         case scienceAndTechnology = "Newspapers & Magazines|Science & Technology"
-        case other = "Other"
+        case newpapersAndMagazines = "Newspapers & Magazines"
     }
     
     enum NostalgiaRadio: String {
@@ -238,7 +269,7 @@ enum GenreAudible {
         case radioMovies = "Nostalgia Radio|Movies"
         case sciFiAndFantasy = "Nostalgia Radio|Sci-Fi & Fantasy"
         case radioWesterns = "Nostalgia Radio|Westerns"
-        case other = "Other"
+        case nostalgiaRadio = "Nostalgia Radio"
     }
     
     enum RadioAndTV: String {
@@ -249,7 +280,7 @@ enum GenreAudible {
         case howTo = "Radio & TV|How-To"
         case businessAndCulture = "Radio & TV|News, Business, & Culture"
         case scienceAndTechnology = "Radio & TV|Science & Technology"
-        case other = "Other"
+        case radioAndTV = "Radio & TV"
     }
     
     enum Sports: String {
@@ -258,13 +289,14 @@ enum GenreAudible {
         case football = "Sports|Football"
         case golf = "Sports|Golf"
         case other = "Sports|Other"
+        case sports = "Sports"
     }
     
     enum TravelAndAdventure: String {
         case adventureAndExploration = "Travel & Adventure|Adventure & Exploration"
         case essaysAndTravelogues = "Travel & Adventure|Essays & Travelogues"
         case guidedTours = "Travel & Adventure|Guided Tours"
-        case other = "Other"
+        case travelAndAdventure = "Travel & Adventure"
     }
     
     enum ReligionAndSpirituality: String {
@@ -275,7 +307,7 @@ enum GenreAudible {
         case judaism = "Religion & Spirituality|Judaism"
         case religiousThought = "Religion & Spirituality|Religious Thought"
         case sermonsAndMinistries = "Religion & Spirituality|Sermons & Ministries"
-        case other = "Other"
+        case religionAndSpirituality = "Religion & Spirituality"
     }
     
     enum NonFiction: String {
@@ -287,7 +319,7 @@ enum GenreAudible {
         case trueCrime = "Nonfiction|True Crime"
         case unexplainedPhenomena = "Nonfiction|Unexplained Phenomena"
         case worldAffairs = "Nonfiction|World Affairs"
-        case other = "Other"
+        case nonfiction = "Nonfiction"
     }
     
     enum LiveEvents: String {
@@ -297,7 +329,7 @@ enum GenreAudible {
         case personalGrowth = "Live Events|Personal Growth"
         case politics = "Live Events|Politics"
         case storytellers = "Live Events|Storytellers"
-        case other = "Other"
+        case liveEvents = "Live Events"
     }
     
     enum LanguageInstruction: String {
@@ -309,20 +341,21 @@ enum GenreAudible {
         case kidsAndYoungAdults = "Language Instruction|Kids & Young Adults"
         case otherLanguages = "Language Instruction|Other Languages"
         case spanish = "Language Instruction|Spanish"
+        case languageInstruction = "Language Instruction"
     }
     
     enum DramaAndPoetry: String {
         case classicDrama = "Drama & Poetry|Classic Drama"
         case modernDrama = "Drama & Poetry|Modern Drama"
         case poetry = "Drama & Poetry|Poetry"
-        case other = "Other"
+        case dramaAndPoetry = "Drama & Poetry"
     }
     
     enum HealthAndFitness: String {
         case agingWell = "Health & Fitness|Aging Well"
         case dietAndNutrition = "Health & Fitness|Diet & Nutrition"
         case workouts = "Health & Fitness|Workouts"
-        case other = "Other"
+        case healthAndFitness = "Health & Fitness"
     }
     
     enum Kids: String {
@@ -339,7 +372,7 @@ enum GenreAudible {
         case sciFiAndFantasy = "Kids|Sci-Fi & Fantasy"
         case studyGuides = "Kids|Study Guides"
         case withSynchronizedImages = "Kids|With Synchronized Images"
-        case other = "Other"
+        case kids = "Kids"
     }
     
     enum Teens: String {
@@ -358,6 +391,6 @@ enum GenreAudible {
         case series = "Teens|Series"
         case socialIssues = "Teens|Social Issues"
         case studyGuidesAndLanguageLearning = "Teens|Study Guides & Language Learning"
-        case other = "Other"
+        case teens = "Teens"
     }
 }

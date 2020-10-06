@@ -21,6 +21,7 @@ enum GenreITunes {
     }
     
     enum Books {
+        case books
         case nonfiction(NonFiction)
         case romance(Romance)
         case travelAndAdventure(TravelAndAdventure)
@@ -52,6 +53,7 @@ enum GenreITunes {
         
         var rawValue: String {
             switch self {
+                case .books: return "Books"
                 case .nonfiction(let subject): return subject.rawValue
                 case .romance(let genre): return genre.rawValue
                 case .travelAndAdventure(let subject): return subject.rawValue
@@ -84,6 +86,7 @@ enum GenreITunes {
         }
         
         enum ComputersAndInternet: String {
+            case computersAndInternet = "Books|Computers & Internet"
             case computers = "Books|Computers & Internet|Computers"
             case databases = "Books|Computers & Internet|Databases"
             case digitalMedia = "Books|Computers & Internet|Digital Media"
@@ -96,6 +99,7 @@ enum GenreITunes {
         }
         
         enum CookbooksFoodAndWine: String {
+            case cookbooksFoodAndWine = "Books|Cookbooks, Food & Wine"
             case culinaryArts = "Books|Cookbooks, Food & Wine|Culinary Arts"
             case beverages = "Books|Cookbooks, Food & Wine|Beverages"
             case coursesAndDishes = "Books|Cookbooks, Food & Wine|Courses & Dishes"
@@ -109,6 +113,7 @@ enum GenreITunes {
         }
         
         enum History: String {
+            case history = "Books|History"
             case africa = "Books|History|Africa"
             case americas = "Books|History|Americas"
             case ancient = "Books|History|Ancient"
@@ -123,10 +128,12 @@ enum GenreITunes {
         }
         
         enum ChildrenAndTeens {
+            case childrenAndTeens
             case children(Children)
             
             var rawValue: String {
                 switch self {
+                    case .childrenAndTeens: return "Books|Children & Teens"
                     case .children(let subject): return subject.rawValue
                 }
             }
@@ -138,6 +145,7 @@ enum GenreITunes {
         }
         
         enum SelfDevelopment: String {
+            case selfDevelopment = "Books|Self-Development"
             case spirituality = "Books|Self-Development|Spirituality"
             case healthAndFitness = "Books|Self-Development|Health & Fitness"
             case psychology = "Books|Self-Development|Psychology"
@@ -146,6 +154,7 @@ enum GenreITunes {
         }
         
         enum TravelAndAdventure: String {
+            case travelAndAdventure = "Books|Travel & Adventure"
             case africa = "Books|Travel & Adventure|Africa"
             case asia = "Books|Travel & Adventure|Asia"
             case specialtyTravel = "Books|Travel & Adventure|Specialty Travel"
@@ -159,6 +168,7 @@ enum GenreITunes {
         }
         
         enum CommunicationsAndMedia: String {
+            case communicationsAndMedia = "Books|Communications & Media"
             case broadcasting = "Books|Communications & Media|Broadcasting"
             case digitalMedia = "Books|Communications & Media|Digital Media"
             case journalism = "Books|Communications & Media|Journalism"
@@ -169,6 +179,7 @@ enum GenreITunes {
         }
         
         enum BiographiesAndMemoirs: String {
+            case biographiesAndMemoirs = "Books|Biographies & Memoirs"
             case artsAndEntertainment = "Books|Biographies & Memoirs|Arts & Entertainment"
             case business = "Books|Biographies & Memoirs|Business"
             case culinary = "Books|Biographies & Memoirs|Culinary"
@@ -185,6 +196,7 @@ enum GenreITunes {
         }
         
         enum SportsAndOutdoors: String {
+            case sportsAndOutdoors = "Books|Sports & Outdoors"
             case baseball = "Books|Sports & Outdoors|Baseball"
             case basketball = "Books|Sports & Outdoors|Basketball"
             case coaching = "Books|Sports & Outdoors|Coaching"
@@ -211,6 +223,7 @@ enum GenreITunes {
         }
         
         enum Kids {
+            case kids
             case animals
             case basicConcepts(BasicConcepts)
             case biography
@@ -240,6 +253,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .kids: return "Books|Kids"
                     case .animals: return "Books|Kids|Animals"
                     case .basicConcepts(let subject): return subject.rawValue
                     case .biography: return "Books|Kids|Biography"
@@ -270,6 +284,7 @@ enum GenreITunes {
             }
             
             enum ArtsAndEntertainment: String {
+                case artsAndEntertainment = "Books|Kids|Arts & Entertainment"
                 case art = "Books|Kids|Arts & Entertainment|Art"
                 case crafts = "Books|Kids|Arts & Entertainment|Crafts"
                 case music = "Books|Kids|Arts & Entertainment|Music"
@@ -277,6 +292,7 @@ enum GenreITunes {
             }
             
             enum BasicConcepts: String {
+                case basicConcepts = "Books|Kids|Basic Concepts"
                 case alphabet = "Books|Kids|Basic Concepts|Alphabet"
                 case body = "Books|Kids|Basic Concepts|Body"
                 case colors = "Books|Kids|Basic Concepts|Colors"
@@ -293,6 +309,7 @@ enum GenreITunes {
             }
             
             enum Fiction: String {
+                case fiction = "Books|Kids|Fiction"
                 case actionAndAdventure = "Books|Kids|Fiction|Action & Adventure"
                 case animals = "Books|Kids|Fiction|Animals"
                 case classics = "Books|Kids|Fiction|Classics"
@@ -315,6 +332,7 @@ enum GenreITunes {
             }
             
             enum HolidaysAndCelebrations: String {
+                case holidaysAndCelebrations = "Books|Kids|Holidays & Celebrations"
                 case birthdays = "Books|Kids|Holidays & Celebrations|Birthdays"
                 case christmasAndAdvent = "Books|Kids|Holidays & Celebrations|Christmas & Advent"
                 case easterAndLent = "Books|Kids|Holidays & Celebrations|Easter & Lent"
@@ -330,10 +348,12 @@ enum GenreITunes {
             }
             
             enum Humor: String {
+                case humor = "Books|Kids|Humor"
                 case jokesAndRiddles = "Books|Kids|Humor|Jokes & Riddles"
             }
             
             enum LearningToRead: String {
+                case learningToRead = "Books|Kids|Learning to Read"
                 case chapterBooks = "Books|Kids|Learning to Read|Chapter Books"
                 case earlyReaders = "Books|Kids|Learning to Read|Early Readers"
                 case intermediateReaders = "Books|Kids|Learning to Read|Intermediate Readers"
@@ -341,6 +361,7 @@ enum GenreITunes {
         }
         
         enum YoungAdult {
+            case youngAdult
             case animals
             case biography
             case careersAndOccupations
@@ -367,6 +388,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .youngAdult: return "Books|Young Adult"
                     case .animals: return "Books|Young Adult|Animals"
                     case .biography: return "Books|Young Adult|Biography"
                     case .careersAndOccupations: return "Books|Young Adult|Careers & Occupations"
@@ -394,6 +416,7 @@ enum GenreITunes {
             }
             
             enum ArtsAndEntertainment: String {
+                case artsAndEntertainment = "Books|Young Adult|Arts & Entertainment"
                 case art = "Books|Young Adult|Arts & Entertainment|Art"
                 case crafts = "Books|Young Adult|Arts & Entertainment|Crafts"
                 case music = "Books|Young Adult|Arts & Entertainment|Music"
@@ -401,6 +424,7 @@ enum GenreITunes {
             }
             
             enum Fiction: String {
+                case fiction = "Books|Young Adult|Fiction"
                 case actionAndAdventure = "Books|Young Adult|Fiction|Action & Adventure"
                 case animals = "Books|Young Adult|Fiction|Animals"
                 case classics = "Books|Young Adult|Fiction|Classics"
@@ -425,6 +449,7 @@ enum GenreITunes {
             }
             
             enum HolidaysAndCelebrations: String {
+                case holidaysAndCelebrations = "Books|Young Adult|Holidays & Celebrations"
                 case birthdays = "Books|Young Adult|Holidays & Celebrations|Birthdays"
                 case christmasAndAdvent = "Books|Young Adult|Holidays & Celebrations|Christmas & Advent"
                 case easterAndLent = "Books|Young Adult|Holidays & Celebrations|Easter & Lent"
@@ -440,11 +465,13 @@ enum GenreITunes {
             }
             
             enum Humor: String {
+                case humor = "Books|Young Adult|Humor"
                 case jokesAndRiddles = "Books|Young Adult|Humor|Jokes & Riddles"
             }
         }
         
         enum ArtsAndEntertainment {
+            case artsAndEntertainment
             case theater
             case games
             case music
@@ -463,11 +490,13 @@ enum GenreITunes {
             case design
             
             enum ArtAndArchitecture: String {
+                case artAndArchitecture = "Books|Arts & Entertainment|Art & Architecture"
                 case urbanPlanning = "Books|Arts & Entertainment|Art & Architecture|Urban Planning"
             }
             
             var rawValue: String {
                 switch self {
+                    case .artsAndEntertainment: return "Books|Arts & Entertainment"
                     case .theater: return "Books|Arts & Entertainment|Theater"
                     case .games: return "Books|Arts & Entertainment|Games"
                     case .music: return "Books|Arts & Entertainment|Music"
@@ -489,6 +518,7 @@ enum GenreITunes {
         }
         
         enum BusinessAndPersonalFinance: String {
+            case businessAndPersonalFinance = "Books|Business & Personal Finance"
             case industriesAndProfessions = "Books|Business & Personal Finance|Industries & Professions"
             case marketingandSales = "Books|Business & Personal Finance|Marketing & Sales"
             case smallBusinessAndEntrepreneurship = "Books|Business & Personal Finance|Small Business & Entrepreneurship"
@@ -505,10 +535,12 @@ enum GenreITunes {
         }
         
         enum Humor: String {
+            case humor = "Books|Humor"
             case jokesandRiddles = "Books|Humor|Jokes & Riddles"
         }
         
         enum ReligionAndSpirituality: String {
+            case religionAndSpirituality = "Books|Religion & Spirituality"
             case bibleStudies = "Books|Religion & Spirituality|Bible Studies"
             case buddhism = "Books|Religion & Spirituality|Buddhism"
             case christianity = "Books|Religion & Spirituality|Christianity"
@@ -520,6 +552,7 @@ enum GenreITunes {
         }
         
         enum MysteryAndThrillers: String {
+            case mysteryAndThrillers = "Books|Mysteries & Thrillers"
             case hardBoiled = "Books|Mysteries & Thrillers|Hard-Boiled"
             case historical = "Books|Mysteries & Thrillers|Historical"
             case policeProcedural = "Books|Mysteries & Thrillers|Police Procedural"
@@ -535,12 +568,14 @@ enum GenreITunes {
             case fantasy(Fantasy)
             
             enum ScienceFictionAndLiterature: String {
+                case scienceFictionAndLiterature = "Books|Sci-Fi & Fantasy|Science Fiction & Literature"
                 case adventure = "Books|Sci-Fi & Fantasy|Science Fiction & Literature|Adventure"
                 case highTech = "Books|Sci-Fi & Fantasy|Science Fiction & Literature|High Tech"
                 case shortStories = "Books|Sci-Fi & Fantasy|Science Fiction & Literature|Short Stories"
             }
             
             enum Fantasy: String {
+                case fantasy = "Books|Sci-Fi & Fantasy|Fantasy"
                 case contemporary = "Books|Sci-Fi & Fantasy|Fantasy|Contemporary"
                 case epic = "Books|Sci-Fi & Fantasy|Fantasy|Epic"
                 case historical = "Books|Sci-Fi & Fantasy|Fantasy|Historical"
@@ -551,7 +586,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
-                    case .scienceFiction: return "Science Fiction"
+                    case .scienceFiction: return "Books|Sci-Fi & Fantasy|Science Fiction"
                     case .scienceFictionAndLiterature(let genre): return genre.rawValue
                     case .fantasy(let genre): return genre.rawValue
                 }
@@ -559,6 +594,7 @@ enum GenreITunes {
         }
         
         enum PoliticalAndCurrentEvents: String {
+            case politicalAndCurrentEvents = "Books|Politics & Current Events"
             case currentEvents = "Books|Politics & Current Events|Current Events"
             case foreignPolicyAndInternationalRelations = "Books|Politics & Current Events|Foreign Policy & International Relations"
             case localGovernment = "Books|Politics & Current Events|Local Government"
@@ -569,6 +605,7 @@ enum GenreITunes {
         }
         
         enum Reference {
+            case reference
             case almanacsAndYearbooks
             case atlasesAndMaps
             case catalogsAndDirectories
@@ -585,6 +622,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .reference: return "Books|Reference"
                     case .almanacsAndYearbooks: return "Books|Reference|Almanacs & Yearbooks"
                     case .atlasesAndMaps: return "Books|Reference|Atlases & Maps"
                     case .catalogsAndDirectories: return "Books|Reference|Catalogs & Directories"
@@ -602,6 +640,7 @@ enum GenreITunes {
             }
             
             enum ForeignLanguages: String {
+                case foreignLanguages = "Books|Reference|Foreign Languages"
                 case arabic = "Books|Reference|Foreign Languages|Arabic"
                 case bilingualEditions = "Books|Reference|Foreign Languages|Bilingual Editions"
                 case africanLanguages = "Books|Reference|Foreign Languages|African Languages"
@@ -625,6 +664,7 @@ enum GenreITunes {
         }
         
         enum Romance: String {
+            case romance = "Books|Romance"
             case eroticRomance = "Books|Romance|Erotic Romance"
             case contemporary = "Books|Romance|Contemporary"
             case paranormal = "Books|Romance|Paranormal"
@@ -643,6 +683,7 @@ enum GenreITunes {
         }
         
         enum FictionAndLiterature: String {
+            case fictionAndLiterature = "Books|Fiction & Literature"
             case actionAndAdventure = "Books|Fiction & Literature|Action & Adventure"
             case africanAmerican = "Books|Fiction & Literature|African American"
             case religious = "Books|Fiction & Literature|Religious"
@@ -666,6 +707,7 @@ enum GenreITunes {
         }
         
         enum ScienceAndNature {
+            case scienceAndNature
             case nature
             case astronomy
             case chemistry
@@ -686,6 +728,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .scienceAndNature: return "Books|Science & Nature"
                     case .nature: return "Books|Science & Nature|Nature"
                     case .astronomy: return "Books|Science & Nature|Astronomy"
                     case .chemistry: return "Books|Science & Nature|Chemistry"
@@ -707,6 +750,7 @@ enum GenreITunes {
             }
             
             enum Mathematics: String {
+                case mathematics = "Books|Science & Nature|Mathematics"
                 case advancedMathematics = "Books|Science & Nature|Mathematics|Advanced Mathematics"
                 case algebra = "Books|Science & Nature|Mathematics|Algebra"
                 case arithmetic = "Books|Science & Nature|Mathematics|Arithmetic"
@@ -717,6 +761,7 @@ enum GenreITunes {
         }
         
         enum LifestyleAndHome: String {
+            case lifestyleAndHome = "Books|Lifestyle & Home"
             case antiquesAndCollectibles = "Books|Lifestyle & Home|Antiques & Collectibles"
             case craftsAndHobbies = "Books|Lifestyle & Home|Crafts & Hobbies"
             case gardening = "Books|Lifestyle & Home|Gardening"
@@ -724,6 +769,7 @@ enum GenreITunes {
         }
         
         enum NonFiction {
+            case nonfiction
             case familyAndRelationships(FamilyAndRelationships)
             case philosophy(Philosophy)
             case socialScience(SocialScience)
@@ -732,6 +778,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .nonfiction: return "Books|Nonfiction"
                     case .familyAndRelationships(let subject): return subject.rawValue
                     case .philosophy(let subject): return subject.rawValue
                     case .socialScience(let subject): return subject.rawValue
@@ -741,11 +788,13 @@ enum GenreITunes {
             }
             
             enum FamilyAndRelationships: String {
+                case familyAndRelationships = "Books|Nonfiction|Family & Relationships"
                 case familyAndChildcare = "Books|Nonfiction|Family & Relationships|Family & Childcare"
                 case loveAndRomance = "Books|Nonfiction|Family & Relationships|Love & Romance"
             }
             
             enum Philosophy: String {
+                case philosophy = "Books|Nonfiction|Philosophy"
                 case aesthetics = "Books|Nonfiction|Philosophy|Aesthetics"
                 case epistemology = "Books|Nonfiction|Philosophy|Epistemology"
                 case ethics = "Books|Nonfiction|Philosophy|Ethics"
@@ -760,6 +809,7 @@ enum GenreITunes {
             }
             
             enum SocialScience: String {
+                case socialScience = "Books|Nonfiction|Social Science"
                 case anthropology = "Books|Nonfiction|Social Science|Anthropology"
                 case archaeology = "Books|Nonfiction|Social Science|Archaeology"
                 case civics = "Books|Nonfiction|Social Science|Civics"
@@ -772,6 +822,7 @@ enum GenreITunes {
         }
         
         enum ProfessionalAndTechnical {
+            case professionalAndTechnical
             case design
             case education(Education)
             case engineering(Engineering)
@@ -780,6 +831,7 @@ enum GenreITunes {
             
             var rawValue: String {
                 switch self {
+                    case .professionalAndTechnical: return "Books|Professional & Technical"
                     case .design: return "Books|Professional & Technical|Design"
                     case .education(let subject): return subject.rawValue
                     case .engineering(let subject): return subject.rawValue
@@ -789,9 +841,11 @@ enum GenreITunes {
             }
             
             enum Education: String {
-                case ProfessionalandTechnicalEducationLanguageArtsandDisciplines = "Books|Professional & Technical|Education|Language Arts & Disciplines"
+                case education = "Books|Professional & Technical|Education"
+                case languageArtsandDisciplines = "Books|Professional & Technical|Education|Language Arts & Disciplines"
             }
             enum Medical: String {
+                case medical = "Books|Professional & Technical|Medical"
                 case veterinary = "Books|Professional & Technical|Medical|Veterinary"
                 case neuroscience = "Books|Professional & Technical|Medical|Neuroscience"
                 case medicalImmunology = "Books|Professional & Technical|Medical|Immunology"
@@ -807,6 +861,7 @@ enum GenreITunes {
             }
             
             enum Engineering: String {
+                case engineering = "Books|Professional & Technical|Engineering"
                 case aeronautics = "Books|Professional & Technical|Engineering|Aeronautics"
                 case chemicalAndPetroleumEngineering = "Books|Professional & Technical|Engineering|Chemical & Petroleum Engineering"
                 case civilEngineering = "Books|Professional & Technical|Engineering|Civil Engineering"
@@ -819,12 +874,14 @@ enum GenreITunes {
         }
         
         enum ComicsAndGraphicNovels{
+            case comicsAndGraphicNovels
             case graphicNovels
             case manga(Manga)
             case comics
             
             var rawValue: String {
                 switch self {
+                    case .comicsAndGraphicNovels: return "Books|Comics & Graphic Novels"
                     case .graphicNovels: return "Books|Comics & Graphic Novels|Graphic Novels"
                     case .manga(let genre): return genre.rawValue
                     case .comics: return "Books|Comics & Graphic Novels|Comics"
@@ -832,6 +889,7 @@ enum GenreITunes {
             }
             
             enum Manga: String {
+                case manga = "Books|Comics & Graphic Novels|Manga"
                 case schoolDrama = "Books|Comics & Graphic Novels|Manga|School Drama"
                 case humanDrama = "Books|Comics & Graphic Novels|Manga|Human Drama"
                 case familyDrama = "Books|Comics & Graphic Novels|Manga|Family Drama"
@@ -865,6 +923,7 @@ enum GenreITunes {
     }
     
     enum Audiobooks: String {
+        case audiobooks = "Audiobooks"
         case fiction = "Audiobooks|Fiction"
         case artsAndEntertainment = "Audiobooks|Arts & Entertainment"
         case biographiesAndMemoirs = "Audiobooks|Biographies & Memoirs"
@@ -894,6 +953,7 @@ enum GenreITunes {
     }
     
     enum Textbooks {
+        case textbooks
         case artsAndEntertainment(ArtsAndEntertainment)
         case biographiesandMemoirs
         case businessAndPersonalFinance(BusinessAndPersonalFinance)
@@ -931,6 +991,7 @@ enum GenreITunes {
         
         var rawValue: String {
             switch self {
+                case .textbooks: return "Textbooks"
                 case .biographiesandMemoirs: return "Textbooks|Biographies & Memoirs"
                 case .humor: return "Textbooks|Humor"
                 case .parenting: return "Textbooks|Parenting"
@@ -940,6 +1001,7 @@ enum GenreITunes {
         }
         
         enum ArtsAndEntertainment: String {
+            case artsAndEntertainment = "Textbooks|Arts & Entertainment"
             case artAndArchitecture = "Textbooks|Arts & Entertainment|Art & Architecture"
             case artAndArchitectureUrbanPlanning = "Textbooks|Arts & Entertainment|Art & Architecture|Urban Planning"
             case artHistory = "Textbooks|Arts & Entertainment|Art History"
@@ -959,6 +1021,7 @@ enum GenreITunes {
         }
         
         enum BusinessAndPersonalFinance: String {
+            case businessAndPersonalFinance = "Textbooks|Business & Personal Finance"
             case accounting = "Textbooks|Business & Personal Finance|Accounting"
             case careers = "Textbooks|Business & Personal Finance|Careers"
             case economics = "Textbooks|Business & Personal Finance|Economics"
@@ -975,16 +1038,19 @@ enum GenreITunes {
         }
         
         enum ChildrenAndTeens: String {
+            case childrenAndTeens = "Textbooks|Children & Teens"
             case fiction = "Textbooks|Children & Teens|Fiction"
             case nonfiction = "Textbooks|Children & Teens|Nonfiction"
         }
         
         enum ComicsAndGraphicNovels: String {
+            case comicsAndGraphicNovels = "Textbooks|Comics & Graphic Novels"
             case comics = "Textbooks|Comics & Graphic Novels|Comics"
             case graphicNovels = "Textbooks|Comics & Graphic Novels|Graphic Novels"
             case manga = "Textbooks|Comics & Graphic Novels|Manga"
         }
         enum CommunicationsAndMedia: String {
+            case communicationsAndMedia = "Textbooks|Communications & Media"
             case broadcasting = "Textbooks|Communications & Media|Broadcasting"
             case digitalMedia = "Textbooks|Communications & Media|Digital Media"
             case journalism = "Textbooks|Communications & Media|Journalism"
@@ -995,6 +1061,7 @@ enum GenreITunes {
         }
         
         enum ComputersAndInternet: String {
+            case computersAndInternet = "Textbooks|Computers & Internet"
             case computers = "Textbooks|Computers & Internet|Computers"
             case databases = "Textbooks|Computers & Internet|Databases"
             case digitalMedia = "Textbooks|Computers & Internet|Digital Media"
@@ -1007,6 +1074,7 @@ enum GenreITunes {
         }
         
         enum CookbooksFoodAndWine: String {
+            case cookbooksFoodAndWine = "Textbooks|Cookbooks, Food & Wine"
             case beverages = "Textbooks|Cookbooks, Food & Wine|Beverages"
             case coursesAndDishes = "Textbooks|Cookbooks, Food & Wine|Courses & Dishes"
             case culinaryArts = "Textbooks|Cookbooks, Food & Wine|Culinary Arts"
@@ -1019,6 +1087,7 @@ enum GenreITunes {
         }
         
         enum Engineering: String {
+            case engineering = ""
             case aeronautics = "Textbooks|Engineering|Aeronautics"
             case chemicalAndPetroleumEngineering = "Textbooks|Engineering|Chemical & Petroleum Engineering"
             case civilEngineering = "Textbooks|Engineering|Civil Engineering"
