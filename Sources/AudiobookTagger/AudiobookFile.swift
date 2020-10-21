@@ -8,15 +8,16 @@
 
 import Foundation
 import SwiftTagger
+import SwiftLanguageAndLocaleCodes
+import iTunesGenreID
 import Cocoa
 
 /// An audiobook file represents an audiobook file somewhere on disk.
 @available(OSX 10.13, *)
 struct AudiobookFile {
     
-    private var audioFile: SwiftTagger.AudioFile
+    var audioFile: SwiftTagger.AudioFile
     public var useComposerForNarrator: Bool
-    private var _useITunesGenres: Bool?
     
     init(from location: URL) throws {
         self.audioFile = try AudioFile(location: location)
@@ -27,18 +28,48 @@ struct AudiobookFile {
         }
     }
     
-    
     //MARK: Write
     public func write(outputLocation: URL) throws {
         try audioFile.write(outputLocation: outputLocation)
     }
     
-    // MARK: Author
+    // MARK: - Author
     /// gets and sets the author(s) of the audiobook as a string
     /// uses the Artist tag for both MP3 and MP4
     public var author: String? {
         get { audioFile.artist }
         set { audioFile.artist = newValue }
+    }
+    
+    // MARK: Narrator
+    /// gets and sets the narrators of the audiobook as a string
+    /// if `useComposerForNarrator` is true, will use `composer` for both MP3 and MP4, otherwise, will use the Audible @nrt atom for MP4 and an entry in the `musicianCreditsList` for `narrator` for MP3
+    public var narrator: String? {
+        get {
+            switch useComposerForNarrator {
+                case true:
+                    return audioFile.composer
+                case false:
+                    return audioFile.narrator
+            }
+        }
+        set {
+            if let new = newValue {
+                switch useComposerForNarrator {
+                    case true:
+                        audioFile.composer = new
+                    case false:
+                        audioFile.narrator = new
+                }
+            } else {
+                switch useComposerForNarrator {
+                    case true:
+                        audioFile.composer = nil
+                    case false:
+                        audioFile.narrator = nil
+                }
+            }
+        }
     }
     
     // MARK: Cover
@@ -74,19 +105,44 @@ struct AudiobookFile {
     // MARK: Category
     /// gets and set a category tag as a string
     /// uses the Podcast Category tag for MP3 and Category for MP4
-    public var category: String? {
-        get { audioFile.podcastCategory }
-        set { audioFile.podcastCategory = newValue }
+    public var category: AudiobookType? {
+        get {
+            if let string = audioFile.podcastCategory {
+                if let category = AudiobookType(rawValue: string) {
+                    return category
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let new = newValue {
+                audioFile.podcastCategory = new.rawValue
+            } else {
+                audioFile.podcastCategory = nil
+            }
+        }
     }
 
     // MARK: Copyright
-    /// gets and sets the copyright of the audiobook as a string
+    /// gets and sets the text copyright of the audiobook as a string
+    /// this is the copyright for the text, i.e. the actual written book
     /// uses the Copyright tag for both MP3 and MP4
-    public var copyright: String? {
+    public var textCopyright: String? {
         get { audioFile.copyright }
         set { audioFile.copyright = newValue }
     }
 
+    /// gets and sets the production copyright of the audiobook as a string
+    /// this is the copyright for the audiobook recording
+    /// uses the Recording Copyright tag for both MP3 and MP4. For MP3, this is also known as the "Produced Notice" (`TPRO`) frame. for MP4, this is also known as the "Phonogram Rights" (`@phg`) atom
+    public var productionCopyright: String? {
+        get { audioFile.recordingCopyright }
+        set { audioFile.recordingCopyright = newValue }
+    }
+    
     // MARK: Description
     /// returns a brief description of the audiobook as a string
     /// uses the Comment tag for MP4 and Podcast Description tag for MP3
@@ -188,10 +244,10 @@ struct AudiobookFile {
         set { audioFile.seriesSeason = newValue }
     }
 
-    // MARK: Part Title
+    // MARK: Volume Title
     /// gets and sets a string tag for the title of the current volume of a multi-file/disc work
     /// uses the Title tag for both MP3 and MP4
-    public var partTitle: String? {
+    public var volumeTitle: String? {
         get { audioFile.title }
         set { audioFile.title = newValue }
     }
@@ -277,5 +333,36 @@ struct AudiobookFile {
     public var track: (track: Int, totalTracks: Int?) {
         get { audioFile.trackNumber }
         set { audioFile.trackNumber = newValue }
+    }
+    
+    public var genre: (predefined: Genre?, customGenre: String?) {
+        get {
+            var pre: Genre? = nil
+            if let predefined = audioFile.genrePredefined.mp4 {
+                pre = predefined
+            }
+            var custom: String? = nil
+            if let customGenre = audioFile.genreCustom {
+                custom = customGenre
+            }
+            return (pre, custom)
+        }
+        set {
+            if let pre = newValue.predefined {
+                audioFile.genrePredefined.mp4 = pre
+            } else {
+                audioFile.genrePredefined.mp4 = nil
+            }
+            if let custom = newValue.customGenre {
+                audioFile.genreCustom = custom
+            } else {
+                audioFile.genreCustom = nil
+            }
+        }
+    }
+    
+    public var languages: [Language] {
+        get { return audioFile.language }
+        set { audioFile.language = newValue }
     }
 }

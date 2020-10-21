@@ -14,7 +14,7 @@ let package = Package(
         .package(
             name: "SwiftTagger",
             url: "https://github.com/NCrusher74/SwiftTagger",
-            from: "0.3.0"),
+            from: "0.4.0"),
     ],
     targets: [
         .target(
