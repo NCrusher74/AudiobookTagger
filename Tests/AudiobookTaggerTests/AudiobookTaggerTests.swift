@@ -16,7 +16,7 @@ final class AudiobookTaggerTests: XCTestCase {
         formatter.timeZone = TimeZone(secondsFromGMT: 0) ?? .current
         return formatter.date(from: dateString)
     }()
-    let category: AudiobookType = .narrated
+    let audiobookType: AudiobookType = .narrated
     let copyright = "2020 me, myself and I"
     let productionCopyright = "2020 me, myself and I"
     let audiobookDescription = "Description"
@@ -43,7 +43,7 @@ final class AudiobookTaggerTests: XCTestCase {
     func testMP3() throws {
         var file = try AudiobookFile(from: sampleMp3)
         file.author = author
-        file.category = category
+        file.audiobookType = audiobookType
         file.textCopyright = copyright
         file.productionCopyright = productionCopyright
         file.description = audiobookDescription
@@ -77,7 +77,7 @@ final class AudiobookTaggerTests: XCTestCase {
         
         let output = try AudiobookFile(from: outputURL)
         XCTAssertEqual(output.author, author)
-        XCTAssertEqual(output.category, category)
+        XCTAssertEqual(output.audiobookType, audiobookType)
         XCTAssertEqual(output.textCopyright, "© 2020 me, myself and I")
         XCTAssertEqual(output.productionCopyright, "℗ 2020 me, myself and I")
         XCTAssertNotNil(output.coverArt)
@@ -109,7 +109,7 @@ final class AudiobookTaggerTests: XCTestCase {
     func testMP4() throws {
         var file = try AudiobookFile(from: sampleMp4)
         file.author = author
-        file.category = category
+        file.audiobookType = audiobookType
         file.textCopyright = copyright
         file.productionCopyright = productionCopyright
         file.description = audiobookDescription
@@ -143,7 +143,7 @@ final class AudiobookTaggerTests: XCTestCase {
         
         let output = try AudiobookFile(from: outputURL)
         XCTAssertEqual(output.author, author)
-        XCTAssertEqual(output.category, category)
+        XCTAssertEqual(output.audiobookType, audiobookType)
         XCTAssertEqual(output.textCopyright, "© 2020 me, myself and I")
         XCTAssertEqual(output.productionCopyright, "℗ 2020 me, myself and I")
         XCTAssertNotNil(output.coverArt)

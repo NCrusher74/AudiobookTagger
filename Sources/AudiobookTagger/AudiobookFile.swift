@@ -86,6 +86,10 @@ struct AudiobookFile {
         try audioFile.setCoverArt(imageLocation: imageLocation)
     }
     
+    public mutating func removeCoverArt() throws {
+        try audioFile.removeCoverArt()
+    }
+    
     // MARK: Book Title
     /// gets and sets the title of the audiobook as a string
     /// uses the Album tag for both MP3 and MP4
@@ -102,10 +106,11 @@ struct AudiobookFile {
         set { audioFile.releaseDateTime = newValue }
     }
     
-    // MARK: Category
+    // MARK: Audiobook Tyoe
     /// gets and set a category tag as a string
+    /// This describes the style of the audiobook, i.e. single narrator, full cast. graphic audio, etc
     /// uses the Podcast Category tag for MP3 and Category for MP4
-    public var category: AudiobookType? {
+    public var audiobookType: AudiobookType? {
         get {
             if let string = audioFile.podcastCategory {
                 if let category = AudiobookType(rawValue: string) {
@@ -364,5 +369,21 @@ struct AudiobookFile {
     public var languages: [Language] {
         get { return audioFile.language }
         set { audioFile.language = newValue }
+    }
+    
+    public var chapterList: [(startTime: Int, title: String)] {
+        return audioFile.chapterList
+    }
+    
+    public mutating func addChapter(startTime: Int, title: String) {
+        audioFile.addChapter(startTime: startTime, title: title)
+    }
+    
+    public mutating func removeChapter(startTime: Int) {
+        audioFile.removeChapter(startTime: startTime)
+    }
+    
+    public mutating func removeAllChapters() {
+        audioFile.removeAllChapters()
     }
 }
