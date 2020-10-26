@@ -106,8 +106,10 @@ public struct AudiobookFile {
     public var releaseDateTime: Date? {
         get {
             if let date = audioFile.releaseDateTime {
+                print("RELEASE DATE: \(date)")
                 return date
             } else if let date = audioFile.recordingDateTime {
+                print("RECORDING DATE: \(date)")
                 return date
             } else {
                 return nil
