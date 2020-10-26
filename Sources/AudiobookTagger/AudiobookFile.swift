@@ -104,7 +104,15 @@ public struct AudiobookFile {
     /// gets and sets the release date of the audiobook as a date
     /// uses the release date tag for MP4 and recording date tag for MP3
     public var releaseDateTime: Date? {
-        get { audioFile.releaseDateTime }
+        get {
+            if let date = audioFile.releaseDateTime {
+                return date
+            } else if let date = audioFile.recordingDateTime {
+                return date
+            } else {
+                return nil
+            }
+        }
         set { audioFile.releaseDateTime = newValue }
     }
     
