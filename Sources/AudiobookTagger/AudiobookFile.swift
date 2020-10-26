@@ -18,9 +18,11 @@ public struct AudiobookFile {
     
     public var audioFile: SwiftTagger.AudioFile
     public var useComposerForNarrator: Bool
+    public let duration: Double
     
     public init(from location: URL) throws {
         self.audioFile = try AudioFile(location: location)
+        self.duration = Double(audioFile.length ?? 0)
         if audioFile.composer == nil {
             self.useComposerForNarrator = false
         } else {
