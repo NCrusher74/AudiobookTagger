@@ -1,6 +1,8 @@
 # AudiobookTagger
 2020 Nolaine Crusher
 
+### If you find this library helpful, please consider [donating](https://paypal.me/NCrusher74)
+
 AudiobookTagger is a library for tagging non-DRMed .m4b, ,m4a, and .mp3 audiobooks with metadata, sometimes repurposing normally-unused metadata tags in order to facilitate library management. For more general audio file tagging, please check out SwiftTagger.
 
 **METADATA OPTIONS**:
