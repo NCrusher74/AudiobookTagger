@@ -10,7 +10,7 @@ import Foundation
 import SwiftTagger
 import SwiftLanguageAndLocaleCodes
 import iTunesGenreID
-import Cocoa
+import SwiftConvenienceExtensions
 
 /// An audiobook file represents an audiobook file somewhere on disk.
 @available(OSX 10.13, *)
@@ -76,7 +76,7 @@ public struct AudiobookFile {
     
     // MARK: Cover
     /// gets and sets the cover art of the audiobook
-    public var coverArt: NSImage? {
+    public var coverArt: NativeImage? {
         if let art = audioFile.coverArt {
             return art
         } else {

@@ -162,7 +162,7 @@ Available tags:
 * `mediaKind` // iTunes `stik` atom
 * `audiobookType`
 
-* `coverArt` // returns art as `NSImage`
+* `coverArt` // returns art as `NSImage` or `UIImage`
 * `setCoverArt(imageLocation: URL)` // adds cover art from location of image file
 * `removeCoverArt()`
 
