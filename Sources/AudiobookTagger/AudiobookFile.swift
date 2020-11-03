@@ -100,6 +100,19 @@ public struct AudiobookFile {
         set { audioFile.album = newValue }
     }
 
+    public var subtitle: String? {
+        get { audioFile.subtitle }
+        set { audioFile.subtitle = newValue }
+    }
+
+    // MARK: Volume Title
+    /// gets and sets a string tag for the title of the current volume of a multi-file/disc work
+    /// uses the Title tag for both MP3 and MP4
+    public var volumeTitle: String? {
+        get { audioFile.title }
+        set { audioFile.title = newValue }
+    }
+    
     // MARK: ReleaseDate
     /// gets and sets the release date of the audiobook as a date
     /// uses the release date tag for MP4 and recording date tag for MP3
@@ -257,14 +270,6 @@ public struct AudiobookFile {
     private var seriesTotal: Int? {
         get { audioFile.seriesSeason }
         set { audioFile.seriesSeason = newValue }
-    }
-
-    // MARK: Volume Title
-    /// gets and sets a string tag for the title of the current volume of a multi-file/disc work
-    /// uses the Title tag for both MP3 and MP4
-    public var volumeTitle: String? {
-        get { audioFile.title }
-        set { audioFile.title = newValue }
     }
 
     // MARK: Summary
