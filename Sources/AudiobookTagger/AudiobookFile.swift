@@ -13,7 +13,7 @@ import iTunesGenreID
 import SwiftConvenienceExtensions
 
 /// An audiobook file represents an audiobook file somewhere on disk.
-@available(OSX 10.13, *)
+@available(OSX 10.13, iOS 10.0, *)
 public struct AudiobookFile {
     
     public var audioFile: SwiftTagger.AudioFile

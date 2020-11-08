@@ -16,7 +16,7 @@ public let sampleCover = testDirectory
     .appendingPathComponent("samplecover-green")
     .appendingPathExtension("jpg")
 
-@available(OSX 10.12, *)
+@available(OSX 10.12, iOS 10.0, *)
 func localDirectory(fileName: String, fileExtension: String) throws -> URL {
     let home = FileManager.default.homeDirectoryForCurrentUser
     let desktopPath = "Desktop/TestOutput"
@@ -25,7 +25,7 @@ func localDirectory(fileName: String, fileExtension: String) throws -> URL {
     return directory.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
 }
 
-@available(OSX 10.12, *)
+@available(OSX 10.12, iOS 10.0, *)
 func tempDirectory() throws -> URL {
     let tempDirectory = FileManager.default.temporaryDirectory
         .appendingPathComponent("AudioBookTaggerTemp",
@@ -36,7 +36,7 @@ func tempDirectory() throws -> URL {
     return tempDirectory
 }
 
-@available(OSX 10.12, *)
+@available(OSX 10.12, iOS 10.0, *)
 func emptyDirectory() throws {
     try FileManager.default.removeItem(at: tempDirectory())
 }
