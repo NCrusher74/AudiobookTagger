@@ -15,12 +15,13 @@ import SwiftConvenienceExtensions
 /// An audiobook file represents an audiobook file somewhere on disk.
 @available(OSX 10.13, iOS 10.0, *)
 public struct AudiobookFile {
-    
+    public var location: URL
     public var audioFile: SwiftTagger.AudioFile
     public var useComposerForNarrator: Bool
     public let duration: Double
     
     public init(from location: URL) throws {
+        self.location = location
         self.audioFile = try AudioFile(location: location)
         self.duration = Double(audioFile.length ?? 0)
         if audioFile.composer == nil {
