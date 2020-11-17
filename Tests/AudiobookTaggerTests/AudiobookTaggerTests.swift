@@ -25,11 +25,11 @@ final class AudiobookTaggerTests: XCTestCase {
     let primaryAuthor = "Primary Author"
     let publisher = "Publisher"
     let seriesName = "Series Name"
-    let seriesNumber = 2
-    let seriesTotal = 3
+    let seriesNumber: Double = 2
+    let seriesTotal: Double = 3
     let universe = "Universe Name"
-    let universeNumber = 5
-    let universeTotal = 6
+    let universeNumber: Double = 5
+    let universeTotal: Double = 6
     let volume = "Volume Title"
     let summary = "Summary"
     let track = 7

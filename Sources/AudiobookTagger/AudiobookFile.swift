@@ -211,7 +211,7 @@ public struct AudiobookFile {
     }
 
     // MARK: Series
-    public var series: (name: String?, number: Int?, total: Int?) {
+    public var series: (name: String?, number: Double?, total: Double?) {
         get {
             if let name = self.seriesName {
                 if let index = self.seriesIndex {
@@ -260,17 +260,49 @@ public struct AudiobookFile {
     /// gets and sets an integer tag for the current book in a series
     /// uses the TVEpisodeNumber tag for MP4 and a custom tag for MP3
     /// (the custom tag may not be recognized by all players)
-    private var seriesIndex: Int? {
-        get { audioFile.seriesEpisodeNumber }
-        set { audioFile.seriesEpisodeNumber = newValue }
+    private var seriesIndex: Double? {
+        get {
+            if let string = audioFile["seriesIndex"] {
+                if let double = Double(string) {
+                    return double
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let new = newValue {
+                audioFile["seriesIndex"] = String(new)
+            } else {
+                audioFile["seriesIndex"] = nil
+            }
+        }
     }
 
     /// gets and sets an integer tag for the total books in a series
     /// uses the TVSeason tag for MP4 and a custom tag for MP3
     /// (the custom tag may not be recognized by all players)
-    private var seriesTotal: Int? {
-        get { audioFile.seriesSeason }
-        set { audioFile.seriesSeason = newValue }
+    private var seriesTotal: Double? {
+        get {
+            if let string = audioFile["seriesTotal"] {
+                if let double = Double(string) {
+                    return double
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let new = newValue {
+                audioFile["seriesTotal"] = String(new)
+            } else {
+                audioFile["seriesTotal"] = nil
+            }
+        }
     }
 
     // MARK: Summary
@@ -285,7 +317,7 @@ public struct AudiobookFile {
     /// gets and sets a string tag intended for grouping multi-series chronologies by the same author(s)
     /// e.g. The Lord of the Rings would be a series in a Middle Earth universe that also includes The Simarillion
     /// uses the Movement Name tag for both MP3 and MP4
-    public var universe: (name: String?, number: Int?, total: Int?) {
+    public var universe: (name: String?, number: Double?, total: Double?) {
         get {
             if let name = self.universeName {
                 if let index = self.universeIndex {
@@ -331,16 +363,48 @@ public struct AudiobookFile {
 
     /// gets and sets an integer tag for the current book in a multi-series chronology
     /// uses the Movement Number tag for MP4 and MP3
-    private var universeIndex: Int? {
-        get { audioFile.movementNumber }
-        set { audioFile.movementNumber = newValue }
+    private var universeIndex: Double? {
+        get {
+            if let string = audioFile["universeIndex"] {
+                if let double = Double(string) {
+                    return double
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let new = newValue {
+                audioFile["universeIndex"] = String(new)
+            } else {
+                audioFile["universeIndex"] = nil
+            }
+        }
     }
 
     /// gets and sets an integer tag for the total books in a multi-series chronology
     /// uses the Movement Count tag for MP4 and MP3
-    private var universeTotal: Int? {
-        get { audioFile.movementCount }
-        set { audioFile.movementCount = newValue }
+    private var universeTotal: Double? {
+        get {
+            if let string = audioFile["universeTotal"] {
+                if let double = Double(string) {
+                    return double
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let new = newValue {
+                audioFile["universeTotal"] = String(new)
+            } else {
+                audioFile["universeTotal"] = nil
+            }
+        }
     }
 
     // MARK: Track/Disc
