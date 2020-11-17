@@ -211,7 +211,7 @@ public struct AudiobookFile {
     }
 
     // MARK: Series
-    public var series: (name: String?, number: Double?, total: Double?) {
+    public var series: (name: String?, number: Double?, total: Int?) {
         get {
             if let name = self.seriesName {
                 if let index = self.seriesIndex {
@@ -284,11 +284,11 @@ public struct AudiobookFile {
     /// gets and sets an integer tag for the total books in a series
     /// uses the TVSeason tag for MP4 and a custom tag for MP3
     /// (the custom tag may not be recognized by all players)
-    private var seriesTotal: Double? {
+    private var seriesTotal: Int? {
         get {
             if let string = audioFile["seriesTotal"] {
-                if let double = Double(string) {
-                    return double
+                if let int = Int(string) {
+                    return int
                 } else {
                     return nil
                 }
@@ -317,7 +317,7 @@ public struct AudiobookFile {
     /// gets and sets a string tag intended for grouping multi-series chronologies by the same author(s)
     /// e.g. The Lord of the Rings would be a series in a Middle Earth universe that also includes The Simarillion
     /// uses the Movement Name tag for both MP3 and MP4
-    public var universe: (name: String?, number: Double?, total: Double?) {
+    public var universe: (name: String?, number: Double?, total: Int?) {
         get {
             if let name = self.universeName {
                 if let index = self.universeIndex {
@@ -386,11 +386,11 @@ public struct AudiobookFile {
 
     /// gets and sets an integer tag for the total books in a multi-series chronology
     /// uses the Movement Count tag for MP4 and MP3
-    private var universeTotal: Double? {
+    private var universeTotal: Int? {
         get {
             if let string = audioFile["universeTotal"] {
-                if let double = Double(string) {
-                    return double
+                if let int = Int(string) {
+                    return int
                 } else {
                     return nil
                 }
