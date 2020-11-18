@@ -47,8 +47,8 @@ final class AudiobookTaggerTests: XCTestCase {
         file.textCopyright = copyright
         file.productionCopyright = productionCopyright
         file.description = audiobookDescription
-        file.disc.disc = disc
-        file.disc.totalDiscs = totalDiscs
+        file.disc.index = disc
+        file.disc.total = totalDiscs
         file.genre.predefined = predefined
         file.genre.customGenre = custom
         file.keywords = keywords
@@ -57,17 +57,17 @@ final class AudiobookTaggerTests: XCTestCase {
         file.primaryAuthor = primaryAuthor
         file.publisher = publisher
         file.releaseDateTime = releaseDate
-        file.series.name = seriesName
-        file.series.number = seriesNumber
-        file.series.total = seriesTotal
+        file.series = seriesName
+        file.seriesIndex.index = seriesNumber
+        file.seriesIndex.total = seriesTotal
         try file.setCoverArt(imageLocation: sampleCover)
         file.summary = summary
         file.title = title
-        file.track.track = track
-        file.track.totalTracks = totalTracks
-        file.universe.name = universe
-        file.universe.number = universeNumber
-        file.universe.total = universeTotal
+        file.track.index = track
+        file.track.total = totalTracks
+        file.universe = universe
+        file.universeIndex.index = universeNumber
+        file.universeIndex.total = universeTotal
         file.volumeTitle = volume
         file.languages = language
         
@@ -82,8 +82,8 @@ final class AudiobookTaggerTests: XCTestCase {
         XCTAssertEqual(output.productionCopyright, "℗2020 me, myself and I")
         XCTAssertNotNil(output.coverArt)
         XCTAssertEqual(output.description, audiobookDescription)
-        XCTAssertEqual(output.disc.disc, disc)
-        XCTAssertEqual(output.disc.totalDiscs, totalDiscs)
+        XCTAssertEqual(output.disc.index, disc)
+        XCTAssertEqual(output.disc.total, totalDiscs)
         XCTAssertNil(output.genre.predefined)
         XCTAssertEqual(output.genre.customGenre, custom)
         XCTAssertEqual(output.keywords, keywords)
@@ -95,14 +95,14 @@ final class AudiobookTaggerTests: XCTestCase {
         XCTAssertEqual(output.summary, summary)
         XCTAssertEqual(output.title, title)
         XCTAssertEqual(output.volumeTitle, volume)
-        XCTAssertEqual(output.track.track, track)
-        XCTAssertEqual(output.track.totalTracks, totalTracks)
-        XCTAssertEqual(output.universe.name, universe)
-        XCTAssertEqual(output.universe.number, universeNumber)
-        XCTAssertEqual(output.universe.total, universeTotal)
-        XCTAssertEqual(output.series.name, seriesName)
-        XCTAssertEqual(output.series.number, seriesNumber)
-        XCTAssertEqual(output.series.total, seriesTotal)
+        XCTAssertEqual(output.track.index, track)
+        XCTAssertEqual(output.track.total, totalTracks)
+        XCTAssertEqual(output.universe, universe)
+        XCTAssertEqual(output.universeIndex.index, universeNumber)
+        XCTAssertEqual(output.universeIndex.total, universeTotal)
+        XCTAssertEqual(output.series, seriesName)
+        XCTAssertEqual(output.seriesIndex.index, seriesNumber)
+        XCTAssertEqual(output.seriesIndex.total, seriesTotal)
         XCTAssertEqual(output.languages, language)
     }
     
@@ -113,8 +113,8 @@ final class AudiobookTaggerTests: XCTestCase {
         file.textCopyright = copyright
         file.productionCopyright = productionCopyright
         file.description = audiobookDescription
-        file.disc.disc = disc
-        file.disc.totalDiscs = totalDiscs
+        file.disc.index = disc
+        file.disc.total = totalDiscs
         file.genre.predefined = predefined
         file.genre.customGenre = custom
         file.keywords = keywords
@@ -123,17 +123,17 @@ final class AudiobookTaggerTests: XCTestCase {
         file.primaryAuthor = primaryAuthor
         file.publisher = publisher
         file.releaseDateTime = releaseDate
-        file.series.name = seriesName
-        file.series.number = seriesNumber
-        file.series.total = seriesTotal
+        file.series = seriesName
+        file.seriesIndex.index = seriesNumber
+        file.seriesIndex.total = seriesTotal
         try file.setCoverArt(imageLocation: sampleCover)
         file.summary = summary
         file.title = title
-        file.track.track = track
-        file.track.totalTracks = totalTracks
-        file.universe.name = universe
-        file.universe.number = universeNumber
-        file.universe.total = universeTotal
+        file.track.index = track
+        file.track.total = totalTracks
+        file.universe = universe
+        file.universeIndex.index = universeNumber
+        file.universeIndex.total = universeTotal
         file.volumeTitle = volume
         file.languages = language
         
@@ -148,8 +148,8 @@ final class AudiobookTaggerTests: XCTestCase {
         XCTAssertEqual(output.productionCopyright, "℗2020 me, myself and I")
         XCTAssertNotNil(output.coverArt)
         XCTAssertEqual(output.description, audiobookDescription)
-        XCTAssertEqual(output.disc.disc, disc)
-        XCTAssertEqual(output.disc.totalDiscs, totalDiscs)
+        XCTAssertEqual(output.disc.index, disc)
+        XCTAssertEqual(output.disc.total, totalDiscs)
         XCTAssertEqual(output.genre.predefined?.stringValue, predefined.stringValue)
         XCTAssertEqual(output.genre.customGenre, custom)
         XCTAssertEqual(output.keywords, keywords)
@@ -161,14 +161,14 @@ final class AudiobookTaggerTests: XCTestCase {
         XCTAssertEqual(output.summary, summary)
         XCTAssertEqual(output.title, title)
         XCTAssertEqual(output.volumeTitle, volume)
-        XCTAssertEqual(output.track.track, track)
-        XCTAssertEqual(output.track.totalTracks, totalTracks)
-        XCTAssertEqual(output.universe.name, universe)
-        XCTAssertEqual(output.universe.number, universeNumber)
-        XCTAssertEqual(output.universe.total, universeTotal)
-        XCTAssertEqual(output.series.name, seriesName)
-        XCTAssertEqual(output.series.number, seriesNumber)
-        XCTAssertEqual(output.series.total, seriesTotal)
+        XCTAssertEqual(output.track.index, track)
+        XCTAssertEqual(output.track.total, totalTracks)
+        XCTAssertEqual(output.universe, universe)
+        XCTAssertEqual(output.universeIndex.index, universeNumber)
+        XCTAssertEqual(output.universeIndex.total, universeTotal)
+        XCTAssertEqual(output.series, seriesName)
+        XCTAssertEqual(output.seriesIndex.index, seriesNumber)
+        XCTAssertEqual(output.seriesIndex.total, seriesTotal)
         XCTAssertEqual(output.languages, language)
     }
 }
