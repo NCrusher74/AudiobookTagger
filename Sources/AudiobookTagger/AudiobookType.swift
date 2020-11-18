@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public enum AudiobookType: String, CaseIterable {
+public enum AudiobookType: String, CaseIterable, Codable {
     case narrated = "Narrated"
     case fullCast = "Full cast"
     case graphicAudio = "Graphic Audio"
