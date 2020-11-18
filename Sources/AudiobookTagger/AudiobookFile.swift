@@ -451,7 +451,7 @@ public struct AudiobookFile {
         set { audioFile.language = newValue }
     }
     
-    public var chapterList: [(startTime: Int, title: String)] {
+    public var chapterList: [Chapter] {
         return audioFile.chapterList
     }
     
