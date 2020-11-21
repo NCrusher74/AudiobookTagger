@@ -199,8 +199,8 @@ public struct AudiobookFile {
     /// gets and sets the primary author for a multi-author work as a string (for sorting)
     /// uses the AlbumArtist tag for both MP3 and MP4
     public var primaryAuthor: String? {
-        get { audioFile.albumArtist }
-        set { audioFile.albumArtist = newValue }
+        get { audioFile.artistSort }
+        set { audioFile.artistSort = newValue }
     }
 
     // MARK: Publisher
@@ -420,5 +420,10 @@ public struct AudiobookFile {
     
     public mutating func removeAllChapters() {
         audioFile.removeAllChapters()
+    }
+    
+    public var titleSort: String? {
+        get { audioFile.albumSort }
+        set { audioFile.albumSort = newValue }
     }
 }
