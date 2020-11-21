@@ -393,6 +393,19 @@ public struct AudiobookFile {
         set { audioFile.language = newValue }
     }
     
+    public subscript(_ customTag: String) -> String? {
+        get {
+            return audioFile[customTag]
+        }
+        set {
+            if let new = newValue {
+                audioFile[customTag] = new
+            } else {
+                audioFile[customTag] = nil
+            }
+        }
+    }
+    
     public var chapterList: [Chapter] {
         return audioFile.chapterList
     }
