@@ -7,8 +7,11 @@
 
 import Foundation
 public enum AudiobookType: String, CaseIterable, Codable {
-    case narrated = "Narrated"
-    case fullCast = "Full cast"
+    case narrated
+    case fullCast = "Full Cast"
+    case dramatized = "Dramatized"
+    case podcast
+    case radioPlay = "Radio Play"
     case graphicAudio = "Graphic Audio"
     case litRPG = "LitRPG"
 }
