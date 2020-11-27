@@ -168,7 +168,7 @@ public struct AudiobookFile {
     /// this is the copyright for the audiobook recording
     /// uses the Recording Copyright tag for both MP3 and MP4. For MP3, this is also known as the "Produced Notice" (`TPRO`) frame. for MP4, this is also known as the "Phonogram Rights" (`@phg`) atom
     public var productionCopyright: String? {
-        mutating get { audioFile.recordingCopyright }
+        get { audioFile.recordingCopyright }
         set { audioFile.recordingCopyright = newValue }
     }
     

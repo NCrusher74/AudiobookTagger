@@ -75,7 +75,7 @@ final class AudiobookTaggerTests: XCTestCase {
 //        let outputURL = try localDirectory(fileName: "testMP3", fileExtension: "mp3")
         try file.write(outputLocation: outputURL)
         
-        var output = try AudiobookFile(from: outputURL)
+        let output = try AudiobookFile(from: outputURL)
         XCTAssertEqual(output.author, author)
         XCTAssertEqual(output.audiobookType, audiobookType)
         XCTAssertEqual(output.textCopyright, "©2020 me, myself and I")
@@ -141,7 +141,7 @@ final class AudiobookTaggerTests: XCTestCase {
 //        let outputURL = try localDirectory(fileName: "testMP4", fileExtension: "m4a")
         try file.write(outputLocation: outputURL)
         
-        var output = try AudiobookFile(from: outputURL)
+        let output = try AudiobookFile(from: outputURL)
         XCTAssertEqual(output.author, author)
         XCTAssertEqual(output.audiobookType, audiobookType)
         XCTAssertEqual(output.textCopyright, "©2020 me, myself and I")
