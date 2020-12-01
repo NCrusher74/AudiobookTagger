@@ -4,6 +4,7 @@ import iTunesGenreID
 import SwiftLanguageAndLocaleCodes
 @testable import AudiobookTagger
 
+@available(OSX 11.0, *)
 final class AudiobookTaggerTests: XCTestCase {
     
     let author = "Author"
