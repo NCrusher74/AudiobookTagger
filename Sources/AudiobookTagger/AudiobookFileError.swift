@@ -1,5 +1,5 @@
 
-@available(OSX 11.0, iOS 10.0, *)
+@available(OSX 11.0, iOS 14.0, *)
 extension AudiobookFile {
 
   public enum Error: Swift.Error {
