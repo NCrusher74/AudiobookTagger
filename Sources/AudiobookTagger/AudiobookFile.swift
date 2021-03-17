@@ -25,7 +25,12 @@ public struct AudiobookFile {
     public init(from location: URL) throws {
         self.location = location
         self.audioFile = try AudioFile(location: location)
-        self.fileType = audioFile.fileType
+        if let fileType = UTType(location.pathExtension) {
+            self.fileType = fileType
+        } else {
+            throw Error.unknownFileFormat
+        }
+        
         self.duration = Double(audioFile.length ?? 0)
         if audioFile.composer == nil {
             self.useComposerForNarrator = false
