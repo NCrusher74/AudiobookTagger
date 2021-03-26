@@ -14,7 +14,7 @@ import SwiftConvenienceExtensions
 import UniformTypeIdentifiers
 
 /// An audiobook file represents an audiobook file somewhere on disk.
-@available(OSX 11.0, iOS 14.0, *)
+@available(OSX 10.12, iOS 12.0, *)
 public struct AudiobookFile {
     public var location: URL
     public var audioFile: SwiftTagger.AudioFile
