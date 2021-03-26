@@ -20,17 +20,10 @@ public struct AudiobookFile {
     public var audioFile: SwiftTagger.AudioFile
     public var useComposerForNarrator: Bool
     public let duration: Double
-    public var fileType: UTType
     
     public init(from location: URL) throws {
         self.location = location
         self.audioFile = try AudioFile(location: location)
-        if let fileType = UTType(location.pathExtension) {
-            self.fileType = fileType
-        } else {
-            throw Error.unknownFileFormat
-        }
-        
         self.duration = Double(audioFile.length ?? 0)
         if audioFile.composer == nil {
             self.useComposerForNarrator = false
